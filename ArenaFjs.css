@@ -1,0 +1,10 @@
+
+#game-canvas {
+   position: relative;
+   border: 1px inset rgba(0,0,80,0.62);
+
+   -webkit-transition: opacity 2.5s;
+   -moz-transition: opacity 2.5s;
+   -o-transition: opacity 2.5s;
+   transition: opacity 2.5s;
+}
