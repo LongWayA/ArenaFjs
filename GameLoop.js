@@ -1,45 +1,32 @@
 "use strict"
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
+ // Last modified 10.07.2018 - 15.07.2018
 
 // Методы setInterval(func, delay) и setTimeout(func, delay) позволяют запускать func регулярно/один раз через delay миллисекунд.
 
+Game.GameLoop = {}; 
+Game.GameLoop.name = "GameLoop";//
 
+ Game.ArenaFjs.ini();
 
- Game.countLoop = 1;
+ Game.ArenaFjs.start();
 
-
- Game.context.fillStyle = '#00f'; // blue
- Game.context.strokeStyle = '#00f'; // red '#f00'
- Game.context.lineWidth = 1;
- 
- // text
-Game.context.fillStyle = '#00f';
-Game.context.font = 'italic 30px sans-serif';
-Game.context.textBaseline = 'top';
-
-
- Game.timerId = setTimeout( function tik(){
-		//document.writeln("countLoop = " + Game.countLoop + " ");
-        
-    // for(var i = 1; i < Game.SpritesSheeva_mk3.FightingStance.length; i++ ){
-    //     Game.SpritesSheeva_mk3.drawSprite("FightingStance",i, (i-1)*100, 10);
-    //  };
-	
-      Game.context.clearRect(0, 0, Game.canvas.width, Game.canvas.height);
-	  
-	  Game.context.fillText ("Game.countLoop = " + Game.countLoop,10, 10);
-	  
-   Game.AnimationsSpritesSheeva_mk3.AnimationAll();
-        
-		Game.countLoop = Game.countLoop + 1;
-		if (Game.countLoop < 100 ) {
-			Game.timerId = setTimeout( tik, 100);
-		} else{
-           Game.countLoop = 1;
-           Game.timerId = setTimeout( tik, 100);
-		   //clearTimeout(Game.timerId);
-        }
-	}, 100);
+ Game.timerId = setTimeout( function tick(){
+  
+   Game.Timer.updateTimeBeforeTick();
+   Game.ArenaFjs.tick();
+   Game.Timer.updateTimeAfterTick();
+   
+   //alert(Game.Timer.timeThreadSleepGameMs);
+   
+		 if (Game.countLoop < 1500 ) {
+			   Game.timerId = setTimeout( tick, Game.Timer.timeThreadSleepGameMs);
+		 } else{
+      Game.countLoop = 1;
+      Game.timerId = setTimeout( tick, Game.Timer.timeThreadSleepGameMs);
+		    //clearTimeout(Game.timerId);
+   }
+	}, Game.Timer.timeThreadSleepGameMs);
 
 
 /*	
@@ -51,5 +38,3 @@ Game.timerId = setInterval( function tik(){
     }
 }, 2000);
 */
-
-//var timerId = setTimeout( userN.sayHi , 2000);
