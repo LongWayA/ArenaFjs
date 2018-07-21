@@ -12,16 +12,66 @@
     
     <body>
         <h1 align="center"> Arena fighting. Rising immortals </h1>
-        <p align="justify"><font size="4"> Last modified 15.07.2018 </font></p>
-        <!-- The game canvas.....................................-->
-
+        <p align="justify"><font size="4"> Last modified 21.07.2018 </font></p>
+		  
+        <!--The game canvas---------------------------------->
         <canvas id='game-canvas' width='1600' height='800'>
             Your browser does not support HTML5 Canvas.
         </canvas>
   	  
+	     <!--Sounds------------------------------------------->
+		  
+		  <!--female_conv-------------------------------------->
+        <audio id='IA'>
+          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01500 ruk.wav' type='audio/wav'>
+        </audio>
+	  
+        <audio id='IAA'>
+          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01505 nog.wav' type='audio/wav'>
+        </audio>
+		   
+        <audio id='IAAAA'>
+          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01525 beg.wav' type='audio/wav'>
+        </audio>
+		  
+        <!--hitsounds_conv-------------------------------------->
+		  <!--попадание рукой-------------------------------------->
+        <audio id='STR_H'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00100 pu.wav' type='audio/wav'>
+        </audio>		  
+		  
+		  <!--попадание ногой-------------------------------------->
+        <audio id='STR_F'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00105 pm.wav' type='audio/wav'>
+        </audio>	
+		  
+		  <!--попадание по блоку-------------------------------------->
+        <audio id='STR_B'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00110 b.wav' type='audio/wav'>
+        </audio>
+		  
+		  <!--промах ногой-------------------------------------->
+        <audio id='F'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00145 k.wav' type='audio/wav'>
+        </audio>		  
+		  		  
+		  <!--промах рукой-------------------------------------->
+        <audio id='H'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00150 h.wav' type='audio/wav'>
+        </audio>
+		  
+		  <!--удары-------------------------------------->
+        <audio id='STR'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00275 sh.wav' type='audio/wav'>
+        </audio>		  
+		  
+		  
+		  
+		  <!--Scripts------------------------------------------->
 	     <script src = 'Game.js'> </script>
 		  <script src = 'Timer.js'> </script>
-        <script src = 'Sound.js'> </script>		  
+		  <script src = 'UserInput.js'> </script>		  
+        <script src = 'Sound.js'> </script>
 		  <script src = 'SpritesFighter.js'> </script>
 		  <script src = 'SpritesAnimators.js'> </script>
 		  <script src = 'ArenaFjs.js'> </script>

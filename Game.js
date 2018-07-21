@@ -12,3 +12,6 @@
 
   Game.canvas = document.getElementById('game-canvas');
   Game.context = Game.canvas.getContext('2d');
+
+
+//document.writeln("js >> End_test_js_1.js+++++++++");
