@@ -1,11 +1,12 @@
 "use strict"
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 15.07.2018 - 15.07.2018
+ // Last modified 15.07.2018 - 22.07.2018
  
  Game.Sound = {}; 
  Game.Sound.name = "Sound";//
 
 Game.Sound.sound_IA = document.getElementById('IA');
+//Game.Sound.sound_IA.load();
 Game.Sound.sound_IA.volume = 1.0;
 
 Game.Sound.sound_IAA = document.getElementById('IAA');

@@ -6,7 +6,7 @@
  Game.ArenaFjs.name = "ArenaFjs";//
   
  //
- Game.ArenaFjs.ini = function() {
+ Game.ArenaFjs.ini = function(){
   
    Game.context.fillStyle = '#00f'; // blue
    Game.context.strokeStyle = '#00f'; // red '#f00'
@@ -18,15 +18,16 @@
    Game.context.textBaseline = 'top';
    
    Game.Timer.ini(8);
-   Game.SpritesFighter.iniAllSpriteSheeva_mk3();
    
    Game.countLoop = 1;
    
  };
  
- 
- 
+
   Game.ArenaFjs.start = function() {
+   
+  Game.SpritesFighter.iniAllSpriteFighter(); 
+  Game.UserInput.start();
   
   //Game.SpritesFighter.drawAllSpriteSheeva_mk3();
   
@@ -59,41 +60,15 @@
       Game.context.fillText ("timeEndTickMs = " + Game.Timer.timeEndTickMs,340, 30);
       Game.context.fillText ("timeBetweenStartMinOldStartTickMs = " + Game.Timer.timeBetweenStartMinOldStartTickMs,670, 30);
           
+          
+     //alert("!!");
+     Game.UserInput.tick();
+     
+     //Game.FighterSheeva_mk3.tick();     
+       
       Game.SpritesAnimators.AnimationAll();       
 	     Game.countLoop = Game.countLoop + 1; 
   };
-  
-  /*
-   *    	cout << "ParserCommandToFighter: init " << endl;
-
-    	leftBuffer = 0;
-    	rightBuffer = 0;
-    	upBuffer = 0;
-    	downBuffer = 0;
-    	runBuffer = 0;
-
-    	frontPunchBuffer = 0;
-    	backPunchBuffer = 0;
-    	frontKickBuffer = 0;
-    	backKickBuffer = 0;
-    	blockBuffer = 0;
-    	teleportBuffer = 0;
-
-
-    	left = 0;
-    	right = 0;
-    	up = 0;
-    	down = 0;
-    	run = 0;
-
-    	frontPunch = 0;
-    	backPunch = 0;
-    	frontKick = 0;
-    	backKick = 0;
-    	block = 0;
-    	teleport = 0;
-   *
-   */
   
   
   
