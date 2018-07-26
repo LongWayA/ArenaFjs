@@ -1,9 +1,10 @@
 "use strict"
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified 07.07.2018 - 22.07.2018
+// Last modified 07.07.2018 - 26.07.2018
 
   function SpritesSheeva_mk3_CL () {
     this.name = "SpritesSheeva_mk3_CL";
+    
     this.fightingStance = new Array(7);//
     this.walking = new Array(10);//
     this.running = new Array(13);
@@ -25,34 +26,16 @@
     
      //инициализируем массивы с картинками-----------------------------------
      this.iniAllSprite = function() {    
-      //ini FightingStance
+
       this.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
-
-      //ini Walking
       this.iniSprite("walking","image/Sheeva_mk3_image/2_Walking/w");  
-
-      //ini Running
       this.iniSprite("running","image/Sheeva_mk3_image/3_Running/r");
-  
-      //ini PunchingUp
       this.iniSprite("punchingUp","image/Sheeva_mk3_image/4_Punching/pt1_");
-    
-      //ini PunchingMidle
       this.iniSprite("punchingMidle","image/Sheeva_mk3_image/4_Punching/pm_");
-  
-      //ini KickingFront
       this.iniSprite("kickingFront","image/Sheeva_mk3_image/5_Kicking/k1_");
-  
-      //ini KickingBack
       this.iniSprite("kickingBack","image/Sheeva_mk3_image/5_Kicking/k2_");
-  
-      //ini BlockingHigh
       this.iniSprite("blockingHigh","image/Sheeva_mk3_image/7_Blocking/bt_");  
-  
-      //ini BlockingLow
       this.iniSprite("blockingLow","image/Sheeva_mk3_image/7_Blocking/bd_");  
-  
-      //ini BlockingLow
       this.iniSprite("beingHit","image/Sheeva_mk3_image/9_BeingHit/1_h0");  
      };
      
@@ -63,6 +46,7 @@
 	       Game.context.fillText ("fr = " + index,left, top);
      };
 
+     // draw image mirror
      this.drawSpriteMirror = function(type,index,left, top) {
          left = left + this[type][index].width;
          Game.context.scale(-1, 1);
@@ -76,19 +60,18 @@
 ///////////////////////////////////////////////////////////////////
 Game.SpritesFighter = {};
 
-Game.SpritesFighter.name = "SpritesFighter";//
+  Game.SpritesFighter.name = "SpritesFighter";//
+  
+  Game.SpritesFighter.spritesSheeva_mk3_t = new SpritesSheeva_mk3_CL (); 
+  Game.SpritesFighter.spritesSheeva_mk3_t.iniAllSprite();
+  
+  
+  
+Game.SpritesFighter.drawSprites_TEST = function(){
+  
+  Game.SpritesFighter.spritesSheeva_mk3_t.drawSprite("fightingStance", 1, 200, 200);
+  
+   
+};
 
-  //alert("!");
-  
-  // alert("!!");
-Game.SpritesFighter.spritesSheeva_mk3_1 = new SpritesSheeva_mk3_CL();
-  
-  
-  
- // ----------------------------
-   Game.SpritesFighter.iniAllSpriteFighter = function() {
-     Game.SpritesFighter.spritesSheeva_mk3_1.iniAllSprite();
-  };
-  
-  
-  
+//Game.context.fillRect(10, 10, 150, 100);

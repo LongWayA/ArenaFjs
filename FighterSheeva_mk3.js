@@ -1,56 +1,106 @@
 "use strict"
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified 21.07.2018 - 21.07.2018
+// Last modified 21.07.2018 - 26.07.2018
 
-Game.FighterSheeva_mk3 = {};
-
-Game.FighterSheeva_mk3.name = "FighterSheeva_mk3";//
-//alert("!");
-
-Game.FighterSheeva_mk3.state = "fightingStance";
-
-Game.FighterSheeva_mk3.left = 150;
-
-Game.FighterSheeva_mk3.top =150;
-
-Game.FighterSheeva_mk3.mirror = 0; // Direction_RIGHT_LEFT
-
-Game.FighterSheeva_mk3.width = 0;
-
-Game.FighterSheeva_mk3.height = 0;
-
-Game.FighterSheeva_mk3.MAX_HEALTH = 1000; //
-Game.FighterSheeva_mk3.MAX_STAMINA = 100; //
+function FighterSheeva_mk3_CL () {
+    this.name = "FighterSheeva_mk3_CL";
+    this.MAX_HEALTH = 1000; //
+    this.MAX_STAMINA = 100; //
+    
+    this.animatorsSheeva_mk3 = new AnimatorsSheeva_mk3_CL ();
+     
+    this.state;
+    this.left;
+    this.top;
+    this.mirror; // Direction_RIGHT_LEFT
+    this.width;
+    this.height;
 
        // жизни бойца
-Game.FighterSheeva_mk3.health = Game.FighterSheeva_mk3.MAX_HEALTH;
+    this.health;
 
         // изменение жизней при попадании в хит
-Game.FighterSheeva_mk3.dhUpPunch = 20;    //2% = (1000/100)*2 = 20
-Game.FighterSheeva_mk3.dhMidlePunch = 30; //3%
-Game.FighterSheeva_mk3.dhFrontKick = 50;  //5%
-Game.FighterSheeva_mk3.dhBackKick = 70;   //7%
+    this.dhUpPunch;    //2% = (1000/100)*2 = 20
+    this.dhMidlePunch; //3%
+    this.dhFrontKick;  //5%
+    this.dhBackKick;   //7%
 
         // изменение жизней при попадании в блок
-Game.FighterSheeva_mk3.dhUpPunchBlock = 4;     //0,4% = (1000/100)*0.4 = 4
-Game.FighterSheeva_mk3.dhMidlePunchBlock = 6;  //0,6%
-Game.FighterSheeva_mk3.dhFrontKickBlock = 10;  //1%
-Game.FighterSheeva_mk3.dhBackKickBlock = 14;   //1,4%
+    this.dhUpPunchBlock;     //0,4% = (1000/100)*0.4 = 4
+    this.dhMidlePunchBlock;  //0,6%
+    this.dhFrontKickBlock;  //1%
+    this.dhBackKickBlock;   //1,4%
 
         // выносливость бойца
-Game.FighterSheeva_mk3.stamina = Game.FighterSheeva_mk3.MAX_STAMINA;
+    this.stamina;
 
         // изменение выносливости
-Game.FighterSheeva_mk3.ds = 1;
+    this.ds;
+     
+    this.ini = function(left, top, mirror) {
+      
+         this.animatorsSheeva_mk3.ini();
+      
+         this.state = "fightingStance";
+         this.left = left;
+         this.top =top;
+         this.mirror = mirror; // Direction_RIGHT_LEFT
+         this.width = 0;
+         this.height = 0;
+
+         // жизни бойца
+         this.health = this.MAX_HEALTH;
+
+         // изменение жизней при попадании в хит
+         this.dhUpPunch = 20;    //2% = (1000/100)*2 = 20
+         this.dhMidlePunch = 30; //3%
+         this.dhFrontKick = 50;  //5%
+         this.dhBackKick = 70;   //7%
+
+        // изменение жизней при попадании в блок
+        this.dhUpPunchBlock = 4;     //0,4% = (1000/100)*0.4 = 4
+        this.dhMidlePunchBlock = 6;  //0,6%
+        this.dhFrontKickBlock = 10;  //1%
+        this.dhBackKickBlock = 14;   //1,4%
+
+        // выносливость бойца
+        this.stamina = this.MAX_STAMINA;
+
+        // изменение выносливости
+        this.ds = 1;
+     };
+     
+     this.tickAnimation = function() {
+         this.animatorsSheeva_mk3.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);     
+     };
+     
+     this.setState = function(toState) {
+      
+     };
+};
 
 
-//alert("!");
+
+// Fighters------------------------------------------------------------------------------
+ Game.Fighters = {};
+
+ Game.Fighters.name = "Fighters";//
+ //alert("!");
+
+ Game.Fighters.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
+ Game.Fighters.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
+ Game.Fighters.fighterSheeva_mk3_1.ini(150, 150, 0);
+ Game.Fighters.fighterSheeva_mk3_2.ini(450, 150, 1);
 
 
 //////////////////////////
- Game.FighterSheeva_mk3.tick = function() {
-  Game.SpritesAnimators.AnimatorsSheeva_mk3_1.All_Animation(Game.FighterSheeva_mk3.state, Game.FighterSheeva_mk3.left,
-                                                Game.FighterSheeva_mk3.top, Game.FighterSheeva_mk3.mirror,
-                                                Game.FighterSheeva_mk3.width, Game.FighterSheeva_mk3.height); 
+ Game.Fighters.tick = function() {
   
+   Game.Fighters.fighterSheeva_mk3_1.tickAnimation();
+   Game.Fighters.fighterSheeva_mk3_2.tickAnimation();
+   //alert("!");
  };
+
+
+
+

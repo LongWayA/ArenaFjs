@@ -5,7 +5,7 @@
  Game.ArenaFjs = {}; 
  Game.ArenaFjs.name = "ArenaFjs";//
   
- //
+ // ini ---------------------------------------------------------
  Game.ArenaFjs.ini = function(){
   
    Game.context.fillStyle = '#00f'; // blue
@@ -16,21 +16,22 @@
    Game.context.fillStyle = '#00f';
    Game.context.font = 'italic 20px sans-serif';
    Game.context.textBaseline = 'top';
-   
-   Game.Timer.ini(8);
-   
+  
    Game.countLoop = 1;
    
+   Game.Timer.ini(8); 
+    
  };
- 
 
+  // start ---------------------------------------------------------
   Game.ArenaFjs.start = function() {
    
-  Game.SpritesFighter.iniAllSpriteFighter(); 
+ 
   Game.UserInput.start();
   
-  //Game.SpritesFighter.drawAllSpriteSheeva_mk3();
   
+  //Game.SpritesFighter.drawAllSpriteSheeva_mk3();
+  //alert("!");
   
  //  Game.Sound.sound_IA.play();
  //  Game.Sound.sound_IAA.play();
@@ -41,7 +42,6 @@
 //   Game.Sound.sound_F.play();
 //   Game.Sound.sound_H.play();
 //   Game.Sound.sound_STR.play();    
-    
     
   };
  
@@ -61,12 +61,20 @@
       Game.context.fillText ("timeBetweenStartMinOldStartTickMs = " + Game.Timer.timeBetweenStartMinOldStartTickMs,670, 30);
           
           
-     //alert("!!");
+     //alert("!");
      Game.UserInput.tick();
      
-     //Game.FighterSheeva_mk3.tick();     
-       
-      Game.SpritesAnimators.AnimationAll();       
+ //<TEST ------------------------------------------------------
+ 
+     // Game.SpritesFighter.drawSprites_TEST();
+      Game.SpritesAnimators.AnimationAll_TEST();
+      
+//TEST> ------------------------------------------------------
+
+
+      //Game.Fighters.tick();     
+      
+      //alert("!!");
 	     Game.countLoop = Game.countLoop + 1; 
   };
   
