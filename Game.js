@@ -6,11 +6,11 @@
   //var Game = new Object();
   //window.Game = new Object();
   
-  window.Game = {};
+  window.Game_R = {};
 
-  Game.name = "Game";//
+  Game_R.name = "Game";//
 
-  Game.canvas = document.getElementById('game-canvas');
-  Game.context = Game.canvas.getContext('2d');
-  Game.context.fokus();
+  Game_R.canvas = document.getElementById('game-canvas');
+  Game_R.context = Game_R.canvas.getContext('2d');
+  Game_R.context.fokus();
 //document.writeln("js >> End_test_js_1.js+++++++++");

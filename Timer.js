@@ -2,36 +2,36 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 15.07.2018
   
- Game.Timer = {}; 
- Game.Timer.name = "Timer";//
+ Game_R.Timer_R = {}; 
+ Game_R.Timer_R.name = "Timer_R";//
 
-  Game.Timer.ticksPerSecond;// количество циклов в секунду или по другому количество кадров в секунду
+  Game_R.Timer_R.ticksPerSecond;// количество циклов в секунду или по другому количество кадров в секунду
         // 1000 задержка в секунду. т.е тысяча милисекунд это секунда
         // 60 кадров это 0,01(6) sek = 16,(6) millis
         // 30 кадров это 0,03(3) sek = 30,(3) millis
         // 25 кадров это 0,04 sek = 40 millis
         // 10 кадров это 0,1 sek = 100 millis
         
-  Game.Timer.tickMustTimeMs;// время отведенное на один круг
+  Game_R.Timer_R.tickMustTimeMs;// время отведенное на один круг
 
-  Game.Timer.timeStartTickMs;// фиксируем время начала тика
-  Game.Timer.timeEndTickMs;// фиксируем время после тика
-  Game.Timer.timeBetweenEndMinStartTickMs;// время тика	в это время идет расчет и отрисовка игры
-  Game.Timer.timeThreadSleepGameMs;// время бездействия потока игры. мы все сделали и оставшееся время бездействуем
+  Game_R.Timer_R.timeStartTickMs;// фиксируем время начала тика
+  Game_R.Timer_R.timeEndTickMs;// фиксируем время после тика
+  Game_R.Timer_R.timeBetweenEndMinStartTickMs;// время тика	в это время идет расчет и отрисовка игры
+  Game_R.Timer_R.timeThreadSleepGameMs;// время бездействия потока игры. мы все сделали и оставшееся время бездействуем
 
-  Game.Timer.timeOldStartTickMs;// время начала предыдущего тика нужно для вычисления времени полного круга цикла
-  Game.Timer.timeBetweenStartMinOldStartTickMs;// время прошедшее за полный круг цикла игры
+  Game_R.Timer_R.timeOldStartTickMs;// время начала предыдущего тика нужно для вычисления времени полного круга цикла
+  Game_R.Timer_R.timeBetweenStartMinOldStartTickMs;// время прошедшее за полный круг цикла игры
 
         
  	// стартовая инициализация таймера
-    Game.Timer.ini = function(_ticksPerSecond) {
+    Game_R.Timer_R.ini = function(_ticksPerSecond) {
 
-    	Game.Timer.timeStartTickMs = (new Date).getTime();
-    	Game.Timer.ticksPerSecond = _ticksPerSecond;
-    	Game.Timer.tickMustTimeMs = 1000 / Game.Timer.ticksPerSecond;//33,(3)   16,(6)  msec
+    	Game_R.Timer_R.timeStartTickMs = (new Date).getTime();
+    	Game_R.Timer_R.ticksPerSecond = _ticksPerSecond;
+    	Game_R.Timer_R.tickMustTimeMs = 1000 / Game_R.Timer_R.ticksPerSecond;//33,(3)   16,(6)  msec
 //alert("!");
-//alert(Game.Timer.tickMustTimeMs);
-//alert(Game.Timer.ticksPerSecond);
+//alert(Game_R.Timer_R.tickMustTimeMs);
+//alert(Game_R.Timer_R.ticksPerSecond);
     };
 
     /*
@@ -44,11 +44,11 @@
      * однако реально ticksPerSecond = 30  в сек т.е  tickMustTimeMs = 33,(3) msec так как иначе не успеваем все обсчитать
      *
      */
-    Game.Timer.updateTimeBeforeTick = function() {
+    Game_R.Timer_R.updateTimeBeforeTick = function() {
 
-		     Game.Timer.timeOldStartTickMs = Game.Timer.timeStartTickMs;
-		     Game.Timer.timeStartTickMs = (new Date).getTime();
-		     Game.Timer.timeBetweenStartMinOldStartTickMs = Game.Timer.timeStartTickMs - Game.Timer.timeOldStartTickMs;
+		     Game_R.Timer_R.timeOldStartTickMs = Game_R.Timer_R.timeStartTickMs;
+		     Game_R.Timer_R.timeStartTickMs = (new Date).getTime();
+		     Game_R.Timer_R.timeBetweenStartMinOldStartTickMs = Game_R.Timer_R.timeStartTickMs - Game_R.Timer_R.timeOldStartTickMs;
 	 };
 
 	/*
@@ -56,25 +56,25 @@
 	 * тут мы не учитываем время сна
 	 * высчитываем время сколько мы должны спать для того что бы получить
 	 * нужное время одного цикла а это tickMustTimeMs
-	 * если время сна timeSleepGameMs оказывается отрицательным или просто меньше 5
+	 * если время сна timeSleepGame_RMs оказывается отрицательным или просто меньше 5
 	 * то делаем его 5
 	 * отрицательное когда задержка в цикле больше чем отведено на цикл
 	 */
-  Game.Timer.updateTimeAfterTick = function() {
+  Game_R.Timer_R.updateTimeAfterTick = function() {
 
-		Game.Timer.timeEndTickMs = (new Date).getTime();
-		Game.Timer.timeBetweenEndMinStartTickMs = Game.Timer.timeEndTickMs - Game.Timer.timeStartTickMs;
-		Game.Timer.timeThreadSleepGameMs = Game.Timer.tickMustTimeMs - Game.Timer.timeBetweenEndMinStartTickMs;
-		//System.out.println("Timer: timeBetweenTickMs = " + timeBetweenTickMs );
-		//System.out.println("Timer: timeSleepGameMs = " + timeSleepGameMs );
+		Game_R.Timer_R.timeEndTickMs = (new Date).getTime();
+		Game_R.Timer_R.timeBetweenEndMinStartTickMs = Game_R.Timer_R.timeEndTickMs - Game_R.Timer_R.timeStartTickMs;
+		Game_R.Timer_R.timeThreadSleepGameMs = Game_R.Timer_R.tickMustTimeMs - Game_R.Timer_R.timeBetweenEndMinStartTickMs;
+		//System.out.println("Timer_R: timeBetweenTickMs = " + timeBetweenTickMs );
+		//System.out.println("Timer_R: timeSleepGame_RMs = " + timeSleepGame_RMs );
 
-		if( Game.Timer.timeThreadSleepGameMs < 1){
-			Game.Timer.timeThreadSleepGameMs = 1;
-			//System.out.println("Timer: timeThreadSleepGameMs(< 1) = " + timeThreadSleepGameMs );
+		if( Game_R.Timer_R.timeThreadSleepGameMs < 1){
+			Game_R.Timer_R.timeThreadSleepGameMs = 1;
+			//System.out.println("Timer_R: timeThreadSleepGameMs(< 1) = " + timeThreadSleepGameMs );
 		};
 //		if( timeThreadSleepGameMs > 33){
 //			timeThreadSleepGameMs = 33;
-//			//System.out.println("Timer: timeThreadSleepGameMs(> 33) = " + timeThreadSleepGameMs );
+//			//System.out.println("Timer_R: timeThreadSleepGameMs(> 33) = " + timeThreadSleepGameMs );
 //		}
 	};
        

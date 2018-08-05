@@ -70,37 +70,98 @@ function FighterSheeva_mk3_CL () {
         this.ds = 1;
      };
      
+     // tickAnimation ---------------------------------------
      this.tickAnimation = function() {
          this.animatorsSheeva_mk3.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);     
      };
      
+     // setState--------------------------------------------------------
      this.setState = function(toState) {
-      
-     };
-};
+     
+      if(toState != this.state){
+           if( (toState == "fightingStance")||(toState == "walkingForward")||(toState == "walkingBack")||(toState == "blockingHigh") ){
+           //alert("1");
+                    this.state = toState; 
+           } else {
+           // alert("2");
+                 if(this.animatorsSheeva_mk3.busy == 0){
+                       this.state = toState; 
+                 };            
+          };
+      };//if(toState != this.state){
+      /*
+            switch(toState){
+         
+                 case "fightingStance":
+                   
+                 break;
+       
+                 case "running":
+          
+                 break;
+                 case "walkingForward":
+          
+                 break;
+                 case "walkingBack":
+          
+                 break;
+                 case "punchUp":
+          
+                 break;       
+                 case "punchMidle":
+          
+                 break;      
+                 case "kickFront":
+          
+                 break;       
+                 case "kickingBack":
+          
+                 break;       
+                 case "blockingHigh":
+          
+                 break;      
+                 case "blockingLow":
+          
+                 break;
+                 case "beingHit":
+          
+                 break;     
+            };
+      */
+     };//this.setState
+};//FighterSheeva_mk3_CL () {
 
 
 
 // Fighters------------------------------------------------------------------------------
- Game.Fighters = {};
+ Game_R.Fighters_R = {};
 
- Game.Fighters.name = "Fighters";//
+ Game_R.Fighters_R.name = "Fighters";//
  //alert("!");
 
- Game.Fighters.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
- Game.Fighters.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
- Game.Fighters.fighterSheeva_mk3_1.ini(150, 150, 0);
- Game.Fighters.fighterSheeva_mk3_2.ini(450, 150, 1);
+ Game_R.Fighters_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
+                        "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
+
+ Game_R.Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
+ Game_R.Fighters_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
+ Game_R.Fighters_R.fighterSheeva_mk3_1.ini(150, 150, 0);
+ Game_R.Fighters_R.fighterSheeva_mk3_2.ini(450, 150, 1);
 
 
 //////////////////////////
- Game.Fighters.tick = function() {
+Game_R.Fighters_R.start = function() {
+ 
+ Game_R.Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
+ Game_R.Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");
+};
+
+ Game_R.Fighters_R.tick = function() {
   
-   Game.Fighters.fighterSheeva_mk3_1.tickAnimation();
-   Game.Fighters.fighterSheeva_mk3_2.tickAnimation();
+   Game_R.Fighters_R.fighterSheeva_mk3_1.tickAnimation();
+   Game_R.Fighters_R.fighterSheeva_mk3_2.tickAnimation();
    //alert("!");
  };
 
-
+//alert("!");
 
 

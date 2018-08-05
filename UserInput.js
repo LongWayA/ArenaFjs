@@ -9,70 +9,70 @@
   Цитата с сайта https://learn.javascript.ru/keyboard-events
  */
  
- Game.UserInput = {}; 
- Game.UserInput.name = "UserInput";//
+ Game_R.UserInput_R = {}; 
+ Game_R.UserInput_R.name = "UserInput_R";//
  
- Game.UserInput.eventG = 0;
+ Game_R.UserInput_R.eventG = 0;
 
- Game.UserInput.left = 0;
- Game.UserInput.right = 0;
- Game.UserInput.up = 0;
- Game.UserInput.down = 0;
- Game.UserInput.run = 0;
+ Game_R.UserInput_R.left = 0;
+ Game_R.UserInput_R.right = 0;
+ Game_R.UserInput_R.up = 0;
+ Game_R.UserInput_R.down = 0;
+ Game_R.UserInput_R.run = 0;
 
- Game.UserInput.frontPunch = 0;
- Game.UserInput.backPunch = 0;
- Game.UserInput.frontKick = 0;
- Game.UserInput.backKick = 0;
- Game.UserInput.block = 0;
- Game.UserInput.teleport = 0;
+ Game_R.UserInput_R.frontPunch = 0;
+ Game_R.UserInput_R.backPunch = 0;
+ Game_R.UserInput_R.frontKick = 0;
+ Game_R.UserInput_R.backKick = 0;
+ Game_R.UserInput_R.block = 0;
+ Game_R.UserInput_R.teleport = 0;
 
 
-Game.UserInput.eventUser = function(event,setE) {
+Game_R.UserInput_R.eventUser = function(event,setE) {
  
     switch(event.keyCodevent){
          
         case 37:  // клавиша влево
-          Game.UserInput.left = setE;
+          Game_R.UserInput_R.left = setE;
         break;
         case 39:   // клавиша вправо
-          Game.UserInput.right = setE;
+          Game_R.UserInput_R.right = setE;
         break;
         case 38:   // клавиша вверх
-          Game.UserInput.up = setE;
+          Game_R.UserInput_R.up = setE;
         break;
         case 40:   // клавиша вниз
-          Game.UserInput.down = setE;
+          Game_R.UserInput_R.down = setE;
         break;
     };
  
  };
 
-Game.UserInput.keyDownU = function(event) {
+Game_R.UserInput_R.keyDownU = function(event) {
  
- Game.UserInput.eventG = event.keyCode;
- Game.UserInput.eventUser(event,1);
+ Game_R.UserInput_R.eventG = event.keyCode;
+ Game_R.UserInput_R.eventUser(event,1);
 
  };
 
-Game.UserInput.keyUpU = function(event) {
+Game_R.UserInput_R.keyUpU = function(event) {
  
- Game.UserInput.eventG = 0;
- Game.UserInput.eventUser(event,0);
+ Game_R.UserInput_R.eventG = 0;
+ Game_R.UserInput_R.eventUser(event,0);
  };
 
- Game.UserInput.start = function() {
+ Game_R.UserInput_R.start = function() {
 
-     window.addEventListener("keydown", Game.UserInput.keyDownU);
-     window.addEventListener("keyup", Game.UserInput.keyUpU);
+     window.addEventListener("keydown", Game_R.UserInput_R.keyDownU);
+     window.addEventListener("keyup", Game_R.UserInput_R.keyUpU);
      //console.log("V");
   };
 
 
 //////////////////////////
- Game.UserInput.tick = function() {
+ Game_R.UserInput_R.tick = function() {
   
-  Game.context.fillText ("UserInput ->" +  Game.UserInput.eventG ,1300, 5);
-  //Game.UserInput.eventG = 0;
+  Game_R.context.fillText ("UserInput_R ->" +  Game_R.UserInput_R.eventG ,1300, 5);
+  //Game_R.UserInput_R.eventG = 0;
   
  };

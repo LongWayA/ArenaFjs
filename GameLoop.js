@@ -4,19 +4,19 @@
 
 // Методы setInterval(func, delay) и setTimeout(func, delay) позволяют запускать func регулярно/один раз через delay миллисекунд.
 
-Game.GameLoop = {}; 
-Game.GameLoop.name = "GameLoop";//
+Game_R.GameLoop_R = {}; 
+Game_R.GameLoop_R.name = "GameLoop";//
 
- Game.ArenaFjs.ini();
- Game.ArenaFjs.start();
+ Game_R.ArenaFjs_R.ini();
+ Game_R.ArenaFjs_R.start();
 
- Game.timerId = setTimeout( function tick(){
+ Game_R.timerId = setTimeout( function tick(){
   
-      Game.Timer.updateTimeBeforeTick();
-      Game.ArenaFjs.tick();
-      Game.Timer.updateTimeAfterTick();
-      Game.timerId = setTimeout( tick, Game.Timer.timeThreadSleepGameMs);
+      Game_R.Timer_R.updateTimeBeforeTick();
+      Game_R.ArenaFjs_R.tick();
+      Game_R.Timer_R.updateTimeAfterTick();
+      Game_R.timerId = setTimeout( tick,Game_R.Timer_R.timeThreadSleepGameMs);
    
-		    if (Game.countLoop > 1500 ) Game.countLoop = 1;
+		    if (Game_R.countLoop > 24 ) Game_R.countLoop = 1;
       
-	}, Game.Timer.timeThreadSleepGameMs);
+	}, Game_R.Timer_R.timeThreadSleepGameMs);
