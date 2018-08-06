@@ -79,7 +79,7 @@ function FighterSheeva_mk3_CL () {
      this.setState = function(toState) {
      
       if(toState != this.state){
-           if( (toState == "fightingStance")||(toState == "walkingForward")||(toState == "walkingBack")||(toState == "blockingHigh") ){
+           if( (toState == "fightingStance")||(toState == "walkingForward")||(toState == "walkingBack")||(toState == "block")||(toState == "blockLow") ){
            //alert("1");
                     this.state = toState; 
            } else {

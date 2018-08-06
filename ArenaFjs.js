@@ -75,7 +75,7 @@
        
        };
        Game_R.context.fillText (Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il_2],150, 120); 
-       
+       Game_R.context.fillText ("busy = " + Game_R.Fighters_R.fighterSheeva_mk3_1.animatorsSheeva_mk3.busy,300, 120); 
      //alert("!");
      Game_R.UserInput_R.tick();
      

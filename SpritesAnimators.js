@@ -2,26 +2,33 @@
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 10.07.2018 - 05.08.2018
 
-function AnimatorsSheeva_mk3_CL () {
+/*
+ IMPORT (references, outer defines)
+ SpritesFighter.js -> used SpritesSheeva_mk3_CL()
+ 
+ EXPORT
+
+*/
+
+/*
+INTERFACE
+   AnimatorsSheeva_mk3_CL (constructor function)
+ 
+   all_Animation(typeStateAnimators, left, top, mirror, width, height)
+ 
+ 
+ 
+*/
+
+function AnimatorsSheeva_mk3_CL() {
     this.name = "AnimatorsSheeva_mk3_CL";
     
     this.spritesSheeva_mk3 = new SpritesSheeva_mk3_CL();
-    
-//  Game_R.Sound_R.sound_IA.play();
-//  Game_R.Sound_R.sound_IAA.play();
-//  Game_R.Sound_R.sound_IAAAA.play();
-//   Game_R.Sound_R.sound_STR_H.play();
-//   Game_R.Sound_R.sound_STR_F.play();
-//   Game_R.Sound_R.sound_STR_B.play();
-//   Game_R.Sound_R.sound_F.play();
-//   Game_R.Sound_R.sound_H.play();
-//   Game_R.Sound_R.sound_STR.play();
-    
-    
+      
     this.fightingStance = {
          translate : "fightingStance",
          fr :  [1,2,3,4,5,6,5,4,3,2,1],
-         str : [0,0,0,0,0,0,0,0,0,0,0],
+         str : [1,0,0,0,0,0,0,0,0,0,0],
          max : 11,
          sound: "sound_IA"
     };
@@ -29,7 +36,7 @@ function AnimatorsSheeva_mk3_CL () {
      this.running = {
        translate : "running",
        fr :  [1,2,3,4,5,6,7,8,9,10,11,12],
-       str : [0,0,0,0,0,0,0,0,0,0, 0, 0],
+       str : [1,0,0,0,0,0,0,0,0,0, 0, 0],
        max : 12,
        sound: "sound_IAAAA"
      };
@@ -69,7 +76,7 @@ function AnimatorsSheeva_mk3_CL () {
     this.kickFront = {
        translate : "kickingFront",
        fr :  [1,2,3,4,5,6,7,8],
-       str : [0,0,0,0,0,1,0,1],
+       str : [0,0,0,0,0,0,0,1],
        max : 8,
        sound: "sound_STR_F"
     };
@@ -106,11 +113,11 @@ function AnimatorsSheeva_mk3_CL () {
       sound: "sound_STR"
     };    
     
-    this.num ; //
+    this.num; //
     
-    this.busy ;
+    this.busy;
     
-    this.type ;
+    this.type;
     
     //ini-------------------------------------------------------
     this.ini = function() {
@@ -126,8 +133,7 @@ function AnimatorsSheeva_mk3_CL () {
          if (this.type != toType) { 
             this.type = toType;
             this.num = 0;
-            this.busy = 1;
-            Game_R.Sound_R[this[this.type].sound].play();
+            this.busy = 1;         
          };
     };
     
@@ -149,12 +155,17 @@ function AnimatorsSheeva_mk3_CL () {
      };
     
     //all_Animation-------------------------------------------------------
-    this.all_Animation = function(typeStateFighter, left, top, mirror, width, height){
+    this.all_Animation = function(typeStateAnimators, left, top, mirror, width, height){
  
-       this.setType(typeStateFighter);
+       this.setType(typeStateAnimators);
  
-       if (typeStateFighter == "block"){
-           // if (this.num > 3 ) this.num = 3;
+       if (this[this.type].str[this.num] == 1 ) Game_R.Sound_R[this[this.type].sound].play();
+ 
+       if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
+            if (this.num > 3 ){
+               this.num = 3;
+               this.busy = 0;
+            }
             this.animation(mirror, left, top);
        }else {
             this.animation(mirror, left, top);
