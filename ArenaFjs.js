@@ -27,12 +27,14 @@
   // start ---------------------------------------------------------
   Game_R.ArenaFjs_R.start = function() {
    
- 
+  Game_R.SpritesFighter_R.start();
+  //Game_R.SpritesFighter.drawAllSpriteSheeva_mk3();
+  //alert("!");
+  
   Game_R.UserInput_R.start();
   
   
-  //Game_R.SpritesFighter.drawAllSpriteSheeva_mk3();
-  //alert("!");
+
   
  //  Game_R.Sound_R.sound_IA.play();
  //  Game_R.Sound_R.sound_IAA.play();
@@ -75,14 +77,14 @@
        
        };
        Game_R.context.fillText (Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il_2],150, 120); 
-       Game_R.context.fillText ("busy = " + Game_R.Fighters_R.fighterSheeva_mk3_1.animatorsSheeva_mk3.busy,300, 120); 
+       Game_R.context.fillText ("busy = " + Game_R.Fighters_R.fighterSheeva_mk3_1.animatorsState.busy,300, 120); 
      //alert("!");
      Game_R.UserInput_R.tick();
      
  //<TEST ------------------------------------------------------
  
      // Game_R.SpritesFighter_R.drawSprites_TEST();
-      //Game_R.SpritesAnimators_R.animationAll_TEST();
+     //Game_R.SpritesAnimators_R.animationAll_TEST();
       
 //TEST> ------------------------------------------------------
 

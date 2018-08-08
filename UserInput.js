@@ -72,7 +72,7 @@ Game_R.UserInput_R.keyUpU = function(event) {
 //////////////////////////
  Game_R.UserInput_R.tick = function() {
   
-  Game_R.context.fillText ("UserInput_R ->" +  Game_R.UserInput_R.eventG ,1300, 5);
+  Game_R.context.fillText ("UserInput-> " +  Game_R.UserInput_R.eventG ,1300, 5);
   //Game_R.UserInput_R.eventG = 0;
   
  };

@@ -1,13 +1,34 @@
 "use strict"
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified 21.07.2018 - 26.07.2018
+// Last modified 21.07.2018 - 08.08.2018
+
+/*
+ IMPORT (references, outer defines)
+ SpritesAnimators.js -> used 
+ 
+ EXPORT
+
+*/
+
+/*
+INTERFACE
+   FighterSheeva_mk3_CL (constructor function)
+ 
+*/
+
 
 function FighterSheeva_mk3_CL () {
     this.name = "FighterSheeva_mk3_CL";
+    
+    this.animatorsState = {
+         num : 0 ,
+         busy : 0 ,
+         type : "fightingStance",
+         oldType : "fightingStance"
+    };
+    
     this.MAX_HEALTH = 1000; //
     this.MAX_STAMINA = 100; //
-    
-    this.animatorsSheeva_mk3 = new AnimatorsSheeva_mk3_CL ();
      
     this.state;
     this.left;
@@ -39,7 +60,6 @@ function FighterSheeva_mk3_CL () {
      
     this.ini = function(left, top, mirror) {
       
-         this.animatorsSheeva_mk3.ini();
       
          this.state = "fightingStance";
          this.left = left;
@@ -72,7 +92,7 @@ function FighterSheeva_mk3_CL () {
      
      // tickAnimation ---------------------------------------
      this.tickAnimation = function() {
-         this.animatorsSheeva_mk3.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);     
+         Game_R.SpritesAnimators_R.all_Animation( this.animatorsState, this.state,  this.left, this.top,  this.mirror, this.width,  this.height);     
      };
      
      // setState--------------------------------------------------------
@@ -84,7 +104,7 @@ function FighterSheeva_mk3_CL () {
                     this.state = toState; 
            } else {
            // alert("2");
-                 if(this.animatorsSheeva_mk3.busy == 0){
+                 if(this.animatorsState.busy == 0){
                        this.state = toState; 
                  };            
           };
@@ -132,6 +152,7 @@ function FighterSheeva_mk3_CL () {
 };//FighterSheeva_mk3_CL () {
 
 
+//////////////////////////
 
 // Fighters------------------------------------------------------------------------------
  Game_R.Fighters_R = {};
@@ -148,7 +169,6 @@ function FighterSheeva_mk3_CL () {
  Game_R.Fighters_R.fighterSheeva_mk3_2.ini(450, 150, 1);
 
 
-//////////////////////////
 Game_R.Fighters_R.start = function() {
  
  Game_R.Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
