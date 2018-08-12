@@ -34,3 +34,12 @@ Game_R.Sound_R.sound_STR = document.getElementById('STR');
 Game_R.Sound_R.sound_STR.volume = 1.0;
 
 //alert(Fighting);
+//  Game_R.Sound_R.sound_IA.play();
+ //  Game_R.Sound_R.sound_IAA.play();
+ //  Game_R.Sound_R.sound_IAAAA.play();
+//   Game_R.Sound_R.sound_STR_H.play();
+//   Game_R.Sound_R.sound_STR_F.play();
+//   Game_R.Sound_R.sound_STR_B.play();
+//   Game_R.Sound_R.sound_F.play();
+//   Game_R.Sound_R.sound_H.play();
+//   Game_R.Sound_R.sound_STR.play();

@@ -16,7 +16,5 @@ Game_R.GameLoop_R.name = "GameLoop";//
       Game_R.ArenaFjs_R.tick();
       Game_R.Timer_R.updateTimeAfterTick();
       Game_R.timerId = setTimeout( tick,Game_R.Timer_R.timeThreadSleepGameMs);
-   
-		    if (Game_R.countLoop > 24 ) Game_R.countLoop = 1;
       
 	}, Game_R.Timer_R.timeThreadSleepGameMs);
