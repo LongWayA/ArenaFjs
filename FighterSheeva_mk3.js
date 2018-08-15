@@ -160,28 +160,6 @@ function FighterSheeva_mk3_CL () {
  Game_R.Fighters_R.name = "Fighters";//
  //alert("!");
 
- Game_R.Fighters_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
-                        "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
-
- Game_R.Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
- Game_R.Fighters_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
- Game_R.Fighters_R.fighterSheeva_mk3_1.ini(150, 150, 0);
- Game_R.Fighters_R.fighterSheeva_mk3_2.ini(450, 150, 1);
-
-
-Game_R.Fighters_R.start = function() {
- 
- Game_R.Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
- Game_R.Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");
-};
-
- Game_R.Fighters_R.tick = function() {
-  
-   Game_R.Fighters_R.fighterSheeva_mk3_1.tickAnimation();
-   Game_R.Fighters_R.fighterSheeva_mk3_2.tickAnimation();
-   //alert("!");
- };
-
 //alert("!");
 
 

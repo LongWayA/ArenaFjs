@@ -1,6 +1,6 @@
 "use strict"
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 07.07.2018 - 15.07.2018
+ // Last modified 07.07.2018 - 15.08.2018
  
  Game_R.ArenaFjs_R = {}; 
  Game_R.ArenaFjs_R.name = "ArenaFjs";//
@@ -27,8 +27,9 @@
      Game_R.SpritesFighter_R.start();
   
      Game_R.UserInput_R.start();
+     
+     Game_R.ArenaScene_R.start();
   
-     Game_R.Fighters_R.start();
   };
  // start< ---------------------------------------------------------------------------
  
@@ -36,23 +37,25 @@
   Game_R.ArenaFjs_R.tick = function() {
           
       //alert("!");
-	     Game_R.ArenaScene_R.drawAll();
+	     Game_R.UserInput_R.tick();
         
          
       if (Game_R.countLoop == 24){
        Game_R.ArenaFjs_R.il_2 = Game_R.ArenaFjs_R.il
        //if(Game_R.ArenaFjs.il_2 == 0) Game_R.ArenaFjs.il_2 = 1;
-       Game_R.Fighters_R.fighterSheeva_mk3_1.setState(Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il]);
-       Game_R.Fighters_R.fighterSheeva_mk3_2.setState(Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il]);
+       Game_R.ArenaScene_R.fighterSheeva_mk3_1.setState(Game_R.ArenaScene_R.typeM[Game_R.ArenaFjs_R.il]);
+       Game_R.ArenaScene_R.fighterSheeva_mk3_2.setState(Game_R.ArenaScene_R.typeM[Game_R.ArenaFjs_R.il]);
        
        Game_R.ArenaFjs_R.il = Game_R.ArenaFjs_R.il + 1;
-       if (Game_R.ArenaFjs_R.il > Game_R.Fighters_R.typeM.length-1) Game_R.ArenaFjs_R.il = 0;
+       if (Game_R.ArenaFjs_R.il > Game_R.ArenaScene_R.typeM.length-1) Game_R.ArenaFjs_R.il = 0;
        
        };
        
-       Game_R.context.fillText (Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il_2],150, 120); 
+       Game_R.ArenaScene_R.drawAll();
+       
+       Game_R.GameText_R.drawText (Game_R.ArenaScene_R.typeM[Game_R.ArenaFjs_R.il_2],150, 385, 'italic 20px sans-serif', 'red', 1);
      
-     Game_R.UserInput_R.tick();
+       
      
  //<TEST ------------------------------------------------------
  
@@ -60,9 +63,7 @@
      //Game_R.SpritesAnimators_R.animationAll_TEST();
       
 //TEST> ------------------------------------------------------
-
-
-      Game_R.Fighters_R.tick();     
+   
 
 	     Game_R.countLoop = Game_R.countLoop + 1;
       if (Game_R.countLoop > 24 ) Game_R.countLoop = 1;

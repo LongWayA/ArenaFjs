@@ -127,25 +127,35 @@ Game_R.SpritesFighter_R = {};
       Game_R.SpritesFighter_R.iniSprite("beingHit","image/Sheeva_mk3_image/9_BeingHit/1_h0");  
   };  
   
+
   // draw image
   Game_R.SpritesFighter_R.drawSprite = function(type,index,left, top) {
-         Game_R.context.drawImage(Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index], left, top);
-         Game_R.context.strokeRect(left, top, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-                                   Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height);
-	       Game_R.context.fillText ("fr = " + index,left, top);
-         Game_R.context.fillText (type,left, top + 100);
+    
+         var top1 = top - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height;
+    
+         Game_R.context.drawImage(Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index], left, top1);
+         Game_R.GameText_R.drawRect(left, top1, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
+                                   Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height,
+                                   1, 'blue', 0);
+         Game_R.GameText_R.drawText ("fr = " + index,left+5, top-100, 'italic 20px sans-serif', 'blue', 1);
+         Game_R.GameText_R.drawText (type,left+5, top-20, 'italic 20px sans-serif', 'blue', 1);
   };
 
   // draw image mirror
   Game_R.SpritesFighter_R.drawSpriteMirror = function(type,index,left, top) {
+    
+         var top1 = top - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height;
+    
          left = left + Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width;
+         
          Game_R.context.scale(-1, 1);
-         Game_R.context.drawImage(Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top);
-         Game_R.context.strokeRect(-left, top, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-                                   Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height);
+         Game_R.context.drawImage(Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top1);
+         Game_R.GameText_R.drawRect(-left, top1, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
+                                   Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height,
+                                   1, 'blue', 0);
          Game_R.context.scale(-1, 1);
-	       Game_R.context.fillText ("fr = " + index,left - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width, top);
-         Game_R.context.fillText (type,left - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width, top + 100);
+         Game_R.GameText_R.drawText ("fr = " + index,left+5 - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width, top-100, 'italic 20px sans-serif', 'blue', 1);
+         Game_R.GameText_R.drawText (type,left+5 - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width, top -20, 'italic 20px sans-serif', 'blue', 1);
   };    
   
   
