@@ -2,37 +2,13 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 07.07.2018 - 15.08.2018
  
+ //alert("module ArenaFjs start");
+ //================================================================================
+ 
  Game_R.ArenaFjs_R = {}; 
  Game_R.ArenaFjs_R.name = "ArenaFjs";//
   
-  // ini> ---------------------------------------------------------
-  Game_R.ArenaFjs_R.ini = function(){
-   
-     Game_R.Timer_R.ini(8); 
-     Game_R.ArenaScene_R.iniAll(Game_R.canvas.width, Game_R.canvas.height);
   
-     Game_R.countLoop = 1;
-     Game_R.ArenaFjs_R.il = 0;
-     Game_R.ArenaFjs_R.il_2 = 0;
-     
-    
-  };
-  // ini< ---------------------------------------------------------
-
-  // start> ---------------------------------------------------------------------------
-  Game_R.ArenaFjs_R.start = function() {
-   
-     //alert("!");
-  
-     Game_R.SpritesFighter_R.start();
-  
-     Game_R.UserInput_R.start();
-     
-     Game_R.ArenaScene_R.start();
-  
-  };
- // start< ---------------------------------------------------------------------------
- 
  // tick> ---------------------------------------------------------------------------
   Game_R.ArenaFjs_R.tick = function() {
           
@@ -71,3 +47,29 @@
  // tick< --------------------------------------------------------------------------- 
   
   
+    // ini> ---------------------------------------------------------
+  Game_R.ArenaFjs_R.ini = function(){
+   
+     Game_R.countLoop = 1;
+     Game_R.ArenaFjs_R.il = 0;
+     Game_R.ArenaFjs_R.il_2 = 0;
+     
+    
+  };
+  // ini< ---------------------------------------------------------
+
+  // start> ---------------------------------------------------------------------------
+  Game_R.ArenaFjs_R.start = function() {
+   
+     //alert("!");
+  
+  };
+ // start< ---------------------------------------------------------------------------
+  
+   Game_R.ArenaFjs_R.ini();
+  
+  
+  
+  Game_R.context.strokeText ('10 module ArenaFjs load', 1100, 230);
+ //================================================================================
+ //alert("module ArenaFjs done");

@@ -16,6 +16,8 @@ INTERFACE
  
 */
 
+  //alert("module FighterSheeva_mk3 start");
+  //================================================================================
 
 function FighterSheeva_mk3_CL () {
     this.name = "FighterSheeva_mk3_CL";
@@ -158,8 +160,7 @@ function FighterSheeva_mk3_CL () {
  Game_R.Fighters_R = {};
 
  Game_R.Fighters_R.name = "Fighters";//
- //alert("!");
 
-//alert("!");
-
-
+Game_R.context.strokeText ('7   module FighterSheeva load', 1100, 170);
+//================================================================================
+//alert("module FighterSheeva done");

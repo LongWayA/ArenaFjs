@@ -2,6 +2,10 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 15.07.2018
   
+  
+ // alert("module Timer start");
+//================================================================================
+  
  Game_R.Timer_R = {}; 
  Game_R.Timer_R.name = "Timer_R";//
 
@@ -22,18 +26,6 @@
   Game_R.Timer_R.timeOldStartTickMs;// время начала предыдущего тика нужно для вычисления времени полного круга цикла
   Game_R.Timer_R.timeBetweenStartMinOldStartTickMs;// время прошедшее за полный круг цикла игры
 
-        
- 	// стартовая инициализация таймера
-    Game_R.Timer_R.ini = function(_ticksPerSecond) {
-
-    	Game_R.Timer_R.timeStartTickMs = (new Date).getTime();
-    	Game_R.Timer_R.ticksPerSecond = _ticksPerSecond;
-    	Game_R.Timer_R.tickMustTimeMs = 1000 / Game_R.Timer_R.ticksPerSecond;//33,(3)   16,(6)  msec
-//alert("!");
-//alert(Game_R.Timer_R.tickMustTimeMs);
-//alert(Game_R.Timer_R.ticksPerSecond);
-    };
-
     /*
      * обновляется только в одном месте цикла игры
      * в главном цикле окна перед всеми вычислениями и выводами
@@ -44,7 +36,7 @@
      * однако реально ticksPerSecond = 30  в сек т.е  tickMustTimeMs = 33,(3) msec так как иначе не успеваем все обсчитать
      *
      */
-    Game_R.Timer_R.updateTimeBeforeTick = function() {
+  Game_R.Timer_R.updateTimeBeforeTick = function() {
 
 		     Game_R.Timer_R.timeOldStartTickMs = Game_R.Timer_R.timeStartTickMs;
 		     Game_R.Timer_R.timeStartTickMs = (new Date).getTime();
@@ -62,19 +54,38 @@
 	 */
   Game_R.Timer_R.updateTimeAfterTick = function() {
 
-		Game_R.Timer_R.timeEndTickMs = (new Date).getTime();
-		Game_R.Timer_R.timeBetweenEndMinStartTickMs = Game_R.Timer_R.timeEndTickMs - Game_R.Timer_R.timeStartTickMs;
-		Game_R.Timer_R.timeThreadSleepGameMs = Game_R.Timer_R.tickMustTimeMs - Game_R.Timer_R.timeBetweenEndMinStartTickMs;
-		//System.out.println("Timer_R: timeBetweenTickMs = " + timeBetweenTickMs );
-		//System.out.println("Timer_R: timeSleepGame_RMs = " + timeSleepGame_RMs );
+		     Game_R.Timer_R.timeEndTickMs = (new Date).getTime();
+		     Game_R.Timer_R.timeBetweenEndMinStartTickMs = Game_R.Timer_R.timeEndTickMs - Game_R.Timer_R.timeStartTickMs;
+		     Game_R.Timer_R.timeThreadSleepGameMs = Game_R.Timer_R.tickMustTimeMs - Game_R.Timer_R.timeBetweenEndMinStartTickMs;
+		     //System.out.println("Timer_R: timeBetweenTickMs = " + timeBetweenTickMs );
+		     //System.out.println("Timer_R: timeSleepGame_RMs = " + timeSleepGame_RMs );
 
-		if( Game_R.Timer_R.timeThreadSleepGameMs < 1){
-			Game_R.Timer_R.timeThreadSleepGameMs = 1;
-			//System.out.println("Timer_R: timeThreadSleepGameMs(< 1) = " + timeThreadSleepGameMs );
-		};
-//		if( timeThreadSleepGameMs > 33){
-//			timeThreadSleepGameMs = 33;
-//			//System.out.println("Timer_R: timeThreadSleepGameMs(> 33) = " + timeThreadSleepGameMs );
-//		}
+		     if( Game_R.Timer_R.timeThreadSleepGameMs < 1){
+			      Game_R.Timer_R.timeThreadSleepGameMs = 1;
+			      //System.out.println("Timer_R: timeThreadSleepGameMs(< 1) = " + timeThreadSleepGameMs );
+		     };
+       //		if( timeThreadSleepGameMs > 33){
+       //			    timeThreadSleepGameMs = 33;
+       //			    //System.out.println("Timer_R: timeThreadSleepGameMs(> 33) = " + timeThreadSleepGameMs );
+       //		}
 	};
+     
+     
+ // стартовая инициализация таймера
+ Game_R.Timer_R.ini = function(_ticksPerSecond) {
+
+     Game_R.Timer_R.timeStartTickMs = (new Date).getTime();
+     Game_R.Timer_R.ticksPerSecond = _ticksPerSecond;
+    	Game_R.Timer_R.tickMustTimeMs = 1000 / Game_R.Timer_R.ticksPerSecond;//33,(3)   16,(6)  msec
+     //alert("!");
+     //alert(Game_R.Timer_R.tickMustTimeMs);
+     //alert(Game_R.Timer_R.ticksPerSecond);
+ };   
+     
+ Game_R.Timer_R.ini(8);
+ 
+ Game_R.context.strokeText ('4   module Timer load', 1100, 110);
+ //================================================================================
+//alert("module Timer done");     
+      
        

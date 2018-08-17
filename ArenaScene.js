@@ -24,6 +24,9 @@ DEFINE
 
 */
 
+  //alert("module ArenaScene start");
+  //================================================================================
+
 Game_R.ArenaScene_R = {};
 
   Game_R.ArenaScene_R.name = "ArenaScene_R";//
@@ -87,126 +90,7 @@ Game_R.ArenaScene_R = {};
       fon3  : new Image()
   };
   
-  
- // ini>------------------------------------------------------------------------------------------------ 
-  
-                                         // Width in pixels 1280 1500 Height in pixels 960
-  Game_R.ArenaScene_R.iniFramesArena = function( displayWidth,  displayHeight) {
-    
-        var dx0 = 10;
-        var dy0 = 10;
-              
-        Game_R.ArenaScene_R.framesArena.displayWidth = displayWidth - dx0 - 5; //
-		    Game_R.ArenaScene_R.framesArena.displayHeight = displayHeight - dy0 - 5;//
-    
-    		Game_R.ArenaScene_R.framesArena.x0Left = dx0; //4
-		    Game_R.ArenaScene_R.framesArena.y0Top = dy0;//33
-
-		    Game_R.ArenaScene_R.framesArena.width = Game_R.ArenaScene_R.framesArena.displayWidth; //
-		    Game_R.ArenaScene_R.framesArena.height = Game_R.ArenaScene_R.framesArena.displayHeight;//
-
-		    Game_R.ArenaScene_R.framesArena.xRight =  Game_R.ArenaScene_R.framesArena.x0Left + Game_R.ArenaScene_R.framesArena.width; //
-		    Game_R.ArenaScene_R.framesArena.yBottom = Game_R.ArenaScene_R.framesArena.y0Top + Game_R.ArenaScene_R.framesArena.height;//
-
-//		("x0Left = " + x0Left);
-//		("y0Top = " + y0Top);
-//		("xRight = " + xRight);
-//		("yBottom = " + yBottom);
-//		("width = " + width);
-//		("height = " + height);
-
-		//view Location
-
-		   Game_R.ArenaScene_R.framesArena.x0LeftLocation = Game_R.ArenaScene_R.framesArena.x0Left + 5; //
-		   Game_R.ArenaScene_R.framesArena.y0TopLocation = Game_R.ArenaScene_R.framesArena.y0Top + 5;//
-
-		   Game_R.ArenaScene_R.framesArena.widthLocation  = Game_R.ArenaScene_R.framesArena.width - 10; //
-		   Game_R.ArenaScene_R.framesArena.heightLocation = Game_R.ArenaScene_R.framesArena.height - Game_R.ArenaScene_R.framesArena.height/4;//
-
-		   Game_R.ArenaScene_R.framesArena.xRightLocation = Game_R.ArenaScene_R.framesArena.x0Left + Game_R.ArenaScene_R.framesArena.widthLocation; //
-		   Game_R.ArenaScene_R.framesArena.yBottomLocation = Game_R.ArenaScene_R.framesArena.y0Top + Game_R.ArenaScene_R.framesArena.heightLocation;//
-
-//		("x0LeftLocation = " + x0LeftLocation);
-//		("y0TopLocation = " + y0TopLocation);
-//		("xRightLocation = " + xRightLocation);
-//		("yBottomLocation = " + yBottomLocation);
-//		("widthLocation = " + widthLocation);
-//		("heightLocation = " + heightLocation);
-
-
-		  //viewFPS
-		  Game_R.ArenaScene_R.framesArena.x0LeftFPS = Game_R.ArenaScene_R.framesArena.x0LeftLocation;
-		  Game_R.ArenaScene_R.framesArena.y0TopFPS = Game_R.ArenaScene_R.framesArena.yBottomLocation;//
-
-		  Game_R.ArenaScene_R.framesArena.widthFPS  = Game_R.ArenaScene_R.framesArena.widthLocation;
-		  Game_R.ArenaScene_R.framesArena.heightFPS = Game_R.ArenaScene_R.framesArena.yBottom - Game_R.ArenaScene_R.framesArena.yBottomLocation;//
-
-		  Game_R.ArenaScene_R.framesArena.xRightFPS = Game_R.ArenaScene_R.framesArena.xRightLocation;
-		  Game_R.ArenaScene_R.framesArena.yBottomFPS = Game_R.ArenaScene_R.framesArena.yBottom -5; // низ привязали к фону
-
-	    Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer1 = 10; //
-	    Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer1 = 10;//
-	    Game_R.ArenaScene_R.framesArena.widthHealthPlayer1 = 500; //
-	    Game_R.ArenaScene_R.framesArena.heightHealthPlayer1 = 40;//
-
-
-	    Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer2 = 600; //
-	    Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer2 = 10;//
-	    Game_R.ArenaScene_R.framesArena.widthHealthPlayer2 = 500; //
-	    Game_R.ArenaScene_R.framesArena.heightHealthPlayer2 = 40;//
-  };
-  
-  // ini SceneImage
-  Game_R.ArenaScene_R.iniSceneImage = function(){
-  
-      var path1 = "image/Sheeva_mk3_image/";
-      var path2 = "image/Arenas_mk1_image/";
-           
-      Game_R.ArenaScene_R.imageArena.ikonSheeva_mk3.src = path1 + "fs1.png";
-      
-      Game_R.ArenaScene_R.imageArena.drak.src = path2 + "dre.png";
-      
-      Game_R.ArenaScene_R.imageArena.fon1.src = path2 + "mkw.png";
-      Game_R.ArenaScene_R.imageArena.fon2.src = path2 + "tr.png";
-      Game_R.ArenaScene_R.imageArena.fon3.src = path2 + "wsh.png";
-          
-       Game_R.ArenaScene_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
-                        "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
-
-       Game_R.ArenaScene_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
-       Game_R.ArenaScene_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
-       Game_R.ArenaScene_R.fighterSheeva_mk3_1.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+180,
-                                                   Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 0);
-       Game_R.ArenaScene_R.fighterSheeva_mk3_2.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+480,
-                                                   Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 1);    
-          
-  };
-  
-  
-  // 
-  Game_R.ArenaScene_R.iniAll = function(displayWidth,  displayHeight) {    
-
-       Game_R.ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
-       Game_R.ArenaScene_R.iniSceneImage();
-       
-      //Game_R.ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
-
-  };
-  
-  // ini<------------------------------------------------------------------------------------------------
-  
-  // start>------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.start = function() {
-    
-    Game_R.ArenaScene_R.fighterSheeva_mk3_1.setState("fightingStance");
-    Game_R.ArenaScene_R.fighterSheeva_mk3_2.setState("fightingStance");
-    
-  };
-  // start<------------------------------------------------------------------------------------------------
-  
-  
   // draw>------------------------------------------------------------------------------------------------
-  
   
   //---------------------------------------------------------------------------------------------------------------
   // draw image
@@ -293,7 +177,7 @@ Game_R.ArenaScene_R = {};
       Game_R.GameText_R.drawText ("ticksPerSecond = " + Game_R.Timer_R.ticksPerSecond,x+180, y+5, 'italic 20px sans-serif', 'blue', 1);
       Game_R.GameText_R.drawText ("tickMustTimeMs = " + Game_R.Timer_R.tickMustTimeMs,x+400, y+5, 'italic 20px sans-serif', 'blue', 1);
       Game_R.GameText_R.drawText ("timeBetweenEndMinStartTickMs = " + Game_R.Timer_R.timeBetweenEndMinStartTickMs,x+620, y+5, 'italic 20px sans-serif', 'blue', 1);
-	    Game_R.GameText_R.drawText ("timeThreadSleepGameMs = " + Game_R.Timer_R.timeThreadSleepGameMs,x+970, y+5, 'italic 20px sans-serif', 'blue', 1);
+	    Game_R.GameText_R.drawText ("timeThreadSleepGameMs = " + Game_R.Timer_R.timeThreadSleepGameMs,x+370, y+55, 'italic 20px sans-serif', 'blue', 1);
       
       Game_R.GameText_R.drawText ("timeStartTickMs = " + Game_R.Timer_R.timeStartTickMs,x+10, y+30, 'italic 20px sans-serif', 'blue', 1);
       Game_R.GameText_R.drawText ("timeEndTickMs = " + Game_R.Timer_R.timeEndTickMs,x+340, y+30, 'italic 20px sans-serif', 'blue', 1);
@@ -308,7 +192,9 @@ Game_R.ArenaScene_R = {};
   //---------------------------------------------------------------------------------------------------------------
   Game_R.ArenaScene_R.drawAll = function() {
     
-    Game_R.context.clearRect(0, 0, Game_R.canvas.width, Game_R.canvas.height);
+    //Game_R.context.clearRect(0, 0, Game_R.canvas.width, Game_R.canvas.height);
+    Game_R.context.clearRect(0, 0, 1100, Game_R.canvas.height);
+    
     // это видимо весь фон
 		Game_R.GameText_R.drawRect(Game_R.ArenaScene_R.framesArena.x0Left,
                               Game_R.ArenaScene_R.framesArena.y0Top,
@@ -327,4 +213,120 @@ Game_R.ArenaScene_R = {};
   // draw>------------------------------------------------------------------------------------------------
  
 
-//Game_R.context.fillRect(10, 10, 150, 100);
+// ini>------------------------------------------------------------------------------------------------ 
+  
+                                         // Width in pixels 1280 1500 Height in pixels 960
+  Game_R.ArenaScene_R.iniFramesArena = function( displayWidth,  displayHeight) {
+    
+        var dx0 = 10;
+        var dy0 = 10;
+              
+        Game_R.ArenaScene_R.framesArena.displayWidth = displayWidth - dx0 - 5; //
+		    Game_R.ArenaScene_R.framesArena.displayHeight = displayHeight - dy0 - 5;//
+    
+    		Game_R.ArenaScene_R.framesArena.x0Left = dx0; //4
+		    Game_R.ArenaScene_R.framesArena.y0Top = dy0;//33
+
+		    Game_R.ArenaScene_R.framesArena.width = Game_R.ArenaScene_R.framesArena.displayWidth; //
+		    Game_R.ArenaScene_R.framesArena.height = Game_R.ArenaScene_R.framesArena.displayHeight;//
+
+		    Game_R.ArenaScene_R.framesArena.xRight =  Game_R.ArenaScene_R.framesArena.x0Left + Game_R.ArenaScene_R.framesArena.width; //
+		    Game_R.ArenaScene_R.framesArena.yBottom = Game_R.ArenaScene_R.framesArena.y0Top + Game_R.ArenaScene_R.framesArena.height;//
+
+//		("x0Left = " + x0Left);
+//		("y0Top = " + y0Top);
+//		("xRight = " + xRight);
+//		("yBottom = " + yBottom);
+//		("width = " + width);
+//		("height = " + height);
+
+		//view Location
+
+		   Game_R.ArenaScene_R.framesArena.x0LeftLocation = Game_R.ArenaScene_R.framesArena.x0Left + 5; //
+		   Game_R.ArenaScene_R.framesArena.y0TopLocation = Game_R.ArenaScene_R.framesArena.y0Top + 5;//
+
+		   Game_R.ArenaScene_R.framesArena.widthLocation  = Game_R.ArenaScene_R.framesArena.width - 10; //
+		   Game_R.ArenaScene_R.framesArena.heightLocation = Game_R.ArenaScene_R.framesArena.height - Game_R.ArenaScene_R.framesArena.height/4;//
+
+		   Game_R.ArenaScene_R.framesArena.xRightLocation = Game_R.ArenaScene_R.framesArena.x0Left + Game_R.ArenaScene_R.framesArena.widthLocation; //
+		   Game_R.ArenaScene_R.framesArena.yBottomLocation = Game_R.ArenaScene_R.framesArena.y0Top + Game_R.ArenaScene_R.framesArena.heightLocation;//
+
+//		("x0LeftLocation = " + x0LeftLocation);
+//		("y0TopLocation = " + y0TopLocation);
+//		("xRightLocation = " + xRightLocation);
+//		("yBottomLocation = " + yBottomLocation);
+//		("widthLocation = " + widthLocation);
+//		("heightLocation = " + heightLocation);
+
+
+		  //viewFPS
+		  Game_R.ArenaScene_R.framesArena.x0LeftFPS = Game_R.ArenaScene_R.framesArena.x0LeftLocation;
+		  Game_R.ArenaScene_R.framesArena.y0TopFPS = Game_R.ArenaScene_R.framesArena.yBottomLocation;//
+
+		  Game_R.ArenaScene_R.framesArena.widthFPS  = Game_R.ArenaScene_R.framesArena.widthLocation;
+		  Game_R.ArenaScene_R.framesArena.heightFPS = Game_R.ArenaScene_R.framesArena.yBottom - Game_R.ArenaScene_R.framesArena.yBottomLocation;//
+
+		  Game_R.ArenaScene_R.framesArena.xRightFPS = Game_R.ArenaScene_R.framesArena.xRightLocation;
+		  Game_R.ArenaScene_R.framesArena.yBottomFPS = Game_R.ArenaScene_R.framesArena.yBottom -5; // низ привязали к фону
+
+	    Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer1 = 10; //
+	    Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer1 = 10;//
+	    Game_R.ArenaScene_R.framesArena.widthHealthPlayer1 = 500; //
+	    Game_R.ArenaScene_R.framesArena.heightHealthPlayer1 = 40;//
+
+
+	    Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer2 = 600; //
+	    Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer2 = 10;//
+	    Game_R.ArenaScene_R.framesArena.widthHealthPlayer2 = 500; //
+	    Game_R.ArenaScene_R.framesArena.heightHealthPlayer2 = 40;//
+  };
+  
+  // ini SceneImage
+  Game_R.ArenaScene_R.loadSceneImage = function(){
+  
+      var path1 = "image/Sheeva_mk3_image/";
+      var path2 = "image/Arenas_mk1_image/";
+           
+      Game_R.ArenaScene_R.imageArena.ikonSheeva_mk3.src = path1 + "fs1.png";
+      
+      Game_R.ArenaScene_R.imageArena.drak.src = path2 + "dre.png";
+      
+      Game_R.ArenaScene_R.imageArena.fon1.src = path2 + "mkw.png";
+      Game_R.ArenaScene_R.imageArena.fon2.src = path2 + "tr.png";
+      Game_R.ArenaScene_R.imageArena.fon3.src = path2 + "wsh.png";
+          
+       Game_R.ArenaScene_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
+                        "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
+
+       Game_R.ArenaScene_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
+       Game_R.ArenaScene_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
+       Game_R.ArenaScene_R.fighterSheeva_mk3_1.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+180,
+                                                   Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 0);
+       Game_R.ArenaScene_R.fighterSheeva_mk3_2.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+480,
+                                                   Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 1);    
+          
+  };
+  
+  
+  // 
+  Game_R.ArenaScene_R.iniAll = function(displayWidth,  displayHeight) {    
+
+       Game_R.ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
+       Game_R.ArenaScene_R.loadSceneImage();
+       
+       Game_R.ArenaScene_R.fighterSheeva_mk3_1.setState("fightingStance");
+       Game_R.ArenaScene_R.fighterSheeva_mk3_2.setState("fightingStance");
+       
+      //Game_R.ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
+
+  };
+  
+  // ini<------------------------------------------------------------------------------------------------
+
+  Game_R.ArenaScene_R.iniAll(Game_R.canvas.width, Game_R.canvas.height);
+
+Game_R.context.strokeText ('9   module ArenaScene load', 1100, 210);
+
+//================================================================================
+//alert("module ArenaScene done");
+

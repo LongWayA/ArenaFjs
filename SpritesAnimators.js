@@ -25,6 +25,9 @@ INTERFACE
  
 */
 
+// alert("module SpritesAnimators start");
+//================================================================================
+
 // Sprite Animators...........................................................
  Game_R.SpritesAnimators_R = {}; 
  Game_R.SpritesAnimators_R.name = "SpritesAnimators";// 
@@ -220,3 +223,9 @@ Game_R.SpritesAnimators_R.animationAll_TEST = function(){
    Game_R.SpritesAnimators_R.AnimatorsSheeva_mk3_20_t.all_Animation("beingHit", 1200, 650,1,0,0);     
  	*/
 };
+
+
+Game_R.context.strokeText ('6   module SpritesAnimators load', 1100, 150);
+//================================================================================
+//alert("module SpritesAnimators done");
+

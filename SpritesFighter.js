@@ -85,6 +85,9 @@ object methods ->
     drawSpriteMirror(type,index,left, top)
 */
 
+//alert("module SpritesFighter start");
+//================================================================================
+
 Game_R.SpritesFighter_R = {};
 
   Game_R.SpritesFighter_R.name = "SpritesFighter";//
@@ -104,28 +107,7 @@ Game_R.SpritesFighter_R = {};
       beingHit        : new Array(4)
   };
   
-  // ini Image
-  Game_R.SpritesFighter_R.iniSprite = function(type,path){
-        for(var i = 1; i < Game_R.SpritesFighter_R.spritesSheeva_mk3[type].length; i++ ){
-           Game_R.SpritesFighter_R.spritesSheeva_mk3[type][i] = new Image();
-           Game_R.SpritesFighter_R.spritesSheeva_mk3[type][i].src = path + i + ".png";
-         };
-  };
-  
-  //инициализируем массивы с картинками-----------------------------------
-  Game_R.SpritesFighter_R.iniAllSprite = function() {    
-
-      Game_R.SpritesFighter_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
-      Game_R.SpritesFighter_R.iniSprite("walking","image/Sheeva_mk3_image/2_Walking/w");  
-      Game_R.SpritesFighter_R.iniSprite("running","image/Sheeva_mk3_image/3_Running/r");
-      Game_R.SpritesFighter_R.iniSprite("punchingUp","image/Sheeva_mk3_image/4_Punching/pt1_");
-      Game_R.SpritesFighter_R.iniSprite("punchingMidle","image/Sheeva_mk3_image/4_Punching/pm_");
-      Game_R.SpritesFighter_R.iniSprite("kickingFront","image/Sheeva_mk3_image/5_Kicking/k1_");
-      Game_R.SpritesFighter_R.iniSprite("kickingBack","image/Sheeva_mk3_image/5_Kicking/k2_");
-      Game_R.SpritesFighter_R.iniSprite("blockingHigh","image/Sheeva_mk3_image/7_Blocking/bt_");  
-      Game_R.SpritesFighter_R.iniSprite("blockingLow","image/Sheeva_mk3_image/7_Blocking/bd_");  
-      Game_R.SpritesFighter_R.iniSprite("beingHit","image/Sheeva_mk3_image/9_BeingHit/1_h0");  
-  };  
+ 
   
 
   // draw image
@@ -134,9 +116,10 @@ Game_R.SpritesFighter_R = {};
          var top1 = top - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height;
     
          Game_R.context.drawImage(Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index], left, top1);
-         Game_R.GameText_R.drawRect(left, top1, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-                                   Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height,
-                                   1, 'blue', 0);
+         
+         //Game_R.GameText_R.drawRect(left, top1, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
+           //                        Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height,1, 'blue', 0);
+         
          Game_R.GameText_R.drawText ("fr = " + index,left+5, top-100, 'italic 20px sans-serif', 'blue', 1);
          Game_R.GameText_R.drawText (type,left+5, top-20, 'italic 20px sans-serif', 'blue', 1);
   };
@@ -150,21 +133,15 @@ Game_R.SpritesFighter_R = {};
          
          Game_R.context.scale(-1, 1);
          Game_R.context.drawImage(Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top1);
-         Game_R.GameText_R.drawRect(-left, top1, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-                                   Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height,
-                                   1, 'blue', 0);
+         
+         //Game_R.GameText_R.drawRect(-left, top1, Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width,
+         //                          Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].height, 1, 'blue', 0);
+         
          Game_R.context.scale(-1, 1);
          Game_R.GameText_R.drawText ("fr = " + index,left+5 - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width, top-100, 'italic 20px sans-serif', 'blue', 1);
          Game_R.GameText_R.drawText (type,left+5 - Game_R.SpritesFighter_R.spritesSheeva_mk3[type][index].width, top -20, 'italic 20px sans-serif', 'blue', 1);
   };    
-  
-  
-  Game_R.SpritesFighter_R.start = function() {
-    
-    Game_R.SpritesFighter_R.iniAllSprite();
-    
-  };
-   
+
   
   Game_R.SpritesFighter_R.drawSprites_TEST = function(){
   
@@ -172,4 +149,33 @@ Game_R.SpritesFighter_R = {};
    
   };
 
-//Game_R.context.fillRect(10, 10, 150, 100);
+ // ini Image
+  Game_R.SpritesFighter_R.iniSprite = function(type,path){
+        for(var i = 1; i < Game_R.SpritesFighter_R.spritesSheeva_mk3[type].length; i++ ){
+           Game_R.SpritesFighter_R.spritesSheeva_mk3[type][i] = new Image();
+           Game_R.SpritesFighter_R.spritesSheeva_mk3[type][i].src = path + i + ".png";
+         };
+  };
+  
+  //инициализируем массивы с картинками-----------------------------------
+  Game_R.SpritesFighter_R.loadAllSprite = function() {    
+
+      Game_R.SpritesFighter_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
+      Game_R.SpritesFighter_R.iniSprite("walking","image/Sheeva_mk3_image/2_Walking/w");  
+      Game_R.SpritesFighter_R.iniSprite("running","image/Sheeva_mk3_image/3_Running/r");
+      Game_R.SpritesFighter_R.iniSprite("punchingUp","image/Sheeva_mk3_image/4_Punching/pt1_");
+      Game_R.SpritesFighter_R.iniSprite("punchingMidle","image/Sheeva_mk3_image/4_Punching/pm_");
+      Game_R.SpritesFighter_R.iniSprite("kickingFront","image/Sheeva_mk3_image/5_Kicking/k1_");
+      Game_R.SpritesFighter_R.iniSprite("kickingBack","image/Sheeva_mk3_image/5_Kicking/k2_");
+      Game_R.SpritesFighter_R.iniSprite("blockingHigh","image/Sheeva_mk3_image/7_Blocking/bt_");  
+      Game_R.SpritesFighter_R.iniSprite("blockingLow","image/Sheeva_mk3_image/7_Blocking/bd_");  
+      Game_R.SpritesFighter_R.iniSprite("beingHit","image/Sheeva_mk3_image/9_BeingHit/1_h0");  
+  };  
+   
+    Game_R.SpritesFighter_R.loadAllSprite();
+    
+
+Game_R.context.strokeText ('5   module SpritesFighter load', 1100, 130);
+
+//================================================================================
+//alert("module SpritesFighter done");

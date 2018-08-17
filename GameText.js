@@ -83,9 +83,12 @@ strokeStyle = color
  Из статьи "Применение стилей и цветов"   https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial
 ---------------------    
     
+    //document.writeln("js >> End_test_js_1.js+++++++++");
+    
 */
 
-
+//alert("module GameText start");
+//================================================================================
 
 Game_R.GameText_R = {}; 
 Game_R.GameText_R.name = "GameText_R";//
@@ -177,7 +180,9 @@ Game_R.GameText_R.name = "GameText_R";//
       
   };
   
-  
+  Game_R.context.strokeText ('2   module GameText load', 1100, 70);
+//================================================================================
+//alert("module GameText done");
   
   
   

@@ -4,11 +4,13 @@
 
 // Методы setInterval(func, delay) и setTimeout(func, delay) позволяют запускать func регулярно/один раз через delay миллисекунд.
 
+  //alert("module GameLoop start");
+  //================================================================================
+
 Game_R.GameLoop_R = {}; 
 Game_R.GameLoop_R.name = "GameLoop";//
 
- Game_R.ArenaFjs_R.ini();
- Game_R.ArenaFjs_R.start();
+ //Game_R.context.fokus();
 
  Game_R.timerId = setTimeout( function tick(){
   
@@ -18,3 +20,7 @@ Game_R.GameLoop_R.name = "GameLoop";//
       Game_R.timerId = setTimeout( tick,Game_R.Timer_R.timeThreadSleepGameMs);
       
 	}, Game_R.Timer_R.timeThreadSleepGameMs);
+
+Game_R.context.strokeText ('11 module GameLoop load', 1100, 250);
+//================================================================================
+//alert("module GameLoop done");

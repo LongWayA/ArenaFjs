@@ -2,6 +2,9 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 22.07.2018
  
+ //alert("module Sound start");
+//================================================================================
+ 
  Game_R.Sound_R = {}; 
  Game_R.Sound_R.name = "Sound";//
 
@@ -43,3 +46,8 @@ Game_R.Sound_R.sound_STR.volume = 1.0;
 //   Game_R.Sound_R.sound_F.play();
 //   Game_R.Sound_R.sound_H.play();
 //   Game_R.Sound_R.sound_STR.play();
+
+Game_R.context.strokeText ('3   module Sound load', 1100, 90);
+//================================================================================
+//alert("module Sound done");
+

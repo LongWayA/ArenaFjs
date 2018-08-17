@@ -9,6 +9,9 @@
   Цитата с сайта https://learn.javascript.ru/keyboard-events
  */
  
+ // alert("module UserInput start");
+//================================================================================
+ 
  Game_R.UserInput_R = {}; 
  Game_R.UserInput_R.name = "UserInput_R";//
  
@@ -76,3 +79,16 @@ Game_R.UserInput_R.keyUpU = function(event) {
   //Game_R.UserInput_R.eventG = 0;
   
  };
+ 
+ Game_R.context.strokeText ('8   module UserInput load', 1100, 190);
+//================================================================================
+//alert("module UserInput done");     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

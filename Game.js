@@ -6,11 +6,32 @@
   //var Game = new Object();
   //window.Game = new Object();
   
+  //alert("module Game start");
+  //================================================================================
+  
   window.Game_R = {};
 
   Game_R.name = "Game";//
 
   Game_R.canvas = document.getElementById('game-canvas');
   Game_R.context = Game_R.canvas.getContext('2d');
-  Game_R.context.fokus();
-//document.writeln("js >> End_test_js_1.js+++++++++");
+  
+  Game_R.context.fillStyle = '#0000ff';
+  Game_R.context.strokeStyle = '#0000ff';
+  
+  Game_R.context.font = 'italic 30pt Arial';
+  
+  Game_R.context.lineWidth = 1;
+  
+  Game_R.context.strokeText ('LOADING RESOURCES', 50, 80);
+  
+  
+  Game_R.context.font = 'italic 15pt Arial';
+  Game_R.context.strokeText ('1   module Game load', 1100, 50);
+  //Game_R.context.fillText ('LOAD REC', 10, 10);
+  //Game_R.context.fillRect( 100, 100, 100, 100);
+  //Game_R.context.strokeRect( 10, 10, 100, 100);
+  //
+
+  //================================================================================
+  //alert("module Game done");
