@@ -84,7 +84,8 @@
      
  Game_R.Timer_R.ini(8);
  
- Game_R.context.strokeText ('4   module Timer load', 1100, 110);
+ Game_R.yT = Game_R.yT + Game_R.dyT;//
+ Game_R.context.strokeText ('4   module Timer loaded', 1100, Game_R.yT);
  //================================================================================
 //alert("module Timer done");     
       

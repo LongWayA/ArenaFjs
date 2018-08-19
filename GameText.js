@@ -180,7 +180,8 @@ Game_R.GameText_R.name = "GameText_R";//
       
   };
   
-  Game_R.context.strokeText ('2   module GameText load', 1100, 70);
+  Game_R.yT = Game_R.yT + Game_R.dyT;//
+  Game_R.context.strokeText ('2   module GameText loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module GameText done");
   

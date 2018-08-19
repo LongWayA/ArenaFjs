@@ -47,7 +47,8 @@ Game_R.Sound_R.sound_STR.volume = 1.0;
 //   Game_R.Sound_R.sound_H.play();
 //   Game_R.Sound_R.sound_STR.play();
 
-Game_R.context.strokeText ('3   module Sound load', 1100, 90);
+Game_R.yT = Game_R.yT + Game_R.dyT;//
+Game_R.context.strokeText ('3   module Sound loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module Sound done");
 

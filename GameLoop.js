@@ -15,12 +15,16 @@ Game_R.GameLoop_R.name = "GameLoop";//
  Game_R.timerId = setTimeout( function tick(){
   
       Game_R.Timer_R.updateTimeBeforeTick();
-      Game_R.ArenaFjs_R.tick();
+      if(Game_R.img_load_end == 1){
+           Game_R.ArenaFjs_R.tick();
+      };
       Game_R.Timer_R.updateTimeAfterTick();
       Game_R.timerId = setTimeout( tick,Game_R.Timer_R.timeThreadSleepGameMs);
       
 	}, Game_R.Timer_R.timeThreadSleepGameMs);
 
-Game_R.context.strokeText ('11 module GameLoop load', 1100, 250);
+
+Game_R.yT = Game_R.yT + Game_R.dyT;//
+Game_R.context.strokeText ('16 module GameLoop loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module GameLoop done");

@@ -27,11 +27,13 @@
   
   
   Game_R.context.font = 'italic 15pt Arial';
-  Game_R.context.strokeText ('1   module Game load', 1100, 50);
+  
   //Game_R.context.fillText ('LOAD REC', 10, 10);
   //Game_R.context.fillRect( 100, 100, 100, 100);
   //Game_R.context.strokeRect( 10, 10, 100, 100);
   //
-
+  Game_R.yT = 50;//
+  Game_R.dyT = 20;//
+  Game_R.context.strokeText ('1   module Game loaded', 1100, Game_R.yT);
   //================================================================================
   //alert("module Game done");

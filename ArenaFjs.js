@@ -7,7 +7,10 @@
  
  Game_R.ArenaFjs_R = {}; 
  Game_R.ArenaFjs_R.name = "ArenaFjs";//
-  
+ 
+ Game_R.ArenaFjs_R.countLoop = 1;
+ Game_R.ArenaFjs_R.il = 0;
+ Game_R.ArenaFjs_R.il_2 = 0; 
   
  // tick> ---------------------------------------------------------------------------
   Game_R.ArenaFjs_R.tick = function() {
@@ -16,20 +19,20 @@
 	     Game_R.UserInput_R.tick();
         
          
-      if (Game_R.countLoop == 24){
+      if (Game_R.ArenaFjs_R.countLoop == 24){
        Game_R.ArenaFjs_R.il_2 = Game_R.ArenaFjs_R.il
        //if(Game_R.ArenaFjs.il_2 == 0) Game_R.ArenaFjs.il_2 = 1;
-       Game_R.ArenaScene_R.fighterSheeva_mk3_1.setState(Game_R.ArenaScene_R.typeM[Game_R.ArenaFjs_R.il]);
-       Game_R.ArenaScene_R.fighterSheeva_mk3_2.setState(Game_R.ArenaScene_R.typeM[Game_R.ArenaFjs_R.il]);
+       Game_R.Fighters_R.fighterSheeva_mk3_1.setState(Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il]);
+       Game_R.Fighters_R.fighterSheeva_mk3_2.setState(Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il]);
        
        Game_R.ArenaFjs_R.il = Game_R.ArenaFjs_R.il + 1;
-       if (Game_R.ArenaFjs_R.il > Game_R.ArenaScene_R.typeM.length-1) Game_R.ArenaFjs_R.il = 0;
+       if (Game_R.ArenaFjs_R.il > Game_R.Fighters_R.typeM.length-1) Game_R.ArenaFjs_R.il = 0;
        
        };
        
        Game_R.ArenaScene_R.drawAll();
        
-       Game_R.GameText_R.drawText (Game_R.ArenaScene_R.typeM[Game_R.ArenaFjs_R.il_2],150, 385, 'italic 20px sans-serif', 'red', 1);
+       Game_R.GameText_R.drawText (Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il_2],150, 385, 'italic 20px sans-serif', 'red', 1);
      
        
      
@@ -41,8 +44,8 @@
 //TEST> ------------------------------------------------------
    
 
-	     Game_R.countLoop = Game_R.countLoop + 1;
-      if (Game_R.countLoop > 24 ) Game_R.countLoop = 1;
+	     Game_R.ArenaFjs_R.countLoop = Game_R.ArenaFjs_R.countLoop + 1;
+      if (Game_R.ArenaFjs_R.countLoop > 24 ) Game_R.ArenaFjs_R.countLoop = 1;
   };
  // tick< --------------------------------------------------------------------------- 
   
@@ -50,10 +53,6 @@
     // ini> ---------------------------------------------------------
   Game_R.ArenaFjs_R.ini = function(){
    
-     Game_R.countLoop = 1;
-     Game_R.ArenaFjs_R.il = 0;
-     Game_R.ArenaFjs_R.il_2 = 0;
-     
     
   };
   // ini< ---------------------------------------------------------
@@ -66,10 +65,10 @@
   };
  // start< ---------------------------------------------------------------------------
   
-   Game_R.ArenaFjs_R.ini();
+   //Game_R.ArenaFjs_R.ini();
   
   
-  
-  Game_R.context.strokeText ('10 module ArenaFjs load', 1100, 230);
+  Game_R.yT = Game_R.yT + Game_R.dyT;//
+  Game_R.context.strokeText ('15 module ArenaFjs loaded', 1100, Game_R.yT);
  //================================================================================
  //alert("module ArenaFjs done");

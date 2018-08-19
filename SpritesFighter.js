@@ -174,8 +174,8 @@ Game_R.SpritesFighter_R = {};
    
     Game_R.SpritesFighter_R.loadAllSprite();
     
-
-Game_R.context.strokeText ('5   module SpritesFighter load', 1100, 130);
+Game_R.yT = Game_R.yT + Game_R.dyT;//
+Game_R.context.strokeText ('8   module SpritesFighter loaded', 1100, Game_R.yT);
 
 //================================================================================
 //alert("module SpritesFighter done");

@@ -31,6 +31,7 @@ Game_R.ArenaScene_R = {};
 
   Game_R.ArenaScene_R.name = "ArenaScene_R";//
   
+  //---------------------------------------------------------------------------------------------------------------
   Game_R.ArenaScene_R.framesArena = {
   
        displayWidth  : 0, //
@@ -79,7 +80,9 @@ Game_R.ArenaScene_R = {};
       widthHealthPlayer2  : 0, //
       heightHealthPlayer2 : 0//
   };
+  //---------------------------------------------------------------------------------------------------------------
   
+  //---------------------------------------------------------------------------------------------------------------
   Game_R.ArenaScene_R.imageArena = {
       name            : "imageArena",
       
@@ -89,6 +92,26 @@ Game_R.ArenaScene_R = {};
       fon2  : new Image(),
       fon3  : new Image()
   };
+  //---------------------------------------------------------------------------------------------------------------
+  
+  Game_R.img_load_end = 0 ;
+  
+  //---------------------------------------------------------------------------------------------------------------
+  Game_R.ArenaScene_R.imageArena.fon1.onload = function() {
+    Game_R.img_load_end = 1 ;
+  };
+  //---------------------------------------------------------------------------------------------------------------
+  
+  //---------------------------------------------------------------------------------------------------------------
+  Game_R.ArenaScene_R.imageArena.fon2.onload = function() {
+    Game_R.img_load_end = 1 ;
+  };
+  //---------------------------------------------------------------------------------------------------------------
+  
+  //---------------------------------------------------------------------------------------------------------------
+  Game_R.ArenaScene_R.imageArena.fon3.onload = function() {
+    Game_R.img_load_end = 1 ;
+  }
   
   // draw>------------------------------------------------------------------------------------------------
   
@@ -132,7 +155,6 @@ Game_R.ArenaScene_R = {};
   //---------------------------------------------------------------------------------------------------------------
   
   
-  
   //---------------------------------------------------------------------------------------------------------------
   Game_R.ArenaScene_R.drawFightFrame = function() {
     
@@ -148,15 +170,15 @@ Game_R.ArenaScene_R = {};
     Game_R.ArenaScene_R.drawSceneImage("fon3",x, y, 2.3, 2.3);
     
     
-    Game_R.ArenaScene_R.fighterSheeva_mk3_1.tickAnimation();
-    Game_R.ArenaScene_R.fighterSheeva_mk3_2.tickAnimation();
+    Game_R.Fighters_R.fighterSheeva_mk3_1.tickAnimation();
+    Game_R.Fighters_R.fighterSheeva_mk3_2.tickAnimation();
     
     
     //Location
 		// поле боя
 		Game_R.GameText_R.drawRect(x, y, width, height, 1, 'green', 0);
     
-    Game_R.GameText_R.drawText ("busy = " + Game_R.ArenaScene_R.fighterSheeva_mk3_1.animatorsState.busy,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
+    Game_R.GameText_R.drawText ("busy = " + Game_R.Fighters_R.fighterSheeva_mk3_1.animatorsState.busy,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
   };
   //---------------------------------------------------------------------------------------------------------------
   
@@ -173,7 +195,7 @@ Game_R.ArenaScene_R = {};
         
         y=y+10;
         
-      Game_R.GameText_R.drawText ("countLoop = " + Game_R.countLoop,x+10, y+5, 'italic 20px sans-serif', 'blue', 1);
+      Game_R.GameText_R.drawText ("countLoop = " + Game_R.ArenaFjs_R.countLoop,x+10, y+5, 'italic 20px sans-serif', 'blue', 1);
       Game_R.GameText_R.drawText ("ticksPerSecond = " + Game_R.Timer_R.ticksPerSecond,x+180, y+5, 'italic 20px sans-serif', 'blue', 1);
       Game_R.GameText_R.drawText ("tickMustTimeMs = " + Game_R.Timer_R.tickMustTimeMs,x+400, y+5, 'italic 20px sans-serif', 'blue', 1);
       Game_R.GameText_R.drawText ("timeBetweenEndMinStartTickMs = " + Game_R.Timer_R.timeBetweenEndMinStartTickMs,x+620, y+5, 'italic 20px sans-serif', 'blue', 1);
@@ -209,12 +231,12 @@ Game_R.ArenaScene_R = {};
     
     
   };
-
+  //---------------------------------------------------------------------------------------------------------------
   // draw>------------------------------------------------------------------------------------------------
  
 
 // ini>------------------------------------------------------------------------------------------------ 
-  
+//---------------------------------------------------------------------------------------------------------------  
                                          // Width in pixels 1280 1500 Height in pixels 960
   Game_R.ArenaScene_R.iniFramesArena = function( displayWidth,  displayHeight) {
     
@@ -280,7 +302,9 @@ Game_R.ArenaScene_R = {};
 	    Game_R.ArenaScene_R.framesArena.widthHealthPlayer2 = 500; //
 	    Game_R.ArenaScene_R.framesArena.heightHealthPlayer2 = 40;//
   };
+  //---------------------------------------------------------------------------------------------------------------
   
+  //---------------------------------------------------------------------------------------------------------------
   // ini SceneImage
   Game_R.ArenaScene_R.loadSceneImage = function(){
   
@@ -295,37 +319,35 @@ Game_R.ArenaScene_R = {};
       Game_R.ArenaScene_R.imageArena.fon2.src = path2 + "tr.png";
       Game_R.ArenaScene_R.imageArena.fon3.src = path2 + "wsh.png";
           
-       Game_R.ArenaScene_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
-                        "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
 
-       Game_R.ArenaScene_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
-       Game_R.ArenaScene_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
-       Game_R.ArenaScene_R.fighterSheeva_mk3_1.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+180,
-                                                   Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 0);
-       Game_R.ArenaScene_R.fighterSheeva_mk3_2.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+480,
-                                                   Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 1);    
           
   };
+  //---------------------------------------------------------------------------------------------------------------
   
-  
-  // 
+  //--------------------------------------------------------------------------------------------------------------- 
   Game_R.ArenaScene_R.iniAll = function(displayWidth,  displayHeight) {    
 
        Game_R.ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
        Game_R.ArenaScene_R.loadSceneImage();
-       
-       Game_R.ArenaScene_R.fighterSheeva_mk3_1.setState("fightingStance");
-       Game_R.ArenaScene_R.fighterSheeva_mk3_2.setState("fightingStance");
+      
+       Game_R.Fighters_R.fighterSheeva_mk3_1.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+180,
+                                             Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 0);
+       Game_R.Fighters_R.fighterSheeva_mk3_2.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+480,
+                                             Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 1);    
        
       //Game_R.ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
 
   };
+  //---------------------------------------------------------------------------------------------------------------
   
   // ini<------------------------------------------------------------------------------------------------
 
   Game_R.ArenaScene_R.iniAll(Game_R.canvas.width, Game_R.canvas.height);
 
-Game_R.context.strokeText ('9   module ArenaScene load', 1100, 210);
+
+
+  Game_R.yT = Game_R.yT + Game_R.dyT;//
+  Game_R.context.strokeText ('11 module ArenaScene loaded', 1100, Game_R.yT);
 
 //================================================================================
 //alert("module ArenaScene done");

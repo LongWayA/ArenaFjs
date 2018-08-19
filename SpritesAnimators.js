@@ -224,8 +224,8 @@ Game_R.SpritesAnimators_R.animationAll_TEST = function(){
  	*/
 };
 
-
-Game_R.context.strokeText ('6   module SpritesAnimators load', 1100, 150);
+Game_R.yT = Game_R.yT + Game_R.dyT;//
+Game_R.context.strokeText ('9   module SpritesAnimators loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module SpritesAnimators done");
 

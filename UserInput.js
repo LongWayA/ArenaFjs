@@ -80,7 +80,8 @@ Game_R.UserInput_R.keyUpU = function(event) {
   
  };
  
- Game_R.context.strokeText ('8   module UserInput load', 1100, 190);
+ Game_R.yT = Game_R.yT + Game_R.dyT;//
+ Game_R.context.strokeText ('6   module UserInput loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module UserInput done");     
  

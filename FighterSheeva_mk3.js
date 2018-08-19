@@ -61,8 +61,7 @@ function FighterSheeva_mk3_CL () {
     this.ds;
      
     this.ini = function(left, top, mirror) {
-      
-      
+            
          this.state = "fightingStance";
          this.left = left;
          this.top =top;
@@ -158,9 +157,21 @@ function FighterSheeva_mk3_CL () {
 
 // Fighters------------------------------------------------------------------------------
  Game_R.Fighters_R = {};
-
+ 
  Game_R.Fighters_R.name = "Fighters";//
+ 
+ Game_R.Fighters_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
+                            "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
 
-Game_R.context.strokeText ('7   module FighterSheeva load', 1100, 170);
+ Game_R.Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
+ Game_R.Fighters_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
+       
+ Game_R.Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
+ Game_R.Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");      
+       
+ //alert("!");
+ 
+Game_R.yT = Game_R.yT + Game_R.dyT;//
+Game_R.context.strokeText ('10 module FighterSheeva loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module FighterSheeva done");
