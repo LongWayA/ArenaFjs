@@ -10,6 +10,7 @@
 Game_R.GameLoop_R = {}; 
 Game_R.GameLoop_R.name = "GameLoop";//
 
+Game_R.ArenaFjs_R.start();
  //Game_R.context.fokus();
 
  Game_R.timerId = setTimeout( function tick(){
@@ -25,6 +26,6 @@ Game_R.GameLoop_R.name = "GameLoop";//
 
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//
-Game_R.context.strokeText ('16 module GameLoop loaded', 1100, Game_R.yT);
+Game_R.context.strokeText ('17 module GameLoop loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module GameLoop done");

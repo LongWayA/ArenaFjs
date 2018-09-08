@@ -28,7 +28,72 @@ INTERFACE
 // alert("module SpritesAnimators start");
 //================================================================================
 
+
+function SpritesAnimators_CL () {
+    this.name = "SpritesAnimators_CL";
+    
+    this.num;
+    this.busy = 0;
+    this.type;
+    this.oldType = "no";
+    
+    //setType-------------------------------------------------------
+    this.setType = function(toType) {
+     //alert("this.type = " + this.type + " toType = " + toType);
+         this.type = toType;
+         
+           if (this.oldType != toType) { 
+              this.oldType = toType;
+              this.num = 0;
+              this.busy = 1;         
+           };
+     };
+
+     //animation-------------------------------------------------------
+     this.animation = function(mirror,left, top) {
+             
+         if (mirror == 0){
+                  Game_R.SpritesFighter_R.drawSprite(Game_R.SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
+                                                     Game_R.SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
+         }else{
+            Game_R.SpritesFighter_R.drawSpriteMirror(Game_R.SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
+                                                     Game_R.SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
+         };
+            
+         this.num = this.num + 1;
+         if (this.num > Game_R.SpritesAnimators_R.animatorsSheeva_mk3[this.type].max - 1 ) {
+             this.num = 0;
+             this.busy = 0;
+         };
+     };
+     
+     //all_Animation-------------------------------------------------------
+     this.all_Animation = function(typeStateAnimators, left, top, mirror, width, height){
+ 
+       this.setType(typeStateAnimators);
+ 
+         if (Game_R.SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
+              Game_R.Sound_R[Game_R.SpritesAnimators_R.animatorsSheeva_mk3[this.type].sound].play();
+         };
+ 
+         if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
+              if (this.num > 3 ){
+                 this.num = 3;
+                 this.busy = 0;
+              }
+              this.animation(mirror, left, top);
+         }else {
+              this.animation(mirror, left, top);
+         };
+     };  
+     
+
+};//function SpritesAnimators_CL () {
+
+
+
 // Sprite Animators...........................................................
+
  Game_R.SpritesAnimators_R = {}; 
  Game_R.SpritesAnimators_R.name = "SpritesAnimators";// 
 
@@ -132,61 +197,10 @@ INTERFACE
          oldType : "fightingStance"
   };
 
- //setType-------------------------------------------------------
- Game_R.SpritesAnimators_R.setType = function(animatorsState_Obj, toType) {
-     //alert("this.type = " + this.type + " toType = " + toType);
-         animatorsState_Obj.type = toType;
-         
-         if (animatorsState_Obj.oldType != toType) { 
-            animatorsState_Obj.oldType = toType;
-            animatorsState_Obj.num = 0;
-            animatorsState_Obj.busy = 1;         
-         };
- };
-
- //animation-------------------------------------------------------
- Game_R.SpritesAnimators_R.animation = function(animatorsState_Obj, mirror,left, top) {
-             
-         if (mirror == 0){
-                  Game_R.SpritesFighter_R.drawSprite(Game_R.SpritesAnimators_R.animatorsSheeva_mk3[animatorsState_Obj.type].translate,
-                                                     Game_R.SpritesAnimators_R.animatorsSheeva_mk3[animatorsState_Obj.type].fr[animatorsState_Obj.num], left, top);
-         }else{
-            Game_R.SpritesFighter_R.drawSpriteMirror(Game_R.SpritesAnimators_R.animatorsSheeva_mk3[animatorsState_Obj.type].translate,
-                                                     Game_R.SpritesAnimators_R.animatorsSheeva_mk3[animatorsState_Obj.type].fr[animatorsState_Obj.num], left, top);
-         };
-            
-         animatorsState_Obj.num = animatorsState_Obj.num + 1;
-         if (animatorsState_Obj.num > Game_R.SpritesAnimators_R.animatorsSheeva_mk3[animatorsState_Obj.type].max - 1 ) {
-             animatorsState_Obj.num = 0;
-             animatorsState_Obj.busy = 0;
-         };
- };
-
-   //all_Animation-------------------------------------------------------
- Game_R.SpritesAnimators_R.all_Animation = function(animatorsState_Obj, typeStateAnimators, left, top, mirror, width, height){
- 
-       Game_R.SpritesAnimators_R.setType(animatorsState_Obj, typeStateAnimators);
- 
-       if (Game_R.SpritesAnimators_R.animatorsSheeva_mk3[animatorsState_Obj.type].str[animatorsState_Obj.num] == 1 ){
-              Game_R.Sound_R[Game_R.SpritesAnimators_R.animatorsSheeva_mk3[animatorsState_Obj.type].sound].play();
-       };
- 
-       if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
-            if (animatorsState_Obj.num > 3 ){
-               animatorsState_Obj.num = 3;
-               animatorsState_Obj.busy = 0;
-            }
-            this.animation(animatorsState_Obj, mirror, left, top);
-       }else {
-            this.animation(animatorsState_Obj, mirror, left, top);
-       };
- };  
-
-
 
 Game_R.SpritesAnimators_R.animationAll_TEST = function(){
  
- Game_R.SpritesAnimators_R.all_Animation(Game_R.SpritesAnimators_R.animatorsState_0, "fightingStance", 0, 50,0,0,0);
+ //Game_R.SpritesAnimators_R.all_Animation(Game_R.SpritesAnimators_R.animatorsState_0, "fightingStance", 0, 50,0,0,0);
  
  /*
    Game_R.SpritesAnimators_R.AnimatorsSheeva_mk3_1_t.all_Animation("fightingStance", 0, 50,0,0,0);
@@ -223,6 +237,7 @@ Game_R.SpritesAnimators_R.animationAll_TEST = function(){
    Game_R.SpritesAnimators_R.AnimatorsSheeva_mk3_20_t.all_Animation("beingHit", 1200, 650,1,0,0);     
  	*/
 };
+
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('9   module SpritesAnimators loaded', 1100, Game_R.yT);

@@ -12,6 +12,6 @@ Game_R.Move_R.name = "Move";//
 
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//
-Game_R.context.strokeText ('12 module Move loaded', 1100, Game_R.yT);
+Game_R.context.strokeText ('11 module Move loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module Move done");

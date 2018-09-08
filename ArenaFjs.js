@@ -30,6 +30,7 @@
        
        };
        
+       Game_R.GameColculation_R.tick();
        Game_R.ArenaScene_R.drawAll();
        
        Game_R.GameText_R.drawText (Game_R.Fighters_R.typeM[Game_R.ArenaFjs_R.il_2],150, 385, 'italic 20px sans-serif', 'red', 1);
@@ -69,6 +70,6 @@
   
   
   Game_R.yT = Game_R.yT + Game_R.dyT;//
-  Game_R.context.strokeText ('15 module ArenaFjs loaded', 1100, Game_R.yT);
+  Game_R.context.strokeText ('16 module ArenaFjs loaded', 1100, Game_R.yT);
  //================================================================================
  //alert("module ArenaFjs done");

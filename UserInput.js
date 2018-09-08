@@ -51,17 +51,16 @@ Game_R.UserInput_R.eventUser = function(event,setE) {
  
  };
 
-Game_R.UserInput_R.keyDownU = function(event) {
+ Game_R.UserInput_R.keyDownU = function(event) {
  
- Game_R.UserInput_R.eventG = event.keyCode;
- Game_R.UserInput_R.eventUser(event,1);
-
+     Game_R.UserInput_R.eventG = event.keyCode;
+     Game_R.UserInput_R.eventUser(event,1);
  };
 
-Game_R.UserInput_R.keyUpU = function(event) {
+ Game_R.UserInput_R.keyUpU = function(event) {
  
- Game_R.UserInput_R.eventG = 0;
- Game_R.UserInput_R.eventUser(event,0);
+    Game_R.UserInput_R.eventG = 0;
+    Game_R.UserInput_R.eventUser(event,0);
  };
 
  Game_R.UserInput_R.start = function() {
@@ -75,10 +74,11 @@ Game_R.UserInput_R.keyUpU = function(event) {
 //////////////////////////
  Game_R.UserInput_R.tick = function() {
   
-  
-  //Game_R.UserInput_R.eventG = 0;
-  
+    //Game_R.UserInput_R.eventG = 0;
  };
+ 
+ Game_R.UserInput_R.start();
+ 
  
  Game_R.yT = Game_R.yT + Game_R.dyT;//
  Game_R.context.strokeText ('6   module UserInput loaded', 1100, Game_R.yT);

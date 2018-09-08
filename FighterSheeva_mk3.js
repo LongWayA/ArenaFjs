@@ -22,12 +22,7 @@ INTERFACE
 function FighterSheeva_mk3_CL () {
     this.name = "FighterSheeva_mk3_CL";
     
-    this.animatorsState = {
-         num : 0 ,
-         busy : 0 ,
-         type : "fightingStance",
-         oldType : "fightingStance"
-    };
+    this.spritesAnimators = new SpritesAnimators_CL();
     
     this.MAX_HEALTH = 1000; //
     this.MAX_STAMINA = 100; //
@@ -93,7 +88,7 @@ function FighterSheeva_mk3_CL () {
      
      // tickAnimation ---------------------------------------
      this.tickAnimation = function() {
-         Game_R.SpritesAnimators_R.all_Animation( this.animatorsState, this.state,  this.left, this.top,  this.mirror, this.width,  this.height);     
+         this.spritesAnimators.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);     
      };
      
      // setState--------------------------------------------------------
@@ -105,9 +100,9 @@ function FighterSheeva_mk3_CL () {
                     this.state = toState; 
            } else {
            // alert("2");
-                 if(this.animatorsState.busy == 0){
+               //  if(this.spritesAnimators.busy == 0){
                        this.state = toState; 
-                 };            
+               //  };            
           };
       };//if(toState != this.state){
       /*

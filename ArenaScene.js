@@ -178,7 +178,7 @@ Game_R.ArenaScene_R = {};
 		// поле боя
 		Game_R.GameText_R.drawRect(x, y, width, height, 1, 'green', 0);
     
-    Game_R.GameText_R.drawText ("busy = " + Game_R.Fighters_R.fighterSheeva_mk3_1.animatorsState.busy,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
+    Game_R.GameText_R.drawText ("busy = " + Game_R.Fighters_R.fighterSheeva_mk3_1.spritesAnimators.busy,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
   };
   //---------------------------------------------------------------------------------------------------------------
   
@@ -347,7 +347,7 @@ Game_R.ArenaScene_R = {};
 
 
   Game_R.yT = Game_R.yT + Game_R.dyT;//
-  Game_R.context.strokeText ('11 module ArenaScene loaded', 1100, Game_R.yT);
+  Game_R.context.strokeText ('15 module ArenaScene loaded', 1100, Game_R.yT);
 
 //================================================================================
 //alert("module ArenaScene done");
