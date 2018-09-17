@@ -2,7 +2,38 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.08.2018 - 15.08.2018
 
-//
+  /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+              
+   Game                  
+            Game_R.context.strokeText(-)
+            Game_R.context.fillText (-)
+            Game_R.context.fillRect(-)      
+            Game_R.context.strokeRect(-)
+            $ Game_R.context.lineWidth
+            $ Game_R.context.textBaseline
+            $ Game_R.context.fillStyle
+            $ Game_R.context.strokeStyle
+            
+                     
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   
+   ArenaFjs
+                  GameText_R.drawText(-)
+                  
+   ArenaScene
+   SpritesFighter
+                  GameText_R.drawText(-)
+                  GameText_R.drawRect(-)
+   
+  */
+
+
 /*
 
 -----------------

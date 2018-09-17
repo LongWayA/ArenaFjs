@@ -2,6 +2,24 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 22.07.2018
  
+   /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+   
+   canvas = document.getElementById('game-canvas')
+   canvas.getContext('2d')
+                     
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   
+   во всех
+   
+  */
+
+ 
  //window.Game = {};
   //var Game = new Object();
   //window.Game = new Object();

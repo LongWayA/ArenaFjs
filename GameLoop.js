@@ -2,7 +2,32 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 10.07.2018 - 26.07.2018
 
-// Методы setInterval(func, delay) и setTimeout(func, delay) позволяют запускать func регулярно/один раз через delay миллисекунд.
+  /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   Базовый цикл игры основанный на
+   методе setTimeout(func, delay)
+   Методы setInterval(func, delay) и setTimeout(func, delay) позволяют запускать func регулярно/один раз через delay миллисекунд.
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+   ArenaFjs
+           ArenaFjs_R.start()
+           ArenaFjs_R.tick()
+           
+   Timer
+           Timer_R.updateTimeBeforeTick()
+           Timer_R.updateTimeAfterTick()
+           $ Timer_R.timeThreadSleepGameMs
+           
+   Game
+           Game_R.context.strokeText(-)
+           $ Game_R.img_load_end
+   
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   не вызывается
+   
+  */
 
   //alert("module GameLoop start");
   //================================================================================

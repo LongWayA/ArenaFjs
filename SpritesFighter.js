@@ -2,33 +2,24 @@
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 07.07.2018 - 08.08.2018
 
-/*
- IMPORT (references, outer defines)
- Game.js -> outer used object Game_R
+  /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   
+   Назначение объекта загрузить заданные ряды картинок при запуске программы.
+   И вывести картинку заданного типа и номера в заданном месте.
+   Есть несколько рядов картинок которые содержат анимационные последовательности
+   такие как удар, бег и т.д. Для вывода мы указываем нужный нам ряд и номер картинки
+   в этом ряду, а также координаты вывода на экран. координаты отсчитываются слева сверху.
  
- EXPORT
- SpritesAnimators.js used Game_R.SpritesFighter_R.drawSprite(type,index,left, top)
-                          , Game_R.SpritesFighter_R.drawSpriteMirror(type,index,left, top)
- ArenaFjs.js used animationAll_TEST()
-*/
-
-/*
- Назначение объекта загрузить заданные ряды картинок при запуске программы.
- И вывести картинку заданного типа и номера в заданном месте.
- Есть несколько рядов картинок которые содержат анимационные последовательности
- такие как удар, бег и т.д. Для вывода мы указываем нужный нам ряд и номер картинки
- в этом ряду, а также координаты вывода на экран. координаты отсчитываются слева сверху.
- 
- Вывод картинок идет в HTML5 Canvas
- в режиме 2d контекста
- т.е. рисуем на полотне настроенном на двухмерные картинки
-  Game_R.canvas = document.getElementById('game-canvas');
-  Game_R.context = Game_R.canvas.getContext('2d');
- */
-
-/*
-INTERFACE
-   spritesSheeva_mk3
+   Вывод картинок идет в HTML5 Canvas
+   в режиме 2d контекста
+   т.е. рисуем на полотне настроенном на двухмерные картинки
+   Game_R.canvas = document.getElementById('game-canvas');
+   Game_R.context = Game_R.canvas.getContext('2d');
+   
+    spritesSheeva_mk3
     мы используем ряды картинок. так называемые анимационные ряды.
     например есть ряд картинок в котором запечатлен бег бойца. Этому 
     соответствует тип  running и номера от 0 до 12.
@@ -50,21 +41,19 @@ INTERFACE
     
     drawSpriteMirror(type,index,left, top)
     рисуем зеркальный спрайт заданного типа и номера, в заданном месте
-*/
+   
+   DEFINE
+   defines root object and constructor function
 
-/*
-DEFINE
-defines root object and constructor function
-
-object -> Game_R.SpritesFighter_R
-object properties ->
-    name
+   object -> Game_R.SpritesFighter_R
+   object properties ->
+   name
     
-object methods ->
-    drawSprites_TEST()
+   object methods ->
+   drawSprites_TEST()
 
-object -> Game_R.SpritesFighter_R.spritesSheeva_mk3
-object properties ->
+   object -> Game_R.SpritesFighter_R.spritesSheeva_mk3
+   object properties ->
     name - имя объекта. сейчас это spritesSheeva_mk3
     fightingStance[7] - ряд картинок для анимации стойки бойца
     walking[10] - ряд картинок для анимации ходьбы бойца
@@ -77,13 +66,34 @@ object properties ->
     blockingLow[4] - ряд картинок для анимации нижнего блока бойца
     beingHit[4] - ряд картинок для анимации пропущенного удара бойца
     
-object methods ->
+    object methods ->
     parameters of functions default to undefined
     iniSprite(type,path)
     iniAllSprite()
     drawSprite(type,index,left, top)
     drawSpriteMirror(type,index,left, top)
-*/
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+   
+   GameText
+                   GameText_R.drawText(-)
+                   GameText_R.drawRect(-)
+  
+   Game                  
+                   Game_R.context.strokeText(-)  
+                   Game_R.context.drawImage(-) 
+                   Game_R.context.scale(-)
+                                                  
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   
+   SpritesAnimators
+                     SpritesFighter_R.drawSprite(-)
+                     SpritesFighter_R.drawSpriteMirror(-)
+                     
+   ArenaFjs
+                     animationAll_TEST()
+   
+  */
 
 //alert("module SpritesFighter start");
 //================================================================================

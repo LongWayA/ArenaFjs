@@ -2,27 +2,36 @@
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 08.08.2018 - 15.08.2018
 
-/*
- IMPORT (references, outer defines)
-
- 
- EXPORT
- 
-*/
-
-/*
-
- */
-
-/*
-INTERFACE
- 
-*/
-
-/*
-DEFINE
-
-*/
+  /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+    
+   FighterSheeva_mk3
+                       Fighters_R.fighterSheeva_mk3_1.tickAnimation();
+                       Fighters_R.fighterSheeva_mk3_2.tickAnimation();
+                       Fighters_R.fighterSheeva_mk3_1.ini(-)
+                       Fighters_R.fighterSheeva_mk3_2.ini(-)
+   
+   GameText
+                       GameText_R.drawRect(-)
+                       GameText_R.drawText(-)
+   
+   Game
+                       Game_R.context.strokeText(-)
+                       Game_R.context.strokeRect(-)
+                       Game_R.context.drawImage(-)
+                       Game_R.context.clearRect()
+                       $ Game_R.img_load_end
+                     
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   
+   ArenaFjs
+                      ArenaScene_R.drawAll()
+  */
 
   //alert("module ArenaScene start");
   //================================================================================

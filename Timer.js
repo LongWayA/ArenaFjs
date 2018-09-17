@@ -3,6 +3,34 @@
  // Last modified 15.07.2018 - 15.07.2018
   
   
+  /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+   
+    Game                  
+               Game_R.context.strokeText(-)  
+   
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   GameLoop
+               Timer_R.updateTimeBeforeTick()
+               Timer_R.updateTimeAfterTick()
+               $ Timer_R.timeThreadSleepGameMs
+   
+   ArenaScene
+               $ Timer_R.ticksPerSecond
+               $ Timer_R.tickMustTimeMs
+               $ Timer_R.timeBetweenEndMinStartTickMs
+               $ Timer_R.timeThreadSleepGameMs
+               $ Timer_R.timeStartTickMs
+               $ Timer_R.timeEndTickMs
+               $ Timer_R.timeBetweenStartMinOldStartTickMs
+  */
+  
+  
  // alert("module Timer start");
 //================================================================================
   

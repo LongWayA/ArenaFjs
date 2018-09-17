@@ -2,19 +2,30 @@
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 21.07.2018 - 08.08.2018
 
-/*
- IMPORT (references, outer defines)
- SpritesAnimators.js -> used 
- 
- EXPORT
+  /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
 
-*/
+   spritesAnimators
+                     this.spritesAnimators = new SpritesAnimators_CL();
+                     spritesAnimators.all_Animation()
+                     
+   Game                  
+                     Game_R.context.strokeText(-)                  
+                     
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   
+   ArenaFjs
+                     Fighters_R.fighterSheeva_mk3_1.setState(-)
+                     Fighters_R.fighterSheeva_mk3_2.setState(-)
+                     $ Fighters_R.typeM.length
+                     $ Fighters_R.typeM[-]
+  */
 
-/*
-INTERFACE
-   FighterSheeva_mk3_CL (constructor function)
- 
-*/
 
   //alert("module FighterSheeva_mk3 start");
   //================================================================================

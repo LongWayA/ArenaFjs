@@ -2,6 +2,45 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 07.07.2018 - 15.08.2018
  
+  /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   Задумывался как корневой модуль игры
+   однако таким оказался модуль цикла GameLoop
+   Тут общая функция игры вызываемая на каждом тике цикла.
+   
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+   UserInput
+                      UserInput_R.tick()
+                      
+   FighterSheeva_mk3
+                      Fighters_R.fighterSheeva_mk3_1.setState(-)
+                      Fighters_R.fighterSheeva_mk3_2.setState(-)
+                      $ Fighters_R.typeM.length
+                      $ Fighters_R.typeM[-]
+                      
+   GameColculation
+                      GameColculation_R.tick()
+                      
+   ArenaScene
+                      ArenaScene_R.drawAll()
+                      
+   GameText
+                      GameText_R.drawText
+                      
+   Game
+                      Game_R.context.strokeText(-)
+                     
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   GameLoop
+             ArenaFjs_R.start()
+             ArenaFjs_R.tick()
+   
+  */
+ 
+ 
  //alert("module ArenaFjs start");
  //================================================================================
  

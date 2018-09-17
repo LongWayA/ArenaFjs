@@ -2,6 +2,25 @@
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 22.07.2018
  
+   /*
+   $ -переменные
+   
+   НАЗНАЧЕНИЕ
+   
+   
+   ИСПОЛЬЗУЕТ МОДУЛИ
+   
+   document.getElementById(-)
+   
+   Game                  
+        Game_R.context.strokeText(-)  
+                     
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+ 
+   
+  */
+
+ 
  //alert("module Sound start");
 //================================================================================
  
