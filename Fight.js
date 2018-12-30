@@ -1,26 +1,26 @@
-"use strict"
+"use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 19.08.2018 - 19.08.2018
 
   /*
    $ -переменные
-   
+
    НАЗНАЧЕНИЕ
-   
-   
+
+
    ИСПОЛЬЗУЕТ МОДУЛИ
 
-                     
+
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
- 
-   
+
+
   */
 
 
   //alert("module Fight start");
   //================================================================================
 
-Game_R.Fight_R = {}; 
+Game_R.Fight_R = {};
 Game_R.Fight_R.name = "Fight";//
 
 

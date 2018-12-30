@@ -1,30 +1,30 @@
-"use strict"
+"use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 21.08.2018 - 21.08.2018
 
   /*
    $ -переменные
-   
+
    НАЗНАЧЕНИЕ
-   
-   
+
+
    ИСПОЛЬЗУЕТ МОДУЛИ
 
-                     
+
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
- 
-   
+
+
   */
 
   //alert("module GameColculation start");
   //================================================================================
 
-Game_R.GameColculation_R = {}; 
+Game_R.GameColculation_R = {};
 Game_R.GameColculation_R.name = "GameColculation";//
 
  Game_R.GameColculation_R.tick = function() {
-  
-    
+
+
  };
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//

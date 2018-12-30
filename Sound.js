@@ -1,30 +1,30 @@
-"use strict"
+"use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 22.07.2018
- 
+
    /*
    $ -переменные
-   
+
    НАЗНАЧЕНИЕ
-   
-   
+
+
    ИСПОЛЬЗУЕТ МОДУЛИ
-   
+
    document.getElementById(-)
-   
-   Game                  
-        Game_R.context.strokeText(-)  
-                     
+
+   Game
+        Game_R.context.strokeText(-)
+
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
- 
-   
+
+
   */
 
- 
+
  //alert("module Sound start");
 //================================================================================
- 
- Game_R.Sound_R = {}; 
+
+ Game_R.Sound_R = {};
  Game_R.Sound_R.name = "Sound";//
 
 Game_R.Sound_R.sound_IA = document.getElementById('IA');
@@ -70,4 +70,3 @@ Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('3   module Sound loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module Sound done");
-

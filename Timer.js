@@ -1,25 +1,25 @@
-"use strict"
+"use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 15.07.2018
-  
-  
+
+
   /*
    $ -переменные
-   
+
    НАЗНАЧЕНИЕ
-   
-   
+
+
    ИСПОЛЬЗУЕТ МОДУЛИ
-   
-    Game                  
-               Game_R.context.strokeText(-)  
-   
+
+    Game
+               Game_R.context.strokeText(-)
+
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
    GameLoop
                Timer_R.updateTimeBeforeTick()
                Timer_R.updateTimeAfterTick()
                $ Timer_R.timeThreadSleepGameMs
-   
+
    ArenaScene
                $ Timer_R.ticksPerSecond
                $ Timer_R.tickMustTimeMs
@@ -29,12 +29,12 @@
                $ Timer_R.timeEndTickMs
                $ Timer_R.timeBetweenStartMinOldStartTickMs
   */
-  
-  
+
+
  // alert("module Timer start");
 //================================================================================
-  
- Game_R.Timer_R = {}; 
+
+ Game_R.Timer_R = {};
  Game_R.Timer_R.name = "Timer_R";//
 
   Game_R.Timer_R.ticksPerSecond;// количество циклов в секунду или по другому количество кадров в секунду
@@ -43,7 +43,7 @@
         // 30 кадров это 0,03(3) sek = 30,(3) millis
         // 25 кадров это 0,04 sek = 40 millis
         // 10 кадров это 0,1 sek = 100 millis
-        
+
   Game_R.Timer_R.tickMustTimeMs;// время отведенное на один круг
 
   Game_R.Timer_R.timeStartTickMs;// фиксируем время начала тика
@@ -97,8 +97,8 @@
        //			    //System.out.println("Timer_R: timeThreadSleepGameMs(> 33) = " + timeThreadSleepGameMs );
        //		}
 	};
-     
-     
+
+
  // стартовая инициализация таймера
  Game_R.Timer_R.ini = function(_ticksPerSecond) {
 
@@ -108,13 +108,11 @@
      //alert("!");
      //alert(Game_R.Timer_R.tickMustTimeMs);
      //alert(Game_R.Timer_R.ticksPerSecond);
- };   
-     
+ };
+
  Game_R.Timer_R.ini(8);
- 
+
  Game_R.yT = Game_R.yT + Game_R.dyT;//
  Game_R.context.strokeText ('4   module Timer loaded', 1100, Game_R.yT);
  //================================================================================
-//alert("module Timer done");     
-      
-       
+//alert("module Timer done");

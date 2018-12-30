@@ -1,24 +1,24 @@
-"use strict"
+"use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 21.07.2018 - 08.08.2018
 
   /*
    $ -переменные
-   
+
    НАЗНАЧЕНИЕ
-   
-   
+
+
    ИСПОЛЬЗУЕТ МОДУЛИ
 
    spritesAnimators
                      this.spritesAnimators = new SpritesAnimators_CL();
                      spritesAnimators.all_Animation()
-                     
-   Game                  
-                     Game_R.context.strokeText(-)                  
-                     
+
+   Game
+                     Game_R.context.strokeText(-)
+
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-   
+
    ArenaFjs
                      Fighters_R.fighterSheeva_mk3_1.setState(-)
                      Fighters_R.fighterSheeva_mk3_2.setState(-)
@@ -32,12 +32,12 @@
 
 function FighterSheeva_mk3_CL () {
     this.name = "FighterSheeva_mk3_CL";
-    
+
     this.spritesAnimators = new SpritesAnimators_CL();
-    
+
     this.MAX_HEALTH = 1000; //
     this.MAX_STAMINA = 100; //
-     
+
     this.state;
     this.left;
     this.top;
@@ -65,9 +65,9 @@ function FighterSheeva_mk3_CL () {
 
         // изменение выносливости
     this.ds;
-     
+
     this.ini = function(left, top, mirror) {
-            
+
          this.state = "fightingStance";
          this.left = left;
          this.top =top;
@@ -96,63 +96,63 @@ function FighterSheeva_mk3_CL () {
         // изменение выносливости
         this.ds = 1;
      };
-     
+
      // tickAnimation ---------------------------------------
      this.tickAnimation = function() {
-         this.spritesAnimators.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);     
+         this.spritesAnimators.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);
      };
-     
+
      // setState--------------------------------------------------------
      this.setState = function(toState) {
-     
+
       if(toState != this.state){
            if( (toState == "fightingStance")||(toState == "walkingForward")||(toState == "walkingBack")||(toState == "block")||(toState == "blockLow") ){
            //alert("1");
-                    this.state = toState; 
+                    this.state = toState;
            } else {
            // alert("2");
                //  if(this.spritesAnimators.busy == 0){
-                       this.state = toState; 
-               //  };            
+                       this.state = toState;
+               //  };
           };
       };//if(toState != this.state){
       /*
             switch(toState){
-         
+
                  case "fightingStance":
-                   
+
                  break;
-       
+
                  case "running":
-          
+
                  break;
                  case "walkingForward":
-          
+
                  break;
                  case "walkingBack":
-          
+
                  break;
                  case "punchUp":
-          
-                 break;       
+
+                 break;
                  case "punchMidle":
-          
-                 break;      
+
+                 break;
                  case "kickFront":
-          
-                 break;       
+
+                 break;
                  case "kickingBack":
-          
-                 break;       
+
+                 break;
                  case "blockingHigh":
-          
-                 break;      
+
+                 break;
                  case "blockingLow":
-          
+
                  break;
                  case "beingHit":
-          
-                 break;     
+
+                 break;
             };
       */
      };//this.setState
@@ -163,20 +163,20 @@ function FighterSheeva_mk3_CL () {
 
 // Fighters------------------------------------------------------------------------------
  Game_R.Fighters_R = {};
- 
+
  Game_R.Fighters_R.name = "Fighters";//
- 
+
  Game_R.Fighters_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
                             "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
 
  Game_R.Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
  Game_R.Fighters_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
-       
+
  Game_R.Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
- Game_R.Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");      
-       
+ Game_R.Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");
+
  //alert("!");
- 
+
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('10 module FighterSheeva loaded', 1100, Game_R.yT);
 //================================================================================

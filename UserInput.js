@@ -1,38 +1,38 @@
-"use strict"
+"use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 22.07.2018
- 
+
    /*
    $ -переменные
-   
+
    НАЗНАЧЕНИЕ
-   
-   
+
+
    ИСПОЛЬЗУЕТ МОДУЛИ
-   
-   Game                  
-            Game_R.context.strokeText(-)  
-                     
+
+   Game
+            Game_R.context.strokeText(-)
+
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-   
+
    ArenaFjs
             UserInput_R.tick()
   */
 
- 
+
  /*
   События keydown/keyup происходят при нажатии/отпускании клавиши и позволяют получить её скан-код в свойстве keyCode.
   Скан-код клавиши одинаков в любой раскладке и в любом регистре. Например, клавиша z может означать символ "z", "Z" или "я", "Я" в русской раскладке,
   но её скан-код будет всегда одинаков: 90.
   Цитата с сайта https://learn.javascript.ru/keyboard-events
  */
- 
+
  // alert("module UserInput start");
 //================================================================================
- 
- Game_R.UserInput_R = {}; 
+
+ Game_R.UserInput_R = {};
  Game_R.UserInput_R.name = "UserInput_R";//
- 
+
  Game_R.UserInput_R.eventG = 0;
 
  Game_R.UserInput_R.left = 0;
@@ -50,9 +50,9 @@
 
 
 Game_R.UserInput_R.eventUser = function(event,setE) {
- 
+
     switch(event.keyCodevent){
-         
+
         case 37:  // клавиша влево
           Game_R.UserInput_R.left = setE;
         break;
@@ -66,17 +66,17 @@ Game_R.UserInput_R.eventUser = function(event,setE) {
           Game_R.UserInput_R.down = setE;
         break;
     };
- 
+
  };
 
  Game_R.UserInput_R.keyDownU = function(event) {
- 
+
      Game_R.UserInput_R.eventG = event.keyCode;
      Game_R.UserInput_R.eventUser(event,1);
  };
 
  Game_R.UserInput_R.keyUpU = function(event) {
- 
+
     Game_R.UserInput_R.eventG = 0;
     Game_R.UserInput_R.eventUser(event,0);
  };
@@ -91,23 +91,14 @@ Game_R.UserInput_R.eventUser = function(event,setE) {
 
 //////////////////////////
  Game_R.UserInput_R.tick = function() {
-  
+
     //Game_R.UserInput_R.eventG = 0;
  };
- 
+
  Game_R.UserInput_R.start();
- 
- 
+
+
  Game_R.yT = Game_R.yT + Game_R.dyT;//
  Game_R.context.strokeText ('6   module UserInput loaded', 1100, Game_R.yT);
 //================================================================================
-//alert("module UserInput done");     
- 
- 
- 
- 
- 
- 
- 
- 
- 
+//alert("module UserInput done");
