@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 19.08.2018 - 19.08.2018
+ // Last modified 19.08.2018 - 30.12.2018
 
   /*
    $ -переменные
@@ -20,12 +20,16 @@
   //alert("module Move start");
   //================================================================================
 
-Game_R.Move_R = {};
-Game_R.Move_R.name = "Move";//
+var Move_R = {};
+Move_R.name = "Move";//
 
+//============================================================================
+// INPUT======================================================================
 
+//============================================================================
+// IMPLEMENTATION=============================================================
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//
-Game_R.context.strokeText ('11 module Move loaded', 1100, Game_R.yT);
+Game_R.context.strokeText ('11 module "Move" loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module Move done");

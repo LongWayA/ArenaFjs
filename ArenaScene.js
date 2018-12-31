@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified 08.08.2018 - 15.08.2018
+// Last modified 08.08.2018 - 30.12.2018
 
   /*
    $ -переменные
@@ -9,23 +9,6 @@
 
 
    ИСПОЛЬЗУЕТ МОДУЛИ
-
-   FighterSheeva_mk3
-                       Fighters_R.fighterSheeva_mk3_1.tickAnimation();
-                       Fighters_R.fighterSheeva_mk3_2.tickAnimation();
-                       Fighters_R.fighterSheeva_mk3_1.ini(-)
-                       Fighters_R.fighterSheeva_mk3_2.ini(-)
-
-   GameText
-                       GameText_R.drawRect(-)
-                       GameText_R.drawText(-)
-
-   Game
-                       Game_R.context.strokeText(-)
-                       Game_R.context.strokeRect(-)
-                       Game_R.context.drawImage(-)
-                       Game_R.context.clearRect()
-                       $ Game_R.img_load_end
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
 
@@ -36,12 +19,66 @@
   //alert("module ArenaScene start");
   //================================================================================
 
-Game_R.ArenaScene_R = {};
+var ArenaScene_R = {};
 
-  Game_R.ArenaScene_R.name = "ArenaScene_R";//
+  ArenaScene_R.name = "ArenaScene_R";//
+
+  //============================================================================
+  // INPUT======================================================================
+
+// Game_R
+
+ArenaScene_R.Game_R_img_load_end_0_IN = function() {
+   Game_R.img_load_end = 0 ;
+};
+
+ArenaScene_R.Game_R_img_load_end_1_IN = function() {
+   Game_R.img_load_end = 1 ;
+};
+
+//     Game_R context
+
+ArenaScene_R.Game_R_context_drawImage_IN = function(image, left, top, imageWidth, imageHeight) {
+   Game_R.context.drawImage(image, left, top, imageWidth, imageHeight);
+};
+
+ArenaScene_R.Game_R_context_strokeRect_IN = function(left, top, imageWidth, imageHeight) {
+   Game_R.context.strokeRect(left, top, imageWidth, imageHeight);
+};
+
+//     Game_R canvas
+
+ArenaScene_R.Game_R_canvas_width_IN = function() {
+   return (Game_R.canvas.width);
+};
+
+ArenaScene_R.Game_R_canvas_height_IN = function() {
+   return ( Game_R.canvas.height);
+};
+
+
+// GameText_R
+
+ArenaScene_R.GameText_R_drawRect_IN = function(left, top, width, height, lineWidth, color, fillYes) {
+  Game_R.GameText_R.drawRect( left, top, width, height, lineWidth, color, fillYes);
+};
+
+// Fighters_R
+
+ArenaScene_R.Fighters_R_fighterSheeva_mk3_1_ini_IN = function(left, top, mirror) {
+  Fighters_R.fighterSheeva_mk3_1.ini(left, top, mirror);
+};
+
+ArenaScene_R.Fighters_R_fighterSheeva_mk3_2_ini_IN = function(left, top, mirror) {
+  Fighters_R.fighterSheeva_mk3_2.ini(left, top, mirror);
+};
+
+
+  //============================================================================
+  // IMPLEMENTATION=============================================================
 
   //---------------------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.framesArena = {
+  ArenaScene_R.framesArena = {
 
        displayWidth  : 0, //
 		   displayHeight : 0, //
@@ -92,7 +129,7 @@ Game_R.ArenaScene_R = {};
   //---------------------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.imageArena = {
+  ArenaScene_R.imageArena = {
       name            : "imageArena",
 
       ikonSheeva_mk3 : new Image(),
@@ -103,39 +140,39 @@ Game_R.ArenaScene_R = {};
   };
   //---------------------------------------------------------------------------------------------------------------
 
-  Game_R.img_load_end = 0 ;
+  ArenaScene_R.Game_R_img_load_end_0_IN();
 
   //---------------------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.imageArena.fon1.onload = function() {
-    Game_R.img_load_end = 1 ;
+  ArenaScene_R.imageArena.fon1.onload = function() {
+    ArenaScene_R.Game_R_img_load_end_1_IN() ;
   };
   //---------------------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.imageArena.fon2.onload = function() {
-    Game_R.img_load_end = 1 ;
+  ArenaScene_R.imageArena.fon2.onload = function() {
+    ArenaScene_R.Game_R_img_load_end_1_IN() ;
   };
   //---------------------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.imageArena.fon3.onload = function() {
-    Game_R.img_load_end = 1 ;
+  ArenaScene_R.imageArena.fon3.onload = function() {
+    ArenaScene_R.Game_R_img_load_end_1_IN() ;
   };
 
   // draw>------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------
   // draw image
-  Game_R.ArenaScene_R.drawSceneImage = function(type, left, top, kx, ky) {
+  ArenaScene_R.drawSceneImage = function(type, left, top, kx, ky) {
 
-         var imageWidth  = Game_R.ArenaScene_R.imageArena[type].width;
-         var imageHeight = Game_R.ArenaScene_R.imageArena[type].height;
+         var imageWidth  = ArenaScene_R.imageArena[type].width;
+         var imageHeight = ArenaScene_R.imageArena[type].height;
 
          imageWidth  = imageWidth * kx;
          imageHeight = imageHeight * ky;
 
-         Game_R.context.drawImage(Game_R.ArenaScene_R.imageArena[type], left, top, imageWidth, imageHeight);
-         Game_R.context.strokeRect(left, top, imageWidth, imageHeight);
+         ArenaScene_R.Game_R_context_drawImage_IN(ArenaScene_R.imageArena[type], left, top, imageWidth, imageHeight);
+         ArenaScene_R.Game_R_context_strokeRect_IN(left, top, imageWidth, imageHeight);
 
 	       //Game_R.context.fillText ("fr = " + index,left, top);
          //Game_R.context.fillText (type,left, top + 100);
@@ -144,13 +181,13 @@ Game_R.ArenaScene_R = {};
 
 
   //---------------------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.drawAll = function() {
+  ArenaScene_R.drawAll = function() {
 
     // это видимо весь фон
-		Game_R.GameText_R.drawRect(Game_R.ArenaScene_R.framesArena.x0Left,
-                              Game_R.ArenaScene_R.framesArena.y0Top,
-                              Game_R.ArenaScene_R.framesArena.width,
-                              Game_R.ArenaScene_R.framesArena.height,
+		ArenaScene_R.GameText_R_drawRect_IN(ArenaScene_R.framesArena.x0Left,
+                              ArenaScene_R.framesArena.y0Top,
+                              ArenaScene_R.framesArena.width,
+                              ArenaScene_R.framesArena.height,
                               1, 'green', 0);
 
   };
@@ -161,22 +198,22 @@ Game_R.ArenaScene_R = {};
 // ini>------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------
                                          // Width in pixels 1280 1500 Height in pixels 960
-  Game_R.ArenaScene_R.iniFramesArena = function( displayWidth,  displayHeight) {
+  ArenaScene_R.iniFramesArena = function( displayWidth,  displayHeight) {
 
         var dx0 = 10;
         var dy0 = 10;
 
-        Game_R.ArenaScene_R.framesArena.displayWidth = displayWidth - dx0 - 5; //
-		    Game_R.ArenaScene_R.framesArena.displayHeight = displayHeight - dy0 - 5;//
+        ArenaScene_R.framesArena.displayWidth = displayWidth - dx0 - 5; //
+		    ArenaScene_R.framesArena.displayHeight = displayHeight - dy0 - 5;//
 
-    		Game_R.ArenaScene_R.framesArena.x0Left = dx0; //4
-		    Game_R.ArenaScene_R.framesArena.y0Top = dy0;//33
+    		ArenaScene_R.framesArena.x0Left = dx0; //4
+		    ArenaScene_R.framesArena.y0Top = dy0;//33
 
-		    Game_R.ArenaScene_R.framesArena.width = Game_R.ArenaScene_R.framesArena.displayWidth; //
-		    Game_R.ArenaScene_R.framesArena.height = Game_R.ArenaScene_R.framesArena.displayHeight;//
+		    ArenaScene_R.framesArena.width = ArenaScene_R.framesArena.displayWidth; //
+		    ArenaScene_R.framesArena.height = ArenaScene_R.framesArena.displayHeight;//
 
-		    Game_R.ArenaScene_R.framesArena.xRight =  Game_R.ArenaScene_R.framesArena.x0Left + Game_R.ArenaScene_R.framesArena.width; //
-		    Game_R.ArenaScene_R.framesArena.yBottom = Game_R.ArenaScene_R.framesArena.y0Top + Game_R.ArenaScene_R.framesArena.height;//
+		    ArenaScene_R.framesArena.xRight =  ArenaScene_R.framesArena.x0Left + ArenaScene_R.framesArena.width; //
+		    ArenaScene_R.framesArena.yBottom = ArenaScene_R.framesArena.y0Top + ArenaScene_R.framesArena.height;//
 
 //		("x0Left = " + x0Left);
 //		("y0Top = " + y0Top);
@@ -187,14 +224,14 @@ Game_R.ArenaScene_R = {};
 
 		//view Location
 
-		   Game_R.ArenaScene_R.framesArena.x0LeftLocation = Game_R.ArenaScene_R.framesArena.x0Left + 5; //
-		   Game_R.ArenaScene_R.framesArena.y0TopLocation = Game_R.ArenaScene_R.framesArena.y0Top + 5;//
+		   ArenaScene_R.framesArena.x0LeftLocation = ArenaScene_R.framesArena.x0Left + 5; //
+		   ArenaScene_R.framesArena.y0TopLocation = ArenaScene_R.framesArena.y0Top + 5;//
 
-		   Game_R.ArenaScene_R.framesArena.widthLocation  = Game_R.ArenaScene_R.framesArena.width - 10; //
-		   Game_R.ArenaScene_R.framesArena.heightLocation = Game_R.ArenaScene_R.framesArena.height - Game_R.ArenaScene_R.framesArena.height/4;//
+		   ArenaScene_R.framesArena.widthLocation  = ArenaScene_R.framesArena.width - 10; //
+		   ArenaScene_R.framesArena.heightLocation = ArenaScene_R.framesArena.height - ArenaScene_R.framesArena.height/4;//
 
-		   Game_R.ArenaScene_R.framesArena.xRightLocation = Game_R.ArenaScene_R.framesArena.x0Left + Game_R.ArenaScene_R.framesArena.widthLocation; //
-		   Game_R.ArenaScene_R.framesArena.yBottomLocation = Game_R.ArenaScene_R.framesArena.y0Top + Game_R.ArenaScene_R.framesArena.heightLocation;//
+		   ArenaScene_R.framesArena.xRightLocation = ArenaScene_R.framesArena.x0Left + ArenaScene_R.framesArena.widthLocation; //
+		   ArenaScene_R.framesArena.yBottomLocation = ArenaScene_R.framesArena.y0Top + ArenaScene_R.framesArena.heightLocation;//
 
 //		("x0LeftLocation = " + x0LeftLocation);
 //		("y0TopLocation = " + y0TopLocation);
@@ -205,42 +242,42 @@ Game_R.ArenaScene_R = {};
 
 
 		  //viewFPS
-		  Game_R.ArenaScene_R.framesArena.x0LeftFPS = Game_R.ArenaScene_R.framesArena.x0LeftLocation;
-		  Game_R.ArenaScene_R.framesArena.y0TopFPS = Game_R.ArenaScene_R.framesArena.yBottomLocation;//
+		  ArenaScene_R.framesArena.x0LeftFPS = ArenaScene_R.framesArena.x0LeftLocation;
+		  ArenaScene_R.framesArena.y0TopFPS = ArenaScene_R.framesArena.yBottomLocation;//
 
-		  Game_R.ArenaScene_R.framesArena.widthFPS  = Game_R.ArenaScene_R.framesArena.widthLocation;
-		  Game_R.ArenaScene_R.framesArena.heightFPS = Game_R.ArenaScene_R.framesArena.yBottom - Game_R.ArenaScene_R.framesArena.yBottomLocation;//
+		  ArenaScene_R.framesArena.widthFPS  = ArenaScene_R.framesArena.widthLocation;
+		  ArenaScene_R.framesArena.heightFPS = ArenaScene_R.framesArena.yBottom - ArenaScene_R.framesArena.yBottomLocation;//
 
-		  Game_R.ArenaScene_R.framesArena.xRightFPS = Game_R.ArenaScene_R.framesArena.xRightLocation;
-		  Game_R.ArenaScene_R.framesArena.yBottomFPS = Game_R.ArenaScene_R.framesArena.yBottom -5; // низ привязали к фону
+		  ArenaScene_R.framesArena.xRightFPS = ArenaScene_R.framesArena.xRightLocation;
+		  ArenaScene_R.framesArena.yBottomFPS = ArenaScene_R.framesArena.yBottom -5; // низ привязали к фону
 
-	    Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer1 = 10; //
-	    Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer1 = 10;//
-	    Game_R.ArenaScene_R.framesArena.widthHealthPlayer1 = 500; //
-	    Game_R.ArenaScene_R.framesArena.heightHealthPlayer1 = 40;//
+	    ArenaScene_R.framesArena.x0LeftHealthPlayer1 = 10; //
+	    ArenaScene_R.framesArena.y0TopHealthPlayer1 = 10;//
+	    ArenaScene_R.framesArena.widthHealthPlayer1 = 500; //
+	    ArenaScene_R.framesArena.heightHealthPlayer1 = 40;//
 
 
-	    Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer2 = 600; //
-	    Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer2 = 10;//
-	    Game_R.ArenaScene_R.framesArena.widthHealthPlayer2 = 500; //
-	    Game_R.ArenaScene_R.framesArena.heightHealthPlayer2 = 40;//
+	    ArenaScene_R.framesArena.x0LeftHealthPlayer2 = 600; //
+	    ArenaScene_R.framesArena.y0TopHealthPlayer2 = 10;//
+	    ArenaScene_R.framesArena.widthHealthPlayer2 = 500; //
+	    ArenaScene_R.framesArena.heightHealthPlayer2 = 40;//
   };
   //---------------------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------
   // ini SceneImage
-  Game_R.ArenaScene_R.loadSceneImage = function(){
+  ArenaScene_R.loadSceneImage = function(){
 
       var path1 = "image/Sheeva_mk3_image/";
       var path2 = "image/Arenas_mk1_image/";
 
-      Game_R.ArenaScene_R.imageArena.ikonSheeva_mk3.src = path1 + "fs1.png";
+      ArenaScene_R.imageArena.ikonSheeva_mk3.src = path1 + "fs1.png";
 
-      Game_R.ArenaScene_R.imageArena.drak.src = path2 + "dre.png";
+      ArenaScene_R.imageArena.drak.src = path2 + "dre.png";
 
-      Game_R.ArenaScene_R.imageArena.fon1.src = path2 + "mkw.png";
-      Game_R.ArenaScene_R.imageArena.fon2.src = path2 + "tr.png";
-      Game_R.ArenaScene_R.imageArena.fon3.src = path2 + "wsh.png";
+      ArenaScene_R.imageArena.fon1.src = path2 + "mkw.png";
+      ArenaScene_R.imageArena.fon2.src = path2 + "tr.png";
+      ArenaScene_R.imageArena.fon3.src = path2 + "wsh.png";
 
 
 
@@ -248,29 +285,29 @@ Game_R.ArenaScene_R = {};
   //---------------------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------
-  Game_R.ArenaScene_R.iniAll = function(displayWidth,  displayHeight) {
+  ArenaScene_R.iniAll = function(displayWidth,  displayHeight) {
 
-       Game_R.ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
-       Game_R.ArenaScene_R.loadSceneImage();
+       ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
+       ArenaScene_R.loadSceneImage();
 
-       Game_R.Fighters_R.fighterSheeva_mk3_1.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+180,
-                                             Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 0);
-       Game_R.Fighters_R.fighterSheeva_mk3_2.ini(Game_R.ArenaScene_R.framesArena.x0LeftLocation+480,
-                                             Game_R.ArenaScene_R.framesArena.y0TopLocation+550, 1);
+       ArenaScene_R.Fighters_R_fighterSheeva_mk3_1_ini_IN(ArenaScene_R.framesArena.x0LeftLocation+180,
+                                             ArenaScene_R.framesArena.y0TopLocation+550, 0);
+       ArenaScene_R.Fighters_R_fighterSheeva_mk3_2_ini_IN(ArenaScene_R.framesArena.x0LeftLocation+480,
+                                             ArenaScene_R.framesArena.y0TopLocation+550, 1);
 
-      //Game_R.ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
+      //ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
 
   };
   //---------------------------------------------------------------------------------------------------------------
 
   // ini<------------------------------------------------------------------------------------------------
 
-  Game_R.ArenaScene_R.iniAll(Game_R.canvas.width, Game_R.canvas.height);
+  ArenaScene_R.iniAll(ArenaScene_R.Game_R_canvas_width_IN(),ArenaScene_R.Game_R_canvas_height_IN());
 
 
 
   Game_R.yT = Game_R.yT + Game_R.dyT;//
-  Game_R.context.strokeText ('15 module ArenaScene loaded', 1100, Game_R.yT);
+  Game_R.context.strokeText ('15 module "ArenaScene" loaded', 1100, Game_R.yT);
 
 //================================================================================
 //alert("module ArenaScene done");

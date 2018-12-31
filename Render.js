@@ -29,18 +29,18 @@ Render_R.name = "Render";//
 // GameText_R
 
 Render_R.GameText_R_drawRect_1_IN = function() {
-  Game_R.GameText_R.drawRect(Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer1 + 64,
-                            Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer1,
-                            Game_R.ArenaScene_R.framesArena.widthHealthPlayer1,
-                            Game_R.ArenaScene_R.framesArena.heightHealthPlayer1,
+  Game_R.GameText_R.drawRect(ArenaScene_R.framesArena.x0LeftHealthPlayer1 + 64,
+                            ArenaScene_R.framesArena.y0TopHealthPlayer1,
+                            ArenaScene_R.framesArena.widthHealthPlayer1,
+                            ArenaScene_R.framesArena.heightHealthPlayer1,
                             1, 'green', 0);
 };
 
 Render_R.GameText_R_drawRect_2_IN = function() {
-  Game_R.GameText_R.drawRect(Game_R.ArenaScene_R.framesArena.x0LeftHealthPlayer2 + 64,
-                            Game_R.ArenaScene_R.framesArena.y0TopHealthPlayer2,
-                            Game_R.ArenaScene_R.framesArena.widthHealthPlayer2,
-                            Game_R.ArenaScene_R.framesArena.heightHealthPlayer2,
+  Game_R.GameText_R.drawRect(ArenaScene_R.framesArena.x0LeftHealthPlayer2 + 64,
+                            ArenaScene_R.framesArena.y0TopHealthPlayer2,
+                            ArenaScene_R.framesArena.widthHealthPlayer2,
+                            ArenaScene_R.framesArena.heightHealthPlayer2,
                             1, 'green', 0);
 };
 
@@ -55,70 +55,70 @@ Render_R.GameText_R_drawText_IN = function(text, left, top, font, color, fillYes
 // ArenaScene_R
 
 Render_R.ArenaScene_R_framesArena_x0LeftFPS_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.x0LeftFPS);
+   return (ArenaScene_R.framesArena.x0LeftFPS);
 };
 
 Render_R.ArenaScene_R_framesArena_y0TopFPS_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.y0TopFPS);
+   return (ArenaScene_R.framesArena.y0TopFPS);
 };
 
 Render_R.ArenaScene_R_framesArena_widthFPS_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.widthFPS);
+   return (ArenaScene_R.framesArena.widthFPS);
 };
 
 Render_R.ArenaScene_R_framesArena_heightFPS_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.heightFPS);
+   return (ArenaScene_R.framesArena.heightFPS);
 };
 
 //---------
 
 Render_R.ArenaScene_R_framesArena_x0LeftLocation_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.x0LeftLocation);
+   return (ArenaScene_R.framesArena.x0LeftLocation);
 };
 
 Render_R.ArenaScene_R_framesArena_y0TopLocation_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.y0TopLocation);
+   return (ArenaScene_R.framesArena.y0TopLocation);
 };
 
 Render_R.ArenaScene_R_framesArena_widthLocation_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.widthLocation);
+   return (ArenaScene_R.framesArena.widthLocation);
 };
 
 Render_R.ArenaScene_R_framesArena_heightLocation_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.heightLocation);
+   return (ArenaScene_R.framesArena.heightLocation);
 };
 
 //---------
 
 Render_R.ArenaScene_R_drawSceneImage_IN = function(type, left, top, kx, ky) {
-  Game_R.ArenaScene_R.drawSceneImage(type, left, top, kx, ky);
+  ArenaScene_R.drawSceneImage(type, left, top, kx, ky);
 };
 
 Render_R.ArenaScene_R_drawAll_IN = function() {
-  Game_R.ArenaScene_R.drawAll();
+  ArenaScene_R.drawAll();
 };
 
 Render_R.ArenaScene_R_framesArena_displayWidth_IN = function() {
-   return (Game_R.ArenaScene_R.framesArena.displayWidth);
+   return (ArenaScene_R.framesArena.displayWidth);
 };
 
 
 // Fighters_R
 
 Render_R.Fighters_R_fighterSheeva_mk3_1_tickAnimation_IN = function() {
-  Game_R.Fighters_R.fighterSheeva_mk3_1.tickAnimation();
+  Fighters_R.fighterSheeva_mk3_1.tickAnimation();
 };
 
 Render_R.Fighters_R_fighterSheeva_mk3_2_tickAnimation_IN = function() {
-  Game_R.Fighters_R.fighterSheeva_mk3_2.tickAnimation();
+  Fighters_R.fighterSheeva_mk3_2.tickAnimation();
 };
 
 Render_R.Fighters_R_fighterSheeva_mk3_1_spritesAnimators_busy_IN = function() {
-   return (Game_R.Fighters_R.fighterSheeva_mk3_1.spritesAnimators.busy);
+   return (Fighters_R.fighterSheeva_mk3_1.spritesAnimators.busy);
 };
 
 
-// context
+// Game_R context
 
 Render_R.context_clearRect_IN = function() {
   Game_R.context.clearRect(0, 0, 1100, Game_R.canvas.height);
@@ -217,10 +217,10 @@ Render_R.UserInput_R_eventG_IN = function() {
     var width =  Render_R.ArenaScene_R_framesArena_widthLocation_IN();
     var height = Render_R.ArenaScene_R_framesArena_heightLocation_IN();
 
-    //Game_R.ArenaScene_R.drawSceneImage("ikonSheeva_mk3",Game_R.ArenaScene_R.framesArena.x0Left, Game_R.ArenaScene_R.framesArena.y0Top, 1, 1);
-    //Game_R.ArenaScene_R.drawSceneImage("drak",Game_R.ArenaScene_R.framesArena.x0Left, Game_R.ArenaScene_R.framesArena.y0Top, 1, 1);
-    //Game_R.ArenaScene_R.drawSceneImage("fon1",Game_R.ArenaScene_R.framesArena.x0Left, Game_R.ArenaScene_R.framesArena.y0Top, 2.5, 2.5);
-    //Game_R.ArenaScene_R.drawSceneImage("fon2",Game_R.ArenaScene_R.framesArena.x0Left, Game_R.ArenaScene_R.framesArena.y0Top, 2.5, 2.5);
+    //ArenaScene_R.drawSceneImage("ikonSheeva_mk3",ArenaScene_R.framesArena.x0Left, ArenaScene_R.framesArena.y0Top, 1, 1);
+    //ArenaScene_R.drawSceneImage("drak",ArenaScene_R.framesArena.x0Left, ArenaScene_R.framesArena.y0Top, 1, 1);
+    //ArenaScene_R.drawSceneImage("fon1",ArenaScene_R.framesArena.x0Left, ArenaScene_R.framesArena.y0Top, 2.5, 2.5);
+    //ArenaScene_R.drawSceneImage("fon2",ArenaScene_R.framesArena.x0Left, ArenaScene_R.framesArena.y0Top, 2.5, 2.5);
     Render_R.ArenaScene_R_drawSceneImage_IN("fon3",x, y, 2.3, 2.3);
 
 
@@ -255,6 +255,6 @@ Render_R.UserInput_R_eventG_IN = function() {
 
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//
-Game_R.context.strokeText ('16 module Render loaded', 1100, Game_R.yT);
+Game_R.context.strokeText ('16 module "Render" loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module Move done");
