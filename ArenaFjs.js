@@ -30,15 +30,15 @@ ArenaFjs_R.get_Game_R_img_load_end_IN = function() {
 
 // Timer_R
 ArenaFjs_R.get_Timer_R_timeThreadSleepGameMs_IN = function() {
-   return (Game_R.Timer_R.timeThreadSleepGameMs);
+   return (Timer_R.timeThreadSleepGameMs);
 };
 
 ArenaFjs_R.Timer_R_updateTimeBeforeTick_IN = function() {
-   Game_R.Timer_R.updateTimeBeforeTick();
+   Timer_R.updateTimeBeforeTick();
 };
 
 ArenaFjs_R.Timer_R_updateTimeAfterTick_IN = function() {
-   Game_R.Timer_R.updateTimeAfterTick();
+   Timer_R.updateTimeAfterTick();
 };
 
 // Fighters_R
@@ -56,7 +56,7 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
 
 // UserInput_R
  ArenaFjs_R.UserInput_R_tick_IN = function() {
-    Game_R.UserInput_R.tick();
+    UserInput_R.tick();
  };
 
 // GameColculation_R
@@ -71,7 +71,7 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
 
 // GameText_R
   ArenaFjs_R.GameText_R_drawText_IN = function(num) {
-     Game_R.GameText_R.drawText (Fighters_R.typeM[num],150, 385, 'italic 20px sans-serif', 'red', 1);
+     GameText_R.drawText (Fighters_R.typeM[num],150, 385, 'italic 20px sans-serif', 'red', 1);
   };
 
 

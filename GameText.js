@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 15.08.2018 - 15.08.2018
+ // Last modified 15.08.2018 - 1.01.2019
 
   /*
    $ -переменные
@@ -121,68 +121,95 @@ strokeStyle = color
 //alert("module GameText start");
 //================================================================================
 
-Game_R.GameText_R = {};
-Game_R.GameText_R.name = "GameText_R";//
+var GameText_R = {};
+GameText_R.name = "GameText_R";//
 
-  //=================================================================================================================
-  // INPUT===========================================================================================================
+  //============================================================================
+  // INPUT======================================================================
 
+// Game_R context
 
+GameText_R.Game_R_context_textBaseline_top_IN = function(font) {
+   Game_R.context.textBaseline = 'top';
+};
 
+  GameText_R.SET_Game_R_context_font_IN = function(font) {
+     Game_R.context.font = font;
+  };
 
-  //=================================================================================================================
-  // IMPLEMENTATION==================================================================================================
+  GameText_R.SET_Game_R_context_Style_IN = function(style) {
+     Game_R.context.fillStyle = style;
+     Game_R.context.strokeStyle = style;
+  };
 
-  Game_R.GameText_R.setFont = function(font) {
+  GameText_R.Game_R_context_fillText_IN = function(text, left, top) {
+     Game_R.context.fillText (text, left, top);
+  };
 
-       Game_R.context.textBaseline = 'top';
+  GameText_R.Game_R_context_strokeText_IN = function(text, left, top) {
+     Game_R.context.strokeText (text, left, top);
+  };
+
+  GameText_R.SET_Game_R_context_lineWidth_IN = function(lineWidth) {
+    Game_R.context.lineWidth = lineWidth;
+  };
+
+  GameText_R.Game_R_context_fillRect_IN = function(left, top, width, height) {
+     Game_R.context.fillRect( left, top, width, height);
+  };
+
+  GameText_R.Game_R_context_strokeRect_IN = function(left, top, width, height) {
+     Game_R.context.strokeRect( left, top, width, height);
+  };
+
+  //============================================================================
+  // IMPLEMENTATION=============================================================
+
+  GameText_R.setFont = function(font) {
+
+       GameText_R.Game_R_context_textBaseline_top_IN();
 
        switch(font){
 
                  case 'italic 20px sans-serif':
-                   Game_R.context.font = 'italic 20px sans-serif';
+                  GameText_R.SET_Game_R_context_font_IN('italic 20px sans-serif');
                  break;
 
                  case 'italic 30pt Arial':
-                   Game_R.context.font = 'italic 30pt Arial';
+                   GameText_R.SET_Game_R_context_font_IN('italic 30pt Arial');
                  break;
 
                 case 'bold 30px sans-serif':
-                   Game_R.context.font = 'bold 30px sans-serif';
+                   GameText_R.SET_Game_R_context_font_IN('bold 30px sans-serif');
                  break;
 
        };
   };
 
-  Game_R.GameText_R.setColor = function(color) {
+  GameText_R.setColor = function(color) {
 
         switch(color){
 
 
                 case 'white':
-                    Game_R.context.fillStyle = '#ffffff';
-                    Game_R.context.strokeStyle = '#ffffff';
+                    GameText_R.SET_Game_R_context_Style_IN('#ffffff');
                  break;
 
                 case 'black':
-                    Game_R.context.fillStyle = '#000000';
-                    Game_R.context.strokeStyle = '#000000';
+                    GameText_R.SET_Game_R_context_Style_IN('#000000');
                  break;
 
                  case 'red':
-                    Game_R.context.fillStyle = '#ff0000';
-                    Game_R.context.strokeStyle = '#ff0000';
+                    GameText_R.SET_Game_R_context_Style_IN('#ff0000');
                  break;
 
                  case 'green':
-                    Game_R.context.fillStyle = '#008000';
-                    Game_R.context.strokeStyle = '#008000';
+                    GameText_R.SET_Game_R_context_Style_IN('#008000');
                  break;
 
 
                  case 'blue':
-                        Game_R.context.fillStyle = '#0000ff';
-                        Game_R.context.strokeStyle = '#0000ff';
+                        GameText_R.SET_Game_R_context_Style_IN('#0000ff');
                  break;
 
        };
@@ -191,64 +218,39 @@ Game_R.GameText_R.name = "GameText_R";//
   };
 
 
-  Game_R.GameText_R.drawText = function(text, left, top, font, color, fillYes) {
+  GameText_R.drawText = function(text, left, top, font, color, fillYes) {
 
-         Game_R.GameText_R.setColor(color);
+         GameText_R.setColor(color);
 
-         Game_R.GameText_R.setFont(font);
+         GameText_R.setFont(font);
 
          if(fillYes == 1) {
-             Game_R.context.fillText (text, left, top);
+             GameText_R.Game_R_context_fillText_IN (text, left, top);
          } else {
-             Game_R.context.strokeText (text, left, top);
+             GameText_R.Game_R_context_strokeText_IN (text, left, top);
          };
 
   };
 
 
-    Game_R.GameText_R.drawRect = function(left, top, width, height, lineWidth, color, fillYes) {
+    GameText_R.drawRect = function(left, top, width, height, lineWidth, color, fillYes) {
 
-         Game_R.GameText_R.setColor(color);
+         GameText_R.setColor(color);
 
-         Game_R.context.lineWidth = lineWidth;
+         GameText_R.SET_Game_R_context_lineWidth_IN(lineWidth);
 
          if(fillYes == 1) {
-             Game_R.context.fillRect( left, top, width, height);
+             GameText_R.Game_R_context_fillRect_IN( left, top, width, height);
          } else {
-             Game_R.context.strokeRect( left, top, width, height);
+             GameText_R.Game_R_context_strokeRect_IN( left, top, width, height);
          };
 
   };
 
   //=================================================================================================================
-  // OUTPUT===========================================================================================================
-
-  // устанавливаем шрифт которым будем печатать
-  Game_R.GameText_R.setFont_OU = function(font){
-
-    Game_R.GameText_R.setFont(font);
-  };
-
-  // устанавливаем цвет шрифта которым будем печатать
-  Game_R.GameText_R.setColor_OU = function(color){
-
-    Game_R.GameText_R.setColor(color);
-  };
-
-  // печатаем текст
-  Game_R.GameText_R.drawText_OU = function(text, left, top, font, color, fillYes){
-
-    Game_R.GameText_R.drawText(text, left, top, font, color, fillYes);
-
-  };
-
-  // рисуем рамки
-  Game_R.GameText_R.drawRect_OU = function(left, top, width, height, lineWidth, color, fillYes) {
-
-       Game_R.GameText_R.drawRect(left, top, width, height, lineWidth, color, fillYes);
-  };
+  
 
   Game_R.yT = Game_R.yT + Game_R.dyT;//
-  Game_R.context.strokeText ('2   module GameText loaded', 1100, Game_R.yT);
+  Game_R.context.strokeText ('2   module "GameText" loaded', 1100, Game_R.yT);
 //================================================================================
 //alert("module GameText done");

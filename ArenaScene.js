@@ -60,7 +60,7 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
 // GameText_R
 
 ArenaScene_R.GameText_R_drawRect_IN = function(left, top, width, height, lineWidth, color, fillYes) {
-  Game_R.GameText_R.drawRect( left, top, width, height, lineWidth, color, fillYes);
+  GameText_R.drawRect( left, top, width, height, lineWidth, color, fillYes);
 };
 
 // Fighters_R

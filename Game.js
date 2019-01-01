@@ -52,6 +52,6 @@
   //
   Game_R.yT = 50;//
   Game_R.dyT = 20;//
-  Game_R.context.strokeText ('1   module Game loaded', 1100, Game_R.yT);
+  Game_R.context.strokeText ('1   module "Game" loaded', 1100, Game_R.yT);
   //================================================================================
   //alert("module Game done");

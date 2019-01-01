@@ -29,7 +29,7 @@ Render_R.name = "Render";//
 // GameText_R
 
 Render_R.GameText_R_drawRect_1_IN = function() {
-  Game_R.GameText_R.drawRect(ArenaScene_R.framesArena.x0LeftHealthPlayer1 + 64,
+  GameText_R.drawRect(ArenaScene_R.framesArena.x0LeftHealthPlayer1 + 64,
                             ArenaScene_R.framesArena.y0TopHealthPlayer1,
                             ArenaScene_R.framesArena.widthHealthPlayer1,
                             ArenaScene_R.framesArena.heightHealthPlayer1,
@@ -37,7 +37,7 @@ Render_R.GameText_R_drawRect_1_IN = function() {
 };
 
 Render_R.GameText_R_drawRect_2_IN = function() {
-  Game_R.GameText_R.drawRect(ArenaScene_R.framesArena.x0LeftHealthPlayer2 + 64,
+  GameText_R.drawRect(ArenaScene_R.framesArena.x0LeftHealthPlayer2 + 64,
                             ArenaScene_R.framesArena.y0TopHealthPlayer2,
                             ArenaScene_R.framesArena.widthHealthPlayer2,
                             ArenaScene_R.framesArena.heightHealthPlayer2,
@@ -45,11 +45,11 @@ Render_R.GameText_R_drawRect_2_IN = function() {
 };
 
 Render_R.GameText_R_drawRect_IN = function(left, top, width, height, lineWidth, color, fillYes) {
-  Game_R.GameText_R.drawRect( left, top, width, height, lineWidth, color, fillYes);
+  GameText_R.drawRect( left, top, width, height, lineWidth, color, fillYes);
 };
 
 Render_R.GameText_R_drawText_IN = function(text, left, top, font, color, fillYes) {
-  Game_R.GameText_R.drawText (text, left, top, font, color, fillYes);
+  GameText_R.drawText (text, left, top, font, color, fillYes);
 };
 
 // ArenaScene_R
@@ -133,37 +133,37 @@ Render_R.ArenaFjs_R_countLoop_IN = function() {
 // Timer_R
 
 Render_R.Timer_R_ticksPerSecond_IN = function() {
-   return (Game_R.Timer_R.ticksPerSecond);
+   return (Timer_R.ticksPerSecond);
 };
 
 Render_R.Timer_R_tickMustTimeMs_IN = function() {
-   return (Game_R.Timer_R.tickMustTimeMs);
+   return (Timer_R.tickMustTimeMs);
 };
 
 Render_R.Timer_R_timeBetweenEndMinStartTickMs_IN = function() {
-   return (Game_R.Timer_R.timeBetweenEndMinStartTickMs);
+   return (Timer_R.timeBetweenEndMinStartTickMs);
 };
 
 Render_R.Timer_R_timeThreadSleepGameMs_IN = function() {
-   return (Game_R.Timer_R.timeThreadSleepGameMs);
+   return (Timer_R.timeThreadSleepGameMs);
 };
 
 Render_R.Timer_R_timeStartTickMs_IN = function() {
-   return (Game_R.Timer_R.timeStartTickMs);
+   return (Timer_R.timeStartTickMs);
 };
 
 Render_R.Timer_R_timeEndTickMs_IN = function() {
-   return (Game_R.Timer_R.timeEndTickMs);
+   return (Timer_R.timeEndTickMs);
 };
 
 Render_R.Timer_R_timeBetweenStartMinOldStartTickMs_IN = function() {
-   return (Game_R.Timer_R.timeBetweenStartMinOldStartTickMs);
+   return (Timer_R.timeBetweenStartMinOldStartTickMs);
 };
 
 // UserInput_R
 
 Render_R.UserInput_R_eventG_IN = function() {
-   return (Game_R.UserInput_R.eventG);
+   return (UserInput_R.eventG);
 };
 
 //============================================================================

@@ -39,6 +39,14 @@
  //============================================================================
  // IMPLEMENTATION=============================================================
 
+ Fighters_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
+                            "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
+
+ Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
+ Fighters_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
+
+ Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
+ Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");
 
 //CLCLCLCLCL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -172,14 +180,6 @@ function FighterSheeva_mk3_CL () {
 
 //CLCLCLCLCL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
- Fighters_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
-                            "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
-
- Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
- Fighters_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
-
- Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
- Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");
 
  //alert("!");
 
