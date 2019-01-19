@@ -197,15 +197,18 @@ Render_R.UserInput_R_eventG_IN = function() {
       Render_R.GameText_R_drawText_IN ("ticksPerSecond = " + Render_R.Timer_R_ticksPerSecond_IN(),x+180, y+5, 'italic 20px sans-serif', 'blue', 1);
       Render_R.GameText_R_drawText_IN ("tickMustTimeMs = " + Render_R.Timer_R_tickMustTimeMs_IN(),x+400, y+5, 'italic 20px sans-serif', 'blue', 1);
       Render_R.GameText_R_drawText_IN ("timeBetweenEndMinStartTickMs = " + Render_R.Timer_R_timeBetweenEndMinStartTickMs_IN(),x+620, y+5, 'italic 20px sans-serif', 'blue', 1);
-	    Render_R.GameText_R_drawText_IN ("timeThreadSleepGameMs = " + Render_R.Timer_R_timeThreadSleepGameMs_IN(),x+370, y+55, 'italic 20px sans-serif', 'blue', 1);
+	    Render_R.GameText_R_drawText_IN ("timeThreadSleepGameMs = " + Render_R.Timer_R_timeThreadSleepGameMs_IN(),x+210, y+55, 'italic 20px sans-serif', 'blue', 1);
 
       Render_R.GameText_R_drawText_IN ("timeStartTickMs = " + Render_R.Timer_R_timeStartTickMs_IN(),x+10, y+30, 'italic 20px sans-serif', 'blue', 1);
       Render_R.GameText_R_drawText_IN ("timeEndTickMs = " + Render_R.Timer_R_timeEndTickMs_IN(),x+340, y+30, 'italic 20px sans-serif', 'blue', 1);
       Render_R.GameText_R_drawText_IN ("timeBetweenStartMinOldStartTickMs = " + Render_R.Timer_R_timeBetweenStartMinOldStartTickMs_IN(),x+670, y+30, 'italic 20px sans-serif', 'blue', 1);
 
-      Render_R.GameText_R_drawText_IN ("UserInput-> " +  Render_R.UserInput_R_eventG_IN() ,x+10, y+55, 'italic 20px sans-serif', 'blue', 1);
+      Render_R.GameText_R_drawText_IN ("displayWidth = " + Render_R.ArenaScene_R_framesArena_displayWidth_IN(), x+10, y+55, 'italic 20px sans-serif', 'blue', 1);
 
-      Render_R.GameText_R_drawText_IN ("displayWidth = " + Render_R.ArenaScene_R_framesArena_displayWidth_IN(), x+170, y+55, 'italic 20px sans-serif', 'blue', 1);
+      Render_R.GameText_R_drawText_IN ("UserInput-> " +  Render_R.UserInput_R_eventG_IN() ,x+10, y+80, 'italic 20px sans-serif', 'blue', 1);
+
+      Render_R.GameText_R_drawText_IN ("commandToFighterGamer-> " +  UserInput_R.commandToFighterLeft.command ,x+170, y+80, 'italic 20px sans-serif', 'blue', 1);
+      Render_R.GameText_R_drawText_IN ("commandToFighterGamer-> " +  UserInput_R.commandToFighterLeft.commandText ,x+470, y+80, 'italic 20px sans-serif', 'blue', 1);
   };
   //---------------------------------------------------------------------------------------------------------------
 

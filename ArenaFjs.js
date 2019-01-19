@@ -88,7 +88,8 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
        if (ArenaFjs_R.countLoop == 24){
           ArenaFjs_R.il_2 = ArenaFjs_R.il;
           //if(Game_R.ArenaFjs.il_2 == 0) Game_R.ArenaFjs.il_2 = 1;
-          ArenaFjs_R.fighterSheeva_mk3_1_setState_IN(ArenaFjs_R.il);
+
+           ArenaFjs_R.fighterSheeva_mk3_1_setState_IN(ArenaFjs_R.il);
            ArenaFjs_R.fighterSheeva_mk3_2_setState_IN(ArenaFjs_R.il);
 
           ArenaFjs_R.il = ArenaFjs_R.il + 1;
@@ -140,6 +141,7 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
   ArenaFjs_R.start = function(){
 
      //alert("!");
+     //alert( Menu_R.name );
 
   };
  // start< ---------------------------------------------------------------------

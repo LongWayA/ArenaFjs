@@ -1,14 +1,11 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 15.07.2018 - 1.01.2019
+ // Last modified 15.07.2018 - 19.01.2019
 
    /*
    $ -переменные
 
    НАЗНАЧЕНИЕ
-
-
-   ИСПОЛЬЗУЕТ МОДУЛИ
 
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
@@ -19,8 +16,10 @@
 
 
  /*
-  События keydown/keyup происходят при нажатии/отпускании клавиши и позволяют получить её скан-код в свойстве keyCode.
-  Скан-код клавиши одинаков в любой раскладке и в любом регистре. Например, клавиша z может означать символ "z", "Z" или "я", "Я" в русской раскладке,
+  События keydown/keyup происходят при нажатии/отпускании клавиши и позволяют
+  получить её скан-код в свойстве keyCode.
+  Скан-код клавиши одинаков в любой раскладке и в любом регистре. Например,
+  клавиша z может означать символ "z", "Z" или "я", "Я" в русской раскладке,
   но её скан-код будет всегда одинаков: 90.
   Цитата с сайта https://learn.javascript.ru/keyboard-events
  */
@@ -39,38 +38,85 @@
  //==============================================================================
  // IMPLEMENTATION===============================================================
 
+ // команды бойцам
+ UserInput_R.LEFT_F_KEY_LEFT  = 65;//движение влево     A
+ UserInput_R.LEFT_F_KEY_RIGHT = 68;//движение вправо    D
+ UserInput_R.LEFT_F_KEY_UP    = 87;//движение вверх     W
+ UserInput_R.LEFT_F_KEY_DOWN  = 83;//движение вниз      S
+ UserInput_R.LEFT_F_KEY_RUN   = 74;//бег                 J
+
+ // передняя и задняя конечность это относительно боковой стойки
+ UserInput_R.LEFT_F_KEY_FRONTPUNCH = 85;// удар передней рукой    U
+ UserInput_R.LEFT_F_KEY_BACKPUNCH  = 73;// удар задней рукой      I
+ UserInput_R.LEFT_F_KEY_FRONTKICK  = 79;// удар передней ногой    O
+ UserInput_R.LEFT_F_KEY_BACKKICK   = 80;// удар задней ногой      P
+ UserInput_R.LEFT_F_KEY_BLOCK      = 32;// блок                  SPACE
+ UserInput_R.LEFT_F_KEY_TELEPORT   = 75;// перемещение           K
+                                        // в другой конец арены,
+                                        // применяется против зажима у края
+
  UserInput_R.eventG = 0;
+ UserInput_R.commandToFighter;
+  //alert("!");
+ UserInput_R.eventUserLeft = function() {
 
- UserInput_R.left = 0;
- UserInput_R.right = 0;
- UserInput_R.up = 0;
- UserInput_R.down = 0;
- UserInput_R.run = 0;
+    switch(UserInput_R.eventG){
 
- UserInput_R.frontPunch = 0;
- UserInput_R.backPunch = 0;
- UserInput_R.frontKick = 0;
- UserInput_R.backKick = 0;
- UserInput_R.block = 0;
- UserInput_R.teleport = 0;
-
-
-UserInput_R.eventUser = function(event,setE) {
-
-    switch(event.keyCodevent){
-
-        case 37:  // клавиша влево
-          UserInput_R.left = setE;
+        case UserInput_R.LEFT_F_KEY_LEFT:  // клавиша влево
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.LEFT;
+             UserInput_R.commandToFighterLeft.commandText = 'walking left';
         break;
-        case 39:   // клавиша вправо
-          UserInput_R.right = setE;
+
+        case UserInput_R.LEFT_F_KEY_RIGHT:   // клавиша вправо
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.RIGHT;
+             UserInput_R.commandToFighterLeft.commandText = 'walking right';
         break;
-        case 38:   // клавиша вверх
-          UserInput_R.up = setE;
+
+        case UserInput_R.LEFT_F_KEY_UP:   // клавиша вверх
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.UP;
+             UserInput_R.commandToFighterLeft.commandText = '-up-';
         break;
-        case 40:   // клавиша вниз
-          UserInput_R.down = setE;
+
+        case UserInput_R.LEFT_F_KEY_DOWN:   // клавиша вниз
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.DOWN;
+             UserInput_R.commandToFighterLeft.commandText = '-down-';
         break;
+
+        case UserInput_R.LEFT_F_KEY_RUN:  // клавиша бег
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.RUN;
+             UserInput_R.commandToFighterLeft.commandText = 'run';
+        break;
+
+        case UserInput_R.LEFT_F_KEY_FRONTPUNCH:   // клавиша пердняя рука
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.FRONTPUNCH;
+             UserInput_R.commandToFighterLeft.commandText = 'punch Up';
+        break;
+
+        case UserInput_R.LEFT_F_KEY_BACKPUNCH:   // клавиша задняя рука
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.BACKPUNCH;
+             UserInput_R.commandToFighterLeft.commandText = 'punch Midle';
+        break;
+
+        case UserInput_R.LEFT_F_KEY_FRONTKICK:   // клавиша передняя нога
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.FRONTKICK;
+             UserInput_R.commandToFighterLeft.commandText = 'kick Front';
+        break;
+
+        case UserInput_R.LEFT_F_KEY_BACKKICK:   // клавиша задняя нога
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.BACKKICK;
+             UserInput_R.commandToFighterLeft.commandText = 'kick Back';
+        break;
+
+        case UserInput_R.LEFT_F_KEY_BLOCK:   // клавиша блок
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.BLOCK;
+             UserInput_R.commandToFighterLeft.commandText = 'block';
+        break;
+
+        case UserInput_R.LEFT_F_KEY_TELEPORT:   // клавиша телепорт
+             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.TELEPORT;
+             UserInput_R.commandToFighterLeft.commandText = 'teleport';
+        break;
+
     };
 
  };
@@ -78,19 +124,22 @@ UserInput_R.eventUser = function(event,setE) {
  UserInput_R.keyDownU = function(event) {
 
      UserInput_R.eventG = event.keyCode;
-     UserInput_R.eventUser(event,1);
+     UserInput_R.eventUserLeft();
  };
 
  UserInput_R.keyUpU = function(event) {
 
     UserInput_R.eventG = 0;
-    UserInput_R.eventUser(event,0);
+    UserInput_R.commandToFighterLeft.command  = 0;
+    UserInput_R.commandToFighterLeft.commandText = 'fighting Stance';
  };
 
  UserInput_R.start = function() {
 
      window.addEventListener("keydown", UserInput_R.keyDownU);
      window.addEventListener("keyup", UserInput_R.keyUpU);
+
+     UserInput_R.commandToFighterLeft = CommandToFighter_R.commandToFighterGammerLeft;
      //console.log("V");
   };
 
