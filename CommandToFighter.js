@@ -17,7 +17,7 @@
   //================================================================================
 
 var CommandToFighter_R = {};
-CommandToFighter_R.name = "CommandToFighter";//
+CommandToFighter_R.name = 'CommandToFighter';//
 
 //==============================================================================
 // INPUT========================================================================
@@ -27,11 +27,12 @@ CommandToFighter_R.name = "CommandToFighter";//
 // IMPLEMENTATION===============================================================
 
 // команды бойцам
-CommandToFighter_R.LEFT  = 1;//движение влево
-CommandToFighter_R.RIGHT = 2;//движение вправо
-CommandToFighter_R.UP    = 3;//движение вверх
-CommandToFighter_R.DOWN  = 4;//движение вниз
-CommandToFighter_R.RUN   = 5;//бег
+CommandToFighter_R.STANCE  = 0;// стойка
+CommandToFighter_R.LEFT  = 1;// движение влево
+CommandToFighter_R.RIGHT = 2;// движение вправо
+CommandToFighter_R.UP    = 3;// движение вверх
+CommandToFighter_R.DOWN  = 4;// движение вниз
+CommandToFighter_R.RUN   = 5;// бег
 
 // передняя и задняя конечность это относительно боковой стойки
 CommandToFighter_R.FRONTPUNCH = 6;// удар передней рукой
@@ -40,29 +41,30 @@ CommandToFighter_R.FRONTKICK  = 8;// удар передней ногой
 CommandToFighter_R.BACKKICK   = 9;// удар задней ногой
 CommandToFighter_R.BLOCK      = 10;// блок
 CommandToFighter_R.TELEPORT   = 11;// перемещение в другой конец арены,
-                                   //применяется против зажима у края
+                                   // применяется против зажима у края
 
-
+// левый боец управляемый человеком
 CommandToFighter_R.commandToFighterGammerLeft = new CommandToFighter_CL();
+
+// правый боец управляемый человеком
 CommandToFighter_R.commandToFighterGammerRight = new CommandToFighter_CL();
 
+// левый боец управляеый компьютером
 CommandToFighter_R.commandToFighterAILeft = new CommandToFighter_CL();
+
+// правый боец управляемый копьютером
 CommandToFighter_R.commandToFighterAIRight = new CommandToFighter_CL();
 
-CommandToFighter_R.commandToFighterGammerLeft.command = 0;
-CommandToFighter_R.commandToFighterGammerRight.command = 0;
-CommandToFighter_R.commandToFighterAILeft.command = 0;
-CommandToFighter_R.commandToFighterAIRight.command = 0;
-
-CommandToFighter_R.commandToFighterGammerLeft.commandText = 'fighting Stance';
 
 //CLCLCLCLCL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 function CommandToFighter_CL () {
 
-    this.name = "CommandToFighter_CL";
+    this.name = 'CommandToFighter_CL';
 
     this.command;
+
+    this.commandText;
 
     // tickAnimation ---------------------------------------
     //this.tickAnimation = function() {

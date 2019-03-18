@@ -17,11 +17,11 @@
  //alert("module ArenaFjs start");
  //=============================================================================
 
- var ArenaFjs_R = {};
- ArenaFjs_R.name = "ArenaFjs";//
+var ArenaFjs_R = {};
+ArenaFjs_R.name = "ArenaFjs";//
 
-  //============================================================================
-  // INPUT======================================================================
+
+// INPUT======================================================================
 
 // Game_R
 ArenaFjs_R.get_Game_R_img_load_end_IN = function() {
@@ -74,9 +74,27 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
      GameText_R.drawText (Fighters_R.typeM[num],150, 385, 'italic 20px sans-serif', 'red', 1);
   };
 
+// AICommand_R
+  ArenaFjs_R.AICommand_R_tick_IN = function() {
+     // компьютер отдает приказы каждый такт
+     AICommand_R.tick();//
+  };
 
-  //============================================================================
-  // IMPLEMENTATION=============================================================
+  // Move_R
+  ArenaFjs_R.Move_R_tick_IN = function() {
+      // обрабатываем движение бойцов
+      Move_R.tick();
+  };
+
+  // Fight_R
+  ArenaFjs_R.Fight_R_tick_IN = function() {
+      // обрабатываем бой
+      Fight_R.tick();
+  };
+
+
+
+// IMPLEMENTATION=============================================================
 
    ArenaFjs_R.countLoop = 1;
    ArenaFjs_R.il = 0;
@@ -104,17 +122,31 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
  // tick> ----------------------------------------------------------------------
   ArenaFjs_R.tick = function() {
 
-      //alert("!");
-	     ArenaFjs_R.UserInput_R_tick_IN();
-
-       ArenaFjs_R.GameColculation_R_tick_IN();
-
+    // временная заглушка
        ArenaFjs_R.oldDemonstr();
 
-       ArenaFjs_R.Render_R_drawAll_IN();
+    //alert("!");
+    // человек отдает приказы с клавиатуры и они обрабатываются событийно.
+	  //ArenaFjs_R.UserInput_R_tick_IN();//
 
-//alert("!");
-       ArenaFjs_R.GameText_R_drawText_IN(ArenaFjs_R.il_2);
+    // компьютер отдает приказы каждый такт
+    ArenaFjs_R.AICommand_R_tick_IN();//
+
+    // обрабатываем движение бойцов
+    ArenaFjs_R.Move_R_tick_IN();
+
+    // обрабатываем бой
+    ArenaFjs_R.Fight_R_tick_IN();
+
+    //
+    ArenaFjs_R.GameColculation_R_tick_IN();
+
+    // отрисовываем всю графику
+    ArenaFjs_R.Render_R_drawAll_IN();
+
+    //alert("!");
+    // что это за текст? почему он пишется именно здесь?
+    ArenaFjs_R.GameText_R_drawText_IN(ArenaFjs_R.il_2);
 
 
  //<TEST ------------------------------------------------------
@@ -130,12 +162,12 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
   };
  // tick< ----------------------------------------------------------------------
 
-  // ini> ---------------------------------------------------------
+  // ini> ----------------------------------------------------------------------
   ArenaFjs_R.ini = function(){
 
 
   };
-  // ini< ---------------------------------------------------------
+  // ini< ----------------------------------------------------------------------
 
   // start> --------------------------------------------------------------------
   ArenaFjs_R.start = function(){
@@ -146,6 +178,7 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
   };
  // start< ---------------------------------------------------------------------
 
+// loop>------------------------------------------------------------------------
   ArenaFjs_R.ini();
   ArenaFjs_R.start();
    //Game_R.context.fokus();
@@ -163,12 +196,10 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
         ArenaFjs_R.timerId = setTimeout( tick,ArenaFjs_R.get_Timer_R_timeThreadSleepGameMs_IN());
 
   }, ArenaFjs_R.get_Timer_R_timeThreadSleepGameMs_IN());
-
-  //============================================================================
-  // OUTPUT=====================================================================
-
+// loop<------------------------------------------------------------------------
 
   Game_R.yT = Game_R.yT + Game_R.dyT;//
   Game_R.context.strokeText ('17 module "ArenaFjs" loaded', 1100, Game_R.yT);
+
  //=============================================================================
  //alert("module ArenaFjs done");

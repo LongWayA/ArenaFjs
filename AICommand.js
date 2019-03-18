@@ -28,6 +28,13 @@ AICommand_R.name = "AI Command";//
 //==============================================================================
 // IMPLEMENTATION===============================================================
 
+AICommand_R.tick = function() {
+
+   //
+};
+
+
+
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('7   module "AI Command" loaded', 1100, Game_R.yT);
 

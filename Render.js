@@ -207,8 +207,8 @@ Render_R.UserInput_R_eventG_IN = function() {
 
       Render_R.GameText_R_drawText_IN ("UserInput-> " +  Render_R.UserInput_R_eventG_IN() ,x+10, y+80, 'italic 20px sans-serif', 'blue', 1);
 
-      Render_R.GameText_R_drawText_IN ("commandToFighterGamer-> " +  UserInput_R.commandToFighterLeft.command ,x+170, y+80, 'italic 20px sans-serif', 'blue', 1);
-      Render_R.GameText_R_drawText_IN ("commandToFighterGamer-> " +  UserInput_R.commandToFighterLeft.commandText ,x+470, y+80, 'italic 20px sans-serif', 'blue', 1);
+      Render_R.GameText_R_drawText_IN ("commandToFighterGamer-> " +  CommandToFighter_R.commandToFighterGammerLeft.command ,x+170, y+80, 'italic 20px sans-serif', 'blue', 1);
+      Render_R.GameText_R_drawText_IN ("commandToFighterGamer-> " +  CommandToFighter_R.commandToFighterGammerLeft.commandText ,x+470, y+80, 'italic 20px sans-serif', 'blue', 1);
   };
   //---------------------------------------------------------------------------------------------------------------
 

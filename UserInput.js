@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 15.07.2018 - 19.01.2019
+ // Last modified 15.07.2018 - 18.03.2019
 
    /*
    $ -переменные
@@ -30,12 +30,68 @@
  var UserInput_R = {};
  UserInput_R.name = "UserInput_R";//
 
- //==============================================================================
+
  // INPUT========================================================================
 
+ //CommandToFighter_R
+
+// устанавливаем команды для бойца управляемого игроком и стоящего в начале слева
+ UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN = function(command, commandText) {
+    CommandToFighter_R.commandToFighterGammerLeft.command = command;
+    CommandToFighter_R.commandToFighterGammerLeft.commandText = commandText;
+ };
 
 
- //==============================================================================
+ UserInput_R.get_CommandToFighter_R_STANCE_IN = function() {
+    return (CommandToFighter_R.STANCE);
+ };
+
+ UserInput_R.get_CommandToFighter_R_LEFT_IN = function() {
+    return (CommandToFighter_R.LEFT);
+ };
+
+ UserInput_R.get_CommandToFighter_R_RIGHT_IN = function() {
+    return (CommandToFighter_R.RIGHT);
+ };
+
+ UserInput_R.get_CommandToFighter_R_UP_IN = function() {
+    return (CommandToFighter_R.UP);
+ };
+
+ UserInput_R.get_CommandToFighter_R_DOWN_IN = function() {
+    return (CommandToFighter_R.DOWN);
+ };
+
+
+ UserInput_R.get_CommandToFighter_R_RUN_IN = function() {
+    return (CommandToFighter_R.RUN);
+ };
+
+ UserInput_R.get_CommandToFighter_R_FRONTPUNCH_IN = function() {
+    return (CommandToFighter_R.FRONTPUNCH);
+ };
+
+ UserInput_R.get_CommandToFighter_R_BACKPUNCH_IN = function() {
+    return (CommandToFighter_R.BACKPUNCH);
+ };
+
+ UserInput_R.get_CommandToFighter_R_FRONTKICK_IN = function() {
+    return (CommandToFighter_R.FRONTKICK);
+ };
+
+ UserInput_R.get_CommandToFighter_R_BACKKICK_IN = function() {
+    return (CommandToFighter_R.LEFT);
+ };
+
+ UserInput_R.get_CommandToFighter_R_BLOCK_IN = function() {
+    return (CommandToFighter_R.BLOCK);
+ };
+
+ UserInput_R.get_CommandToFighter_R_TELEPORT_IN = function() {
+    return (CommandToFighter_R.TELEPORT);
+ };
+
+
  // IMPLEMENTATION===============================================================
 
  // команды бойцам
@@ -55,91 +111,97 @@
                                         // в другой конец арены,
                                         // применяется против зажима у края
 
- UserInput_R.eventG = 0;
- UserInput_R.commandToFighter;
+ UserInput_R.eventG = 0; // заносится скан код нажатой клавиши
   //alert("!");
+
+  // заполняем модуль commandToFighterGammerLeft
  UserInput_R.eventUserLeft = function() {
 
     switch(UserInput_R.eventG){
 
         case UserInput_R.LEFT_F_KEY_LEFT:  // клавиша влево
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.LEFT;
-             UserInput_R.commandToFighterLeft.commandText = 'walking left';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_LEFT_IN(), 'walking left');
         break;
 
         case UserInput_R.LEFT_F_KEY_RIGHT:   // клавиша вправо
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.RIGHT;
-             UserInput_R.commandToFighterLeft.commandText = 'walking right';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_RIGHT_IN(), 'walking right');
         break;
 
         case UserInput_R.LEFT_F_KEY_UP:   // клавиша вверх
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.UP;
-             UserInput_R.commandToFighterLeft.commandText = '-up-';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_UP_IN(), '-up-');
         break;
 
         case UserInput_R.LEFT_F_KEY_DOWN:   // клавиша вниз
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.DOWN;
-             UserInput_R.commandToFighterLeft.commandText = '-down-';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_DOWN_IN(), '-down-');
         break;
 
         case UserInput_R.LEFT_F_KEY_RUN:  // клавиша бег
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.RUN;
-             UserInput_R.commandToFighterLeft.commandText = 'run';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_RUN_IN(), 'run');
         break;
 
         case UserInput_R.LEFT_F_KEY_FRONTPUNCH:   // клавиша пердняя рука
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.FRONTPUNCH;
-             UserInput_R.commandToFighterLeft.commandText = 'punch Up';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_FRONTPUNCH_IN(), 'punch Up');
         break;
 
         case UserInput_R.LEFT_F_KEY_BACKPUNCH:   // клавиша задняя рука
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.BACKPUNCH;
-             UserInput_R.commandToFighterLeft.commandText = 'punch Midle';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_BACKPUNCH_IN(), 'punch Midle');
         break;
 
         case UserInput_R.LEFT_F_KEY_FRONTKICK:   // клавиша передняя нога
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.FRONTKICK;
-             UserInput_R.commandToFighterLeft.commandText = 'kick Front';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_FRONTKICK_IN(), 'kick Front');
         break;
 
         case UserInput_R.LEFT_F_KEY_BACKKICK:   // клавиша задняя нога
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.BACKKICK;
-             UserInput_R.commandToFighterLeft.commandText = 'kick Back';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_BACKKICK_IN(), 'kick Back');
         break;
 
         case UserInput_R.LEFT_F_KEY_BLOCK:   // клавиша блок
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.BLOCK;
-             UserInput_R.commandToFighterLeft.commandText = 'block';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_BLOCK_IN(), 'block');
         break;
 
         case UserInput_R.LEFT_F_KEY_TELEPORT:   // клавиша телепорт
-             UserInput_R.commandToFighterLeft.command  = CommandToFighter_R.TELEPORT;
-             UserInput_R.commandToFighterLeft.commandText = 'teleport';
+             UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+             (UserInput_R.get_CommandToFighter_R_TELEPORT_IN(), 'teleport');
         break;
 
     };
 
  };
 
+// во время нажатия клавиши вызывается эта функция
  UserInput_R.keyDownU = function(event) {
 
+     //заносим скан код клавиши
      UserInput_R.eventG = event.keyCode;
+
+     // заполняем левого игрока
      UserInput_R.eventUserLeft();
  };
 
+//
  UserInput_R.keyUpU = function(event) {
 
     UserInput_R.eventG = 0;
-    UserInput_R.commandToFighterLeft.command  = 0;
-    UserInput_R.commandToFighterLeft.commandText = 'fighting Stance';
+    UserInput_R.set_CommandToFighter_R_commandToFighterGammerLeft_IN
+    (UserInput_R.get_CommandToFighter_R_STANCE_IN(), 'fighting Stance');
  };
 
+ //добавляем слушателей
  UserInput_R.start = function() {
 
      window.addEventListener("keydown", UserInput_R.keyDownU);
      window.addEventListener("keyup", UserInput_R.keyUpU);
 
-     UserInput_R.commandToFighterLeft = CommandToFighter_R.commandToFighterGammerLeft;
      //console.log("V");
   };
 
