@@ -39,7 +39,7 @@
  //============================================================================
  // IMPLEMENTATION=============================================================
 
- Fighters_R.typeM = ["fightingStance", "running", "walkingForward", "walkingBack", "punchUp",
+ Fighters_R.typeM = ["fightingStance", "walkingForward", "walkingBack", "running", "punchUp",
                             "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
 
  Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
@@ -59,6 +59,7 @@ function FighterSheeva_mk3_CL () {
     this.MAX_STAMINA = 100; //
 
     this.state;
+    this.busy = 0;
     this.left;
     this.top;
     this.mirror; // Direction_RIGHT_LEFT
@@ -120,62 +121,101 @@ function FighterSheeva_mk3_CL () {
      // tickAnimation ---------------------------------------
      this.tickAnimation = function() {
          this.spritesAnimators.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);
+         if (this.spritesAnimators.inProcess == 0) this.busy = 0;
      };
+
+    this.switchToState = function(toState) {
+
+      var ret = 0;
+
+      switch(toState){
+
+           case "fightingStance":
+               ret = 0;
+           break;
+
+           case "running":
+               ret = 0;
+           break;
+           case "walkingForward":
+               ret = 0;
+           break;
+           case "walkingBack":
+               ret = 0;
+           break;
+           case "punchUp":
+               ret = 1;
+           break;
+           case "punchMidle":
+               ret = 1;
+           break;
+           case "kickFront":
+               ret = 1;
+           break;
+           case "kickingBack":
+               ret = 1;
+           break;
+           case "blockingHigh":
+               ret = 0;
+           break;
+           case "blockingLow":
+               ret = 0;
+           break;
+           case "beingHit":
+               ret = 1;
+           break;
+      }; //switch(toState){
+
+      return (ret);
+
+    };
 
      // setState--------------------------------------------------------
      this.setState = function(toState) {
 
-      if(toState != this.state){
-           if( (toState == "fightingStance")||(toState == "walkingForward")||(toState == "walkingBack")||(toState == "block")||(toState == "blockLow") ){
-           //alert("1");
-                    this.state = toState;
-           } else {
-           // alert("2");
-               //  if(this.spritesAnimators.busy == 0){
-                       this.state = toState;
-               //  };
+      // if(toState != this.state){
+      //      if( (this.state == "fightingStance")||
+      //      (this.state == "walkingForward")||(this.state == "walkingBack")||
+      //      (this.state == "block")||(this.state == "blockLow") ){
+      //      //alert("1");
+      //               this.state = toState;
+      //               if (toState != "fightingStance") this.busy = 1;
+      //      } else {
+      //      // alert("2");
+      //            if(this.spritesAnimators.inProcess == 0){
+      //                  this.state = toState;
+      //                  if (toState != "fightingStance") this.busy = 1;
+      //            };
+      //     };
+      // } else {
+      //     if(this.spritesAnimators.inProcess == 0) {
+      //        if (toState != "fightingStance") this.busy = 1;
+      //      }
+      //
+      // };//if(toState != this.state){
+        if(toState != this.state){
+            if( this.busy == 0){
+              this.state = toState;
+              if( this.switchToState(toState) == 1) this.busy = 1;
+            }
+
+        } else {
+          if(this.spritesAnimators.inProcess == 0) {
+             if( this.switchToState(toState) == 1) this.busy = 1;
           };
-      };//if(toState != this.state){
-      /*
-            switch(toState){
 
-                 case "fightingStance":
+        };//if(toState != this.state){
 
-                 break;
-
-                 case "running":
-
-                 break;
-                 case "walkingForward":
-
-                 break;
-                 case "walkingBack":
-
-                 break;
-                 case "punchUp":
-
-                 break;
-                 case "punchMidle":
-
-                 break;
-                 case "kickFront":
-
-                 break;
-                 case "kickingBack":
-
-                 break;
-                 case "blockingHigh":
-
-                 break;
-                 case "blockingLow":
-
-                 break;
-                 case "beingHit":
-
-                 break;
-            };
-      */
      };//this.setState
+
+// когда удар проходит то вклчаем анимацию попадания несмотря на текущее состояние
+this.setStateBeingHit = function(toState) {
+    if(toState != this.state){
+       this.state = toState;
+       this.busy = 1;
+    }
+};
+
 };//FighterSheeva_mk3_CL () {
 
 //CLCLCLCLCL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

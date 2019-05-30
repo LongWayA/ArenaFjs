@@ -159,7 +159,8 @@
          }
  };
 
-
+SpritesAnimators_R.YES_MIRROR = 1;
+SpritesAnimators_R.NO_MIRROR = 0;
 
  // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
 
@@ -239,28 +240,30 @@ function SpritesAnimators_CL () {
     this.name = "SpritesAnimators_CL";
 
     this.num;
-    this.busy = 0;
+    this.inProcess = 0;
     this.type;
     this.oldType = "no";
 
 
     //setType-------------------------------------------------------
     this.setType = function(toType) {
-
      //alert("this.type = " + this.type + " toType = " + toType);
-         this.type = toType;
+     //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
 
-           if (this.oldType != toType) {
-              this.oldType = toType;
-              this.num = 0;
-              this.busy = 1;
-           };
-     };
+      if (this.oldType != toType) {
+         this.type = toType;
+         this.oldType = toType;
+         this.num = 0;
+         this.inProcess = 1;
+      } else {
+         if (this.inProcess == 0) this.inProcess = 1;
+      };
+    };
 
      //animation-------------------------------------------------------
      this.animation = function(mirror,left, top) {
 
-         if (mirror == 0){
+         if (mirror == SpritesAnimators_R.NO_MIRROR){
               SpritesAnimators_R.SpritesFighter_R_drawSprite_IN(
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
@@ -273,7 +276,7 @@ function SpritesAnimators_CL () {
          this.num = this.num + 1;
          if (this.num > SpritesAnimators_R.animatorsSheeva_mk3[this.type].max - 1 ) {
              this.num = 0;
-             this.busy = 0;
+             this.inProcess = 0;
          };
      };
 
@@ -282,14 +285,14 @@ function SpritesAnimators_CL () {
 
        this.setType(typeStateAnimators);
 
-         if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
-              SpritesAnimators_R.Sound_R_IN(this.type);
-         };
+        // if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
+        //      SpritesAnimators_R.Sound_R_IN(this.type);
+        // };
 
          if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
               if (this.num > 3 ){
                  this.num = 3;
-                 this.busy = 0;
+                 //this.inProcess = 0;
               }
               this.animation(mirror, left, top);
          }else {

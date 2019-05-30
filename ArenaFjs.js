@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 07.07.2018 - 30.12.2018
+ // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019
 
   /*
    НАЗНАЧЕНИЕ
@@ -23,75 +23,48 @@ ArenaFjs_R.name = "ArenaFjs";//
 
 // INPUT======================================================================
 
-// Game_R
-ArenaFjs_R.get_Game_R_img_load_end_IN = function() {
-   return (Game_R.img_load_end);
-};
-
-// Timer_R
-ArenaFjs_R.get_Timer_R_timeThreadSleepGameMs_IN = function() {
-   return (Timer_R.timeThreadSleepGameMs);
-};
-
-ArenaFjs_R.Timer_R_updateTimeBeforeTick_IN = function() {
-   Timer_R.updateTimeBeforeTick();
-};
-
-ArenaFjs_R.Timer_R_updateTimeAfterTick_IN = function() {
-   Timer_R.updateTimeAfterTick();
-};
-
-// Fighters_R
-ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
-   return (Fighters_R.typeM.length-1);
-};
-
- ArenaFjs_R.fighterSheeva_mk3_1_setState_IN = function(num) {
-    Fighters_R.fighterSheeva_mk3_1.setState(Fighters_R.typeM[num]);
- };
-
- ArenaFjs_R.fighterSheeva_mk3_2_setState_IN = function(num) {
-    Fighters_R.fighterSheeva_mk3_2.setState(Fighters_R.typeM[num]);
- };
 
 // UserInput_R
- ArenaFjs_R.UserInput_R_tick_IN = function() {
-    UserInput_R.tick();
- };
+ArenaFjs_R.UserInput_R1 = Object.create(UserInput_R);//
+
+
+// Game_R
+ArenaFjs_R.Game_R1 = Object.create(Game_R);//
+
+// Timer_R
+ArenaFjs_R.Timer_R1 = Object.create(Timer_R);//
+
+
+// Fighters_R
+ArenaFjs_R.Fighters_R1 = Object.create(Fighters_R);//
+
 
 // GameColculation_R
-  ArenaFjs_R.GameColculation_R_tick_IN = function() {
-     GameColculation_R.tick();
-  };
+ArenaFjs_R.GameColculation_R1 = Object.create(GameColculation_R);//
+
 
 // Render_R
-  ArenaFjs_R.Render_R_drawAll_IN = function() {
-     Render_R.drawAll();
-  };
+ArenaFjs_R.Render_R1 = Object.create(Render_R);//
+
 
 // GameText_R
-  ArenaFjs_R.GameText_R_drawText_IN = function(num) {
-     GameText_R.drawText (Fighters_R.typeM[num],150, 385, 'italic 20px sans-serif', 'red', 1);
-  };
+ArenaFjs_R.GameText_R1 = Object.create(GameText_R);//
+
 
 // AICommand_R
-  ArenaFjs_R.AICommand_R_tick_IN = function() {
-     // компьютер отдает приказы каждый такт
-     AICommand_R.tick();//
-  };
+ArenaFjs_R.AICommand_R1 = Object.create(AICommand_R);//
 
-  // Move_R
-  ArenaFjs_R.Move_R_tick_IN = function() {
-      // обрабатываем движение бойцов
-      Move_R.tick();
-  };
 
-  // Fight_R
-  ArenaFjs_R.Fight_R_tick_IN = function() {
-      // обрабатываем бой
-      Fight_R.tick();
-  };
+// Move_R
+ArenaFjs_R.Move_R1 = Object.create(Move_R);//
 
+
+// Fight_R
+ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
+
+
+ // CommandToFighter_R
+ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
 
 
 // IMPLEMENTATION=============================================================
@@ -106,12 +79,14 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
        if (ArenaFjs_R.countLoop == 24){
           ArenaFjs_R.il_2 = ArenaFjs_R.il;
           //if(Game_R.ArenaFjs.il_2 == 0) Game_R.ArenaFjs.il_2 = 1;
+          ArenaFjs_R.Fighters_R1.fighterSheeva_mk3_1
+                    .setState(ArenaFjs_R.Fighters_R1.typeM[ArenaFjs_R.il]);
 
-           ArenaFjs_R.fighterSheeva_mk3_1_setState_IN(ArenaFjs_R.il);
-           ArenaFjs_R.fighterSheeva_mk3_2_setState_IN(ArenaFjs_R.il);
+           ArenaFjs_R.Fighters_R1.fighterSheeva_mk3_2
+                    .setState(ArenaFjs_R.Fighters_R1.typeM[ArenaFjs_R.il]);
 
           ArenaFjs_R.il = ArenaFjs_R.il + 1;
-          if (ArenaFjs_R.il > ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN()) ArenaFjs_R.il = 0;
+          if (ArenaFjs_R.il > ArenaFjs_R.Fighters_R1.typeM.length-1) ArenaFjs_R.il = 0;
 
        };
 
@@ -123,30 +98,35 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
   ArenaFjs_R.tick = function() {
 
     // временная заглушка
-       ArenaFjs_R.oldDemonstr();
+      // ArenaFjs_R.oldDemonstr();
 
     //alert("!");
     // человек отдает приказы с клавиатуры и они обрабатываются событийно.
-	  //ArenaFjs_R.UserInput_R_tick_IN();//
+	  ArenaFjs_R.UserInput_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
 
     // компьютер отдает приказы каждый такт
-    ArenaFjs_R.AICommand_R_tick_IN();//
+    ArenaFjs_R.AICommand_R1.tick();//
+
+    // передаются команды бойцам и бойцицам
+    ArenaFjs_R.CommandToFighter_R1.tick();
 
     // обрабатываем движение бойцов
-    ArenaFjs_R.Move_R_tick_IN();
+    ArenaFjs_R.Move_R1.tick();
 
     // обрабатываем бой
-    ArenaFjs_R.Fight_R_tick_IN();
+    ArenaFjs_R.Fight_R1.tick();
 
-    //
-    ArenaFjs_R.GameColculation_R_tick_IN();
+    // тоже что то можем обработать, но пока не знаю что.
+    ArenaFjs_R.GameColculation_R1.tick();
 
     // отрисовываем всю графику
-    ArenaFjs_R.Render_R_drawAll_IN();
+    ArenaFjs_R.Render_R1.drawAll();
 
     //alert("!");
     // что это за текст? почему он пишется именно здесь?
-    ArenaFjs_R.GameText_R_drawText_IN(ArenaFjs_R.il_2);
+    ArenaFjs_R.GameText_R1.drawText
+    (ArenaFjs_R.Fighters_R1.typeM[ArenaFjs_R.il_2], 150, 385
+      , 'italic 20px sans-serif', 'red', 1);
 
 
  //<TEST ------------------------------------------------------
@@ -169,6 +149,7 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
   };
   // ini< ----------------------------------------------------------------------
 
+
   // start> --------------------------------------------------------------------
   ArenaFjs_R.start = function(){
 
@@ -185,17 +166,17 @@ ArenaFjs_R.get_Fighters_R_typeM_length_min_1_IN = function() {
 
   ArenaFjs_R.timerId = setTimeout( function tick(){
 
-        ArenaFjs_R.Timer_R_updateTimeBeforeTick_IN();
-        if(ArenaFjs_R.get_Game_R_img_load_end_IN() == 1){
+        ArenaFjs_R.Timer_R1.updateTimeBeforeTick();
+        if( ArenaFjs_R.Game_R1.img_load_end == 1 ){
             // alert("!-");
              ArenaFjs_R.tick();
 
         };
 
-        ArenaFjs_R.Timer_R_updateTimeAfterTick_IN();
-        ArenaFjs_R.timerId = setTimeout( tick,ArenaFjs_R.get_Timer_R_timeThreadSleepGameMs_IN());
+        ArenaFjs_R.Timer_R1.updateTimeAfterTick();
+        ArenaFjs_R.timerId = setTimeout( tick,ArenaFjs_R.Timer_R1.timeThreadSleepGameMs);
 
-  }, ArenaFjs_R.get_Timer_R_timeThreadSleepGameMs_IN());
+  }, ArenaFjs_R.Timer_R1.timeThreadSleepGameMs);
 // loop<------------------------------------------------------------------------
 
   Game_R.yT = Game_R.yT + Game_R.dyT;//

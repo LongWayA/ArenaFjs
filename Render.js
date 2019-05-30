@@ -113,10 +113,14 @@ Render_R.Fighters_R_fighterSheeva_mk3_2_tickAnimation_IN = function() {
   Fighters_R.fighterSheeva_mk3_2.tickAnimation();
 };
 
-Render_R.Fighters_R_fighterSheeva_mk3_1_spritesAnimators_busy_IN = function() {
-   return (Fighters_R.fighterSheeva_mk3_1.spritesAnimators.busy);
+Render_R.Fighters_R_fighterSheeva_mk3_1_spritesAnimators_inProcess_IN = function() {
+   return (Fighters_R.fighterSheeva_mk3_1.spritesAnimators.inProcess);
 };
 
+
+Render_R.Fighters_R_fighterSheeva_mk3_1_busy_IN = function() {
+   return (Fighters_R.fighterSheeva_mk3_1.busy);
+};
 
 // Game_R context
 
@@ -235,7 +239,9 @@ Render_R.UserInput_R_eventG_IN = function() {
 	// поле боя
 	Render_R.GameText_R_drawRect_IN(x, y, width, height, 1, 'green', 0);
 
-    Render_R.GameText_R_drawText_IN ("busy = " + Render_R.Fighters_R_fighterSheeva_mk3_1_spritesAnimators_busy_IN(),x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
+    Render_R.GameText_R_drawText_IN ("inProcess = " + Render_R.Fighters_R_fighterSheeva_mk3_1_spritesAnimators_inProcess_IN(),x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
+    Render_R.GameText_R_drawText_IN ("busy = " + Render_R.Fighters_R_fighterSheeva_mk3_1_busy_IN(),x+450, y+370, 'italic 20px sans-serif', 'blue', 1);
+
   };
   //---------------------------------------------------------------------------------------------------------------
 
