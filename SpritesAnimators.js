@@ -30,8 +30,7 @@
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
 
    FighterSheeva_mk3
-                    this.spritesAnimators = new SpritesAnimators_CL();
-                    spritesAnimators.all_Animation()
+
   */
 
 
@@ -49,13 +48,7 @@
 
 // SpritesFighter_R
 
- SpritesAnimators_R.SpritesFighter_R_drawSprite_IN = function(type,index,left, top) {
-   SpritesFighter_R.drawSprite(type,index,left, top);
- };
-
- SpritesAnimators_R.SpritesFighter_R_drawSpriteMirror_IN = function(type,index,left, top) {
-   SpritesFighter_R.drawSpriteMirror(type,index,left, top);
- };
+SpritesAnimators_R.SpritesFighter_R1 = Object.create(SpritesFighter_R);//
 
 // Sound_R
 
@@ -68,7 +61,7 @@
  // IMPLEMENTATION=============================================================
 
  SpritesAnimators_R.animatorsSheeva_mk3 = {
-        name : "AnimatorsSheeva_mk3_CL",
+        name : "AnimatorsSheeva_mk3",
 
         fightingStance : {
              translate : "fightingStance",
@@ -162,9 +155,81 @@
 SpritesAnimators_R.YES_MIRROR = 1;
 SpritesAnimators_R.NO_MIRROR = 0;
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+//
+SpritesAnimators_R.SpritesAnimators_id = {
+
+    name : "SpritesAnimators",
+
+    num : 0,
+    inProcess : 0,
+    type : "n",
+    oldType : "no",
+
+
+    //setType-------------------------------------------------------
+    setType : function(toType) {
+     //alert("this.type = " + this.type + " toType = " + toType);
+     //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
+
+      if (this.oldType != toType) {
+         this.type = toType;
+         this.oldType = toType;
+         this.num = 0;
+         this.inProcess = 1;
+      } else {
+         if (this.inProcess == 0) this.inProcess = 1;
+      };
+    },
+
+     //animation-------------------------------------------------------
+     animation : function(mirror,left, top) {
+
+         if (mirror == SpritesAnimators_R.NO_MIRROR){
+              SpritesAnimators_R.SpritesFighter_R1.drawSprite(
+                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
+                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
+         }else{
+              SpritesAnimators_R.SpritesFighter_R1.drawSpriteMirror(
+                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
+                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
+         };
+
+         this.num = this.num + 1;
+         if (this.num > SpritesAnimators_R.animatorsSheeva_mk3[this.type].max - 1 ) {
+             this.num = 0;
+             this.inProcess = 0;
+         };
+     },
+
+     //all_Animation-------------------------------------------------------
+     all_Animation : function(typeStateAnimators, left, top, mirror, width, height){
+
+       this.setType(typeStateAnimators);
+
+        // if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
+      //        SpritesAnimators_R.Sound_R_IN(this.type);
+      //   };
+
+         if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
+              if (this.num > 3 ){
+                 this.num = 3;
+                 //this.inProcess = 0;
+              }
+              this.animation(mirror, left, top);
+         }else {
+              this.animation(mirror, left, top);
+         };
+     },
+};//SpritesAnimators_R.SpritesAnimators_id
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
  // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
 
- SpritesAnimators_R.spritesAnimatorsTest = new SpritesAnimators_CL();
+ SpritesAnimators_R.spritesAnimatorsTest = Object.create(SpritesAnimators_R.SpritesAnimators_id);//
 
  SpritesAnimators_R.animationAll_TEST = function(){
 
@@ -232,77 +297,7 @@ SpritesAnimators_R.NO_MIRROR = 0;
 
  //SpritesAnimators_R.proba.b();
  */
-//CLCLCLCLCL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-//class SpritesAnimators_CL
-function SpritesAnimators_CL () {
-
-    this.name = "SpritesAnimators_CL";
-
-    this.num;
-    this.inProcess = 0;
-    this.type;
-    this.oldType = "no";
-
-
-    //setType-------------------------------------------------------
-    this.setType = function(toType) {
-     //alert("this.type = " + this.type + " toType = " + toType);
-     //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
-
-      if (this.oldType != toType) {
-         this.type = toType;
-         this.oldType = toType;
-         this.num = 0;
-         this.inProcess = 1;
-      } else {
-         if (this.inProcess == 0) this.inProcess = 1;
-      };
-    };
-
-     //animation-------------------------------------------------------
-     this.animation = function(mirror,left, top) {
-
-         if (mirror == SpritesAnimators_R.NO_MIRROR){
-              SpritesAnimators_R.SpritesFighter_R_drawSprite_IN(
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
-         }else{
-              SpritesAnimators_R.SpritesFighter_R_drawSpriteMirror_IN(
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
-         };
-
-         this.num = this.num + 1;
-         if (this.num > SpritesAnimators_R.animatorsSheeva_mk3[this.type].max - 1 ) {
-             this.num = 0;
-             this.inProcess = 0;
-         };
-     };
-
-     //all_Animation-------------------------------------------------------
-     this.all_Animation = function(typeStateAnimators, left, top, mirror, width, height){
-
-       this.setType(typeStateAnimators);
-
-        // if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
-        //      SpritesAnimators_R.Sound_R_IN(this.type);
-        // };
-
-         if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
-              if (this.num > 3 ){
-                 this.num = 3;
-                 //this.inProcess = 0;
-              }
-              this.animation(mirror, left, top);
-         }else {
-              this.animation(mirror, left, top);
-         };
-     };
-
-
-};//function SpritesAnimators_CL () {
-//CLCLCLCLCL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//

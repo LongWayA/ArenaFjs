@@ -10,8 +10,6 @@
 
    ИСПОЛЬЗУЕТ МОДУЛИ
 
-   используем функцию конструктор SpritesAnimators_CL();
-   изм модуля SpritesAnimators_R
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
 
@@ -44,7 +42,7 @@
 
 
 Fighters_R.FighterSheeva_mk3 = {
-    name : "FighterSheeva_mk3_CL",
+    name : "FighterSheeva_mk3",
 
     MAX_HEALTH : 1000, //
     MAX_STAMINA : 100, //
@@ -211,11 +209,11 @@ setStateBeingHit : function(toState) {
     };
 },
 
-};//FighterSheeva_mk3_CL () {
+};//Fighters_R.FighterSheeva_mk3
 
 
-Fighters_R.spritesAnimators1 = new SpritesAnimators_CL();
-Fighters_R.spritesAnimators2 = new SpritesAnimators_CL();
+Fighters_R.spritesAnimators1  = Object.create(SpritesAnimators_R.SpritesAnimators_id);//
+Fighters_R.spritesAnimators2  = Object.create(SpritesAnimators_R.SpritesAnimators_id);//
 
 Fighters_R.fighterSheeva_mk3_1 = Object.create(Fighters_R.FighterSheeva_mk3);//
 Fighters_R.fighterSheeva_mk3_2 = Object.create(Fighters_R.FighterSheeva_mk3);//
