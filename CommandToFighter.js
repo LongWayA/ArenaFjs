@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 19.08.2018 - 19.03.2019
+ // Last modified 19.08.2018 - 19.03.2019 - 30.05.2019
 
   /*
    $ -переменные
@@ -23,13 +23,6 @@ CommandToFighter_R.name = 'CommandToFighter';//
 // INPUT========================================================================
 
 // Fighters_R
-CommandToFighter_R.fighterSheeva_mk3_1_setState_IN = function(num) {
-   Fighters_R.fighterSheeva_mk3_1.setState(Fighters_R.typeM[num]);
-};
-
-CommandToFighter_R.get_fighterSheeva_mk3_1_mirror_IN = function() {
-   return (Fighters_R.fighterSheeva_mk3_1.mirror);
-};
 
 
 // IMPLEMENTATION===============================================================
@@ -51,22 +44,28 @@ CommandToFighter_R.BLOCK      = 10;// блок
 CommandToFighter_R.TELEPORT   = 11;// перемещение в другой конец арены,
                                    // применяется против зажима у края
 
+CommandToFighter_R.saveCommandToFighter = {
+    name        : 'saveCommandToFighter',
+    command     : 'command',
+    commandText : 'commandText'
+};
+
 // левый боец управляемый человеком
-CommandToFighter_R.commandToFighterGammerLeft = new CommandToFighter_CL();
+CommandToFighter_R.commandToFighterGammerLeft = Object.create(CommandToFighter_R.saveCommandToFighter);
 
 // правый боец управляемый человеком
-CommandToFighter_R.commandToFighterGammerRight = new CommandToFighter_CL();
+CommandToFighter_R.commandToFighterGammerRight  = Object.create(CommandToFighter_R.saveCommandToFighter);
 
 // левый боец управляеый компьютером
-CommandToFighter_R.commandToFighterAILeft = new CommandToFighter_CL();
+CommandToFighter_R.commandToFighterAILeft  = Object.create(CommandToFighter_R.saveCommandToFighter);
 
 // правый боец управляемый копьютером
-CommandToFighter_R.commandToFighterAIRight = new CommandToFighter_CL();
+CommandToFighter_R.commandToFighterAIRight  = Object.create(CommandToFighter_R.saveCommandToFighter);
 
 
 
 //
-CommandToFighter_R.get_commandToNumState = function(command) {
+CommandToFighter_R.get_commandToNumState = function(_fighters_R, command) {
 
    var numState = 0;
 
@@ -77,7 +76,7 @@ CommandToFighter_R.get_commandToNumState = function(command) {
        break;
 
        case CommandToFighter_R.LEFT:  //
-           if (CommandToFighter_R.get_fighterSheeva_mk3_1_mirror_IN() == 1) {
+           if (_fighters_R.fighterSheeva_mk3_1.mirror == 1) {
               numState = 1;
            } else {
               numState = 2;
@@ -85,7 +84,7 @@ CommandToFighter_R.get_commandToNumState = function(command) {
        break;
 
        case CommandToFighter_R.RIGHT:  //
-           if (CommandToFighter_R.get_fighterSheeva_mk3_1_mirror_IN() != 1) {
+           if (_fighters_R.fighterSheeva_mk3_1.mirror != 1) {
               numState = 1;
            } else {
               numState = 2;
@@ -137,42 +136,23 @@ CommandToFighter_R.get_commandToNumState = function(command) {
 
 
 // тут передаем команды  от человека левому бойцу
-CommandToFighter_R.GammerToFighterLeftTick = function() {
-
-CommandToFighter_R.fighterSheeva_mk3_1_setState_IN
-( CommandToFighter_R.get_commandToNumState ( CommandToFighter_R.commandToFighterGammerLeft.command) );
-
-
+CommandToFighter_R.GammerToFighterLeftTick = function(_fighters_R) {
+   _fighters_R.fighterSheeva_mk3_1.setState(
+     _fighters_R.spritesAnimators1,
+        _fighters_R.typeM[
+          CommandToFighter_R.get_commandToNumState
+          ( _fighters_R, CommandToFighter_R.commandToFighterGammerLeft.command)
+        ]
+   );
 };
 
 
 
  // тут передаем команды всем бойцам и бойцицам
- CommandToFighter_R.tick = function() {
-
-         CommandToFighter_R.GammerToFighterLeftTick();
+ CommandToFighter_R.tick = function(_fighters_R) {
+         CommandToFighter_R.GammerToFighterLeftTick(_fighters_R);
 
  };
-
-
-
-//CLCLCLCLCL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-function CommandToFighter_CL () {
-
-    this.name = 'CommandToFighter_CL';
-
-    this.command;
-
-    this.commandText;
-
-    // tickAnimation ---------------------------------------
-    //this.tickAnimation = function() {
-
-    //};
-};//CommandToFighter_CL () {
-
-//CLCLCLCLCL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('5   module "CommandToFighter" loaded', 1100, Game_R.yT);

@@ -23,9 +23,19 @@ ArenaFjs_R.name = "ArenaFjs";//
 
 // INPUT======================================================================
 
+// Fighters_R
+ArenaFjs_R.Fighters_R1 = Object.create(Fighters_R);//
+
+// CommandToFighter_R
+ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
 
 // UserInput_R
 ArenaFjs_R.UserInput_R1 = Object.create(UserInput_R);//
+
+// AICommand_R
+ArenaFjs_R.AICommand_R1 = Object.create(AICommand_R);//
+
+
 
 
 // Game_R
@@ -33,10 +43,6 @@ ArenaFjs_R.Game_R1 = Object.create(Game_R);//
 
 // Timer_R
 ArenaFjs_R.Timer_R1 = Object.create(Timer_R);//
-
-
-// Fighters_R
-ArenaFjs_R.Fighters_R1 = Object.create(Fighters_R);//
 
 
 // GameColculation_R
@@ -51,20 +57,12 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 ArenaFjs_R.GameText_R1 = Object.create(GameText_R);//
 
 
-// AICommand_R
-ArenaFjs_R.AICommand_R1 = Object.create(AICommand_R);//
-
-
 // Move_R
 ArenaFjs_R.Move_R1 = Object.create(Move_R);//
 
 
 // Fight_R
 ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
-
-
- // CommandToFighter_R
-ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
 
 
 // IMPLEMENTATION=============================================================
@@ -105,10 +103,12 @@ ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
 	  ArenaFjs_R.UserInput_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
 
     // компьютер отдает приказы каждый такт
-    ArenaFjs_R.AICommand_R1.tick();//
+    ArenaFjs_R.AICommand_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
 
     // передаются команды бойцам и бойцицам
-    ArenaFjs_R.CommandToFighter_R1.tick();
+    ArenaFjs_R.CommandToFighter_R1.tick(ArenaFjs_R.Fighters_R1);
+
+
 
     // обрабатываем движение бойцов
     ArenaFjs_R.Move_R1.tick();
@@ -148,10 +148,42 @@ ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
 
   };
   // ini< ----------------------------------------------------------------------
+/*
 
+ArenaFjs_R.test = {
+
+  t1 : 1,
+  t2 : 2,
+
+  print : function(){
+     alert("t1 =" + this.t1 + " t2 =" + ArenaFjs_R.test.t2);
+     //alert("!");
+  }
+};
+
+
+ArenaFjs_R.test1 = Object.create(ArenaFjs_R.test);//
+ArenaFjs_R.test2 = Object.create(ArenaFjs_R.test);//
+*/
+
+//alert("!");
 
   // start> --------------------------------------------------------------------
   ArenaFjs_R.start = function(){
+
+/*
+    ArenaFjs_R.test.print();
+
+    ArenaFjs_R.test1.t1 = 10;
+    ArenaFjs_R.test1.t2 = 20;
+
+    ArenaFjs_R.test1.print();
+
+    ArenaFjs_R.test2.t1 = 100;
+    ArenaFjs_R.test2.t2 = 200;
+
+    ArenaFjs_R.test2.print();
+*/
 
      //alert("!");
      //alert( Menu_R.name );

@@ -106,15 +106,15 @@ Render_R.ArenaScene_R_framesArena_displayWidth_IN = function() {
 // Fighters_R
 
 Render_R.Fighters_R_fighterSheeva_mk3_1_tickAnimation_IN = function() {
-  Fighters_R.fighterSheeva_mk3_1.tickAnimation();
+  Fighters_R.fighterSheeva_mk3_1.tickAnimation(Fighters_R.spritesAnimators1);
 };
 
 Render_R.Fighters_R_fighterSheeva_mk3_2_tickAnimation_IN = function() {
-  Fighters_R.fighterSheeva_mk3_2.tickAnimation();
+  Fighters_R.fighterSheeva_mk3_2.tickAnimation(Fighters_R.spritesAnimators2);
 };
 
 Render_R.Fighters_R_fighterSheeva_mk3_1_spritesAnimators_inProcess_IN = function() {
-   return (Fighters_R.fighterSheeva_mk3_1.spritesAnimators.inProcess);
+   return (Fighters_R.spritesAnimators1.inProcess);
 };
 
 

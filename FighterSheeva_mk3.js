@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified 21.07.2018 - 30.12.2018
+// Last modified 21.07.2018 - 30.12.2018 - 31.05.2019
 
   /*
    $ -переменные
@@ -42,53 +42,43 @@
  Fighters_R.typeM = ["fightingStance", "walkingForward", "walkingBack", "running", "punchUp",
                             "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
 
- Fighters_R.fighterSheeva_mk3_1 = new FighterSheeva_mk3_CL();
- Fighters_R.fighterSheeva_mk3_2 = new FighterSheeva_mk3_CL();
 
- Fighters_R.fighterSheeva_mk3_1.setState("fightingStance");
- Fighters_R.fighterSheeva_mk3_2.setState("fightingStance");
+Fighters_R.FighterSheeva_mk3 = {
+    name : "FighterSheeva_mk3_CL",
 
-//CLCLCLCLCL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    MAX_HEALTH : 1000, //
+    MAX_STAMINA : 100, //
 
-function FighterSheeva_mk3_CL () {
-    this.name = "FighterSheeva_mk3_CL";
-
-    this.spritesAnimators = new SpritesAnimators_CL();
-
-    this.MAX_HEALTH = 1000; //
-    this.MAX_STAMINA = 100; //
-
-    this.state;
-    this.busy = 0;
-    this.left;
-    this.top;
-    this.mirror; // Direction_RIGHT_LEFT
-    this.width;
-    this.height;
+    state : "fightingStance",
+    busy : 0,
+    left : 0,
+    top : 0,
+    mirror : 0, // Direction_RIGHT_LEFT
+    width : 0,
+    height : 0,
 
        // жизни бойца
-    this.health;
+    health : 0,
 
         // изменение жизней при попадании в хит
-    this.dhUpPunch;    //2% = (1000/100)*2 = 20
-    this.dhMidlePunch; //3%
-    this.dhFrontKick;  //5%
-    this.dhBackKick;   //7%
+    dhUpPunch : 0,    //2% = (1000/100)*2 = 20
+    dhMidlePunch : 0, //3%
+    dhFrontKick : 0,  //5%
+    dhBackKick : 0,   //7%
 
         // изменение жизней при попадании в блок
-    this.dhUpPunchBlock;     //0,4% = (1000/100)*0.4 = 4
-    this.dhMidlePunchBlock;  //0,6%
-    this.dhFrontKickBlock;  //1%
-    this.dhBackKickBlock;   //1,4%
+    dhUpPunchBlock : 0,     //0,4% = (1000/100)*0.4 = 4
+    dhMidlePunchBlock : 0,  //0,6%
+    dhFrontKickBlock : 0,  //1%
+    dhBackKickBlock : 0,   //1,4%
 
         // выносливость бойца
-    this.stamina;
+    stamina : 0,
 
         // изменение выносливости
-    this.ds;
+    ds : 0,
 
-    this.ini = function(left, top, mirror) {
-
+    ini : function(left, top, mirror) {
          this.state = "fightingStance";
          this.left = left;
          this.top =top;
@@ -116,15 +106,20 @@ function FighterSheeva_mk3_CL () {
 
         // изменение выносливости
         this.ds = 1;
-     };
+     },
 
      // tickAnimation ---------------------------------------
-     this.tickAnimation = function() {
-         this.spritesAnimators.all_Animation( this.state,  this.left, this.top,  this.mirror, this.width,  this.height);
-         if (this.spritesAnimators.inProcess == 0) this.busy = 0;
-     };
+     tickAnimation : function(_spritesAnimators) {
+       //alert("!");
+         _spritesAnimators.all_Animation(
+           this.state,  this.left,
+           this.top,  this.mirror,
+           this.width,  this.height);
 
-    this.switchToState = function(toState) {
+         if (_spritesAnimators.inProcess == 0) this.busy = 0;
+     },
+
+    switchToState : function(toState) {
 
       var ret = 0;
 
@@ -168,10 +163,10 @@ function FighterSheeva_mk3_CL () {
 
       return (ret);
 
-    };
+    },
 
      // setState--------------------------------------------------------
-     this.setState = function(toState) {
+     setState : function(_spritesAnimators, toState) {
 
       // if(toState != this.state){
       //      if( (this.state == "fightingStance")||
@@ -200,26 +195,35 @@ function FighterSheeva_mk3_CL () {
             }
 
         } else {
-          if(this.spritesAnimators.inProcess == 0) {
+          if(_spritesAnimators.inProcess == 0) {
              if( this.switchToState(toState) == 1) this.busy = 1;
           };
 
         };//if(toState != this.state){
 
-     };//this.setState
+     },//this.setState
 
 // когда удар проходит то вклчаем анимацию попадания несмотря на текущее состояние
-this.setStateBeingHit = function(toState) {
+setStateBeingHit : function(toState) {
     if(toState != this.state){
        this.state = toState;
        this.busy = 1;
-    }
-};
+    };
+},
 
 };//FighterSheeva_mk3_CL () {
 
-//CLCLCLCLCL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+Fighters_R.spritesAnimators1 = new SpritesAnimators_CL();
+Fighters_R.spritesAnimators2 = new SpritesAnimators_CL();
+
+Fighters_R.fighterSheeva_mk3_1 = Object.create(Fighters_R.FighterSheeva_mk3);//
+Fighters_R.fighterSheeva_mk3_2 = Object.create(Fighters_R.FighterSheeva_mk3);//
+
+Fighters_R.fighterSheeva_mk3_1.setState(Fighters_R.spritesAnimators1, "fightingStance");
+Fighters_R.fighterSheeva_mk3_2.setState(Fighters_R.spritesAnimators2, "fightingStance");
+//Fighters_R.fighterSheeva_mk3_1.mirror = 0;
+//Fighters_R.fighterSheeva_mk3_2.mirror = 1;
 
  //alert("!");
 
