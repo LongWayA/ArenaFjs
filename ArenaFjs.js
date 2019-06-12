@@ -128,15 +128,6 @@ ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
     (ArenaFjs_R.Fighters_R1.typeM[ArenaFjs_R.il_2], 150, 385
       , 'italic 20px sans-serif', 'red', 1);
 
-
- //<TEST ------------------------------------------------------
-
-     // SpritesFighter_R.drawSprites_TEST();
-     //SpritesAnimators_R.animationAll_TEST();
-
-//TEST> ------------------------------------------------------
-
-
 	     ArenaFjs_R.countLoop = ArenaFjs_R.countLoop + 1;
        if (ArenaFjs_R.countLoop > 24 ) ArenaFjs_R.countLoop = 1;
   };
@@ -171,6 +162,11 @@ ArenaFjs_R.test2 = Object.create(ArenaFjs_R.test);//
   // start> --------------------------------------------------------------------
   ArenaFjs_R.start = function(){
 
+    //var table = document.body.children[15];
+  //  var table = document.getElementById('t1');
+
+//    alert( table.rows[0].cells[0].innerHTML ); // "один"
+
 /*
     ArenaFjs_R.test.print();
 
@@ -191,6 +187,56 @@ ArenaFjs_R.test2 = Object.create(ArenaFjs_R.test);//
   };
  // start< ---------------------------------------------------------------------
 
+// childNodesTest> --------------------------------------------------------------------
+ArenaFjs_R.childNodesTest = function(){
+
+  for (var i = 0; i < document.body.children.length; i++) {
+      //  alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
+  var x = 10;
+  var i2 = i*17;
+  if (i> 45){
+  x = 400;
+  i2 = i2 - 45*17;
+  };
+
+  if (i> 90){
+  x = 800;
+  i2 = i2 - 45*17;
+  };
+      //  ArenaFjs_R.GameText_R1.drawText
+    //   ('i= ' + i + " " + document.body.children[i].outerHTML, x, i2
+    //     , 'italic 20px sans-serif', 'red', 1);
+
+    //    ArenaFjs_R.GameText_R1.drawText
+  //      ('i= ' + i + " " + document.body.children[i].innerHTML, x, i2
+    //      , 'italic 20px sans-serif', 'red', 1);
+
+// document.body.children[i].textContent
+          ArenaFjs_R.GameText_R1.drawText
+          ('i= ' + i + " " + document.body.children[i], x, i2
+            , 'italic 20px sans-serif', 'red', 1);
+  };
+
+};
+// childNodesTest< ---------------------------------------------------------------------
+
+// tickTest> --------------------------------------------------------------------
+ArenaFjs_R.tickTest = function(){
+
+  //<TEST ------------------------------------------------------
+
+      // SpritesFighter_R.drawSprites_TEST();
+      //SpritesAnimators_R.animationAll_TEST();
+
+  //TEST> ------------------------------------------------------
+
+
+  ArenaFjs_R.childNodesTest();
+
+};
+// tickTest< ---------------------------------------------------------------------
+
+
 // loop>------------------------------------------------------------------------
   ArenaFjs_R.ini();
   ArenaFjs_R.start();
@@ -202,7 +248,7 @@ ArenaFjs_R.test2 = Object.create(ArenaFjs_R.test);//
         if( ArenaFjs_R.Game_R1.img_load_end == 1 ){
             // alert("!-");
              ArenaFjs_R.tick();
-
+             //ArenaFjs_R.tickTest();
         };
 
         ArenaFjs_R.Timer_R1.updateTimeAfterTick();

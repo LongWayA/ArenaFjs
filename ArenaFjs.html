@@ -1,107 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 	<head>
-		<meta charset="utf-8">
+		 <meta charset="utf-8">
 	   <title>Arena fighting </title>
 		 <link rel='stylesheet' href='ArenaFjs.css'/>
 		 <script>
 		   // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 			// Last modified 07.07.2018 - 15.07.2018
 		 </script>
-   </head>
 
-    <body>
-        <h1 align="center"> Arena fighting. Rising immortals (in development)</h1>
+		 <style>
+		 .st1 {
+		   background-color: white;
+		   color: red;
+		   margin: 20px;
+		   padding: 20px;
+		 }
 
-		  <p align="justify"><font size="4"> Last modified 1.06.2019 <> Mail : ArenaFightingMail@yandex.ru <>
-		  <a href="https://github.com/LongWayA/ArenaFjs"> Game source code on github.com </a></font></p>
+		 .st2 {
+		   background-color: blue;
+		   color: white;
+		   margin: 20px;
+		   padding: 20px;
+		 }
 
-			<p align="justify"><font size="4">
+		 .st3 {
+			 background-color: green;
+			 color: white;
+			 margin: 20px;
+			 padding: 20px;
+		 }
+
+		 .st4 {
+			 background-color: black;
+			 color: white;
+			 margin: 20px;
+			 padding: 20px;
+		 }
+
+
+		  .st5 {
+		 	 background-color: orange;
+		 	 color: white;
+		 	 margin: 20px;
+		 	 padding: 20px;
+		 	}
+
+			.st6 {
+		 	background-color: yellow;
+		 	color: white;
+		 	margin: 20px;
+		 	padding: 20px;
+		  }
+
+			.st7 {
+			background-color: blue;
+			color: orange;
+			margin: 20px;
+			padding: 20px;
+			}
+
+
+  </style>
+
+</head>
+
+<body>
+        <h1 class="st1" align="center"> Arena fighting Rising immortals (in development)</h1>
+
+		  <p class="st2" align="justify"><font size="4"> Last modified 12.06.2019 <> Mail : ArenaFightingMail@yandex.ru <>
+		  <a class="st7" href="https://github.com/LongWayA/ArenaFjs"> Game source code on github.com </a></font></p>
+
+			<p class="st2" align="justify"><font size="4">
 				Управление левым бойцом. Пока что в процессе наладки.
         Передняя и задняя конечность относительно боковой стойки.
 			 </font></p>
 
-			<p align="justify"><font size="4"> A-LEFT(движение влево),
+			<p class="st3" align="justify"><font size="4"> A-LEFT(движение влево),
 				D-RIGHT(движение вправо), W-UP(прыжок-нету),
 				S-DOWN(присесть-нету), J-RUN(бег),
 				K-TELEPORT(телепорт)</font></p>
 
-      <p align="justify"><font size="4"> U-FRONT PUNCH(удар передней рукой),
+      <p class="st3" align="justify"><font size="4"> U-FRONT PUNCH(удар передней рукой),
 				I-BACK PUNCH(удар задней рукой), O-FRONT KICK(удар передней ногой),
 				P-BACK KICK(удар задней ногой), SPASE-BLOCK(блок)</font></p>
 
 
-        <!--The game canvas-1600-800--------------------------------->
+        <!--The game canvas-1600-800 -->
         <canvas id='game-canvas' width='1500' height='800'>
             Your browser does not support HTML5 Canvas
         </canvas>
 
-	     <!--Sounds------------------------------------------->
+	     <!-- Sounds -->
 
-		  <!--female_conv-------------------------------------->
+		  <!-- female_conv -->
         <audio id='IA'>
-          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01500 ruk.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01500ruk.wav' type='audio/wav'>
         </audio>
 
         <audio id='IAA'>
-          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01505 nog.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01505nog.wav' type='audio/wav'>
         </audio>
 
         <audio id='IAAAA'>
-          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01525 beg.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01525beg.wav' type='audio/wav'>
         </audio>
 
-        <!--hitsounds_conv-------------------------------------->
-		  <!--попадание рукой-------------------------------------->
+      <!-- hitsounds_conv -->
+		  <!-- попадание рукой -->
         <audio id='STR_H'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00100 pu.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00100pu.wav' type='audio/wav'>
         </audio>
 
-		  <!--попадание ногой-------------------------------------->
+		  <!-- попадание ногой -->
         <audio id='STR_F'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00105 pm.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00105pm.wav' type='audio/wav'>
         </audio>
 
-		  <!--попадание по блоку-------------------------------------->
+		  <!-- попадание по блоку -->
         <audio id='STR_B'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00110 b.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00110b.wav' type='audio/wav'>
         </audio>
 
-		  <!--промах ногой-------------------------------------->
+		  <!-- промах ногой -->
         <audio id='F'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00145 k.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00145k.wav' type='audio/wav'>
         </audio>
 
-		  <!--промах рукой-------------------------------------->
+		  <!-- промах рукой -->
         <audio id='H'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00150 h.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00150h.wav' type='audio/wav'>
         </audio>
 
-		  <!--удары-------------------------------------->
+		  <!-- удары -->
         <audio id='STR'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00275 sh.wav' type='audio/wav'>
+          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00275sh.wav' type='audio/wav'>
         </audio>
 
 
-
-		  <!--Scripts-------------------------------------------------->
-	    <script src = 'Game.js'> </script>                  <!--1---->
-		  <script src = 'GameText.js'> </script>              <!--2---->
-      <script src = 'Sound.js'> </script>		              <!--3---->
-		  <script src = 'Timer.js'> </script>                 <!--4---->
-		  <script src = 'CommandToFighter.js'> </script>      <!--5---->
-		  <script src = 'UserInput.js'> </script>             <!--6---->
-		  <script src = 'AICommand.js'> </script>             <!--7---->
-		  <script src = 'SpritesFighter.js'> </script>        <!--8---->
-		  <script src = 'SpritesAnimators.js'> </script>      <!--9---->
-		  <script src = 'FighterSheeva_mk3.js'> </script>     <!--10--->
-		  <script src = 'Move.js'> </script>                  <!--11--->
-		  <script src = 'Fight.js'> </script>                 <!--12--->
-		  <script src = 'Menu.js'> </script>                  <!--13--->
-		  <script src = 'GameColculation.js'> </script>       <!--14--->
-		  <script src = 'ArenaScene.js'> </script>            <!--15--->
-		  <script src = 'Render.js'> </script>                <!--16--->
-		  <script src = 'ArenaFjs.js'> </script>              <!--17--->
+		  <!-- Scripts -->
+	    <script src = 'Game.js'> </script>                  <!-- 1  -->
+		  <script src = 'GameText.js'> </script>              <!-- 2  -->
+      <script src = 'Sound.js'> </script>		              <!-- 3  -->
+		  <script src = 'Timer.js'> </script>                 <!-- 4  -->
+		  <script src = 'CommandToFighter.js'> </script>      <!-- 5  -->
+		  <script src = 'UserInput.js'> </script>             <!-- 6  -->
+		  <script src = 'AICommand.js'> </script>             <!-- 7  -->
+		  <script src = 'SpritesFighter.js'> </script>        <!-- 8  -->
+		  <script src = 'SpritesAnimators.js'> </script>      <!-- 9  -->
+		  <script src = 'FighterSheeva_mk3.js'> </script>     <!-- 10 -->
+		  <script src = 'Move.js'> </script>                  <!-- 11 -->
+		  <script src = 'Fight.js'> </script>                 <!-- 12 -->
+		  <script src = 'Menu.js'> </script>                  <!-- 13 -->
+		  <script src = 'GameColculation.js'> </script>       <!-- 14 -->
+		  <script src = 'ArenaScene.js'> </script>            <!-- 15 -->
+		  <script src = 'Render.js'> </script>                <!-- 16 -->
+		  <script src = 'ArenaFjs.js'> </script>              <!-- 17 -->
 
     </body>
 
