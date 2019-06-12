@@ -1,5 +1,61 @@
+.st1 {
+  background-color: white;
+  color: red;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.st2 {
+  background-color: blue;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+  text-align: justify;
+  font-size: large;
+  /* font-size: medium; */
+}
+
+.st3 {
+  background-color: green;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+  text-align: justify;
+  font-size: large;
+}
+
+.st4 {
+  background-color: black;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+  text-align: justify;
+  font-size: large;
+}
+
+
+ .st5 {
+  background-color: orange;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+ }
+
+ .st6 {
+ background-color: yellow;
+ color: white;
+ margin: 20px;
+ padding: 20px;
+ }
+
+ .st7 {
+ background-color: blue;
+ color: orange;
+ }
 
 #game-canvas {
+  /* id : 1*/
    position: relative;
    border: 1px inset rgba(0,0,80,0.62);
 
