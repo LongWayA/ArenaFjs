@@ -1,35 +1,18 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 15.08.2018 - 1.01.2019
+ // Last modified 15.08.2018 - 1.01.2019 - 13.07.2019
 
   /*
-   $ -переменные
-
    НАЗНАЧЕНИЕ
-
+   Рисуем графические примитивы. Печатаем текст.
 
    ИСПОЛЬЗУЕТ МОДУЛИ
-
    Game
-            Game_R.context.strokeText(-)
-            Game_R.context.fillText (-)
-            Game_R.context.fillRect(-)
-            Game_R.context.strokeRect(-)
-            $ Game_R.context.lineWidth
-            $ Game_R.context.textBaseline
-            $ Game_R.context.fillStyle
-            $ Game_R.context.strokeStyle
-
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-
-   ArenaFjs
-                  GameText_R.drawText(-)
-
-   ArenaScene
-   SpritesFighter
-                  GameText_R.drawText(-)
-                  GameText_R.drawRect(-)
+   ArenaFjs_R
+   Render_R
+   SpritesFighter_R
 
   */
 
@@ -38,9 +21,11 @@
 
 -----------------
 
-Самое простое, как мы можем стилизовать текст, это задать ему цвет. Цвет задается при помощи
+Самое простое, как мы можем стилизовать текст, это задать ему цвет. Цвет
+задается при помощи
 fillStyle – для задания цвета заливки и strokeStyle – для задания цвета обводки.
-Так же как и в CSS3 можно накладывать тени и на текст в канвасе. Это делается при помощи:
+Так же как и в CSS3 можно накладывать тени и на текст в канвасе. Это
+делается при помощи:
 shadowColor – задание цвета тени, shadowOffsetX и
 shadowOffsetY – задание отступа и shadowBlur – задание размытия тени.
 
@@ -74,14 +59,18 @@ g.shadowColor = 'black';
 g.font = '30px arial';
 g.fillText('Привет, прекрасный мир!', 50, 50);
 
-Из статьи "Отрисовка текста на canvas’e" https://true-coder.ru/javascript/otrisovka-teksta-na-canvas.html
+Из статьи "Отрисовка текста на canvas’e" https://true-coder.ru/javascript/
+otrisovka-teksta-na-canvas.html
 
 -----------------------
-A hexadecimal color is specified with: #RRGGBB, where the RR (red), GG (green) and BB (blue)
-hexadecimal integers specify the components of the color. All values must be between 00 and FF.
+A hexadecimal color is specified with: #RRGGBB, where the RR (red), GG (green)
+and BB (blue)
+hexadecimal integers specify the components of the color. All values must be
+ between 00 and FF.
 
 For example, the #0000ff value is rendered as blue,
-because the blue component is set to its highest value (ff) and the others are set to 00.
+because the blue component is set to its highest value (ff) and the others
+are set to 00.
 
 Define different HEX colors:
 #p1 {background-color: #ff0000;}    //red
@@ -98,7 +87,8 @@ Define different RGB colors with opacity:
 #p2 {background-color: rgba(0, 255, 0, 0.3);}   // green with opacity
 #p3 {background-color: rgba(0, 0, 255, 0.3);}   // blue with opacity
 
-Из статьи "CSS Legal Color Values" https://www.w3schools.com/cssref/css_colors_legal.asp
+Из статьи "CSS Legal Color Values" https://www.w3schools.com/cssref
+/css_colors_legal.asp
 
 -----------------------
 Цвета можно посмотреть по ссылкам:
@@ -111,7 +101,8 @@ fillStyle = color
 strokeStyle = color
     Устанавливает стиль контура фигуры.
 
- Из статьи "Применение стилей и цветов"   https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial
+ Из статьи "Применение стилей и цветов"   https://developer.mozilla.org/ru/
+ docs/Web/API/Canvas_API/Tutorial
 ---------------------
 
     //document.writeln("js >> End_test_js_1.js+++++++++");
@@ -119,105 +110,70 @@ strokeStyle = color
 */
 
 //alert("module GameText start");
-//================================================================================
+//==============================================================================
 
-var GameText_R = {};
+window.GameText_R = {};
 GameText_R.name = "GameText_R";//
 
-  //============================================================================
-  // INPUT======================================================================
-
-// Game_R context
-
-GameText_R.Game_R_context_textBaseline_top_IN = function(font) {
-   Game_R.context.textBaseline = 'top';
-};
-
-  GameText_R.SET_Game_R_context_font_IN = function(font) {
-     Game_R.context.font = font;
-  };
-
-  GameText_R.SET_Game_R_context_Style_IN = function(style) {
-     Game_R.context.fillStyle = style;
-     Game_R.context.strokeStyle = style;
-  };
-
-  GameText_R.Game_R_context_fillText_IN = function(text, left, top) {
-     Game_R.context.fillText (text, left, top);
-  };
-
-  GameText_R.Game_R_context_strokeText_IN = function(text, left, top) {
-     Game_R.context.strokeText (text, left, top);
-  };
-
-  GameText_R.SET_Game_R_context_lineWidth_IN = function(lineWidth) {
-    Game_R.context.lineWidth = lineWidth;
-  };
-
-  GameText_R.Game_R_context_fillRect_IN = function(left, top, width, height) {
-     Game_R.context.fillRect( left, top, width, height);
-  };
-
-  GameText_R.Game_R_context_strokeRect_IN = function(left, top, width, height) {
-     Game_R.context.strokeRect( left, top, width, height);
-  };
+    // Game_R.context.fillText (text, left, top);
 
   //============================================================================
-  // IMPLEMENTATION=============================================================
-
   GameText_R.setFont = function(font) {
 
-       GameText_R.Game_R_context_textBaseline_top_IN();
+       Game_R.context.textBaseline = 'top';
 
        switch(font){
 
                  case 'italic 20px sans-serif':
-                  GameText_R.SET_Game_R_context_font_IN('italic 20px sans-serif');
+                    Game_R.context.font = font;
                  break;
 
                  case 'italic 30pt Arial':
-                   GameText_R.SET_Game_R_context_font_IN('italic 30pt Arial');
+                   Game_R.context.font = font;
                  break;
 
-                case 'bold 30px sans-serif':
-                   GameText_R.SET_Game_R_context_font_IN('bold 30px sans-serif');
+                 case 'bold 30px sans-serif':
+                   Game_R.context.font = font;
                  break;
-
        };
   };
+  //============================================================================
 
+  //============================================================================
   GameText_R.setColor = function(color) {
+
+        var style;
 
         switch(color){
 
-
                 case 'white':
-                    GameText_R.SET_Game_R_context_Style_IN('#ffffff');
+                    style = '#ffffff';
                  break;
 
                 case 'black':
-                    GameText_R.SET_Game_R_context_Style_IN('#000000');
+                    style = '#000000';
                  break;
 
                  case 'red':
-                    GameText_R.SET_Game_R_context_Style_IN('#ff0000');
+                    style = '#ff0000';
                  break;
 
                  case 'green':
-                    GameText_R.SET_Game_R_context_Style_IN('#008000');
+                    style = '#008000';
                  break;
-
 
                  case 'blue':
-                        GameText_R.SET_Game_R_context_Style_IN('#0000ff');
+                    style = '#0000ff';
                  break;
-
        };
 
+       Game_R.context.fillStyle = style;
+       Game_R.context.strokeStyle = style;
 
   };
+  //============================================================================
 
-
+  //============================================================================
   GameText_R.drawText = function(text, left, top, font, color, fillYes) {
 
          GameText_R.setColor(color);
@@ -225,32 +181,34 @@ GameText_R.Game_R_context_textBaseline_top_IN = function(font) {
          GameText_R.setFont(font);
 
          if(fillYes == 1) {
-             GameText_R.Game_R_context_fillText_IN (text, left, top);
+             Game_R.context.fillText(text, left, top);
          } else {
-             GameText_R.Game_R_context_strokeText_IN (text, left, top);
+             Game_R.context.strokeText (text, left, top);
          };
 
   };
+  //============================================================================
 
-
-    GameText_R.drawRect = function(left, top, width, height, lineWidth, color, fillYes) {
+  //============================================================================
+  GameText_R.drawRect = function(left, top, width, height, lineWidth, color,
+    fillYes) {
 
          GameText_R.setColor(color);
 
-         GameText_R.SET_Game_R_context_lineWidth_IN(lineWidth);
+         Game_R.context.lineWidth = lineWidth;
 
          if(fillYes == 1) {
-             GameText_R.Game_R_context_fillRect_IN( left, top, width, height);
+             Game_R.context.fillRect( left, top, width, height);
          } else {
-             GameText_R.Game_R_context_strokeRect_IN( left, top, width, height);
+             Game_R.context.strokeRect( left, top, width, height);
          };
 
   };
+  //============================================================================
 
-  //=================================================================================================================
-  
-
+  //============================================================================
   Game_R.yT = Game_R.yT + Game_R.dyT;//
   Game_R.context.strokeText ('2   module "GameText" loaded', 1100, Game_R.yT);
-//================================================================================
+
+//==============================================================================
 //alert("module GameText done");

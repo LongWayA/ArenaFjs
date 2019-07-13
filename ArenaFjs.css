@@ -1,4 +1,8 @@
-.st1 {
+
+/* Copyright (c) 2019, 2091, Brenkman Andrey and/or its affiliates. All rights reserved. */
+/* Last modified 07.07.2018 - 15.06.2019 */
+
+h1.st1 {
   background-color: white;
   color: red;
   margin: 20px;
@@ -6,7 +10,7 @@
   text-align: center;
 }
 
-.st2 {
+p.st2 {
   background-color: blue;
   color: white;
   margin: 20px;
@@ -16,7 +20,7 @@
   /* font-size: medium; */
 }
 
-.st3 {
+p.st3 {
   background-color: green;
   color: white;
   margin: 20px;
@@ -25,7 +29,7 @@
   font-size: large;
 }
 
-.st4 {
+p.st4 {
   background-color: black;
   color: white;
   margin: 20px;
@@ -35,27 +39,41 @@
 }
 
 
- .st5 {
+ p.st5 {
   background-color: orange;
   color: white;
   margin: 20px;
   padding: 20px;
  }
 
- .st6 {
+ p.st6 {
  background-color: yellow;
  color: white;
  margin: 20px;
  padding: 20px;
  }
-
- .st7 {
+ a.st7 {
  background-color: blue;
  color: orange;
  }
 
+ a.button {
+     -moz-border-radius: 8px;
+     -webkit-border-radius: 8px;
+     border-radius: 8px;
+     border: 2px groove green;
+     display: block;
+     height: 30px;
+     line-height: 30px;
+     width: 100px;
+     text-decoration: none;
+     text-align: center;
+     color: red;
+     font-weight: bold;
+   }
+
+
 #game-canvas {
-  /* id : 1*/
    position: relative;
    border: 1px inset rgba(0,0,80,0.62);
 

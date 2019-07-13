@@ -13,70 +13,66 @@
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
 
-   ArenaFjs
-                     Fighters_R.fighterSheeva_mk3_1.setState(-)
-                     Fighters_R.fighterSheeva_mk3_2.setState(-)
-                     $ Fighters_R.typeM.length
-                     $ Fighters_R.typeM[-]
   */
 
 
   //alert("module FighterSheeva_mk3 start");
-  //================================================================================
+  //============================================================================
 
-// Fighters------------------------------------------------------------------------------
- var Fighters_R = {};
-
- Fighters_R.name = "Fighters";//
-
- //============================================================================
- // INPUT======================================================================
+  //============================================================================
+  // INPUT======================================================================
 
 
 
- //============================================================================
- // IMPLEMENTATION=============================================================
-
- Fighters_R.typeM = ["fightingStance", "walkingForward", "walkingBack", "running", "punchUp",
-                            "punchMidle", "kickFront", "kickBack", "beingHit", "block", "blockLow"];
+  //============================================================================
+  // IMPLEMENTATION=============================================================
 
 
-Fighters_R.FighterSheeva_mk3 = {
-    name : "FighterSheeva_mk3",
+// FighterSheeva_mk3_R----------------------------------------------------------
+ var FighterSheeva_mk3_R = {};
 
-    MAX_HEALTH : 1000, //
-    MAX_STAMINA : 100, //
+     FighterSheeva_mk3_R.typeM = ["fightingStance", "walkingForward",
+                                  "walkingBack", "running", "punchUp",
+                                  "punchMidle", "kickFront", "kickBack",
+                                  "beingHit", "block", "blockLow"];
 
-    state : "fightingStance",
-    busy : 0,
-    left : 0,
-    top : 0,
-    mirror : 0, // Direction_RIGHT_LEFT
-    width : 0,
-    height : 0,
+
+
+    FighterSheeva_mk3_R.name = "FighterSheeva_mk3";
+
+    FighterSheeva_mk3_R.MAX_HEALTH = 1000; //
+    FighterSheeva_mk3_R.MAX_STAMINA = 100; //
+
+    FighterSheeva_mk3_R.state = "fightingStance";
+    FighterSheeva_mk3_R.busy = 0;
+    FighterSheeva_mk3_R.left = 0;
+    FighterSheeva_mk3_R.top = 0;
+    FighterSheeva_mk3_R.mirror = 0; // Direction_RIGHT_LEFT
+    FighterSheeva_mk3_R.width = 0;
+    FighterSheeva_mk3_R.height = 0;
 
        // жизни бойца
-    health : 0,
+    FighterSheeva_mk3_R.health = 0;
 
         // изменение жизней при попадании в хит
-    dhUpPunch : 0,    //2% = (1000/100)*2 = 20
-    dhMidlePunch : 0, //3%
-    dhFrontKick : 0,  //5%
-    dhBackKick : 0,   //7%
+    FighterSheeva_mk3_R.dhUpPunch = 0;    //2% = (1000/100)*2 = 20
+    FighterSheeva_mk3_R.dhMidlePunch = 0; //3%
+    FighterSheeva_mk3_R.dhFrontKick = 0;  //5%
+    FighterSheeva_mk3_R.dhBackKick = 0;   //7%
 
         // изменение жизней при попадании в блок
-    dhUpPunchBlock : 0,     //0,4% = (1000/100)*0.4 = 4
-    dhMidlePunchBlock : 0,  //0,6%
-    dhFrontKickBlock : 0,  //1%
-    dhBackKickBlock : 0,   //1,4%
+    FighterSheeva_mk3_R.dhUpPunchBlock = 0;     //0,4% = (1000/100)*0.4 = 4
+    FighterSheeva_mk3_R.dhMidlePunchBlock = 0;  //0,6%
+    FighterSheeva_mk3_R.dhFrontKickBlock = 0;  //1%
+    FighterSheeva_mk3_R.dhBackKickBlock = 0;   //1,4%
 
         // выносливость бойца
-    stamina : 0,
+    FighterSheeva_mk3_R.stamina = 0;
 
         // изменение выносливости
-    ds : 0,
+    FighterSheeva_mk3_R.ds = 0;
 
-    ini : function(left, top, mirror) {
+    FighterSheeva_mk3_R.ini = function(left, top, mirror) {
          this.state = "fightingStance";
          this.left = left;
          this.top =top;
@@ -104,20 +100,20 @@ Fighters_R.FighterSheeva_mk3 = {
 
         // изменение выносливости
         this.ds = 1;
-     },
+     };
 
      // tickAnimation ---------------------------------------
-     tickAnimation : function(_spritesAnimators) {
+     FighterSheeva_mk3_R.tickAnimation = function(_spritesAnimators, _GameText_R1) {
        //alert("!");
-         _spritesAnimators.all_Animation(
+         _spritesAnimators.SpritesAnimators_id.all_Animation(
            this.state,  this.left,
            this.top,  this.mirror,
-           this.width,  this.height);
+           this.width,  this.height, _GameText_R1);
 
-         if (_spritesAnimators.inProcess == 0) this.busy = 0;
-     },
+         if (_spritesAnimators.SpritesAnimators_id.inProcess == 0) this.busy = 0;
+     };
 
-    switchToState : function(toState) {
+    FighterSheeva_mk3_R.switchToState = function(toState) {
 
       var ret = 0;
 
@@ -161,10 +157,10 @@ Fighters_R.FighterSheeva_mk3 = {
 
       return (ret);
 
-    },
+    };
 
      // setState--------------------------------------------------------
-     setState : function(_spritesAnimators, toState) {
+     FighterSheeva_mk3_R.setState = function(_spritesAnimators, toState) {
 
       // if(toState != this.state){
       //      if( (this.state == "fightingStance")||
@@ -193,35 +189,22 @@ Fighters_R.FighterSheeva_mk3 = {
             }
 
         } else {
-          if(_spritesAnimators.inProcess == 0) {
+          if(_spritesAnimators.SpritesAnimators_id.inProcess == 0) {
              if( this.switchToState(toState) == 1) this.busy = 1;
           };
 
         };//if(toState != this.state){
 
-     },//this.setState
+     };//this.setState
 
 // когда удар проходит то вклчаем анимацию попадания несмотря на текущее состояние
-setStateBeingHit : function(toState) {
+FighterSheeva_mk3_R.setStateBeingHit = function(toState) {
     if(toState != this.state){
        this.state = toState;
        this.busy = 1;
     };
-},
+};
 
-};//Fighters_R.FighterSheeva_mk3
-
-
-Fighters_R.spritesAnimators1  = Object.create(SpritesAnimators_R.SpritesAnimators_id);//
-Fighters_R.spritesAnimators2  = Object.create(SpritesAnimators_R.SpritesAnimators_id);//
-
-Fighters_R.fighterSheeva_mk3_1 = Object.create(Fighters_R.FighterSheeva_mk3);//
-Fighters_R.fighterSheeva_mk3_2 = Object.create(Fighters_R.FighterSheeva_mk3);//
-
-Fighters_R.fighterSheeva_mk3_1.setState(Fighters_R.spritesAnimators1, "fightingStance");
-Fighters_R.fighterSheeva_mk3_2.setState(Fighters_R.spritesAnimators2, "fightingStance");
-//Fighters_R.fighterSheeva_mk3_1.mirror = 0;
-//Fighters_R.fighterSheeva_mk3_2.mirror = 1;
 
  //alert("!");
 

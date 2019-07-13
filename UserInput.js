@@ -187,6 +187,7 @@
            _сommandToFighter_R.commandToFighterGammerLeft.commandText = 'fighting Stance';
        }
     }
+    
  };
 
  UserInput_R.start();

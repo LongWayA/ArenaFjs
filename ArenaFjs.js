@@ -1,15 +1,19 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019
+ // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019 - 13.07.2019
 
   /*
-   НАЗНАЧЕНИЕ
+   ЧТО НУЖНО ЗНАТЬ ЧТОБЫ ИСПОЛЬЗОВАТЬ ЭТОТ МОДУЛЬ
    Корневой модуль игры
    Тут общая функция игры вызываемая на каждом тике цикла.
    Базовый цикл игры основанный на
    методе setTimeout(func, delay)
    Методы setInterval(func, delay) и setTimeout(func, delay) позволяют запускать
    func регулярно/один раз через delay миллисекунд.
+
+   МОДУЛИ В КОТОРЫХ ВЫЗВАЕТСЯ ДАННЫЙ МОДУЛЬ
+
+   МОДУЛИ КОТОРЫЕ ВЫЗЫВАЕТ ДАННЫЙ МОДУЛЬ
 
   */
 
@@ -20,49 +24,69 @@
 var ArenaFjs_R = {};
 ArenaFjs_R.name = "ArenaFjs";//
 
-
-// INPUT======================================================================
-
-// Fighters_R
-ArenaFjs_R.Fighters_R1 = Object.create(Fighters_R);//
-
-// CommandToFighter_R
-ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
-
-// UserInput_R
-ArenaFjs_R.UserInput_R1 = Object.create(UserInput_R);//
-
-// AICommand_R
-ArenaFjs_R.AICommand_R1 = Object.create(AICommand_R);//
-
-
-
-
+// 1
 // Game_R
-ArenaFjs_R.Game_R1 = Object.create(Game_R);//
+// это глобальный объект в одном экземпляре и без дальнейших потомков
 
-// Timer_R
-ArenaFjs_R.Timer_R1 = Object.create(Timer_R);//
-
-
-// GameColculation_R
-ArenaFjs_R.GameColculation_R1 = Object.create(GameColculation_R);//
-
-
-// Render_R
-ArenaFjs_R.Render_R1 = Object.create(Render_R);//
-
-
+// 2
 // GameText_R
 ArenaFjs_R.GameText_R1 = Object.create(GameText_R);//
 
+// 3
+// Sound_R
+ArenaFjs_R.Sound_R1 = Object.create(Sound_R);//
 
+// 4
+// Timer_R
+ArenaFjs_R.Timer_R1 = Object.create(Timer_R);//
+
+// 5
+// CommandToFighter_R !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
+
+// 6
+// UserInput_R
+ArenaFjs_R.UserInput_R1 = Object.create(UserInput_R);//
+
+// 7
+// AICommand_R
+ArenaFjs_R.AICommand_R1 = Object.create(AICommand_R);//
+
+// 8
+// SpritesFighter
+
+// 9
+// SpritesAnimators
+ArenaFjs_R.SpritesAnimators_R1  = Object.create(SpritesAnimators_R);//
+ArenaFjs_R.SpritesAnimators_R2  = Object.create(SpritesAnimators_R);//
+
+// 10
+// FighterSheeva_mk3_R
+ArenaFjs_R.FighterSheeva_mk3_R1 = Object.create(FighterSheeva_mk3_R);//
+ArenaFjs_R.FighterSheeva_mk3_R2 = Object.create(FighterSheeva_mk3_R);//
+
+// 11
 // Move_R
 ArenaFjs_R.Move_R1 = Object.create(Move_R);//
 
-
+// 12
 // Fight_R
 ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
+
+// 13
+//Menu
+
+// 14
+// GameColculation_R
+ArenaFjs_R.GameColculation_R1 = Object.create(GameColculation_R);//
+
+// 15
+// ArenaScene
+ArenaFjs_R.ArenaScene_R1 = Object.create(ArenaScene_R);//
+
+// 16
+// Render_R
+ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 
 
 // IMPLEMENTATION=============================================================
@@ -76,15 +100,16 @@ ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
    ArenaFjs_R.oldDemonstr = function() {
        if (ArenaFjs_R.countLoop == 24){
           ArenaFjs_R.il_2 = ArenaFjs_R.il;
-          //if(Game_R.ArenaFjs.il_2 == 0) Game_R.ArenaFjs.il_2 = 1;
-          ArenaFjs_R.Fighters_R1.fighterSheeva_mk3_1
-                    .setState(ArenaFjs_R.Fighters_R1.typeM[ArenaFjs_R.il]);
+          ArenaFjs_R.FighterSheeva_mk3_R1
+                    .setState(ArenaFjs_R.SpritesAnimators_R1,
+                      ArenaFjs_R.FighterSheeva_mk3_R1.typeM[ArenaFjs_R.il]);
 
-           ArenaFjs_R.Fighters_R1.fighterSheeva_mk3_2
-                    .setState(ArenaFjs_R.Fighters_R1.typeM[ArenaFjs_R.il]);
+           ArenaFjs_R.FighterSheeva_mk3_R2
+                    .setState(ArenaFjs_R.SpritesAnimators_R2,
+                      ArenaFjs_R.FighterSheeva_mk3_R2.typeM[ArenaFjs_R.il]);
 
           ArenaFjs_R.il = ArenaFjs_R.il + 1;
-          if (ArenaFjs_R.il > ArenaFjs_R.Fighters_R1.typeM.length-1) ArenaFjs_R.il = 0;
+          if (ArenaFjs_R.il > ArenaFjs_R.FighterSheeva_mk3_R1.typeM.length-1) ArenaFjs_R.il = 0;
 
        };
 
@@ -95,9 +120,7 @@ ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
  // tick> ----------------------------------------------------------------------
   ArenaFjs_R.tick = function() {
 
-    // временная заглушка
-      // ArenaFjs_R.oldDemonstr();
-
+    //alert("t");
     //alert("!");
     // человек отдает приказы с клавиатуры и они обрабатываются событийно.
 	  ArenaFjs_R.UserInput_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
@@ -106,7 +129,8 @@ ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
     ArenaFjs_R.AICommand_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
 
     // передаются команды бойцам и бойцицам
-    ArenaFjs_R.CommandToFighter_R1.tick(ArenaFjs_R.Fighters_R1);
+    ArenaFjs_R.CommandToFighter_R1.tick(ArenaFjs_R.FighterSheeva_mk3_R1
+      , ArenaFjs_R.SpritesAnimators_R1);
 
 
 
@@ -120,12 +144,15 @@ ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
     ArenaFjs_R.GameColculation_R1.tick();
 
     // отрисовываем всю графику
-    ArenaFjs_R.Render_R1.drawAll();
+    ArenaFjs_R.Render_R1.drawAll(ArenaFjs_R.SpritesAnimators_R1,
+      ArenaFjs_R.SpritesAnimators_R2,
+    ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2
+   ,ArenaFjs_R.GameText_R1, ArenaFjs_R.ArenaScene_R1, ArenaFjs_R.Timer_R1);
 
     //alert("!");
     // что это за текст? почему он пишется именно здесь?
     ArenaFjs_R.GameText_R1.drawText
-    (ArenaFjs_R.Fighters_R1.typeM[ArenaFjs_R.il_2], 150, 385
+    (ArenaFjs_R.FighterSheeva_mk3_R1.typeM[ArenaFjs_R.il_2], 150, 385
       , 'italic 20px sans-serif', 'red', 1);
 
 	     ArenaFjs_R.countLoop = ArenaFjs_R.countLoop + 1;
@@ -136,50 +163,25 @@ ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
   // ini> ----------------------------------------------------------------------
   ArenaFjs_R.ini = function(){
 
+    //alert("ini = " + ArenaFjs_R.SpritesAnimators_R1);
+    ArenaFjs_R.Timer_R1.ini(8);
+
+    ArenaFjs_R.FighterSheeva_mk3_R1.setState(ArenaFjs_R.SpritesAnimators_R1, "fightingStance");
+    ArenaFjs_R.FighterSheeva_mk3_R2.setState(ArenaFjs_R.SpritesAnimators_R2, "fightingStance");
+
+    ArenaFjs_R.ArenaScene_R1.iniAll(ArenaFjs_R.ArenaScene_R1.Game_R_canvas_width_IN(),
+    ArenaFjs_R.ArenaScene_R1.Game_R_canvas_height_IN(),
+    ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2);
 
   };
   // ini< ----------------------------------------------------------------------
-/*
-
-ArenaFjs_R.test = {
-
-  t1 : 1,
-  t2 : 2,
-
-  print : function(){
-     alert("t1 =" + this.t1 + " t2 =" + ArenaFjs_R.test.t2);
-     //alert("!");
-  }
-};
-
-
-ArenaFjs_R.test1 = Object.create(ArenaFjs_R.test);//
-ArenaFjs_R.test2 = Object.create(ArenaFjs_R.test);//
-*/
 
 //alert("!");
 
   // start> --------------------------------------------------------------------
   ArenaFjs_R.start = function(){
 
-    //var table = document.body.children[15];
-  //  var table = document.getElementById('t1');
-
-//    alert( table.rows[0].cells[0].innerHTML ); // "один"
-
-/*
-    ArenaFjs_R.test.print();
-
-    ArenaFjs_R.test1.t1 = 10;
-    ArenaFjs_R.test1.t2 = 20;
-
-    ArenaFjs_R.test1.print();
-
-    ArenaFjs_R.test2.t1 = 100;
-    ArenaFjs_R.test2.t2 = 200;
-
-    ArenaFjs_R.test2.print();
-*/
+      console.log('Ah ah it is Console!');
 
      //alert("!");
      //alert( Menu_R.name );
@@ -187,38 +189,7 @@ ArenaFjs_R.test2 = Object.create(ArenaFjs_R.test);//
   };
  // start< ---------------------------------------------------------------------
 
-// childNodesTest> --------------------------------------------------------------------
-ArenaFjs_R.childNodesTest = function(){
 
-  for (var i = 0; i < document.body.children.length; i++) {
-      //  alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
-  var x = 10;
-  var i2 = i*17;
-  if (i> 45){
-  x = 400;
-  i2 = i2 - 45*17;
-  };
-
-  if (i> 90){
-  x = 800;
-  i2 = i2 - 45*17;
-  };
-      //  ArenaFjs_R.GameText_R1.drawText
-    //   ('i= ' + i + " " + document.body.children[i].outerHTML, x, i2
-    //     , 'italic 20px sans-serif', 'red', 1);
-
-    //    ArenaFjs_R.GameText_R1.drawText
-  //      ('i= ' + i + " " + document.body.children[i].innerHTML, x, i2
-    //      , 'italic 20px sans-serif', 'red', 1);
-
-// document.body.children[i].textContent
-          ArenaFjs_R.GameText_R1.drawText
-          ('i= ' + i + " " + document.body.children[i], x, i2
-            , 'italic 20px sans-serif', 'red', 1);
-  };
-
-};
-// childNodesTest< ---------------------------------------------------------------------
 
 // tickTest> --------------------------------------------------------------------
 ArenaFjs_R.tickTest = function(){
@@ -227,25 +198,22 @@ ArenaFjs_R.tickTest = function(){
 
       // SpritesFighter_R.drawSprites_TEST();
       //SpritesAnimators_R.animationAll_TEST();
+      // временная заглушка
+         ArenaFjs_R.oldDemonstr();
 
   //TEST> ------------------------------------------------------
 
-
-  ArenaFjs_R.childNodesTest();
-
 };
 // tickTest< ---------------------------------------------------------------------
-
 
 // loop>------------------------------------------------------------------------
   ArenaFjs_R.ini();
   ArenaFjs_R.start();
    //Game_R.context.fokus();
-
   ArenaFjs_R.timerId = setTimeout( function tick(){
 
         ArenaFjs_R.Timer_R1.updateTimeBeforeTick();
-        if( ArenaFjs_R.Game_R1.img_load_end == 1 ){
+        if( Game_R.img_load_end == 1 ){
             // alert("!-");
              ArenaFjs_R.tick();
              //ArenaFjs_R.tickTest();

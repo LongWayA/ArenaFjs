@@ -22,8 +22,6 @@ CommandToFighter_R.name = 'CommandToFighter';//
 
 // INPUT========================================================================
 
-// Fighters_R
-
 
 // IMPLEMENTATION===============================================================
 
@@ -65,7 +63,7 @@ CommandToFighter_R.commandToFighterAIRight  = Object.create(CommandToFighter_R.s
 
 
 //
-CommandToFighter_R.get_commandToNumState = function(_fighters_R, command) {
+CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, command) {
 
    var numState = 0;
 
@@ -76,7 +74,7 @@ CommandToFighter_R.get_commandToNumState = function(_fighters_R, command) {
        break;
 
        case CommandToFighter_R.LEFT:  //
-           if (_fighters_R.fighterSheeva_mk3_1.mirror == 1) {
+           if (_FighterSheeva_mk3_R1.mirror == 1) {
               numState = 1;
            } else {
               numState = 2;
@@ -84,7 +82,7 @@ CommandToFighter_R.get_commandToNumState = function(_fighters_R, command) {
        break;
 
        case CommandToFighter_R.RIGHT:  //
-           if (_fighters_R.fighterSheeva_mk3_1.mirror != 1) {
+           if (_FighterSheeva_mk3_R1.mirror != 1) {
               numState = 1;
            } else {
               numState = 2;
@@ -136,12 +134,13 @@ CommandToFighter_R.get_commandToNumState = function(_fighters_R, command) {
 
 
 // тут передаем команды  от человека левому бойцу
-CommandToFighter_R.GammerToFighterLeftTick = function(_fighters_R) {
-   _fighters_R.fighterSheeva_mk3_1.setState(
-     _fighters_R.spritesAnimators1,
-        _fighters_R.typeM[
+CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1,
+_spritesAnimators1) {
+   _FighterSheeva_mk3_R1.setState(
+     _spritesAnimators1,
+        _FighterSheeva_mk3_R1.typeM[
           CommandToFighter_R.get_commandToNumState
-          ( _fighters_R, CommandToFighter_R.commandToFighterGammerLeft.command)
+          ( _FighterSheeva_mk3_R1, CommandToFighter_R.commandToFighterGammerLeft.command)
         ]
    );
 };
@@ -149,8 +148,10 @@ CommandToFighter_R.GammerToFighterLeftTick = function(_fighters_R) {
 
 
  // тут передаем команды всем бойцам и бойцицам
- CommandToFighter_R.tick = function(_fighters_R) {
-         CommandToFighter_R.GammerToFighterLeftTick(_fighters_R);
+ CommandToFighter_R.tick = function(_FighterSheeva_mk3_R1,
+ _spritesAnimators1) {
+         CommandToFighter_R.GammerToFighterLeftTick(_FighterSheeva_mk3_R1,
+         _spritesAnimators1);
 
  };
 

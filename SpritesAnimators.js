@@ -12,7 +12,7 @@
    Тут мы задаем какие картинки тематического ряда в какой последовательности выводить.
    Возможно выводить картинки в любой последовательности однако только в пределах одного
    тематического ряда.
-   all_Animation(animatorsState_Obj, typeStateAnimators, left, top, mirror, width, height)
+   //all_Animation(animatorsState_Obj, typeStateAnimators, left, top, mirror, width, height)
    выводим нужный анимационный ряд в нужном месте и нужного размера, если надо то зеркальный.
    Просто вешаем флаг что идет анимация. И когда она кончается тогда сбрасываем флаг в ноль.
    А когда она меняется то запускаем по заданную по новой.
@@ -49,12 +49,6 @@
 // SpritesFighter_R
 
 SpritesAnimators_R.SpritesFighter_R1 = Object.create(SpritesFighter_R);//
-
-// Sound_R
-
- SpritesAnimators_R.Sound_R_IN = function(type) {
-     Sound_R[SpritesAnimators_R.animatorsSheeva_mk3[type].sound].play();
- };
 
 
  //============================================================================
@@ -184,16 +178,16 @@ SpritesAnimators_R.SpritesAnimators_id = {
     },
 
      //animation-------------------------------------------------------
-     animation : function(mirror,left, top) {
+     animation : function(mirror,left, top, _GameText_R1) {
 
          if (mirror == SpritesAnimators_R.NO_MIRROR){
               SpritesAnimators_R.SpritesFighter_R1.drawSprite(
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
+                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top, _GameText_R1);
          }else{
               SpritesAnimators_R.SpritesFighter_R1.drawSpriteMirror(
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top);
+                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top, _GameText_R1);
          };
 
          this.num = this.num + 1;
@@ -204,12 +198,12 @@ SpritesAnimators_R.SpritesAnimators_id = {
      },
 
      //all_Animation-------------------------------------------------------
-     all_Animation : function(typeStateAnimators, left, top, mirror, width, height){
+     all_Animation : function(typeStateAnimators, left, top, mirror, width, height, _GameText_R1){
 
        this.setType(typeStateAnimators);
 
         // if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
-      //        SpritesAnimators_R.Sound_R_IN(this.type);
+      //        _Sound_R1[SpritesAnimators_R.animatorsSheeva_mk3[type].sound].play();
       //   };
 
          if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
@@ -217,9 +211,9 @@ SpritesAnimators_R.SpritesAnimators_id = {
                  this.num = 3;
                  //this.inProcess = 0;
               }
-              this.animation(mirror, left, top);
+              this.animation(mirror, left, top , _GameText_R1);
          }else {
-              this.animation(mirror, left, top);
+              this.animation(mirror, left, top, _GameText_R1);
          };
      },
 };//SpritesAnimators_R.SpritesAnimators_id
@@ -231,9 +225,9 @@ SpritesAnimators_R.SpritesAnimators_id = {
 
  SpritesAnimators_R.spritesAnimatorsTest = Object.create(SpritesAnimators_R.SpritesAnimators_id);//
 
- SpritesAnimators_R.animationAll_TEST = function(){
+ SpritesAnimators_R.animationAll_TEST = function(_GameText_R1){
 
-  SpritesAnimators_R.spritesAnimatorsTest.all_Animation( "fightingStance",  50, 250,  0, 100,  100);
+  SpritesAnimators_R.spritesAnimatorsTest.all_Animation( "fightingStance",  50, 250,  0, 100,  100, _GameText_R1);
 
   //SpritesAnimators_R.all_Animation(SpritesAnimators_R.animatorsState_0, "fightingStance", 0, 50,0,0,0);
 

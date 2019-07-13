@@ -4,44 +4,22 @@
 
 
   /*
-   $ -переменные
-
    НАЗНАЧЕНИЕ
 
-
    ИСПОЛЬЗУЕТ МОДУЛИ
+   -
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-   GameLoop
-               Timer_R.updateTimeBeforeTick()
-               Timer_R.updateTimeAfterTick()
-               $ Timer_R.timeThreadSleepGameMs
-
-   ArenaScene
-               $ Timer_R.ticksPerSecond
-               $ Timer_R.tickMustTimeMs
-               $ Timer_R.timeBetweenEndMinStartTickMs
-               $ Timer_R.timeThreadSleepGameMs
-               $ Timer_R.timeStartTickMs
-               $ Timer_R.timeEndTickMs
-               $ Timer_R.timeBetweenStartMinOldStartTickMs
+   Render_R
+   ArenaFjs_R
   */
 
 
  // alert("module Timer start");
-//================================================================================
+//==============================================================================
 
  var Timer_R = {};
  Timer_R.name = "Timer_R";//
-
- //==============================================================================
- // INPUT========================================================================
-
-
-
- //==============================================================================
- // IMPLEMENTATION===============================================================
-
 
   Timer_R.ticksPerSecond;// количество циклов в секунду или по другому количество кадров в секунду
         // 1000 задержка в секунду. т.е тысяча милисекунд это секунда
@@ -66,16 +44,20 @@
      * именно здесь вычисляем промежуток времени прошедший за весь цикл
      * включая и время сна
      * это время должно стремиться к tickMustTimeMs = 1000 /(long)ticksPerSecond
-     * сейчас ticksPerSecond мы должны задавать 60 в сек т.е tickMustTimeMs = 16,(6)  msec  как принято в файтингах
-     * однако реально ticksPerSecond = 30  в сек т.е  tickMustTimeMs = 33,(3) msec так как иначе не успеваем все обсчитать
-     *
+     * сейчас ticksPerSecond мы должны задавать 60 в сек
+     * т.е tickMustTimeMs = 16,(6)  msec  как принято в файтингах
+     * однако реально ticksPerSecond = 30  в сек т.е
+     * tickMustTimeMs = 33,(3) msec так как иначе не успеваем все обсчитать
      */
+  //============================================================================
   Timer_R.updateTimeBeforeTick = function() {
 
 		     Timer_R.timeOldStartTickMs = Timer_R.timeStartTickMs;
 		     Timer_R.timeStartTickMs = (new Date).getTime();
-		     Timer_R.timeBetweenStartMinOldStartTickMs = Timer_R.timeStartTickMs - Timer_R.timeOldStartTickMs;
+		     Timer_R.timeBetweenStartMinOldStartTickMs = Timer_R.timeStartTickMs
+         - Timer_R.timeOldStartTickMs;
 	 };
+  //============================================================================
 
 	/*
 	 * timeAfterTickMs время прошедшее после обсчета игры
@@ -86,11 +68,15 @@
 	 * то делаем его 5
 	 * отрицательное когда задержка в цикле больше чем отведено на цикл
 	 */
+  //============================================================================
   Timer_R.updateTimeAfterTick = function() {
 
 		     Timer_R.timeEndTickMs = (new Date).getTime();
-		     Timer_R.timeBetweenEndMinStartTickMs = Timer_R.timeEndTickMs - Timer_R.timeStartTickMs;
-		     Timer_R.timeThreadSleepGameMs = Timer_R.tickMustTimeMs - Timer_R.timeBetweenEndMinStartTickMs;
+		     Timer_R.timeBetweenEndMinStartTickMs = Timer_R.timeEndTickMs
+         - Timer_R.timeStartTickMs;
+
+		     Timer_R.timeThreadSleepGameMs = Timer_R.tickMustTimeMs
+         - Timer_R.timeBetweenEndMinStartTickMs;
 		     //System.out.println("Timer_R: timeBetweenTickMs = " + timeBetweenTickMs );
 		     //System.out.println("Timer_R: timeSleepGame_RMs = " + timeSleepGame_RMs );
 
@@ -103,9 +89,10 @@
        //			    //System.out.println("Timer_R: timeThreadSleepGameMs(> 33) = " + timeThreadSleepGameMs );
        //		}
 	};
-
+  //============================================================================
 
  // стартовая инициализация таймера
+ //=============================================================================
  Timer_R.ini = function(_ticksPerSecond) {
 
      Timer_R.timeStartTickMs = (new Date).getTime();
@@ -115,10 +102,11 @@
      //alert(Timer_R.tickMustTimeMs);
      //alert(Timer_R.ticksPerSecond);
  };
+ //=============================================================================
 
- Timer_R.ini(8);
-
+ //=============================================================================
  Game_R.yT = Game_R.yT + Game_R.dyT;//
  Game_R.context.strokeText ('4   module "Timer" loaded', 1100, Game_R.yT);
- //================================================================================
+
+ //=============================================================================
 //alert("module Timer done");

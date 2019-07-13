@@ -13,7 +13,7 @@
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
 
    ArenaFjs
-                      ArenaScene_R.drawAll()
+
   */
 
   //alert("module ArenaScene start");
@@ -57,27 +57,10 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
 };
 
 
-// GameText_R
-
-ArenaScene_R.GameText_R_drawRect_IN = function(left, top, width, height, lineWidth, color, fillYes) {
-  GameText_R.drawRect( left, top, width, height, lineWidth, color, fillYes);
-};
-
-// Fighters_R
-
-ArenaScene_R.Fighters_R_fighterSheeva_mk3_1_ini_IN = function(left, top, mirror) {
-  Fighters_R.fighterSheeva_mk3_1.ini(left, top, mirror);
-};
-
-ArenaScene_R.Fighters_R_fighterSheeva_mk3_2_ini_IN = function(left, top, mirror) {
-  Fighters_R.fighterSheeva_mk3_2.ini(left, top, mirror);
-};
-
-
   //============================================================================
   // IMPLEMENTATION=============================================================
 
-  //---------------------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
   ArenaScene_R.framesArena = {
 
        displayWidth  : 0, //
@@ -181,10 +164,10 @@ ArenaScene_R.Fighters_R_fighterSheeva_mk3_2_ini_IN = function(left, top, mirror)
 
 
   //---------------------------------------------------------------------------------------------------------------
-  ArenaScene_R.drawAll = function() {
+  ArenaScene_R.drawAll = function(_GameText_R1) {
 
     // это видимо весь фон
-		ArenaScene_R.GameText_R_drawRect_IN(ArenaScene_R.framesArena.x0Left,
+		_GameText_R1.drawRect(ArenaScene_R.framesArena.x0Left,
                               ArenaScene_R.framesArena.y0Top,
                               ArenaScene_R.framesArena.width,
                               ArenaScene_R.framesArena.height,
@@ -285,14 +268,15 @@ ArenaScene_R.Fighters_R_fighterSheeva_mk3_2_ini_IN = function(left, top, mirror)
   //---------------------------------------------------------------------------------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------
-  ArenaScene_R.iniAll = function(displayWidth,  displayHeight) {
+  ArenaScene_R.iniAll = function(displayWidth,  displayHeight,
+    fighterSheeva_mk3_1, fighterSheeva_mk3_2) {
 
        ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
        ArenaScene_R.loadSceneImage();
 
-       ArenaScene_R.Fighters_R_fighterSheeva_mk3_1_ini_IN(ArenaScene_R.framesArena.x0LeftLocation+180,
+       fighterSheeva_mk3_1.ini(ArenaScene_R.framesArena.x0LeftLocation+180,
                                              ArenaScene_R.framesArena.y0TopLocation+550, 0);
-       ArenaScene_R.Fighters_R_fighterSheeva_mk3_2_ini_IN(ArenaScene_R.framesArena.x0LeftLocation+480,
+       fighterSheeva_mk3_2.ini(ArenaScene_R.framesArena.x0LeftLocation+480,
                                              ArenaScene_R.framesArena.y0TopLocation+550, 1);
 
       //ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
@@ -301,8 +285,6 @@ ArenaScene_R.Fighters_R_fighterSheeva_mk3_2_ini_IN = function(left, top, mirror)
   //---------------------------------------------------------------------------------------------------------------
 
   // ini<------------------------------------------------------------------------------------------------
-
-  ArenaScene_R.iniAll(ArenaScene_R.Game_R_canvas_width_IN(),ArenaScene_R.Game_R_canvas_height_IN());
 
 
 
