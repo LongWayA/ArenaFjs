@@ -3,8 +3,6 @@
 // Last modified 10.07.2018 - 30.12.2018
 
   /*
-   $ -переменные
-
    НАЗНАЧЕНИЕ
 
    animatorsSheeva_mk3
@@ -19,40 +17,23 @@
    Получается что с флагом занятости крутится только первый круг.
 
    ИСПОЛЬЗУЕТ МОДУЛИ
-
    SpritesFighter
-                   SpritesFighter_R.drawSprite(-)
-                   SpritesFighter_R.drawSpriteMirror(-)
-
    Game
-                   Game_R.context.strokeText(-)
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-
-   FighterSheeva_mk3
+   ArenaFjs_R
+   Render_R
 
   */
 
 
 
 // alert("module SpritesAnimators start");
-//================================================================================
+//==============================================================================
 
-// Sprite Animators...........................................................
-
- var SpritesAnimators_R = {};
+ window.SpritesAnimators_R = {};
  SpritesAnimators_R.name = "SpritesAnimators";//
 
- //============================================================================
- // INPUT======================================================================
-
-// SpritesFighter_R
-
-SpritesAnimators_R.SpritesFighter_R1 = Object.create(SpritesFighter_R);//
-
-
- //============================================================================
- // IMPLEMENTATION=============================================================
 
  SpritesAnimators_R.animatorsSheeva_mk3 = {
         name : "AnimatorsSheeva_mk3",
@@ -149,8 +130,6 @@ SpritesAnimators_R.SpritesFighter_R1 = Object.create(SpritesFighter_R);//
 SpritesAnimators_R.YES_MIRROR = 1;
 SpritesAnimators_R.NO_MIRROR = 0;
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 //
 SpritesAnimators_R.SpritesAnimators_id = {
 
@@ -177,15 +156,17 @@ SpritesAnimators_R.SpritesAnimators_id = {
       };
     },
 
-     //animation-------------------------------------------------------
-     animation : function(mirror,left, top, _GameText_R1) {
+     //=========================================================================
+     animation : function(mirror,left, top, _GameText_R1,_SpritesFighter_R1) {
+
+         //alert("_SpritesFighter_R1 = " + _SpritesFighter_R1.name);
 
          if (mirror == SpritesAnimators_R.NO_MIRROR){
-              SpritesAnimators_R.SpritesFighter_R1.drawSprite(
+              _SpritesFighter_R1.drawSprite(
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top, _GameText_R1);
          }else{
-              SpritesAnimators_R.SpritesFighter_R1.drawSpriteMirror(
+              _SpritesFighter_R1.drawSpriteMirror(
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
                   SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top, _GameText_R1);
          };
@@ -196,9 +177,11 @@ SpritesAnimators_R.SpritesAnimators_id = {
              this.inProcess = 0;
          };
      },
+     //=========================================================================
 
-     //all_Animation-------------------------------------------------------
-     all_Animation : function(typeStateAnimators, left, top, mirror, width, height, _GameText_R1){
+     //=========================================================================
+     all_Animation : function(typeStateAnimators, left, top, mirror, width,
+        height, _GameText_R1, _SpritesFighter_R1){
 
        this.setType(typeStateAnimators);
 
@@ -211,13 +194,14 @@ SpritesAnimators_R.SpritesAnimators_id = {
                  this.num = 3;
                  //this.inProcess = 0;
               }
-              this.animation(mirror, left, top , _GameText_R1);
+              this.animation(mirror, left, top , _GameText_R1, _SpritesFighter_R1);
          }else {
-              this.animation(mirror, left, top, _GameText_R1);
+              this.animation(mirror, left, top, _GameText_R1, _SpritesFighter_R1);
          };
      },
+     //=========================================================================
+
 };//SpritesAnimators_R.SpritesAnimators_id
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 
@@ -293,8 +277,9 @@ SpritesAnimators_R.SpritesAnimators_id = {
  */
 
 
-
+//==============================================================================
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('9   module "SpritesAnimators" loaded', 1100, Game_R.yT);
-//================================================================================
+
+//==============================================================================
 //alert("module SpritesAnimators done");

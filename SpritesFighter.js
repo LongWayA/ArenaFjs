@@ -3,8 +3,6 @@
 // Last modified 07.07.2018 - 31.12.2018
 
   /*
-   $ -переменные
-
    НАЗНАЧЕНИЕ
 
    Назначение объекта загрузить заданные ряды картинок при запуске программы.
@@ -74,50 +72,25 @@
     drawSpriteMirror(type,index,left, top)
 
    ИСПОЛЬЗУЕТ МОДУЛИ
-
    GameText
-                   //GameText_R.drawText(-)
-                   //GameText_R.drawRect(-)
-
    Game
-                   Game_R.context.strokeText(-)
-                   Game_R.context.drawImage(-)
-                   Game_R.context.scale(-)
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-
    SpritesAnimators
-                     SpritesFighter_R.drawSprite(-)
-                     SpritesFighter_R.drawSpriteMirror(-)
-
    ArenaFjs
-                     animationAll_TEST()
 
   */
 
 //alert("module SpritesFighter start");
 //==============================================================================
 
-var SpritesFighter_R = {};
+window.SpritesFighter_R = {};
 
   SpritesFighter_R.name = "SpritesFighter";//
-
-  //============================================================================
-  // INPUT======================================================================
-
-  //     Game_R context
-
-  SpritesFighter_R.Game_R_context_drawImage_IN = function(image, left, top) {
-     Game_R.context.drawImage(image, left, top);
-  };
 
   SpritesFighter_R.Game_R_context_scale_min_1_1_IN = function() {
     Game_R.context.scale(-1, 1);
   };
-
-
-  //============================================================================
-  // IMPLEMENTATION=============================================================
 
 
   SpritesFighter_R.spritesSheeva_mk3 = {
@@ -139,11 +112,12 @@ var SpritesFighter_R = {};
 
 
   // draw image
+  //============================================================================
   SpritesFighter_R.drawSprite = function(type,index,left, top, _GameText_R1) {
 
          var top1 = top - SpritesFighter_R.spritesSheeva_mk3[type][index].height;
 
-         SpritesFighter_R.Game_R_context_drawImage_IN(SpritesFighter_R.spritesSheeva_mk3[type][index], left, top1);
+         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3[type][index], left, top1);
 
          //GameText_R.drawRect(left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
            //                        SpritesFighter_R.spritesSheeva_mk3[type][index].height,1, 'blue', 0);
@@ -151,8 +125,11 @@ var SpritesFighter_R = {};
          _GameText_R1.drawText ("fr = " + index,left+5, top-100, 'italic 20px sans-serif', 'blue', 1);
          _GameText_R1.drawText (type,left+5, top-20, 'italic 20px sans-serif', 'blue', 1);
   };
+  //============================================================================
+
 
   // draw image mirror
+  //============================================================================
   SpritesFighter_R.drawSpriteMirror = function(type,index,left, top, _GameText_R1) {
 
          var top1 = top - SpritesFighter_R.spritesSheeva_mk3[type][index].height;
@@ -160,7 +137,7 @@ var SpritesFighter_R = {};
          left = left + SpritesFighter_R.spritesSheeva_mk3[type][index].width;
 
          SpritesFighter_R.Game_R_context_scale_min_1_1_IN();
-         SpritesFighter_R.Game_R_context_drawImage_IN(SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top1);
+         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top1);
 
          //GameText_R.drawRect(-left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
          //                          SpritesFighter_R.spritesSheeva_mk3[type][index].height, 1, 'blue', 0);
@@ -169,23 +146,29 @@ var SpritesFighter_R = {};
          _GameText_R1.drawText ("fr = " + index,left+5 - SpritesFighter_R.spritesSheeva_mk3[type][index].width, top-100, 'italic 20px sans-serif', 'blue', 1);
          _GameText_R1.drawText (type,left+5 - SpritesFighter_R.spritesSheeva_mk3[type][index].width, top -20, 'italic 20px sans-serif', 'blue', 1);
   };
+  //============================================================================
 
-
+  //============================================================================
   SpritesFighter_R.drawSprites_TEST = function(_GameText_R1){
 
      SpritesFighter_R.drawSprite("fightingStance", 1, 200, 200, _GameText_R1);
 
   };
+  //============================================================================
+
 
  // ini Image
+  //============================================================================
   SpritesFighter_R.iniSprite = function(type,path){
         for(var i = 1; i < SpritesFighter_R.spritesSheeva_mk3[type].length; i++ ){
            SpritesFighter_R.spritesSheeva_mk3[type][i] = new Image();
            SpritesFighter_R.spritesSheeva_mk3[type][i].src = path + i + ".png";
          };
   };
+  //============================================================================
 
-  //инициализируем массивы с картинками-----------------------------------
+  //инициализируем массивы с картинками
+  //============================================================================
   SpritesFighter_R.loadAllSprite = function() {
 
       SpritesFighter_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
@@ -199,11 +182,11 @@ var SpritesFighter_R = {};
       SpritesFighter_R.iniSprite("blockingLow","image/Sheeva_mk3_image/7_Blocking/bd_");
       SpritesFighter_R.iniSprite("beingHit","image/Sheeva_mk3_image/9_BeingHit/1_h0");
   };
+  //============================================================================
 
-    SpritesFighter_R.loadAllSprite();
-
+//==============================================================================
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('8   module "SpritesFighter" loaded', 1100, Game_R.yT);
 
-//================================================================================
+//==============================================================================
 //alert("module SpritesFighter done");

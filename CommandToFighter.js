@@ -1,29 +1,22 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 19.08.2018 - 19.03.2019 - 30.05.2019
+ // Last modified 19.08.2018 - 19.03.2019 - 30.05.2019 - 14.07.2019
 
   /*
-   $ -переменные
-
    НАЗНАЧЕНИЕ
 
+   ИСПОЛЬЗУЕТ МОДУЛИ
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-
-
+   ArenaFjs_R
+   Render_R
   */
 
   //alert("module CommandToFighter start");
-  //================================================================================
+  //============================================================================
 
-var CommandToFighter_R = {};
+window.CommandToFighter_R = {};
 CommandToFighter_R.name = 'CommandToFighter';//
-
-
-// INPUT========================================================================
-
-
-// IMPLEMENTATION===============================================================
 
 // команды бойцам
 CommandToFighter_R.STANCE  = 0;// стойка
@@ -48,21 +41,9 @@ CommandToFighter_R.saveCommandToFighter = {
     commandText : 'commandText'
 };
 
-// левый боец управляемый человеком
-CommandToFighter_R.commandToFighterGammerLeft = Object.create(CommandToFighter_R.saveCommandToFighter);
-
-// правый боец управляемый человеком
-CommandToFighter_R.commandToFighterGammerRight  = Object.create(CommandToFighter_R.saveCommandToFighter);
-
-// левый боец управляеый компьютером
-CommandToFighter_R.commandToFighterAILeft  = Object.create(CommandToFighter_R.saveCommandToFighter);
-
-// правый боец управляемый копьютером
-CommandToFighter_R.commandToFighterAIRight  = Object.create(CommandToFighter_R.saveCommandToFighter);
-
-
 
 //
+//==============================================================================
 CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, command) {
 
    var numState = 0;
@@ -130,34 +111,39 @@ CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, comma
    return (numState);
 
 };
-
+//==============================================================================
 
 
 // тут передаем команды  от человека левому бойцу
+//==============================================================================
 CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1,
 _spritesAnimators1) {
    _FighterSheeva_mk3_R1.setState(
      _spritesAnimators1,
         _FighterSheeva_mk3_R1.typeM[
           CommandToFighter_R.get_commandToNumState
-          ( _FighterSheeva_mk3_R1, CommandToFighter_R.commandToFighterGammerLeft.command)
+          ( _FighterSheeva_mk3_R1, CommandToFighter_R.saveCommandToFighter.command)
         ]
    );
 };
-
+//==============================================================================
 
 
  // тут передаем команды всем бойцам и бойцицам
+ //=============================================================================
  CommandToFighter_R.tick = function(_FighterSheeva_mk3_R1,
  _spritesAnimators1) {
          CommandToFighter_R.GammerToFighterLeftTick(_FighterSheeva_mk3_R1,
          _spritesAnimators1);
 
  };
+ //=============================================================================
 
+//==============================================================================
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('5   module "CommandToFighter" loaded', 1100, Game_R.yT);
-//================================================================================
+
+//==============================================================================
 //alert("module CommandToFighter done");
 
 /*

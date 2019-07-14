@@ -3,64 +3,22 @@
 // Last modified 08.08.2018 - 30.12.2018
 
   /*
-   $ -переменные
-
    НАЗНАЧЕНИЕ
-
 
    ИСПОЛЬЗУЕТ МОДУЛИ
 
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-
    ArenaFjs
-
+   Render_R
   */
 
   //alert("module ArenaScene start");
-  //================================================================================
+  //============================================================================
 
-var ArenaScene_R = {};
+window.ArenaScene_R = {};
 
   ArenaScene_R.name = "ArenaScene_R";//
 
-  //============================================================================
-  // INPUT======================================================================
-
-// Game_R
-
-ArenaScene_R.Game_R_img_load_end_0_IN = function() {
-   Game_R.img_load_end = 0 ;
-};
-
-ArenaScene_R.Game_R_img_load_end_1_IN = function() {
-   Game_R.img_load_end = 1 ;
-};
-
-//     Game_R context
-
-ArenaScene_R.Game_R_context_drawImage_IN = function(image, left, top, imageWidth, imageHeight) {
-   Game_R.context.drawImage(image, left, top, imageWidth, imageHeight);
-};
-
-ArenaScene_R.Game_R_context_strokeRect_IN = function(left, top, imageWidth, imageHeight) {
-   Game_R.context.strokeRect(left, top, imageWidth, imageHeight);
-};
-
-//     Game_R canvas
-
-ArenaScene_R.Game_R_canvas_width_IN = function() {
-   return (Game_R.canvas.width);
-};
-
-ArenaScene_R.Game_R_canvas_height_IN = function() {
-   return ( Game_R.canvas.height);
-};
-
-
-  //============================================================================
-  // IMPLEMENTATION=============================================================
-
-  //----------------------------------------------------------------------------
   ArenaScene_R.framesArena = {
 
        displayWidth  : 0, //
@@ -109,9 +67,7 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
       widthHealthPlayer2  : 0, //
       heightHealthPlayer2 : 0//
   };
-  //---------------------------------------------------------------------------------------------------------------
 
-  //---------------------------------------------------------------------------------------------------------------
   ArenaScene_R.imageArena = {
       name            : "imageArena",
 
@@ -121,31 +77,27 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
       fon2  : new Image(),
       fon3  : new Image()
   };
-  //---------------------------------------------------------------------------------------------------------------
 
-  ArenaScene_R.Game_R_img_load_end_0_IN();
-
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
   ArenaScene_R.imageArena.fon1.onload = function() {
-    ArenaScene_R.Game_R_img_load_end_1_IN() ;
+    Game_R.img_load_end = 1;
   };
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
 
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
   ArenaScene_R.imageArena.fon2.onload = function() {
-    ArenaScene_R.Game_R_img_load_end_1_IN() ;
+    Game_R.img_load_end = 1;
   };
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
 
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
   ArenaScene_R.imageArena.fon3.onload = function() {
-    ArenaScene_R.Game_R_img_load_end_1_IN() ;
+    Game_R.img_load_end = 1;
   };
+  //============================================================================
 
-  // draw>------------------------------------------------------------------------------------------------
-
-  //---------------------------------------------------------------------------------------------------------------
   // draw image
+  //============================================================================
   ArenaScene_R.drawSceneImage = function(type, left, top, kx, ky) {
 
          var imageWidth  = ArenaScene_R.imageArena[type].width;
@@ -154,16 +106,15 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
          imageWidth  = imageWidth * kx;
          imageHeight = imageHeight * ky;
 
-         ArenaScene_R.Game_R_context_drawImage_IN(ArenaScene_R.imageArena[type], left, top, imageWidth, imageHeight);
-         ArenaScene_R.Game_R_context_strokeRect_IN(left, top, imageWidth, imageHeight);
+         Game_R.context.drawImage(ArenaScene_R.imageArena[type], left, top, imageWidth, imageHeight);
+         Game_R.context.strokeRect(left, top, imageWidth, imageHeight);
 
 	       //Game_R.context.fillText ("fr = " + index,left, top);
          //Game_R.context.fillText (type,left, top + 100);
   };
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
 
-
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
   ArenaScene_R.drawAll = function(_GameText_R1) {
 
     // это видимо весь фон
@@ -174,13 +125,10 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
                               1, 'green', 0);
 
   };
-  //---------------------------------------------------------------------------------------------------------------
-  // draw>------------------------------------------------------------------------------------------------
+  //============================================================================
 
-
-// ini>------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------
-                                         // Width in pixels 1280 1500 Height in pixels 960
+  //============================================================================
+  // Width in pixels 1280 1500 Height in pixels 960
   ArenaScene_R.iniFramesArena = function( displayWidth,  displayHeight) {
 
         var dx0 = 10;
@@ -245,10 +193,10 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
 	    ArenaScene_R.framesArena.widthHealthPlayer2 = 500; //
 	    ArenaScene_R.framesArena.heightHealthPlayer2 = 40;//
   };
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
 
-  //---------------------------------------------------------------------------------------------------------------
-  // ini SceneImage
+
+  //============================================================================
   ArenaScene_R.loadSceneImage = function(){
 
       var path1 = "image/Sheeva_mk3_image/";
@@ -261,15 +209,14 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
       ArenaScene_R.imageArena.fon1.src = path2 + "mkw.png";
       ArenaScene_R.imageArena.fon2.src = path2 + "tr.png";
       ArenaScene_R.imageArena.fon3.src = path2 + "wsh.png";
-
-
-
   };
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
 
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
   ArenaScene_R.iniAll = function(displayWidth,  displayHeight,
     fighterSheeva_mk3_1, fighterSheeva_mk3_2) {
+
+       Game_R.img_load_end = 0 ;
 
        ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
        ArenaScene_R.loadSceneImage();
@@ -282,14 +229,11 @@ ArenaScene_R.Game_R_canvas_height_IN = function() {
       //ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
 
   };
-  //---------------------------------------------------------------------------------------------------------------
+  //============================================================================
 
-  // ini<------------------------------------------------------------------------------------------------
-
-
-
+  //============================================================================
   Game_R.yT = Game_R.yT + Game_R.dyT;//
   Game_R.context.strokeText ('15 module "ArenaScene" loaded', 1100, Game_R.yT);
 
-//================================================================================
+//==============================================================================
 //alert("module ArenaScene done");

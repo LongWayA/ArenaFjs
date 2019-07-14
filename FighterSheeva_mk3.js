@@ -3,33 +3,22 @@
 // Last modified 21.07.2018 - 30.12.2018 - 31.05.2019
 
   /*
-   $ -переменные
-
    НАЗНАЧЕНИЕ
-
 
    ИСПОЛЬЗУЕТ МОДУЛИ
 
-
    ВЫЗЫВАЕТСЯ В МОДУЛЯХ
-
+   ArenaFjs_R
+   CommandToFighter_R
+   Render_R
   */
 
 
   //alert("module FighterSheeva_mk3 start");
   //============================================================================
 
-  //============================================================================
-  // INPUT======================================================================
 
-
-
-  //============================================================================
-  // IMPLEMENTATION=============================================================
-
-
-// FighterSheeva_mk3_R----------------------------------------------------------
- var FighterSheeva_mk3_R = {};
+ window.FighterSheeva_mk3_R = {};
 
      FighterSheeva_mk3_R.typeM = ["fightingStance", "walkingForward",
                                   "walkingBack", "running", "punchUp",
@@ -72,6 +61,7 @@
         // изменение выносливости
     FighterSheeva_mk3_R.ds = 0;
 
+    //==========================================================================
     FighterSheeva_mk3_R.ini = function(left, top, mirror) {
          this.state = "fightingStance";
          this.left = left;
@@ -100,19 +90,23 @@
 
         // изменение выносливости
         this.ds = 1;
-     };
+    };
+    //==========================================================================
 
-     // tickAnimation ---------------------------------------
-     FighterSheeva_mk3_R.tickAnimation = function(_spritesAnimators, _GameText_R1) {
+    //==========================================================================
+    FighterSheeva_mk3_R.tickAnimation = function(_spritesAnimators,
+        _GameText_R1, _SpritesFighter_R1) {
        //alert("!");
          _spritesAnimators.SpritesAnimators_id.all_Animation(
            this.state,  this.left,
            this.top,  this.mirror,
-           this.width,  this.height, _GameText_R1);
+           this.width,  this.height, _GameText_R1, _SpritesFighter_R1);
 
          if (_spritesAnimators.SpritesAnimators_id.inProcess == 0) this.busy = 0;
-     };
+    };
+    //==========================================================================
 
+    //==========================================================================
     FighterSheeva_mk3_R.switchToState = function(toState) {
 
       var ret = 0;
@@ -158,9 +152,10 @@
       return (ret);
 
     };
+    //==========================================================================
 
-     // setState--------------------------------------------------------
-     FighterSheeva_mk3_R.setState = function(_spritesAnimators, toState) {
+    //==========================================================================
+    FighterSheeva_mk3_R.setState = function(_spritesAnimators, toState) {
 
       // if(toState != this.state){
       //      if( (this.state == "fightingStance")||
@@ -195,20 +190,22 @@
 
         };//if(toState != this.state){
 
-     };//this.setState
+    };//this.setState
+    //==========================================================================
 
 // когда удар проходит то вклчаем анимацию попадания несмотря на текущее состояние
-FighterSheeva_mk3_R.setStateBeingHit = function(toState) {
-    if(toState != this.state){
-       this.state = toState;
-       this.busy = 1;
+    //==========================================================================
+    FighterSheeva_mk3_R.setStateBeingHit = function(toState) {
+        if(toState != this.state){
+           this.state = toState;
+           this.busy = 1;
+        };
     };
-};
+    //==========================================================================
 
-
- //alert("!");
-
+//==============================================================================
 Game_R.yT = Game_R.yT + Game_R.dyT;//
 Game_R.context.strokeText ('10 module "FighterSheeva" loaded', 1100, Game_R.yT);
-//================================================================================
+
+//==============================================================================
 //alert("module FighterSheeva done");

@@ -3,7 +3,7 @@
  // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019 - 13.07.2019
 
   /*
-   ЧТО НУЖНО ЗНАТЬ ЧТОБЫ ИСПОЛЬЗОВАТЬ ЭТОТ МОДУЛЬ
+   НАЗНАЧЕНИЕ
    Корневой модуль игры
    Тут общая функция игры вызываемая на каждом тике цикла.
    Базовый цикл игры основанный на
@@ -11,17 +11,17 @@
    Методы setInterval(func, delay) и setTimeout(func, delay) позволяют запускать
    func регулярно/один раз через delay миллисекунд.
 
-   МОДУЛИ В КОТОРЫХ ВЫЗВАЕТСЯ ДАННЫЙ МОДУЛЬ
+   ИСПОЛЬЗУЕТ МОДУЛИ
 
-   МОДУЛИ КОТОРЫЕ ВЫЗЫВАЕТ ДАННЫЙ МОДУЛЬ
-
+   ВЫЗЫВАЕТСЯ В МОДУЛЯХ
+   Render_R
   */
 
 
  //alert("module ArenaFjs start");
  //=============================================================================
 
-var ArenaFjs_R = {};
+window.ArenaFjs_R = {};
 ArenaFjs_R.name = "ArenaFjs";//
 
 // 1
@@ -41,8 +41,9 @@ ArenaFjs_R.Sound_R1 = Object.create(Sound_R);//
 ArenaFjs_R.Timer_R1 = Object.create(Timer_R);//
 
 // 5
-// CommandToFighter_R !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// CommandToFighter_R
 ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
+ArenaFjs_R.CommandToFighter_R2 = Object.create(CommandToFighter_R);//
 
 // 6
 // UserInput_R
@@ -54,6 +55,7 @@ ArenaFjs_R.AICommand_R1 = Object.create(AICommand_R);//
 
 // 8
 // SpritesFighter
+ArenaFjs_R.SpritesFighter_R1 = Object.create(SpritesFighter_R);//
 
 // 9
 // SpritesAnimators
@@ -74,7 +76,8 @@ ArenaFjs_R.Move_R1 = Object.create(Move_R);//
 ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
 
 // 13
-//Menu
+//Menu_R
+ArenaFjs_R.Menu_R1 = Object.create(Menu_R);//
 
 // 14
 // GameColculation_R
@@ -89,15 +92,13 @@ ArenaFjs_R.ArenaScene_R1 = Object.create(ArenaScene_R);//
 ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 
 
-// IMPLEMENTATION=============================================================
-
    ArenaFjs_R.countLoop = 1;
    ArenaFjs_R.il = 0;
    ArenaFjs_R.il_2 = 0;
 
 
-  // old demonstr> -------------------------------------------------------------
-   ArenaFjs_R.oldDemonstr = function() {
+ //=============================================================================
+ ArenaFjs_R.oldDemonstr = function() {
        if (ArenaFjs_R.countLoop == 24){
           ArenaFjs_R.il_2 = ArenaFjs_R.il;
           ArenaFjs_R.FighterSheeva_mk3_R1
@@ -113,12 +114,11 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 
        };
 
-   };
-   // old demostr< -------------------------------------------------------------
-//alert("!");
-
- // tick> ----------------------------------------------------------------------
-  ArenaFjs_R.tick = function() {
+ };
+ //=============================================================================
+ //alert("!");
+ //=============================================================================
+ ArenaFjs_R.tick = function() {
 
     //alert("t");
     //alert("!");
@@ -126,13 +126,14 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 	  ArenaFjs_R.UserInput_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
 
     // компьютер отдает приказы каждый такт
-    ArenaFjs_R.AICommand_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
+    ArenaFjs_R.AICommand_R1.tick(ArenaFjs_R.CommandToFighter_R2);//
 
     // передаются команды бойцам и бойцицам
     ArenaFjs_R.CommandToFighter_R1.tick(ArenaFjs_R.FighterSheeva_mk3_R1
       , ArenaFjs_R.SpritesAnimators_R1);
 
-
+    ArenaFjs_R.CommandToFighter_R2.tick(ArenaFjs_R.FighterSheeva_mk3_R2
+        , ArenaFjs_R.SpritesAnimators_R2);
 
     // обрабатываем движение бойцов
     ArenaFjs_R.Move_R1.tick();
@@ -147,7 +148,10 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
     ArenaFjs_R.Render_R1.drawAll(ArenaFjs_R.SpritesAnimators_R1,
       ArenaFjs_R.SpritesAnimators_R2,
     ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2
-   ,ArenaFjs_R.GameText_R1, ArenaFjs_R.ArenaScene_R1, ArenaFjs_R.Timer_R1);
+   ,ArenaFjs_R.GameText_R1, ArenaFjs_R.ArenaScene_R1,
+    ArenaFjs_R.Timer_R1, ArenaFjs_R.CommandToFighter_R1,
+     ArenaFjs_R.CommandToFighter_R2
+     , ArenaFjs_R.UserInput_R1, ArenaFjs_R.SpritesFighter_R1, ArenaFjs_R);
 
     //alert("!");
     // что это за текст? почему он пишется именно здесь?
@@ -157,56 +161,54 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 
 	     ArenaFjs_R.countLoop = ArenaFjs_R.countLoop + 1;
        if (ArenaFjs_R.countLoop > 24 ) ArenaFjs_R.countLoop = 1;
-  };
- // tick< ----------------------------------------------------------------------
+ };
+ //=============================================================================
 
-  // ini> ----------------------------------------------------------------------
-  ArenaFjs_R.ini = function(){
+ //=============================================================================
+ ArenaFjs_R.ini = function(){
 
     //alert("ini = " + ArenaFjs_R.SpritesAnimators_R1);
     ArenaFjs_R.Timer_R1.ini(8);
 
+    ArenaFjs_R.SpritesFighter_R1.loadAllSprite();
+
     ArenaFjs_R.FighterSheeva_mk3_R1.setState(ArenaFjs_R.SpritesAnimators_R1, "fightingStance");
     ArenaFjs_R.FighterSheeva_mk3_R2.setState(ArenaFjs_R.SpritesAnimators_R2, "fightingStance");
 
-    ArenaFjs_R.ArenaScene_R1.iniAll(ArenaFjs_R.ArenaScene_R1.Game_R_canvas_width_IN(),
-    ArenaFjs_R.ArenaScene_R1.Game_R_canvas_height_IN(),
+    ArenaFjs_R.ArenaScene_R1.iniAll(Game_R.canvas.width, Game_R.canvas.height,
     ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2);
+    ArenaFjs_R.UserInput_R1.ini();
 
-  };
-  // ini< ----------------------------------------------------------------------
-
-//alert("!");
-
-  // start> --------------------------------------------------------------------
-  ArenaFjs_R.start = function(){
+ };
+ //=============================================================================
+ //alert("!");
+ //=============================================================================
+ ArenaFjs_R.start = function(){
 
       console.log('Ah ah it is Console!');
 
      //alert("!");
      //alert( Menu_R.name );
 
-  };
- // start< ---------------------------------------------------------------------
+ };
+ //=============================================================================
 
-
-
-// tickTest> --------------------------------------------------------------------
-ArenaFjs_R.tickTest = function(){
+ //=============================================================================
+ ArenaFjs_R.tickTest = function(){
 
   //<TEST ------------------------------------------------------
 
-      // SpritesFighter_R.drawSprites_TEST();
-      //SpritesAnimators_R.animationAll_TEST();
+      // ArenaFjs_R.SpritesFighter_R1.drawSprites_TEST();
+      //ArenaFjs_R.SpritesAnimators_R1.animationAll_TEST();
       // временная заглушка
          ArenaFjs_R.oldDemonstr();
 
   //TEST> ------------------------------------------------------
 
-};
-// tickTest< ---------------------------------------------------------------------
+ };
+ //=============================================================================
 
-// loop>------------------------------------------------------------------------
+ //loop>------------------------------------------------------------------------
   ArenaFjs_R.ini();
   ArenaFjs_R.start();
    //Game_R.context.fokus();
@@ -223,8 +225,9 @@ ArenaFjs_R.tickTest = function(){
         ArenaFjs_R.timerId = setTimeout( tick,ArenaFjs_R.Timer_R1.timeThreadSleepGameMs);
 
   }, ArenaFjs_R.Timer_R1.timeThreadSleepGameMs);
-// loop<------------------------------------------------------------------------
+ //loop<------------------------------------------------------------------------
 
+  //============================================================================
   Game_R.yT = Game_R.yT + Game_R.dyT;//
   Game_R.context.strokeText ('17 module "ArenaFjs" loaded', 1100, Game_R.yT);
 
