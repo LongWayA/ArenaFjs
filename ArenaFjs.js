@@ -60,7 +60,6 @@ ArenaFjs_R.SpritesFighter_R1 = Object.create(SpritesFighter_R);//
 // 9
 // SpritesAnimators
 ArenaFjs_R.SpritesAnimators_R1  = Object.create(SpritesAnimators_R);//
-ArenaFjs_R.SpritesAnimators_R2  = Object.create(SpritesAnimators_R);//
 
 // 10
 // FighterSheeva_mk3_R
@@ -102,12 +101,10 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
        if (ArenaFjs_R.countLoop == 24){
           ArenaFjs_R.il_2 = ArenaFjs_R.il;
           ArenaFjs_R.FighterSheeva_mk3_R1
-                    .setState(ArenaFjs_R.SpritesAnimators_R1,
-                      ArenaFjs_R.FighterSheeva_mk3_R1.typeM[ArenaFjs_R.il]);
+                    .setState(ArenaFjs_R.FighterSheeva_mk3_R1.typeM[ArenaFjs_R.il]);
 
            ArenaFjs_R.FighterSheeva_mk3_R2
-                    .setState(ArenaFjs_R.SpritesAnimators_R2,
-                      ArenaFjs_R.FighterSheeva_mk3_R2.typeM[ArenaFjs_R.il]);
+                    .setState(ArenaFjs_R.FighterSheeva_mk3_R2.typeM[ArenaFjs_R.il]);
 
           ArenaFjs_R.il = ArenaFjs_R.il + 1;
           if (ArenaFjs_R.il > ArenaFjs_R.FighterSheeva_mk3_R1.typeM.length-1) ArenaFjs_R.il = 0;
@@ -129,11 +126,9 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
     ArenaFjs_R.AICommand_R1.tick(ArenaFjs_R.CommandToFighter_R2);//
 
     // передаются команды бойцам и бойцицам
-    ArenaFjs_R.CommandToFighter_R1.tick(ArenaFjs_R.FighterSheeva_mk3_R1
-      , ArenaFjs_R.SpritesAnimators_R1);
+    ArenaFjs_R.CommandToFighter_R1.tick(ArenaFjs_R.FighterSheeva_mk3_R1);
 
-    ArenaFjs_R.CommandToFighter_R2.tick(ArenaFjs_R.FighterSheeva_mk3_R2
-        , ArenaFjs_R.SpritesAnimators_R2);
+    ArenaFjs_R.CommandToFighter_R2.tick(ArenaFjs_R.FighterSheeva_mk3_R2);
 
     // обрабатываем движение бойцов
     ArenaFjs_R.Move_R1.tick();
@@ -146,7 +141,6 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 
     // отрисовываем всю графику
     ArenaFjs_R.Render_R1.drawAll(ArenaFjs_R.SpritesAnimators_R1,
-      ArenaFjs_R.SpritesAnimators_R2,
     ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2
    ,ArenaFjs_R.GameText_R1, ArenaFjs_R.ArenaScene_R1,
     ArenaFjs_R.Timer_R1, ArenaFjs_R.CommandToFighter_R1,
@@ -172,11 +166,12 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 
     ArenaFjs_R.SpritesFighter_R1.loadAllSprite();
 
-    ArenaFjs_R.FighterSheeva_mk3_R1.setState(ArenaFjs_R.SpritesAnimators_R1, "fightingStance");
-    ArenaFjs_R.FighterSheeva_mk3_R2.setState(ArenaFjs_R.SpritesAnimators_R2, "fightingStance");
-
     ArenaFjs_R.ArenaScene_R1.iniAll(Game_R.canvas.width, Game_R.canvas.height,
     ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2);
+
+    ArenaFjs_R.FighterSheeva_mk3_R1.setState("fightingStance");
+    ArenaFjs_R.FighterSheeva_mk3_R2.setState("fightingStance");
+
     ArenaFjs_R.UserInput_R1.ini();
 
  };
@@ -201,7 +196,7 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
       // ArenaFjs_R.SpritesFighter_R1.drawSprites_TEST();
       //ArenaFjs_R.SpritesAnimators_R1.animationAll_TEST();
       // временная заглушка
-         ArenaFjs_R.oldDemonstr();
+         //ArenaFjs_R.oldDemonstr();
 
   //TEST> ------------------------------------------------------
 

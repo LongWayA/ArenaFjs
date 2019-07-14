@@ -72,7 +72,7 @@ Render_R.name = "Render";//
   //============================================================================
 
   //============================================================================
-  Render_R.drawFightFrame = function(_SpritesAnimators_R1,_SpritesAnimators_R2,
+  Render_R.drawFightFrame = function(_SpritesAnimators_R1,
   _FighterSheeva_mk3_R1, _FighterSheeva_mk3_R2,_GameText_R1,
    _SpritesFighter_R1, _ArenaScene_R1) {
 
@@ -88,17 +88,17 @@ Render_R.name = "Render";//
     _ArenaScene_R1.drawSceneImage("fon3",x, y, 2.3, 2.3);
 
     _FighterSheeva_mk3_R1.tickAnimation(_SpritesAnimators_R1, _GameText_R1, _SpritesFighter_R1);
-    _FighterSheeva_mk3_R2.tickAnimation(_SpritesAnimators_R2, _GameText_R1, _SpritesFighter_R1);
+    _FighterSheeva_mk3_R2.tickAnimation(_SpritesAnimators_R1, _GameText_R1, _SpritesFighter_R1);
     //Location
 	  // поле боя
 	  _GameText_R1.drawRect(x, y, width, height, 1, 'green', 0);
-    _GameText_R1.drawText ("inProcess = " + _SpritesAnimators_R1.SpritesAnimators_id.inProcess,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
+    _GameText_R1.drawText ("inProcess = " + _FighterSheeva_mk3_R1.SpritesAnimators_state.inProcess,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
     _GameText_R1.drawText ("busy = " + _FighterSheeva_mk3_R1.busy,x+450, y+370, 'italic 20px sans-serif', 'blue', 1);
   };
   //============================================================================
 
   //============================================================================
-  Render_R.drawAll = function(_SpritesAnimators_R1,_SpritesAnimators_R2,
+  Render_R.drawAll = function(_SpritesAnimators_R1,
   _FighterSheeva_mk3_R1, _FighterSheeva_mk3_R2,
   _GameText_R1, _ArenaScene_R1, _Timer_R1, _CommandToFighter_R1,
    _CommandToFighter_R2, _UserInput_R1, _SpritesFighter_R1, _ArenaFjs_R) {
@@ -110,7 +110,7 @@ Render_R.name = "Render";//
 
     _ArenaScene_R1.drawAll(_GameText_R1);
 
-    Render_R.drawFightFrame(_SpritesAnimators_R1,_SpritesAnimators_R2,
+    Render_R.drawFightFrame(_SpritesAnimators_R1,
     _FighterSheeva_mk3_R1, _FighterSheeva_mk3_R2, _GameText_R1
     , _SpritesFighter_R1, _ArenaScene_R1);
     //Render_R.drawIkonFrame(_GameText_R1, _ArenaScene_R1);

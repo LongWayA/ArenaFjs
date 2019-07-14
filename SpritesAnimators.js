@@ -130,84 +130,71 @@
 SpritesAnimators_R.YES_MIRROR = 1;
 SpritesAnimators_R.NO_MIRROR = 0;
 
-//
-SpritesAnimators_R.SpritesAnimators_id = {
-
-    name : "SpritesAnimators",
-
-    num : 0,
-    inProcess : 0,
-    type : "n",
-    oldType : "no",
-
-
-    //setType-------------------------------------------------------
-    setType : function(toType) {
-     //alert("this.type = " + this.type + " toType = " + toType);
-     //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
-
-      if (this.oldType != toType) {
-         this.type = toType;
-         this.oldType = toType;
-         this.num = 0;
-         this.inProcess = 1;
-      } else {
-         if (this.inProcess == 0) this.inProcess = 1;
-      };
-    },
-
      //=========================================================================
-     animation : function(mirror,left, top, _GameText_R1,_SpritesFighter_R1) {
+     SpritesAnimators_R.animation = function(mirror,left, top, _GameText_R1,
+       _SpritesFighter_R1, _FighterSheeva_mk3_R1) {
+
+         //alert("_FighterSheeva_mk3_R1 = " + _FighterSheeva_mk3_R1.name);
+         //alert("_FighterSheeva_mk3_R1 num= " + _FighterSheeva_mk3_R1.SpritesAnimators_state.num);
+
+         //alert("_FighterSheeva_mk3_R1 name= " + _FighterSheeva_mk3_R1.SpritesAnimators_state.name);
+         //alert("_FighterSheeva_mk3_R1 type= " + _FighterSheeva_mk3_R1.SpritesAnimators_state.type);
+
+         var num = _FighterSheeva_mk3_R1.SpritesAnimators_state.num;
+         var inProcess = _FighterSheeva_mk3_R1.SpritesAnimators_state.inProcess;
+         var type = _FighterSheeva_mk3_R1.SpritesAnimators_state.type;
 
          //alert("_SpritesFighter_R1 = " + _SpritesFighter_R1.name);
 
+
          if (mirror == SpritesAnimators_R.NO_MIRROR){
               _SpritesFighter_R1.drawSprite(
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top, _GameText_R1);
+                  SpritesAnimators_R.animatorsSheeva_mk3[type].translate,
+                  SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num], left, top, _GameText_R1);
          }else{
               _SpritesFighter_R1.drawSpriteMirror(
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[this.type].fr[this.num], left, top, _GameText_R1);
+                  SpritesAnimators_R.animatorsSheeva_mk3[type].translate,
+                  SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num], left, top, _GameText_R1);
          };
 
-         this.num = this.num + 1;
-         if (this.num > SpritesAnimators_R.animatorsSheeva_mk3[this.type].max - 1 ) {
-             this.num = 0;
-             this.inProcess = 0;
+         num = num + 1;
+         if (num > SpritesAnimators_R.animatorsSheeva_mk3[type].max - 1 ) {
+             num = 0;
+             inProcess = 0;
          };
-     },
+     };
      //=========================================================================
 
      //=========================================================================
-     all_Animation : function(typeStateAnimators, left, top, mirror, width,
-        height, _GameText_R1, _SpritesFighter_R1){
+     SpritesAnimators_R.all_Animation = function(typeStateAnimators, left,
+       top, mirror, width, height, _GameText_R1,
+       _SpritesFighter_R1, _FighterSheeva_mk3_R1){
 
-       this.setType(typeStateAnimators);
+       //alert("typeStateAnimators = " + typeStateAnimators);
+
+       _FighterSheeva_mk3_R1.SpritesAnimators_state.setType(typeStateAnimators);
+       var num = _FighterSheeva_mk3_R1.SpritesAnimators_state.num;
 
         // if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
       //        _Sound_R1[SpritesAnimators_R.animatorsSheeva_mk3[type].sound].play();
       //   };
 
          if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
-              if (this.num > 3 ){
-                 this.num = 3;
+              if (num > 3 ){
+                 num = 3;
                  //this.inProcess = 0;
               }
-              this.animation(mirror, left, top , _GameText_R1, _SpritesFighter_R1);
+              this.animation(mirror, left, top , _GameText_R1,
+                 _SpritesFighter_R1, _FighterSheeva_mk3_R1);
          }else {
-              this.animation(mirror, left, top, _GameText_R1, _SpritesFighter_R1);
+              this.animation(mirror, left, top, _GameText_R1,
+                 _SpritesFighter_R1, _FighterSheeva_mk3_R1);
          };
-     },
+     };
      //=========================================================================
 
-};//SpritesAnimators_R.SpritesAnimators_id
-
-
-
  // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
-
- SpritesAnimators_R.spritesAnimatorsTest = Object.create(SpritesAnimators_R.SpritesAnimators_id);//
+/*
 
  SpritesAnimators_R.animationAll_TEST = function(_GameText_R1){
 
@@ -215,7 +202,6 @@ SpritesAnimators_R.SpritesAnimators_id = {
 
   //SpritesAnimators_R.all_Animation(SpritesAnimators_R.animatorsState_0, "fightingStance", 0, 50,0,0,0);
 
-  /*
     SpritesAnimators_R.AnimatorsSheeva_mk3_1_t.all_Animation("fightingStance", 0, 50,0,0,0);
     SpritesAnimators_R.AnimatorsSheeva_mk3_2_t.all_Animation("fightingStance", 0, 250,1,0,0);
 
@@ -248,8 +234,8 @@ SpritesAnimators_R.SpritesAnimators_id = {
 
  	  SpritesAnimators_R.AnimatorsSheeva_mk3_19_t.all_Animation("beingHit", 1200, 450,0,0,0);
     SpritesAnimators_R.AnimatorsSheeva_mk3_20_t.all_Animation("beingHit", 1200, 650,1,0,0);
-  	*/
  };
+ */
  // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
  /*
  class Proba {

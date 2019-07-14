@@ -32,7 +32,7 @@
     FighterSheeva_mk3_R.MAX_HEALTH = 1000; //
     FighterSheeva_mk3_R.MAX_STAMINA = 100; //
 
-    FighterSheeva_mk3_R.state = "fightingStance";
+    FighterSheeva_mk3_R.stateFighter = "fightingStance";
     FighterSheeva_mk3_R.busy = 0;
     FighterSheeva_mk3_R.left = 0;
     FighterSheeva_mk3_R.top = 0;
@@ -61,9 +61,34 @@
         // изменение выносливости
     FighterSheeva_mk3_R.ds = 0;
 
+    FighterSheeva_mk3_R.SpritesAnimators_state = {
+
+        name : "SpritesAnimators_state",
+
+        num : 0,
+        inProcess : 0,
+        type : "n",
+        oldType : "no",
+
+        setType : function(toType) {
+         //alert("this.type = " + this.type + " toType = " + toType);
+         //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
+
+          if (this.oldType != toType) {
+             this.type = toType;
+             this.oldType = toType;
+             this.num = 0;
+             this.inProcess = 1;
+          } else {
+             if (this.inProcess == 0) this.inProcess = 1;
+          };
+        }
+    };
+
     //==========================================================================
     FighterSheeva_mk3_R.ini = function(left, top, mirror) {
-         this.state = "fightingStance";
+         this.name = "FighterSheeva_mk3+";
+         this.stateFighter = "fightingStance";
          this.left = left;
          this.top =top;
          this.mirror = mirror; // Direction_RIGHT_LEFT
@@ -94,15 +119,20 @@
     //==========================================================================
 
     //==========================================================================
-    FighterSheeva_mk3_R.tickAnimation = function(_spritesAnimators,
+    FighterSheeva_mk3_R.tickAnimation = function(_SpritesAnimators_R1,
         _GameText_R1, _SpritesFighter_R1) {
        //alert("!");
-         _spritesAnimators.SpritesAnimators_id.all_Animation(
-           this.state,  this.left,
-           this.top,  this.mirror,
-           this.width,  this.height, _GameText_R1, _SpritesFighter_R1);
+        //alert("this.name =" + this.name);
+        //alert("this.name =" + this.name + " this.stateFighter =" + this.stateFighter);
+        //alert("Fimk3_R.name = " + FighterSheeva_mk3_R.name + " Fimk3_R.stateFighter = " + FighterSheeva_mk3_R.stateFighter);
 
-         if (_spritesAnimators.SpritesAnimators_id.inProcess == 0) this.busy = 0;
+         _SpritesAnimators_R1.all_Animation(
+           this.stateFighter,  this.left,
+           this.top,  this.mirror,
+           this.width,  this.height, _GameText_R1,
+            _SpritesFighter_R1, FighterSheeva_mk3_R);
+
+         if (FighterSheeva_mk3_R.SpritesAnimators_state.inProcess == 0) this.busy = 0;
     };
     //==========================================================================
 
@@ -155,7 +185,7 @@
     //==========================================================================
 
     //==========================================================================
-    FighterSheeva_mk3_R.setState = function(_spritesAnimators, toState) {
+    FighterSheeva_mk3_R.setState = function(toState) {
 
       // if(toState != this.state){
       //      if( (this.state == "fightingStance")||
@@ -177,18 +207,24 @@
       //      }
       //
       // };//if(toState != this.state){
-        if(toState != this.state){
+      //alert("s11 this.name =" + this.name + " toState =" + toState);
+      //alert("s 12 this.name =" + this.name + " this.stateFighter =" + this.stateFighter);
+
+        if(toState != this.stateFighter){
             if( this.busy == 0){
-              this.state = toState;
+              this.stateFighter = toState;
               if( this.switchToState(toState) == 1) this.busy = 1;
             }
 
         } else {
-          if(_spritesAnimators.SpritesAnimators_id.inProcess == 0) {
+          if(FighterSheeva_mk3_R.SpritesAnimators_state.inProcess == 0) {
              if( this.switchToState(toState) == 1) this.busy = 1;
           };
 
         };//if(toState != this.state){
+
+        //  alert("s 21 this.name =" + this.name + " toState =" + toState);
+      //    alert("s 22 this.name =" + this.name + " this.stateFighter =" + this.stateFighter);
 
     };//this.setState
     //==========================================================================
@@ -196,8 +232,8 @@
 // когда удар проходит то вклчаем анимацию попадания несмотря на текущее состояние
     //==========================================================================
     FighterSheeva_mk3_R.setStateBeingHit = function(toState) {
-        if(toState != this.state){
-           this.state = toState;
+        if(toState != this.stateFighter){
+           this.stateFighter = toState;
            this.busy = 1;
         };
     };

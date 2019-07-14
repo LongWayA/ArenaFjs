@@ -116,10 +116,8 @@ CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, comma
 
 // тут передаем команды  от человека левому бойцу
 //==============================================================================
-CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1,
-_spritesAnimators1) {
+CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
    _FighterSheeva_mk3_R1.setState(
-     _spritesAnimators1,
         _FighterSheeva_mk3_R1.typeM[
           CommandToFighter_R.get_commandToNumState
           ( _FighterSheeva_mk3_R1, CommandToFighter_R.saveCommandToFighter.command)
@@ -131,10 +129,8 @@ _spritesAnimators1) {
 
  // тут передаем команды всем бойцам и бойцицам
  //=============================================================================
- CommandToFighter_R.tick = function(_FighterSheeva_mk3_R1,
- _spritesAnimators1) {
-         CommandToFighter_R.GammerToFighterLeftTick(_FighterSheeva_mk3_R1,
-         _spritesAnimators1);
+ CommandToFighter_R.tick = function(_FighterSheeva_mk3_R1) {
+         CommandToFighter_R.GammerToFighterLeftTick(_FighterSheeva_mk3_R1);
 
  };
  //=============================================================================
