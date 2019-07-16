@@ -1,6 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 10.07.2018 - 30.12.2018
+//t2
 
   /*
    НАЗНАЧЕНИЕ
@@ -134,24 +135,20 @@ SpritesAnimators_R.NO_MIRROR = 0;
      SpritesAnimators_R.animation = function(mirror,left, top, _GameText_R1,
        _SpritesFighter_R1, _FighterSheeva_mk3_R1) {
 
-         //alert("_FighterSheeva_mk3_R1 = " + _FighterSheeva_mk3_R1.name);
-         //alert("_FighterSheeva_mk3_R1 num= " + _FighterSheeva_mk3_R1.SpritesAnimators_state.num);
-
-         //alert("_FighterSheeva_mk3_R1 name= " + _FighterSheeva_mk3_R1.SpritesAnimators_state.name);
-         //alert("_FighterSheeva_mk3_R1 type= " + _FighterSheeva_mk3_R1.SpritesAnimators_state.type);
-
-         var num = _FighterSheeva_mk3_R1.SpritesAnimators_state.num;
-         var inProcess = _FighterSheeva_mk3_R1.SpritesAnimators_state.inProcess;
-         var type = _FighterSheeva_mk3_R1.SpritesAnimators_state.type;
-
-         //alert("_SpritesFighter_R1 = " + _SpritesFighter_R1.name);
-
+         var num = _FighterSheeva_mk3_R1.SpritesAnimators_state_num;
+         var type = _FighterSheeva_mk3_R1.SpritesAnimators_state_type;
 
          if (mirror == SpritesAnimators_R.NO_MIRROR){
+           //console.log('1_name = ' + _FighterSheeva_mk3_R1.name + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
+           //console.log('1_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num]);
+
               _SpritesFighter_R1.drawSprite(
                   SpritesAnimators_R.animatorsSheeva_mk3[type].translate,
                   SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num], left, top, _GameText_R1);
          }else{
+           //console.log('2_name = ' + _FighterSheeva_mk3_R1.name + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
+           //console.log('2_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num]);
+
               _SpritesFighter_R1.drawSpriteMirror(
                   SpritesAnimators_R.animatorsSheeva_mk3[type].translate,
                   SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num], left, top, _GameText_R1);
@@ -160,8 +157,10 @@ SpritesAnimators_R.NO_MIRROR = 0;
          num = num + 1;
          if (num > SpritesAnimators_R.animatorsSheeva_mk3[type].max - 1 ) {
              num = 0;
-             inProcess = 0;
+             _FighterSheeva_mk3_R1.SpritesAnimators_state_inProcess = 0;
          };
+
+         _FighterSheeva_mk3_R1.SpritesAnimators_state_num = num;
      };
      //=========================================================================
 
@@ -172,8 +171,8 @@ SpritesAnimators_R.NO_MIRROR = 0;
 
        //alert("typeStateAnimators = " + typeStateAnimators);
 
-       _FighterSheeva_mk3_R1.SpritesAnimators_state.setType(typeStateAnimators);
-       var num = _FighterSheeva_mk3_R1.SpritesAnimators_state.num;
+       _FighterSheeva_mk3_R1.SpritesAnimators_state_setType(typeStateAnimators);
+       var num = _FighterSheeva_mk3_R1.SpritesAnimators_state_num;
 
         // if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
       //        _Sound_R1[SpritesAnimators_R.animatorsSheeva_mk3[type].sound].play();
@@ -181,7 +180,7 @@ SpritesAnimators_R.NO_MIRROR = 0;
 
          if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
               if (num > 3 ){
-                 num = 3;
+                 _FighterSheeva_mk3_R1.SpritesAnimators_state_num = 3;
                  //this.inProcess = 0;
               }
               this.animation(mirror, left, top , _GameText_R1,

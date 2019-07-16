@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 07.07.2018 - 31.12.2018
-
+// t
   /*
    НАЗНАЧЕНИЕ
 
@@ -88,11 +88,6 @@ window.SpritesFighter_R = {};
 
   SpritesFighter_R.name = "SpritesFighter";//
 
-  SpritesFighter_R.Game_R_context_scale_min_1_1_IN = function() {
-    Game_R.context.scale(-1, 1);
-  };
-
-
   SpritesFighter_R.spritesSheeva_mk3 = {
       name            : "spritesSheeva_mk3",
 
@@ -136,13 +131,13 @@ window.SpritesFighter_R = {};
 
          left = left + SpritesFighter_R.spritesSheeva_mk3[type][index].width;
 
-         SpritesFighter_R.Game_R_context_scale_min_1_1_IN();
+         Game_R.context.scale(-1, 1);
          Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top1);
 
          //GameText_R.drawRect(-left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
          //                          SpritesFighter_R.spritesSheeva_mk3[type][index].height, 1, 'blue', 0);
 
-         SpritesFighter_R.Game_R_context_scale_min_1_1_IN();
+         Game_R.context.scale(-1, 1);
          _GameText_R1.drawText ("fr = " + index,left+5 - SpritesFighter_R.spritesSheeva_mk3[type][index].width, top-100, 'italic 20px sans-serif', 'blue', 1);
          _GameText_R1.drawText (type,left+5 - SpritesFighter_R.spritesSheeva_mk3[type][index].width, top -20, 'italic 20px sans-serif', 'blue', 1);
   };

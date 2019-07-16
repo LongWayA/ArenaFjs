@@ -1,6 +1,7 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 19.08.2018 - 19.03.2019 - 30.05.2019 - 14.07.2019
+ //t
 
   /*
    НАЗНАЧЕНИЕ
@@ -120,7 +121,7 @@ CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
    _FighterSheeva_mk3_R1.setState(
         _FighterSheeva_mk3_R1.typeM[
           CommandToFighter_R.get_commandToNumState
-          ( _FighterSheeva_mk3_R1, CommandToFighter_R.saveCommandToFighter.command)
+          ( _FighterSheeva_mk3_R1, this.saveCommandToFighter.command)
         ]
    );
 };

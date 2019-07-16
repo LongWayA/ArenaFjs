@@ -1,6 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 08.08.2018 - 30.12.2018
+//t
 
   /*
    НАЗНАЧЕНИЕ
@@ -222,9 +223,16 @@ window.ArenaScene_R = {};
        ArenaScene_R.loadSceneImage();
 
        fighterSheeva_mk3_1.ini(ArenaScene_R.framesArena.x0LeftLocation+180,
-                                             ArenaScene_R.framesArena.y0TopLocation+550, 0);
+                               ArenaScene_R.framesArena.y0TopLocation+550,
+                               0, 0,
+                               0,
+                               'v1','fightingStance');
+
        fighterSheeva_mk3_2.ini(ArenaScene_R.framesArena.x0LeftLocation+480,
-                                             ArenaScene_R.framesArena.y0TopLocation+550, 1);
+                               ArenaScene_R.framesArena.y0TopLocation+550,
+                               0, 0,
+                               1,
+                              'v2','fightingStance');
 
       //ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
 

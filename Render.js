@@ -92,7 +92,7 @@ Render_R.name = "Render";//
     //Location
 	  // поле боя
 	  _GameText_R1.drawRect(x, y, width, height, 1, 'green', 0);
-    _GameText_R1.drawText ("inProcess = " + _FighterSheeva_mk3_R1.SpritesAnimators_state.inProcess,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
+    _GameText_R1.drawText ("inProcess = " + _FighterSheeva_mk3_R1.SpritesAnimators_state_inProcess,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
     _GameText_R1.drawText ("busy = " + _FighterSheeva_mk3_R1.busy,x+450, y+370, 'italic 20px sans-serif', 'blue', 1);
   };
   //============================================================================

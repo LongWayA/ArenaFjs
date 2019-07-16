@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 21.07.2018 - 30.12.2018 - 31.05.2019
-
+//t
   /*
    НАЗНАЧЕНИЕ
 
@@ -61,39 +61,36 @@
         // изменение выносливости
     FighterSheeva_mk3_R.ds = 0;
 
-    FighterSheeva_mk3_R.SpritesAnimators_state = {
+    //"SpritesAnimators_state"--------------------------------
+    FighterSheeva_mk3_R.SpritesAnimators_state_num = 0;
+    FighterSheeva_mk3_R.SpritesAnimators_state_inProcess = 0;
+    FighterSheeva_mk3_R.SpritesAnimators_state_type = "n";
+    FighterSheeva_mk3_R.SpritesAnimators_state_oldType = "no";
 
-        name : "SpritesAnimators_state",
+    FighterSheeva_mk3_R.SpritesAnimators_state_setType = function(toType) {
+    //alert("this.type = " + this.type + " toType = " + toType);
+    //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
 
-        num : 0,
-        inProcess : 0,
-        type : "n",
-        oldType : "no",
-
-        setType : function(toType) {
-         //alert("this.type = " + this.type + " toType = " + toType);
-         //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
-
-          if (this.oldType != toType) {
-             this.type = toType;
-             this.oldType = toType;
-             this.num = 0;
-             this.inProcess = 1;
+          if (this.SpritesAnimators_state_oldType != toType) {
+             this.SpritesAnimators_state_type = toType;
+             this.SpritesAnimators_state_oldType = toType;
+             this.SpritesAnimators_state_num = 0;
+             this.SpritesAnimators_state_inProcess = 1;
           } else {
-             if (this.inProcess == 0) this.inProcess = 1;
+             if (this.SpritesAnimators_state_inProcess == 0) this.SpritesAnimators_state_inProcess = 1;
           };
-        }
     };
 
     //==========================================================================
-    FighterSheeva_mk3_R.ini = function(left, top, mirror) {
-         this.name = "FighterSheeva_mk3+";
-         this.stateFighter = "fightingStance";
-         this.left = left;
-         this.top =top;
-         this.mirror = mirror; // Direction_RIGHT_LEFT
-         this.width = 0;
-         this.height = 0;
+    FighterSheeva_mk3_R.ini = function(_left, _top, _width, _height,
+      _mirror, _name_id, _stateFighter) {
+         this.name = "FighterSheeva_mk3_" + _name_id;
+         this.stateFighter = _stateFighter;
+         this.left = _left;
+         this.top = _top;
+         this.mirror = _mirror; // Direction_RIGHT_LEFT
+         this.width = _width;
+         this.height = _height;
 
          // жизни бойца
          this.health = this.MAX_HEALTH;
@@ -122,7 +119,6 @@
     FighterSheeva_mk3_R.tickAnimation = function(_SpritesAnimators_R1,
         _GameText_R1, _SpritesFighter_R1) {
        //alert("!");
-        //alert("this.name =" + this.name);
         //alert("this.name =" + this.name + " this.stateFighter =" + this.stateFighter);
         //alert("Fimk3_R.name = " + FighterSheeva_mk3_R.name + " Fimk3_R.stateFighter = " + FighterSheeva_mk3_R.stateFighter);
 
@@ -130,9 +126,9 @@
            this.stateFighter,  this.left,
            this.top,  this.mirror,
            this.width,  this.height, _GameText_R1,
-            _SpritesFighter_R1, FighterSheeva_mk3_R);
+            _SpritesFighter_R1, this);
 
-         if (FighterSheeva_mk3_R.SpritesAnimators_state.inProcess == 0) this.busy = 0;
+         if (this.SpritesAnimators_state_inProcess == 0) this.busy = 0;
     };
     //==========================================================================
 
@@ -217,7 +213,7 @@
             }
 
         } else {
-          if(FighterSheeva_mk3_R.SpritesAnimators_state.inProcess == 0) {
+          if(this.SpritesAnimators_state_inProcess == 0) {
              if( this.switchToState(toState) == 1) this.busy = 1;
           };
 
