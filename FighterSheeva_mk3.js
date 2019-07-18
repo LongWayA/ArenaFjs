@@ -72,8 +72,8 @@
     //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
 
           if (this.SpritesAnimators_state_oldType != toType) {
+             this.SpritesAnimators_state_oldType = this.SpritesAnimators_state_type;
              this.SpritesAnimators_state_type = toType;
-             this.SpritesAnimators_state_oldType = toType;
              this.SpritesAnimators_state_num = 0;
              this.SpritesAnimators_state_inProcess = 1;
           } else {

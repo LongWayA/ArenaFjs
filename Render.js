@@ -66,8 +66,8 @@ Render_R.name = "Render";//
 //alert("_UserInput_R1 = " + _UserInput_R1.name);
       _GameText_R1.drawText ("UserInput-> " +  _UserInput_R1.eventG ,x+10, y+80, 'italic 20px sans-serif', 'blue', 1);
 
-      _GameText_R1.drawText ("commandToFighterGamer-> " +  _CommandToFighter_R1.saveCommandToFighter.command ,x+170, y+80, 'italic 20px sans-serif', 'blue', 1);
-      _GameText_R1.drawText ("commandToFighterGamer-> " +  _CommandToFighter_R1.saveCommandToFighter.commandText ,x+470, y+80, 'italic 20px sans-serif', 'blue', 1);
+      _GameText_R1.drawText ("commandToFighterGamer-> " +  _CommandToFighter_R1.saveCommandToFighter_command ,x+170, y+80, 'italic 20px sans-serif', 'blue', 1);
+      _GameText_R1.drawText ("commandToFighterGamer-> " +  _CommandToFighter_R1.saveCommandToFighter_commandText ,x+470, y+80, 'italic 20px sans-serif', 'blue', 1);
   };
   //============================================================================
 

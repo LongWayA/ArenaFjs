@@ -174,6 +174,9 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
 
     ArenaFjs_R.UserInput_R1.ini();
 
+    ArenaFjs_R.CommandToFighter_R1.ini('1');
+    ArenaFjs_R.CommandToFighter_R2.ini('2');
+
  };
  //=============================================================================
  //alert("!");
