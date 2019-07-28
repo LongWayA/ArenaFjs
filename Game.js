@@ -27,7 +27,7 @@
 
   window.Game_R = {};
 
-  Game_R.name = "Game";//
+  Game_R.NAME = "Game";//
 
   // "2d" создаем объекта CanvasRenderingContext2D,
   //  представляющий двумерный контекст.

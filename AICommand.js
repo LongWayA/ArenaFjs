@@ -16,7 +16,7 @@
   //============================================================================
 
 window.AICommand_R = {};
-AICommand_R.name = "AI Command";//
+AICommand_R.NAME = "AI Command_R";//
 
 
 /*

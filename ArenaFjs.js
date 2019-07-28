@@ -22,7 +22,7 @@
  //=============================================================================
 
 window.ArenaFjs_R = {};
-ArenaFjs_R.name = "ArenaFjs";//
+ArenaFjs_R.NAME = "ArenaFjs_R";//
 
 // 1
 // Game_R
@@ -101,13 +101,13 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
        if (ArenaFjs_R.countLoop == 24){
           ArenaFjs_R.il_2 = ArenaFjs_R.il;
           ArenaFjs_R.FighterSheeva_mk3_R1
-                    .setState(ArenaFjs_R.FighterSheeva_mk3_R1.typeM[ArenaFjs_R.il]);
+                    .setState(ArenaFjs_R.FighterSheeva_mk3_R1.STATE_F[ArenaFjs_R.il]);
 
            ArenaFjs_R.FighterSheeva_mk3_R2
-                    .setState(ArenaFjs_R.FighterSheeva_mk3_R2.typeM[ArenaFjs_R.il]);
+                    .setState(ArenaFjs_R.FighterSheeva_mk3_R2.STATE_F[ArenaFjs_R.il]);
 
           ArenaFjs_R.il = ArenaFjs_R.il + 1;
-          if (ArenaFjs_R.il > ArenaFjs_R.FighterSheeva_mk3_R1.typeM.length-1) ArenaFjs_R.il = 0;
+          if (ArenaFjs_R.il > ArenaFjs_R.FighterSheeva_mk3_R1.STATE_F.length-1) ArenaFjs_R.il = 0;
 
        };
 
@@ -150,7 +150,7 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
     //alert("!");
     // что это за текст? почему он пишется именно здесь?
     ArenaFjs_R.GameText_R1.drawText
-    (ArenaFjs_R.FighterSheeva_mk3_R1.typeM[ArenaFjs_R.il_2], 150, 385
+    (ArenaFjs_R.FighterSheeva_mk3_R1.STATE_F[ArenaFjs_R.il_2], 150, 385
       , 'italic 20px sans-serif', 'red', 1);
 
 	     ArenaFjs_R.countLoop = ArenaFjs_R.countLoop + 1;
@@ -186,7 +186,7 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
       console.log('Ah ah it is Console!');
 
      //alert("!");
-     //alert( Menu_R.name );
+     //alert( Menu_R.NAME );
 
  };
  //=============================================================================

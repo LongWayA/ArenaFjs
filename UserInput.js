@@ -28,7 +28,7 @@
 //==============================================================================
 
  window.UserInput_R = {};
- UserInput_R.name = "UserInput_R";//
+ UserInput_R.NAME = "UserInput_R";//
 
  // команды бойцам
  UserInput_R.LEFT_F_KEY_LEFT  = 65;//движение влево     A

@@ -113,7 +113,7 @@ strokeStyle = color
 //==============================================================================
 
 window.GameText_R = {};
-GameText_R.name = "GameText_R";//
+GameText_R.NAME = "GameText_R";//
 
     // Game_R.context.fillText (text, left, top);
 

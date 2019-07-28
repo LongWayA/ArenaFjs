@@ -17,7 +17,7 @@
 //================================================================================
 
  window.Sound_R = {};
- Sound_R.name = "Sound";//
+ Sound_R.NAME = "Sound";//
 
 Sound_R.sound_IA = document.getElementById('IA');
 //Sound_R.sound_IA.load();

@@ -17,7 +17,7 @@
   //============================================================================
 
 window.Render_R = {};
-Render_R.name = "Render";//
+Render_R.NAME = "Render";//
 
   //============================================================================
   Render_R.drawIkonFrame = function(_GameText_R1, _ArenaScene_R1) {
@@ -63,7 +63,7 @@ Render_R.name = "Render";//
       _GameText_R1.drawText ("timeBetweenStartMinOldStartTickMs = " + _Timer_R1.timeBetweenStartMinOldStartTickMs,x+670, y+30, 'italic 20px sans-serif', 'blue', 1);
 
       _GameText_R1.drawText ("displayWidth = " + _ArenaScene_R1.framesArena.displayWidth, x+10, y+55, 'italic 20px sans-serif', 'blue', 1);
-//alert("_UserInput_R1 = " + _UserInput_R1.name);
+//alert("_UserInput_R1 = " + _UserInput_R1.NAME);
       _GameText_R1.drawText ("UserInput-> " +  _UserInput_R1.eventG ,x+10, y+80, 'italic 20px sans-serif', 'blue', 1);
 
       _GameText_R1.drawText ("commandToFighterGamer-> " +  _CommandToFighter_R1.saveCommandToFighter_command ,x+170, y+80, 'italic 20px sans-serif', 'blue', 1);
@@ -106,7 +106,7 @@ Render_R.name = "Render";//
     //Game_R.context.clearRect(0, 0, Game_R.canvas.width, Game_R.canvas.height);
     Game_R.context.clearRect(0, 0, 1100, Game_R.canvas.height);
 
-    //alert("_ArenaScene_R1 = " + _ArenaScene_R1.name);
+    //alert("_ArenaScene_R1 = " + _ArenaScene_R1.NAME);
 
     _ArenaScene_R1.drawAll(_GameText_R1);
 

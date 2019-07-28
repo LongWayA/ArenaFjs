@@ -16,7 +16,7 @@
   //============================================================================
 
 window.GameColculation_R = {};
-GameColculation_R.name = "GameColculation";//
+GameColculation_R.NAME = "GameColculation";//
 
 //==============================================================================
 GameColculation_R.tick = function() {

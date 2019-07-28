@@ -17,7 +17,7 @@
   //============================================================================
 
 window.CommandToFighter_R = {};
-CommandToFighter_R.name = 'CommandToFighterR';//
+CommandToFighter_R.NAME = 'CommandToFighter_R';//
 
 // команды бойцам
 CommandToFighter_R.STANCE  = 0;// стойка
@@ -120,8 +120,8 @@ CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
   var stateF = CommandToFighter_R.get_commandToNumState(
     _FighterSheeva_mk3_R1, this.saveCommandToFighter_command);
 
-  var commandF = _FighterSheeva_mk3_R1.typeM[stateF];
-  //console.log('!!!  this.name = ' +  this.name);
+  var commandF = _FighterSheeva_mk3_R1.STATE_F[stateF];
+  //console.log('!!!  this.NAME = ' +  this.NAME);
   //console.log('!!! CommandToFighter: stateF = ' + stateF + ' commandF = ' + commandF + ' this.saveCommandToFighter_command = ' + this.saveCommandToFighter_command);
 
    _FighterSheeva_mk3_R1.setState( commandF );
@@ -133,7 +133,7 @@ CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
  //=============================================================================
  CommandToFighter_R.tick = function(_FighterSheeva_mk3_R1) {
     if(this.saveCommandToFighter_update == 1) {
-    //  console.log('CommandToFighter:  this.name = ' +  this.name);
+    //  console.log('CommandToFighter:  this.NAME = ' +  this.NAME);
     //  console.log('CommandToFighter: command = ' + this.saveCommandToFighter_command + ' commandText = ' + this.saveCommandToFighter_commandText);
     //  console.log('CommandToFighter: update = ' + this.saveCommandToFighter_update);
          this.GammerToFighterLeftTick(_FighterSheeva_mk3_R1);
@@ -145,7 +145,7 @@ CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
  //==========================================================================
  CommandToFighter_R.ini = function(_num) {
 
-   this.name = 'CommandToFighterR' + _num;//
+   this.NAME = 'CommandToFighter_R' + _num;//
    this.saveCommandToFighter_command = 999;
    this.saveCommandToFighter_commandText = 'commandText';
    this.saveCommandToFighter_update = 0;

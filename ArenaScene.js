@@ -18,7 +18,7 @@
 
 window.ArenaScene_R = {};
 
-  ArenaScene_R.name = "ArenaScene_R";//
+  ArenaScene_R.NAME = "ArenaScene_R";//
 
   ArenaScene_R.framesArena = {
 
@@ -70,7 +70,7 @@ window.ArenaScene_R = {};
   };
 
   ArenaScene_R.imageArena = {
-      name            : "imageArena",
+      NAME  : "imageArena",
 
       ikonSheeva_mk3 : new Image(),
       drak  : new Image(),

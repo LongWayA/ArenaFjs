@@ -33,7 +33,7 @@
 //==============================================================================
 
  window.SpritesAnimators_R = {};
- SpritesAnimators_R.name = "SpritesAnimators";//
+ SpritesAnimators_R.NAME = "SpritesAnimators_R";//
 
 
  SpritesAnimators_R.animatorsSheeva_mk3 = {
@@ -45,14 +45,6 @@
              str : [1,0,0,0,0,0,0,0,0,0,0],
              max : 11,
              sound: "sound_IA"
-         },
-
-         running : {
-             translate : "running",
-             fr :  [1,2,3,4,5,6,7,8,9,10,11,12],
-             str : [1,0,0,0,0,0,0,0,0,0, 0, 0],
-             max : 12,
-             sound: "sound_IAAAA"
          },
 
          walkingForward : {
@@ -70,6 +62,14 @@
              max : 9,
              sound: "sound_IAA"
          },
+
+         running : {
+             translate : "running",
+             fr :  [1,2,3,4,5,6,7,8,9,10,11,12],
+             str : [1,0,0,0,0,0,0,0,0,0, 0, 0],
+             max : 12,
+             sound: "sound_IAAAA"
+        },
 
          punchUp : {
             translate : "punchingUp",
@@ -103,7 +103,7 @@
            sound: "sound_F"
          },
 
-         block : {
+         blockingHigh : {
            translate : "blockingHigh",
            fr :  [1,2,3,2,1],
            str : [0,0,1,0,0],
@@ -111,7 +111,7 @@
            sound: "sound_STR_B"
          },
 
-         blockLow : {
+         blockingLow : {
            translate : "blockingLow",
            fr :  [1,2,3,2,1],
            str : [0,0,1,0,0],
@@ -139,14 +139,14 @@ SpritesAnimators_R.NO_MIRROR = 0;
          var type = _FighterSheeva_mk3_R1.SpritesAnimators_state_type;
 
          if (mirror == SpritesAnimators_R.NO_MIRROR){
-           //console.log('1_name = ' + _FighterSheeva_mk3_R1.name + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
+           //console.log('1_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
            //console.log('1_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num]);
 
               _SpritesFighter_R1.drawSprite(
                   SpritesAnimators_R.animatorsSheeva_mk3[type].translate,
                   SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num], left, top, _GameText_R1);
          }else{
-           //console.log('2_name = ' + _FighterSheeva_mk3_R1.name + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
+           //console.log('2_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
            //console.log('2_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num]);
 
               _SpritesFighter_R1.drawSpriteMirror(
@@ -178,7 +178,7 @@ SpritesAnimators_R.NO_MIRROR = 0;
       //        _Sound_R1[SpritesAnimators_R.animatorsSheeva_mk3[type].sound].play();
       //   };
 
-         if( (typeStateAnimators == "block") ||(typeStateAnimators == "blockLow") ){
+         if( (typeStateAnimators == "blockingHigh") ||(typeStateAnimators == "blockLow") ){
               if (num > 3 ){
                  _FighterSheeva_mk3_R1.SpritesAnimators_state_num = 3;
                  //this.inProcess = 0;

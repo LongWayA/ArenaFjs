@@ -86,7 +86,7 @@
 
 window.SpritesFighter_R = {};
 
-  SpritesFighter_R.name = "SpritesFighter";//
+  SpritesFighter_R.NAME = "SpritesFighter";//
 
   SpritesFighter_R.spritesSheeva_mk3 = {
       name            : "spritesSheeva_mk3",
@@ -108,14 +108,14 @@ window.SpritesFighter_R = {};
 
   // draw image
   //============================================================================
-  SpritesFighter_R.drawSprite = function(type,index,left, top, _GameText_R1) {
+  SpritesFighter_R.drawSprite = function(type, index, left, top, _GameText_R1) {
 
          var top1 = top - SpritesFighter_R.spritesSheeva_mk3[type][index].height;
 
          Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3[type][index], left, top1);
 
          //GameText_R.drawRect(left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-           //                        SpritesFighter_R.spritesSheeva_mk3[type][index].height,1, 'blue', 0);
+         //                    SpritesFighter_R.spritesSheeva_mk3[type][index].height,1, 'blue', 0);
 
          _GameText_R1.drawText ("fr = " + index,left+5, top-100, 'italic 20px sans-serif', 'blue', 1);
          _GameText_R1.drawText (type,left+5, top-20, 'italic 20px sans-serif', 'blue', 1);
@@ -134,8 +134,8 @@ window.SpritesFighter_R = {};
          Game_R.context.scale(-1, 1);
          Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top1);
 
-         //GameText_R.drawRect(-left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-         //                          SpritesFighter_R.spritesSheeva_mk3[type][index].height, 1, 'blue', 0);
+      //   GameText_R.drawRect(-left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
+      //                      SpritesFighter_R.spritesSheeva_mk3[type][index].height, 1, 'blue', 0);
 
          Game_R.context.scale(-1, 1);
          _GameText_R1.drawText ("fr = " + index,left+5 - SpritesFighter_R.spritesSheeva_mk3[type][index].width, top-100, 'italic 20px sans-serif', 'blue', 1);

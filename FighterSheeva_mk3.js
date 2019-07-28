@@ -20,19 +20,18 @@
 
  window.FighterSheeva_mk3_R = {};
 
-     FighterSheeva_mk3_R.typeM = ["fightingStance", "walkingForward",
+     // должна быть согласована со SpritesAnimators_R
+     FighterSheeva_mk3_R.STATE_F = ["fightingStance", "walkingForward",
                                   "walkingBack", "running", "punchUp",
                                   "punchMidle", "kickFront", "kickBack",
-                                  "beingHit", "block", "blockLow"];
+                                  "beingHit", "blockingHigh", "blockingLow"];
 
-
-
-    FighterSheeva_mk3_R.name = "FighterSheeva_mk3";
+    FighterSheeva_mk3_R.NAME = "FighterSheeva_mk3";
 
     FighterSheeva_mk3_R.MAX_HEALTH = 1000; //
     FighterSheeva_mk3_R.MAX_STAMINA = 100; //
 
-    FighterSheeva_mk3_R.stateFighter = "fightingStance";
+    FighterSheeva_mk3_R.stateFighter = FighterSheeva_mk3_R.STATE_F[0] ; //"fightingStance"
     FighterSheeva_mk3_R.busy = 0;
     FighterSheeva_mk3_R.left = 0;
     FighterSheeva_mk3_R.top = 0;
@@ -84,7 +83,7 @@
     //==========================================================================
     FighterSheeva_mk3_R.ini = function(_left, _top, _width, _height,
       _mirror, _name_id, _stateFighter) {
-         this.name = "FighterSheeva_mk3_" + _name_id;
+         this.NAME = "FighterSheeva_mk3_" + _name_id;
          this.stateFighter = _stateFighter;
          this.left = _left;
          this.top = _top;
@@ -119,8 +118,8 @@
     FighterSheeva_mk3_R.tickAnimation = function(_SpritesAnimators_R1,
         _GameText_R1, _SpritesFighter_R1) {
        //alert("!");
-        //alert("this.name =" + this.name + " this.stateFighter =" + this.stateFighter);
-        //alert("Fimk3_R.name = " + FighterSheeva_mk3_R.name + " Fimk3_R.stateFighter = " + FighterSheeva_mk3_R.stateFighter);
+        //alert("this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);
+        //alert("Fimk3_R.NAME = " + FighterSheeva_mk3_R.NAME + " Fimk3_R.stateFighter = " + FighterSheeva_mk3_R.stateFighter);
 
          _SpritesAnimators_R1.all_Animation(
            this.stateFighter,  this.left,
@@ -139,40 +138,45 @@
 
       switch(toState){
 
-           case "fightingStance":
+           case FighterSheeva_mk3_R.STATE_F[0] : //"fightingStance":
                ret = 0;
            break;
 
-           case "running":
+           case FighterSheeva_mk3_R.STATE_F[1] : //"walkingForward":
                ret = 0;
            break;
-           case "walkingForward":
+           case FighterSheeva_mk3_R.STATE_F[2] : //"walkingBack":
                ret = 0;
            break;
-           case "walkingBack":
+
+           case FighterSheeva_mk3_R.STATE_F[3] : //"running":
                ret = 0;
            break;
-           case "punchUp":
+
+           case FighterSheeva_mk3_R.STATE_F[4] : //"punchUp":
                ret = 1;
            break;
-           case "punchMidle":
+           case FighterSheeva_mk3_R.STATE_F[5] : //"punchMidle":
                ret = 1;
            break;
-           case "kickFront":
+           case FighterSheeva_mk3_R.STATE_F[6] : //"kickFront":
                ret = 1;
            break;
-           case "kickingBack":
+           case FighterSheeva_mk3_R.STATE_F[7] : //"kickingBack":
                ret = 1;
            break;
-           case "blockingHigh":
+
+           case FighterSheeva_mk3_R.STATE_F[8] : //"beingHit":
+               ret = 1;
+           break;
+
+           case FighterSheeva_mk3_R.STATE_F[9] : //"blockingHigh":
                ret = 0;
            break;
-           case "blockingLow":
+           case FighterSheeva_mk3_R.STATE_F[10] : //"blockingLow":
                ret = 0;
            break;
-           case "beingHit":
-               ret = 1;
-           break;
+
       }; //switch(toState){
 
       return (ret);
@@ -203,8 +207,8 @@
       //      }
       //
       // };//if(toState != this.state){
-      //alert("s11 this.name =" + this.name + " toState =" + toState);
-      //alert("s 12 this.name =" + this.name + " this.stateFighter =" + this.stateFighter);
+      //alert("s11 this.NAME =" + this.NAME + " toState =" + toState);
+      //alert("s 12 this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);
 
         if(toState != this.stateFighter){
             if( this.busy == 0){
@@ -219,8 +223,8 @@
 
         };//if(toState != this.state){
 
-        //  alert("s 21 this.name =" + this.name + " toState =" + toState);
-      //    alert("s 22 this.name =" + this.name + " this.stateFighter =" + this.stateFighter);
+        //  alert("s 21 this.NAME =" + this.NAME + " toState =" + toState);
+      //    alert("s 22 this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);
 
     };//this.setState
     //==========================================================================
