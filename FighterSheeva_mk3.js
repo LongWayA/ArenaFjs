@@ -20,11 +20,28 @@
 
  window.FighterSheeva_mk3_R = {};
 
+
      // должна быть согласована со SpritesAnimators_R
-     FighterSheeva_mk3_R.STATE_F = ["fightingStance", "walkingForward",
+     FighterSheeva_mk3_R.STATE_F_TXT = ["fightingStance", "walkingForward",
                                   "walkingBack", "running", "punchUp",
                                   "punchMidle", "kickFront", "kickBack",
-                                  "beingHit", "blockingHigh", "blockingLow"];
+                                   "blockingHigh", "blockingLow", "beingHit"];
+
+
+     FighterSheeva_mk3_R.STATE_F = [
+       SpritesAnimators_R.FIGHTING_STANCE_ANI,
+       SpritesAnimators_R.WALKING_FORWARD_ANI,
+       SpritesAnimators_R.WALKING_BACK_ANI,
+       SpritesAnimators_R.RUNNING_ANI,
+       SpritesAnimators_R.PUNCHING_UP_ANI,
+       SpritesAnimators_R.PUNCHING_MIDLE_ANI,
+       SpritesAnimators_R.KICKING_FRONT_ANI,
+       SpritesAnimators_R.KICKING_BACK_ANI,
+       SpritesAnimators_R.BLOCKING_HIGH_ANI,
+       SpritesAnimators_R.BLOCKING_LOW_ANI,
+       SpritesAnimators_R.BEING_HIT_ANI
+    ];
+
 
     FighterSheeva_mk3_R.NAME = "FighterSheeva_mk3";
 

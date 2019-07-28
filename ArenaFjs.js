@@ -169,8 +169,8 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
     ArenaFjs_R.ArenaScene_R1.iniAll(Game_R.canvas.width, Game_R.canvas.height,
     ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2);
 
-    ArenaFjs_R.FighterSheeva_mk3_R1.setState("fightingStance");
-    ArenaFjs_R.FighterSheeva_mk3_R2.setState("fightingStance");
+    ArenaFjs_R.FighterSheeva_mk3_R1.setState(SpritesAnimators_R.FIGHTING_STANCE_ANI);
+    ArenaFjs_R.FighterSheeva_mk3_R2.setState(SpritesAnimators_R.FIGHTING_STANCE_ANI);
 
     ArenaFjs_R.UserInput_R1.ini();
 
@@ -200,6 +200,8 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
       //ArenaFjs_R.SpritesAnimators_R1.animationAll_TEST();
       // временная заглушка
          //ArenaFjs_R.oldDemonstr();
+
+         ArenaFjs_R.SpritesFighter_R1.drawSprites_TEST(GameText_R);
 
   //TEST> ------------------------------------------------------
 

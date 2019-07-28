@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified 07.07.2018 - 31.12.2018
+// Last modified 07.07.2018 - 31.12.2018 - 28.07.2019
 // t
   /*
    НАЗНАЧЕНИЕ
@@ -88,65 +88,97 @@ window.SpritesFighter_R = {};
 
   SpritesFighter_R.NAME = "SpritesFighter";//
 
-  SpritesFighter_R.spritesSheeva_mk3 = {
-      name            : "spritesSheeva_mk3",
-
-      fightingStance  : new Array(7),
-      walking         : new Array(10),
-      running         : new Array(13),
-      punchingUp      : new Array(7),
-      punchingMidle   : new Array(8),
-      kickingFront    : new Array(9),
-      kickingBack     : new Array(9),
-      blockingHigh    : new Array(4),
-      blockingLow     : new Array(4),
-      beingHit        : new Array(4)
-  };
+  SpritesFighter_R.NAME_IMG_TXT = ["fightingStance", "walking","running", "punchingUp",
+                                   "punchingMidle", "kickingFront", "kickingBack",
+                                   "blockingHigh", "blockingLow", "beingHit"
+                                  ];
 
 
+  SpritesFighter_R.FIGHTING_STANCE  = 0;
+  SpritesFighter_R.WALKING          = 1;
+  SpritesFighter_R.RUNNING          = 2;
+  SpritesFighter_R.PUNCHING_UP      = 3;
+  SpritesFighter_R.PUNCHING_MIDLE   = 4;
+  SpritesFighter_R.KICKING_FRONT    = 5;
+  SpritesFighter_R.KICKING_BACK     = 6;
+  SpritesFighter_R.BLOCKING_HIGH    = 7;
+  SpritesFighter_R.BLOCKING_LOW     = 8;
+  SpritesFighter_R.BEING_HIT        = 9;
+
+
+  SpritesFighter_R.spritesSheeva_mk3_img = new Array(10);
+
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.FIGHTING_STANCE] = new Array(7);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.WALKING] = new Array(10);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.RUNNING] = new Array(13);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.PUNCHING_UP] = new Array(7);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.PUNCHING_MIDLE] = new Array(8);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.KICKING_FRONT] = new Array(9);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.KICKING_BACK] = new Array(9);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.BLOCKING_HIGH] = new Array(4);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.BLOCKING_LOW] = new Array(4);
+  SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.BEING_HIT] = new Array(4);
+
+  SpritesFighter_R.spritesSheeva_mk3_path = new Array(10);
+
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.FIGHTING_STANCE] = new Array(7);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.WALKING] = new Array(10);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.RUNNING] = new Array(13);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.PUNCHING_UP] = new Array(7);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.PUNCHING_MIDLE] = new Array(8);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.KICKING_FRONT] = new Array(9);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.KICKING_BACK] = new Array(9);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.BLOCKING_HIGH] = new Array(4);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.BLOCKING_LOW] = new Array(4);
+  SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.BEING_HIT] = new Array(4);
 
 
   // draw image
   //============================================================================
-  SpritesFighter_R.drawSprite = function(type, index, left, top, _GameText_R1) {
+  SpritesFighter_R.drawSprite = function(_type, _index, _left, _top, _GameText_R1) {
 
-         var top1 = top - SpritesFighter_R.spritesSheeva_mk3[type][index].height;
+         var top = _top - SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height;
 
-         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3[type][index], left, top1);
+         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], _left, top);
 
          //GameText_R.drawRect(left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
          //                    SpritesFighter_R.spritesSheeva_mk3[type][index].height,1, 'blue', 0);
 
-         _GameText_R1.drawText ("fr = " + index,left+5, top-100, 'italic 20px sans-serif', 'blue', 1);
-         _GameText_R1.drawText (type,left+5, top-20, 'italic 20px sans-serif', 'blue', 1);
+         _GameText_R1.drawText ("frame = " + _index, _left+5, _top-100, 'italic 20px sans-serif', 'blue', 1);
+         _GameText_R1.drawText (SpritesFighter_R.NAME_IMG_TXT[_type], _left+5, _top-20, 'italic 20px sans-serif', 'blue', 1);
   };
   //============================================================================
 
 
   // draw image mirror
   //============================================================================
-  SpritesFighter_R.drawSpriteMirror = function(type,index,left, top, _GameText_R1) {
+  SpritesFighter_R.drawSpriteMirror = function(_type, _index, _left, _top, _GameText_R1) {
 
-         var top1 = top - SpritesFighter_R.spritesSheeva_mk3[type][index].height;
+         var height = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height;
 
-         left = left + SpritesFighter_R.spritesSheeva_mk3[type][index].width;
+         var top = _top - height;
+
+         var width = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width;
+
+         var left = _left + width;
 
          Game_R.context.scale(-1, 1);
-         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3[type][index], -left, top1);
+         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], -left, top);
 
       //   GameText_R.drawRect(-left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
       //                      SpritesFighter_R.spritesSheeva_mk3[type][index].height, 1, 'blue', 0);
 
          Game_R.context.scale(-1, 1);
-         _GameText_R1.drawText ("fr = " + index,left+5 - SpritesFighter_R.spritesSheeva_mk3[type][index].width, top-100, 'italic 20px sans-serif', 'blue', 1);
-         _GameText_R1.drawText (type,left+5 - SpritesFighter_R.spritesSheeva_mk3[type][index].width, top -20, 'italic 20px sans-serif', 'blue', 1);
+         _GameText_R1.drawText ("frame = " + _index, left + 5 - width, _top-100, 'italic 20px sans-serif', 'blue', 1);
+         _GameText_R1.drawText (SpritesFighter_R.NAME_IMG_TXT[_type], left + 5 - width, _top -20, 'italic 20px sans-serif', 'blue', 1);
   };
   //============================================================================
 
   //============================================================================
   SpritesFighter_R.drawSprites_TEST = function(_GameText_R1){
 
-     SpritesFighter_R.drawSprite("fightingStance", 1, 200, 200, _GameText_R1);
+     SpritesFighter_R.drawSprite(SpritesFighter_R.FIGHTING_STANCE, 1, 200, 200, _GameText_R1);
+     //SpritesFighter_R.drawSprite(SpritesFighter_R.KICKING_BACK, 1, 200, 200, _GameText_R1);
 
   };
   //============================================================================
@@ -154,10 +186,11 @@ window.SpritesFighter_R = {};
 
  // ini Image
   //============================================================================
-  SpritesFighter_R.iniSprite = function(type,path){
-        for(var i = 1; i < SpritesFighter_R.spritesSheeva_mk3[type].length; i++ ){
-           SpritesFighter_R.spritesSheeva_mk3[type][i] = new Image();
-           SpritesFighter_R.spritesSheeva_mk3[type][i].src = path + i + ".png";
+  SpritesFighter_R.iniSprite = function(_type,_path){
+        for(var i = 1; i < SpritesFighter_R.spritesSheeva_mk3_img[_type].length; i++ ){
+           SpritesFighter_R.spritesSheeva_mk3_img[_type][i] = new Image();
+           SpritesFighter_R.spritesSheeva_mk3_img[_type][i].src = _path + i + ".png";
+           SpritesFighter_R.spritesSheeva_mk3_path[_type][i] = _path + i + ".png";
          };
   };
   //============================================================================
@@ -165,17 +198,16 @@ window.SpritesFighter_R = {};
   //инициализируем массивы с картинками
   //============================================================================
   SpritesFighter_R.loadAllSprite = function() {
-
-      SpritesFighter_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
-      SpritesFighter_R.iniSprite("walking","image/Sheeva_mk3_image/2_Walking/w");
-      SpritesFighter_R.iniSprite("running","image/Sheeva_mk3_image/3_Running/r");
-      SpritesFighter_R.iniSprite("punchingUp","image/Sheeva_mk3_image/4_Punching/pt1_");
-      SpritesFighter_R.iniSprite("punchingMidle","image/Sheeva_mk3_image/4_Punching/pm_");
-      SpritesFighter_R.iniSprite("kickingFront","image/Sheeva_mk3_image/5_Kicking/k1_");
-      SpritesFighter_R.iniSprite("kickingBack","image/Sheeva_mk3_image/5_Kicking/k2_");
-      SpritesFighter_R.iniSprite("blockingHigh","image/Sheeva_mk3_image/7_Blocking/bt_");
-      SpritesFighter_R.iniSprite("blockingLow","image/Sheeva_mk3_image/7_Blocking/bd_");
-      SpritesFighter_R.iniSprite("beingHit","image/Sheeva_mk3_image/9_BeingHit/1_h0");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.FIGHTING_STANCE,"image/Sheeva_mk3_image/1_FightingStance/fs");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.WALKING,"image/Sheeva_mk3_image/2_Walking/w");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.RUNNING,"image/Sheeva_mk3_image/3_Running/r");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.PUNCHING_UP,"image/Sheeva_mk3_image/4_Punching/pt1_");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.PUNCHING_MIDLE,"image/Sheeva_mk3_image/4_Punching/pm_");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.KICKING_FRONT,"image/Sheeva_mk3_image/5_Kicking/k1_");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.KICKING_BACK,"image/Sheeva_mk3_image/5_Kicking/k2_");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.BLOCKING_HIGH,"image/Sheeva_mk3_image/7_Blocking/bt_");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.BLOCKING_LOW,"image/Sheeva_mk3_image/7_Blocking/bd_");
+      SpritesFighter_R.iniSprite(SpritesFighter_R.BEING_HIT,"image/Sheeva_mk3_image/9_BeingHit/1_h0");
   };
   //============================================================================
 

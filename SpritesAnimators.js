@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-// Last modified 10.07.2018 - 30.12.2018
+// Last modified 10.07.2018 - 30.12.2018 - 28.07.2019
 //t2
 
   /*
@@ -35,98 +35,109 @@
  window.SpritesAnimators_R = {};
  SpritesAnimators_R.NAME = "SpritesAnimators_R";//
 
+ SpritesAnimators_R.FIGHTING_STANCE_ANI  = 0;
+ SpritesAnimators_R.WALKING_FORWARD_ANI  = 1;
+ SpritesAnimators_R.WALKING_BACK_ANI     = 2;
+ SpritesAnimators_R.RUNNING_ANI          = 3;
+ SpritesAnimators_R.PUNCHING_UP_ANI      = 4;
+ SpritesAnimators_R.PUNCHING_MIDLE_ANI   = 5;
+ SpritesAnimators_R.KICKING_FRONT_ANI    = 6;
+ SpritesAnimators_R.KICKING_BACK_ANI     = 7;
+ SpritesAnimators_R.BLOCKING_HIGH_ANI    = 8;
+ SpritesAnimators_R.BLOCKING_LOW_ANI     = 9;
+ SpritesAnimators_R.BEING_HIT_ANI        = 10;
 
- SpritesAnimators_R.animatorsSheeva_mk3 = {
-        name : "AnimatorsSheeva_mk3",
 
-        fightingStance : {
-             translate : "fightingStance",
-             fr :  [1,2,3,4,5,6,5,4,3,2,1],
-             str : [1,0,0,0,0,0,0,0,0,0,0],
-             max : 11,
-             sound: "sound_IA"
-         },
+ SpritesAnimators_R.animatorsSheeva_mk3_mobj = new Array(11);
 
-         walkingForward : {
-             translate : "walking",
-             fr :  [1,2,3,4,5,6,7,8,9],
-             str : [0,0,0,0,0,0,0,0,0],
-             max : 9,
-             sound: "sound_IAA"
-         },
 
-         walkingBack : {
-             translate : "walking",
-             fr :  [9,8,7,6,5,4,3,2,1],
-             str : [0,0,0,0,0,0,0,0,0],
-             max : 9,
-             sound: "sound_IAA"
-         },
-
-         running : {
-             translate : "running",
-             fr :  [1,2,3,4,5,6,7,8,9,10,11,12],
-             str : [1,0,0,0,0,0,0,0,0,0, 0, 0],
-             max : 12,
-             sound: "sound_IAAAA"
-        },
-
-         punchUp : {
-            translate : "punchingUp",
-            fr :  [1,2,3,4,5,6],
-            str : [0,0,0,0,0,1],
-            max : 6,
-            sound: "sound_STR_H"
-         },
-
-         punchMidle : {
-           translate : "punchingMidle",
-           fr :  [1,2,3,4,5,6,7],
-           str : [0,0,0,1,0,0,1],
-           max : 7,
-           sound: "sound_H"
-         },
-
-         kickFront : {
-           translate : "kickingFront",
-           fr :  [1,2,3,4,5,6,7,8],
-           str : [0,0,0,0,0,0,0,1],
-           max : 8,
-           sound: "sound_STR_F"
-         },
-
-         kickBack : {
-           translate : "kickingBack",
-           fr :  [1,2,3,4,5,6,7,8],
-           str : [0,0,0,0,0,0,0,1],
-           max : 8,
-           sound: "sound_F"
-         },
-
-         blockingHigh : {
-           translate : "blockingHigh",
-           fr :  [1,2,3,2,1],
-           str : [0,0,1,0,0],
-           max : 5,
-           sound: "sound_STR_B"
-         },
-
-         blockingLow : {
-           translate : "blockingLow",
-           fr :  [1,2,3,2,1],
-           str : [0,0,1,0,0],
-           max : 5,
-           sound: "sound_STR_B"
-         },
-
-         beingHit : {
-           translate : "beingHit",
-           fr :  [1,2,3,2,1],
-           str : [0,0,1,0,0],
-           max : 5,
-           sound: "sound_STR"
-         }
+ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.FIGHTING_STANCE_ANI] = {
+    translate : SpritesFighter_R.FIGHTING_STANCE,
+    fr :  [1,2,3,4,5,6,5,4,3,2,1],
+    str : [1,0,0,0,0,0,0,0,0,0,0],
+    max : 11,
+    sound: "sound_IA"
  };
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.WALKING_FORWARD_ANI] = {
+    translate : SpritesFighter_R.WALKING,
+    fr :  [1,2,3,4,5,6,7,8,9],
+    str : [0,0,0,0,0,0,0,0,0],
+    max : 9,
+    sound: "sound_IAA"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.WALKING_BACK_ANI] = {
+    translate : SpritesFighter_R.WALKING,
+    fr :  [9,8,7,6,5,4,3,2,1],
+    str : [0,0,0,0,0,0,0,0,0],
+    max : 9,
+    sound: "sound_IAA"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.RUNNING_ANI] = {
+    translate : SpritesFighter_R.RUNNING,
+    fr :  [1,2,3,4,5,6,7,8,9,10,11,12],
+    str : [1,0,0,0,0,0,0,0,0,0, 0, 0],
+    max : 12,
+    sound: "sound_IAAAA"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.PUNCHING_UP_ANI] = {
+    translate : SpritesFighter_R.PUNCHING_UP,
+    fr :  [1,2,3,4,5,6],
+    str : [0,0,0,0,0,1],
+    max : 6,
+    sound: "sound_STR_H"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.PUNCHING_MIDLE_ANI] = {
+    translate : SpritesFighter_R.PUNCHING_MIDLE,
+    fr :  [1,2,3,4,5,6,7],
+    str : [0,0,0,1,0,0,1],
+    max : 7,
+    sound: "sound_H"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.KICKING_FRONT_ANI] = {
+    translate : SpritesFighter_R.KICKING_FRONT,
+    fr :  [1,2,3,4,5,6,7,8],
+    str : [0,0,0,0,0,0,0,1],
+    max : 8,
+    sound: "sound_STR_F"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.KICKING_BACK_ANI] = {
+    translate : SpritesFighter_R.KICKING_BACK,
+    fr :  [1,2,3,4,5,6,7,8],
+    str : [0,0,0,0,0,0,0,1],
+    max : 8,
+    sound: "sound_F"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BLOCKING_HIGH_ANI] = {
+    translate : SpritesFighter_R.BLOCKING_HIGH,
+    fr :  [1,2,3,2,1],
+    str : [0,0,1,0,0],
+    max : 5,
+    sound: "sound_STR_B"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BLOCKING_LOW_ANI] = {
+    translate : SpritesFighter_R.BLOCKING_LOW,
+    fr :  [1,2,3,2,1],
+    str : [0,0,1,0,0],
+    max : 5,
+    sound: "sound_STR_B"
+};
+
+SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BEING_HIT_ANI] = {
+    translate : SpritesFighter_R.BEING_HIT,
+    fr :  [1,2,3,2,1],
+    str : [0,0,1,0,0],
+    max : 5,
+    sound: "sound_STR"
+};
 
 SpritesAnimators_R.YES_MIRROR = 1;
 SpritesAnimators_R.NO_MIRROR = 0;
@@ -139,23 +150,23 @@ SpritesAnimators_R.NO_MIRROR = 0;
          var type = _FighterSheeva_mk3_R1.SpritesAnimators_state_type;
 
          if (mirror == SpritesAnimators_R.NO_MIRROR){
-           //console.log('1_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
-           //console.log('1_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num]);
+           //console.log('1_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].max);
+           //console.log('1_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num]);
 
               _SpritesFighter_R1.drawSprite(
-                  SpritesAnimators_R.animatorsSheeva_mk3[type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num], left, top, _GameText_R1);
+                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].translate,
+                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num], left, top, _GameText_R1);
          }else{
            //console.log('2_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
            //console.log('2_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num]);
 
               _SpritesFighter_R1.drawSpriteMirror(
-                  SpritesAnimators_R.animatorsSheeva_mk3[type].translate,
-                  SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num], left, top, _GameText_R1);
+                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].translate,
+                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num], left, top, _GameText_R1);
          };
 
          num = num + 1;
-         if (num > SpritesAnimators_R.animatorsSheeva_mk3[type].max - 1 ) {
+         if (num > SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].max - 1 ) {
              num = 0;
              _FighterSheeva_mk3_R1.SpritesAnimators_state_inProcess = 0;
          };
@@ -174,11 +185,7 @@ SpritesAnimators_R.NO_MIRROR = 0;
        _FighterSheeva_mk3_R1.SpritesAnimators_state_setType(typeStateAnimators);
        var num = _FighterSheeva_mk3_R1.SpritesAnimators_state_num;
 
-        // if (SpritesAnimators_R.animatorsSheeva_mk3[this.type].str[this.num] == 1 ){
-      //        _Sound_R1[SpritesAnimators_R.animatorsSheeva_mk3[type].sound].play();
-      //   };
-
-         if( (typeStateAnimators == "blockingHigh") ||(typeStateAnimators == "blockLow") ){
+         if( (typeStateAnimators == SpritesAnimators_R.BLOCKING_HIGH_ANI) ||(typeStateAnimators == SpritesAnimators_R.BLOCKING_LOW_ANI) ){
               if (num > 3 ){
                  _FighterSheeva_mk3_R1.SpritesAnimators_state_num = 3;
                  //this.inProcess = 0;
@@ -191,76 +198,6 @@ SpritesAnimators_R.NO_MIRROR = 0;
          };
      };
      //=========================================================================
-
- // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
-/*
-
- SpritesAnimators_R.animationAll_TEST = function(_GameText_R1){
-
-  SpritesAnimators_R.spritesAnimatorsTest.all_Animation( "fightingStance",  50, 250,  0, 100,  100, _GameText_R1);
-
-  //SpritesAnimators_R.all_Animation(SpritesAnimators_R.animatorsState_0, "fightingStance", 0, 50,0,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_1_t.all_Animation("fightingStance", 0, 50,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_2_t.all_Animation("fightingStance", 0, 250,1,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_3_t.all_Animation("running", 300, 50,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_4_t.all_Animation("running", 300, 250,1,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_5_t.all_Animation("walkingForward", 600, 50,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_6_t.all_Animation("walkingForward", 600, 250,1,0,0);
-        //SpritesAnimators_R.AnimatorsSheeva_mk3_1.All_Animation("walkingBack", 600, 50,0,0,0);
-        //SpritesAnimators_R.AnimatorsSheeva_mk3_2.All_Animation("walkingBack", 600, 250,1,0,0);
- 	      //SpritesAnimators_R.AnimatorsSheeva_mk3_1.All_Animation("walkingBack", 600, 450,0,0,0); //___________
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_7_t.all_Animation("punchUp", 900, 50,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_8_t.all_Animation("punchUp", 900, 250,1,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_9_t.all_Animation("punchMidle", 1200, 50,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_10_t.all_Animation("punchMidle", 1200, 250,1,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_11_t.all_Animation("kickFront", 0, 450,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_12_t.all_Animation("kickFront", 0, 650,1,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_13_t.all_Animation("kickBack", 300, 450,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_14_t.all_Animation("kickBack", 300, 650,1,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_15_t.all_Animation("block", 600, 450,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_16_t.all_Animation("block", 600, 650,1,0,0);
-
-    SpritesAnimators_R.AnimatorsSheeva_mk3_17_t.all_Animation("blockLow", 900, 450,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_18_t.all_Animation("blockLow", 900, 650,1,0,0);
-
- 	  SpritesAnimators_R.AnimatorsSheeva_mk3_19_t.all_Animation("beingHit", 1200, 450,0,0,0);
-    SpritesAnimators_R.AnimatorsSheeva_mk3_20_t.all_Animation("beingHit", 1200, 650,1,0,0);
- };
- */
- // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
- /*
- class Proba {
-
-     constructor(){
-
-       this.a;
-
-     };
-
-
-     w(){
-         alert("w");
-     };
-
-     b(){
-         this.w();
-         alert("b");
-     };
- };
-
- SpritesAnimators_R.proba = new Proba();
-
- //SpritesAnimators_R.proba.b();
- */
-
 
 //==============================================================================
 Game_R.yT = Game_R.yT + Game_R.dyT;//
