@@ -20,6 +20,7 @@
 
  window.FighterSheeva_mk3_R = {};
 
+     FighterSheeva_mk3_R.NAME = "FighterSheeva_mk3";
 
      // должна быть согласована со SpritesAnimators_R
      FighterSheeva_mk3_R.STATE_F_TXT = ["fightingStance", "walkingForward",
@@ -43,7 +44,7 @@
     ];
 
 
-    FighterSheeva_mk3_R.NAME = "FighterSheeva_mk3";
+
 
     FighterSheeva_mk3_R.MAX_HEALTH = 1000; //
     FighterSheeva_mk3_R.MAX_STAMINA = 100; //
@@ -78,24 +79,11 @@
     FighterSheeva_mk3_R.ds = 0;
 
     //"SpritesAnimators_state"--------------------------------
-    FighterSheeva_mk3_R.SpritesAnimators_state_num = 0;
-    FighterSheeva_mk3_R.SpritesAnimators_state_inProcess = 0;
-    FighterSheeva_mk3_R.SpritesAnimators_state_type = "n";
-    FighterSheeva_mk3_R.SpritesAnimators_state_oldType = "no";
+    FighterSheeva_mk3_R.SpritesAnimatorsFrames = 0;
+    FighterSheeva_mk3_R.SpritesAnimatorsBusy = 0;
+    FighterSheeva_mk3_R.SpritesAnimatorsTypeAnimation = 0;
+    FighterSheeva_mk3_R.SpritesAnimatorsOldTypeAnimation = -1;
 
-    FighterSheeva_mk3_R.SpritesAnimators_state_setType = function(toType) {
-    //alert("this.type = " + this.type + " toType = " + toType);
-    //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
-
-          if (this.SpritesAnimators_state_oldType != toType) {
-             this.SpritesAnimators_state_oldType = this.SpritesAnimators_state_type;
-             this.SpritesAnimators_state_type = toType;
-             this.SpritesAnimators_state_num = 0;
-             this.SpritesAnimators_state_inProcess = 1;
-          } else {
-             if (this.SpritesAnimators_state_inProcess == 0) this.SpritesAnimators_state_inProcess = 1;
-          };
-    };
 
     //==========================================================================
     FighterSheeva_mk3_R.ini = function(_left, _top, _width, _height,
@@ -138,13 +126,10 @@
         //alert("this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);
         //alert("Fimk3_R.NAME = " + FighterSheeva_mk3_R.NAME + " Fimk3_R.stateFighter = " + FighterSheeva_mk3_R.stateFighter);
 
-         _SpritesAnimators_R1.all_Animation(
-           this.stateFighter,  this.left,
-           this.top,  this.mirror,
-           this.width,  this.height, _GameText_R1,
-            _SpritesFighter_R1, this);
+         _SpritesAnimators_R1.tickAnimation(_GameText_R1,_SpritesFighter_R1,
+            this);
 
-         if (this.SpritesAnimators_state_inProcess == 0) this.busy = 0;
+         if (this.SpritesAnimatorsBusy == 0) this.busy = 0;
     };
     //==========================================================================
 
@@ -227,18 +212,20 @@
       //alert("s11 this.NAME =" + this.NAME + " toState =" + toState);
       //alert("s 12 this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);
 
-        if(toState != this.stateFighter){
-            if( this.busy == 0){
-              this.stateFighter = toState;
-              if( this.switchToState(toState) == 1) this.busy = 1;
-            }
+this.stateFighter = toState;
 
-        } else {
-          if(this.SpritesAnimators_state_inProcess == 0) {
-             if( this.switchToState(toState) == 1) this.busy = 1;
-          };
-
-        };//if(toState != this.state){
+        // if(toState != this.stateFighter){
+        //     if( this.busy == 0){
+        //       this.stateFighter = toState;
+        //       if( this.switchToState(toState) == 1) this.busy = 1;
+        //     }
+        //
+        // } else {
+        //   if(this.SpritesAnimatorsBusy == 0) {
+        //      if( this.switchToState(toState) == 1) this.busy = 1;
+        //   };
+        //
+        // };//if(toState != this.state){
 
         //  alert("s 21 this.NAME =" + this.NAME + " toState =" + toState);
       //    alert("s 22 this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);

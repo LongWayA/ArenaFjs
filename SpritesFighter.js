@@ -40,18 +40,6 @@
     drawSpriteMirror(type,index,left, top)
     рисуем зеркальный спрайт заданного типа и номера, в заданном месте
 
-   DEFINE
-   defines root object and constructor function
-
-   object -> SpritesFighter_R
-   object properties ->
-   name
-
-   object methods ->
-   drawSprites_TEST()
-
-   object -> SpritesFighter_R.spritesSheeva_mk3
-   object properties ->
     name - имя объекта. сейчас это spritesSheeva_mk3
     fightingStance[7] - ряд картинок для анимации стойки бойца
     walking[10] - ряд картинок для анимации ходьбы бойца
@@ -63,13 +51,6 @@
     blockingHigh[4] - ряд картинок для анимации верхнего блока бойца
     blockingLow[4] - ряд картинок для анимации нижнего блока бойца
     beingHit[4] - ряд картинок для анимации пропущенного удара бойца
-
-    object methods ->
-    parameters of functions default to undefined
-    iniSprite(type,path)
-    iniAllSprite()
-    drawSprite(type,index,left, top)
-    drawSpriteMirror(type,index,left, top)
 
    ИСПОЛЬЗУЕТ МОДУЛИ
    GameText
@@ -88,12 +69,6 @@ window.SpritesFighter_R = {};
 
   SpritesFighter_R.NAME = "SpritesFighter";//
 
-  SpritesFighter_R.NAME_IMG_TXT = ["fightingStance", "walking","running", "punchingUp",
-                                   "punchingMidle", "kickingFront", "kickingBack",
-                                   "blockingHigh", "blockingLow", "beingHit"
-                                  ];
-
-
   SpritesFighter_R.FIGHTING_STANCE  = 0;
   SpritesFighter_R.WALKING          = 1;
   SpritesFighter_R.RUNNING          = 2;
@@ -105,9 +80,26 @@ window.SpritesFighter_R = {};
   SpritesFighter_R.BLOCKING_LOW     = 8;
   SpritesFighter_R.BEING_HIT        = 9;
 
+  SpritesFighter_R.TYPE_SPRITES_FIGHTER_SET = [
+    SpritesFighter_R.FIGHTING_STANCE,
+    SpritesFighter_R.WALKING,
+    SpritesFighter_R.RUNNING,
+    SpritesFighter_R.PUNCHING_UP,
+    SpritesFighter_R.PUNCHING_MIDLE,
+    SpritesFighter_R.KICKING_FRONT,
+    SpritesFighter_R.KICKING_BACK,
+    SpritesFighter_R.BLOCKING_HIGH,
+    SpritesFighter_R.BLOCKING_LOW,
+    SpritesFighter_R.BEING_HIT
+  ];
+
+  // NAME_IMG_TXT
+  SpritesFighter_R.TXT_SPRITES_FIGHTER_SET = ["fightingStance", "walking",
+    "running", "punchingUp","punchingMidle", "kickingFront", "kickingBack",
+    "blockingHigh", "blockingLow", "beingHit"
+  ];
 
   SpritesFighter_R.spritesSheeva_mk3_img = new Array(10);
-
   SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.FIGHTING_STANCE] = new Array(7);
   SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.WALKING] = new Array(10);
   SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.RUNNING] = new Array(13);
@@ -120,7 +112,6 @@ window.SpritesFighter_R = {};
   SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.BEING_HIT] = new Array(4);
 
   SpritesFighter_R.spritesSheeva_mk3_path = new Array(10);
-
   SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.FIGHTING_STANCE] = new Array(7);
   SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.WALKING] = new Array(10);
   SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.RUNNING] = new Array(13);
@@ -141,11 +132,11 @@ window.SpritesFighter_R = {};
 
          Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], _left, top);
 
-         //GameText_R.drawRect(left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-         //                    SpritesFighter_R.spritesSheeva_mk3[type][index].height,1, 'blue', 0);
+         //GameText_R.drawRect(_left, top, SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width,
+         //                    SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height,1, 'blue', 0);
 
          _GameText_R1.drawText ("frame = " + _index, _left+5, _top-100, 'italic 20px sans-serif', 'blue', 1);
-         _GameText_R1.drawText (SpritesFighter_R.NAME_IMG_TXT[_type], _left+5, _top-20, 'italic 20px sans-serif', 'blue', 1);
+         _GameText_R1.drawText (SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], _left+5, _top-20, 'italic 20px sans-serif', 'blue', 1);
   };
   //============================================================================
 
@@ -165,12 +156,12 @@ window.SpritesFighter_R = {};
          Game_R.context.scale(-1, 1);
          Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], -left, top);
 
-      //   GameText_R.drawRect(-left, top1, SpritesFighter_R.spritesSheeva_mk3[type][index].width,
-      //                      SpritesFighter_R.spritesSheeva_mk3[type][index].height, 1, 'blue', 0);
+      //   GameText_R.drawRect(-left, top, SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width,
+      //                      SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height, 1, 'blue', 0);
 
          Game_R.context.scale(-1, 1);
          _GameText_R1.drawText ("frame = " + _index, left + 5 - width, _top-100, 'italic 20px sans-serif', 'blue', 1);
-         _GameText_R1.drawText (SpritesFighter_R.NAME_IMG_TXT[_type], left + 5 - width, _top -20, 'italic 20px sans-serif', 'blue', 1);
+         _GameText_R1.drawText (SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], left + 5 - width, _top -20, 'italic 20px sans-serif', 'blue', 1);
   };
   //============================================================================
 
