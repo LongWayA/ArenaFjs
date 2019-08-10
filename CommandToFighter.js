@@ -133,9 +133,9 @@ CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
  //=============================================================================
  CommandToFighter_R.tick = function(_FighterSheeva_mk3_R1) {
     if(this.saveCommandToFighter_update == 1) {
-    //  console.log('CommandToFighter:  this.NAME = ' +  this.NAME);
-    //  console.log('CommandToFighter: command = ' + this.saveCommandToFighter_command + ' commandText = ' + this.saveCommandToFighter_commandText);
-    //  console.log('CommandToFighter: update = ' + this.saveCommandToFighter_update);
+      // console.log('CommandToFighter:  this.NAME = ' +  this.NAME);
+      // console.log('CommandToFighter: command = ' + this.saveCommandToFighter_command + ' commandText = ' + this.saveCommandToFighter_commandText);
+      // console.log('CommandToFighter: update = ' + this.saveCommandToFighter_update);
          this.GammerToFighterLeftTick(_FighterSheeva_mk3_R1);
          this.saveCommandToFighter_update = 0;
     };

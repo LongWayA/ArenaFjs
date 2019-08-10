@@ -198,9 +198,10 @@ SpritesAnimators_R.NO_MIRROR = 0;
 
 
            // если мы устанавливаем новый тип анимации.
-               if (_FighterSheeva_mk3_R1.SpritesAnimatorsOldTypeAnimation != typeStateAnimators) {
+               if (type != typeStateAnimators) {
 
                  // console.log('1================== ');
+                 // console.log('!!!  _FighterSheeva_mk3_R1.NAME = ' +   _FighterSheeva_mk3_R1.NAME);
                  // console.log('1_typeStateAnimators(stateFighter) = ' + typeStateAnimators + ' type(SpritesAnimatorsTypeAnimation) = ' + type);
                  // console.log('1_canChange(SpritesAnimatorsTypeAnimation) = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].canChange);
                  // console.log('1_canChange(stateFighter) = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[typeStateAnimators].canChange);

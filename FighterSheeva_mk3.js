@@ -212,8 +212,8 @@
       //alert("s11 this.NAME =" + this.NAME + " toState =" + toState);
       //alert("s 12 this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);
 
-this.stateFighter = toState;
-
+       this.stateFighter = toState;
+       //console.log('FighterSheeva_mk3_R.setState:  toState = ' +  toState);
         // if(toState != this.stateFighter){
         //     if( this.busy == 0){
         //       this.stateFighter = toState;
