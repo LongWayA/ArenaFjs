@@ -1,6 +1,7 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019 - 13.07.2019
+ // - 10.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -26,70 +27,55 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 
 // 1
 // Game_R
-// это глобальный объект в одном экземпляре и без дальнейших потомков
 
 // 2
 // GameText_R
-ArenaFjs_R.GameText_R1 = Object.create(GameText_R);//
 
 // 3
 // Sound_R
-ArenaFjs_R.Sound_R1 = Object.create(Sound_R);//
 
 // 4
 // Timer_R
-ArenaFjs_R.Timer_R1 = Object.create(Timer_R);//
 
 // 5
 // CommandToFighter_R
-ArenaFjs_R.CommandToFighter_R1 = Object.create(CommandToFighter_R);//
-ArenaFjs_R.CommandToFighter_R2 = Object.create(CommandToFighter_R);//
+ArenaFjs_R.CommandToFighter_R1 = new CommandToFighter_CL();//
+ArenaFjs_R.CommandToFighter_R2 = new CommandToFighter_CL();//
 
 // 6
 // UserInput_R
-ArenaFjs_R.UserInput_R1 = Object.create(UserInput_R);//
 
 // 7
 // AICommand_R
-ArenaFjs_R.AICommand_R1 = Object.create(AICommand_R);//
 
 // 8
 // SpritesFighter
-ArenaFjs_R.SpritesFighter_R1 = Object.create(SpritesFighter_R);//
 
 // 9
 // SpritesAnimators
-ArenaFjs_R.SpritesAnimators_R1  = Object.create(SpritesAnimators_R);//
 
 // 10
 // FighterSheeva_mk3_R
-ArenaFjs_R.FighterSheeva_mk3_R1 = Object.create(FighterSheeva_mk3_R);//
-ArenaFjs_R.FighterSheeva_mk3_R2 = Object.create(FighterSheeva_mk3_R);//
+ArenaFjs_R.FighterSheeva_mk3_R1 = new FighterSheeva_mk3_CL;//
+ArenaFjs_R.FighterSheeva_mk3_R2 = new FighterSheeva_mk3_CL;//
 
 // 11
 // Move_R
-ArenaFjs_R.Move_R1 = Object.create(Move_R);//
 
 // 12
 // Fight_R
-ArenaFjs_R.Fight_R1 = Object.create(Fight_R);//
 
 // 13
 //Menu_R
-ArenaFjs_R.Menu_R1 = Object.create(Menu_R);//
 
 // 14
 // GameColculation_R
-ArenaFjs_R.GameColculation_R1 = Object.create(GameColculation_R);//
 
 // 15
 // ArenaScene
-ArenaFjs_R.ArenaScene_R1 = Object.create(ArenaScene_R);//
 
 // 16
 // Render_R
-ArenaFjs_R.Render_R1 = Object.create(Render_R);//
-
 
    ArenaFjs_R.countLoop = 1;
    ArenaFjs_R.il = 0;
@@ -101,13 +87,13 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
        if (ArenaFjs_R.countLoop == 24){
           ArenaFjs_R.il_2 = ArenaFjs_R.il;
           ArenaFjs_R.FighterSheeva_mk3_R1
-                    .setState(ArenaFjs_R.FighterSheeva_mk3_R1.STATE_F[ArenaFjs_R.il]);
+                    .setState(FighterSheeva_mk3_R.STATE_F[ArenaFjs_R.il]);
 
            ArenaFjs_R.FighterSheeva_mk3_R2
-                    .setState(ArenaFjs_R.FighterSheeva_mk3_R2.STATE_F[ArenaFjs_R.il]);
+                    .setState(FighterSheeva_mk3_R.STATE_F[ArenaFjs_R.il]);
 
           ArenaFjs_R.il = ArenaFjs_R.il + 1;
-          if (ArenaFjs_R.il > ArenaFjs_R.FighterSheeva_mk3_R1.STATE_F.length-1) ArenaFjs_R.il = 0;
+          if (ArenaFjs_R.il > FighterSheeva_mk3_R.STATE_F.length-1) ArenaFjs_R.il = 0;
 
        };
 
@@ -120,10 +106,10 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
     //alert("t");
     //alert("!");
     // человек отдает приказы с клавиатуры и они обрабатываются событийно.
-	  ArenaFjs_R.UserInput_R1.tick(ArenaFjs_R.CommandToFighter_R1);//
+	  UserInput_R.tick(ArenaFjs_R.CommandToFighter_R1);//
 
     // компьютер отдает приказы каждый такт
-    ArenaFjs_R.AICommand_R1.tick(ArenaFjs_R.CommandToFighter_R2);//
+    AICommand_R.tick(ArenaFjs_R.CommandToFighter_R2);//
 
     // передаются команды бойцам и бойцицам
     ArenaFjs_R.CommandToFighter_R1.tick(ArenaFjs_R.FighterSheeva_mk3_R1);
@@ -131,26 +117,26 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
     ArenaFjs_R.CommandToFighter_R2.tick(ArenaFjs_R.FighterSheeva_mk3_R2);
 
     // обрабатываем движение бойцов
-    ArenaFjs_R.Move_R1.tick();
+    Move_R.tick();
 
     // обрабатываем бой
-    ArenaFjs_R.Fight_R1.tick();
+    Fight_R.tick();
 
     // тоже что то можем обработать, но пока не знаю что.
-    ArenaFjs_R.GameColculation_R1.tick();
+    GameColculation_R.tick();
 
     // отрисовываем всю графику
-    ArenaFjs_R.Render_R1.drawAll(ArenaFjs_R.SpritesAnimators_R1,
-    ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2
-   ,ArenaFjs_R.GameText_R1, ArenaFjs_R.ArenaScene_R1,
-    ArenaFjs_R.Timer_R1, ArenaFjs_R.CommandToFighter_R1,
-     ArenaFjs_R.CommandToFighter_R2
-     , ArenaFjs_R.UserInput_R1, ArenaFjs_R.SpritesFighter_R1, ArenaFjs_R);
+    Render_R.drawAll(
+       SpritesAnimators_R,
+       ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2,
+       GameText_R, ArenaScene_R, Timer_R,
+       ArenaFjs_R.CommandToFighter_R1, ArenaFjs_R.CommandToFighter_R2,
+       UserInput_R, SpritesFighter_R, ArenaFjs_R);
 
     //alert("!");
     // что это за текст? почему он пишется именно здесь?
-    ArenaFjs_R.GameText_R1.drawText
-    (ArenaFjs_R.FighterSheeva_mk3_R1.STATE_F[ArenaFjs_R.il_2], 150, 385
+    GameText_R.drawText
+    (FighterSheeva_mk3_R.STATE_F[ArenaFjs_R.il_2], 150, 385
       , 'italic 20px sans-serif', 'red', 1);
 
 	     ArenaFjs_R.countLoop = ArenaFjs_R.countLoop + 1;
@@ -162,17 +148,17 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
  ArenaFjs_R.ini = function(){
 
     //alert("ini = " + ArenaFjs_R.SpritesAnimators_R1);
-    ArenaFjs_R.Timer_R1.ini(8);
+    Timer_R.ini(8);
 
-    ArenaFjs_R.SpritesFighter_R1.loadAllSprite();
+    SpritesFighter_R.loadAllSprite();
 
-    ArenaFjs_R.ArenaScene_R1.iniAll(Game_R.canvas.width, Game_R.canvas.height,
+    ArenaScene_R.iniAll(Game_R.canvas.width, Game_R.canvas.height,
     ArenaFjs_R.FighterSheeva_mk3_R1, ArenaFjs_R.FighterSheeva_mk3_R2);
 
     ArenaFjs_R.FighterSheeva_mk3_R1.setState(SpritesAnimators_R.FIGHTING_STANCE_ANI);
     ArenaFjs_R.FighterSheeva_mk3_R2.setState(SpritesAnimators_R.FIGHTING_STANCE_ANI);
 
-    ArenaFjs_R.UserInput_R1.ini();
+    UserInput_R.ini();
 
     ArenaFjs_R.CommandToFighter_R1.ini('1');
     ArenaFjs_R.CommandToFighter_R2.ini('2');
@@ -201,7 +187,7 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
       // временная заглушка
          //ArenaFjs_R.oldDemonstr();
 
-         ArenaFjs_R.SpritesFighter_R1.drawSprites_TEST(GameText_R);
+         SpritesFighter_R.drawSprites_TEST(GameText_R);
 
   //TEST> ------------------------------------------------------
 
@@ -214,17 +200,17 @@ ArenaFjs_R.Render_R1 = Object.create(Render_R);//
    //Game_R.context.fokus();
   ArenaFjs_R.timerId = setTimeout( function tick(){
 
-        ArenaFjs_R.Timer_R1.updateTimeBeforeTick();
+        Timer_R.updateTimeBeforeTick();
         if( Game_R.img_load_end == 1 ){
             // alert("!-");
              ArenaFjs_R.tick();
              //ArenaFjs_R.tickTest();
         };
 
-        ArenaFjs_R.Timer_R1.updateTimeAfterTick();
-        ArenaFjs_R.timerId = setTimeout( tick,ArenaFjs_R.Timer_R1.timeThreadSleepGameMs);
+        Timer_R.updateTimeAfterTick();
+        ArenaFjs_R.timerId = setTimeout( tick,Timer_R.timeThreadSleepGameMs);
 
-  }, ArenaFjs_R.Timer_R1.timeThreadSleepGameMs);
+  }, Timer_R.timeThreadSleepGameMs);
  //loop<------------------------------------------------------------------------
 
   //============================================================================

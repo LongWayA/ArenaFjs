@@ -1,7 +1,7 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 19.08.2018 - 19.03.2019 - 30.05.2019 - 14.07.2019
- //t
+ // - 10.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -35,12 +35,6 @@ CommandToFighter_R.BACKKICK   = 9;// удар задней ногой
 CommandToFighter_R.BLOCK      = 10;// блок
 CommandToFighter_R.TELEPORT   = 11;// перемещение в другой конец арены,
                                    // применяется против зажима у края
-
-//saveCommandToFighter-------------------
-CommandToFighter_R.saveCommandToFighter_command = 'command';
-CommandToFighter_R.saveCommandToFighter_commandText = 'commandText';
-CommandToFighter_R.saveCommandToFighter_update = 0;
-
 //
 //==============================================================================
 CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, command) {
@@ -113,45 +107,55 @@ CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, comma
 //==============================================================================
 
 
-// тут передаем команды  от человека левому бойцу
-//==============================================================================
-CommandToFighter_R.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
+function CommandToFighter_CL(){
 
-  var stateF = CommandToFighter_R.get_commandToNumState(
-    _FighterSheeva_mk3_R1, this.saveCommandToFighter_command);
-
-  var commandF = _FighterSheeva_mk3_R1.STATE_F[stateF];
-  //console.log('!!!  this.NAME = ' +  this.NAME);
-  //console.log('!!! CommandToFighter: stateF = ' + stateF + ' commandF = ' + commandF + ' this.saveCommandToFighter_command = ' + this.saveCommandToFighter_command);
-
-   _FighterSheeva_mk3_R1.setState( commandF );
-};
-//==============================================================================
-
-
- // тут передаем команды всем бойцам и бойцицам
- //=============================================================================
- CommandToFighter_R.tick = function(_FighterSheeva_mk3_R1) {
-    if(this.saveCommandToFighter_update == 1) {
-      // console.log('CommandToFighter:  this.NAME = ' +  this.NAME);
-      // console.log('CommandToFighter: command = ' + this.saveCommandToFighter_command + ' commandText = ' + this.saveCommandToFighter_commandText);
-      // console.log('CommandToFighter: update = ' + this.saveCommandToFighter_update);
-         this.GammerToFighterLeftTick(_FighterSheeva_mk3_R1);
-         this.saveCommandToFighter_update = 0;
-    };
- };
- //=============================================================================
-
- //==========================================================================
- CommandToFighter_R.ini = function(_num) {
-
-   this.NAME = 'CommandToFighter_R' + _num;//
-   this.saveCommandToFighter_command = 999;
+   //saveCommandToFighter-------------------
+   this.NAME_CL = 'CommandToFighter_CL';//
+   this.saveCommandToFighter_command = 'command';
    this.saveCommandToFighter_commandText = 'commandText';
    this.saveCommandToFighter_update = 0;
 
- };
- //==========================================================================
+
+   // тут передаем команды  от человека левому бойцу
+   //==============================================================================
+   this.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
+
+     var stateF = CommandToFighter_R.get_commandToNumState(
+         _FighterSheeva_mk3_R1, this.saveCommandToFighter_command);
+
+     var commandF = FighterSheeva_mk3_R.STATE_F[stateF];
+     //console.log('!!!  CommandToFighter_R.NAME = ' +  CommandToFighter_R.NAME);
+     //console.log('!!!  this.NAME_CL = ' +  this.NAME_CL);
+     //console.log('!!! CommandToFighter: stateF = ' + stateF + ' commandF = ' + commandF + ' this.saveCommandToFighter_command = ' + this.saveCommandToFighter_command);
+
+       _FighterSheeva_mk3_R1.setState( commandF );
+   };
+   //==============================================================================
+
+
+   // тут передаем команды всем бойцам и бойцицам
+   //=============================================================================
+   this.tick = function(_FighterSheeva_mk3_R1) {
+      if(this.saveCommandToFighter_update == 1) {
+         // console.log('CommandToFighter:  this.NAME = ' +  this.NAME);
+         // console.log('CommandToFighter: command = ' + this.saveCommandToFighter_command + ' commandText = ' + this.saveCommandToFighter_commandText);
+         // console.log('CommandToFighter: update = ' + this.saveCommandToFighter_update);
+         this.GammerToFighterLeftTick(_FighterSheeva_mk3_R1);
+         this.saveCommandToFighter_update = 0;
+      };
+   };
+   //=============================================================================
+
+   //==========================================================================
+   this.ini = function(_num) {
+
+       this.NAME_CL = 'CommandToFighter_CL ' + _num;//
+       this.saveCommandToFighter_command = 999;
+       this.saveCommandToFighter_commandText = 'commandText';
+       this.saveCommandToFighter_update = 0;
+   };
+   //==========================================================================
+};
 
 //==============================================================================
 Game_R.yT = Game_R.yT + Game_R.dyT;//
