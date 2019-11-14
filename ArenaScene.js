@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 08.08.2018 - 30.12.2018
-//t
+// - 14.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -20,7 +20,8 @@ window.ArenaScene_R = {};
 
   ArenaScene_R.NAME = "ArenaScene_R";//
 
-  ArenaScene_R.framesArena = {
+  // общий экран
+  ArenaScene_R.Display_Frame = {
 
        displayWidth  : 0, //
 		   displayHeight : 0, //
@@ -33,8 +34,12 @@ window.ArenaScene_R = {};
 
        width  : 0, //
        height : 0,//
+  };
 
-	     // начальные координаты карты в окне игры
+  // поле боя
+  ArenaScene_R.Location_Frame = {
+
+	     // начальные координаты
        x0LeftLocation : 0,//
        y0TopLocation  : 0,//
 
@@ -42,33 +47,40 @@ window.ArenaScene_R = {};
       xRightLocation  : 0,//
       yBottomLocation : 0,//
 
-     // размер отображения карты в окне игры. задается масштабированием карты
+     // размер отображения
       widthLocation  : 0, //
-      heightLocation : 0,//
-
-    //FPS
-      x0LeftFPS : 0, //
-      y0TopFPS  : 0,//
-
-      xRightFPS  : 0, //
-      yBottomFPS : 0,//
-
-      widthFPS  : 0, //
-      heightFPS : 0,//
-
-      //HealthPlayer1
-      x0LeftHealthPlayer1 : 0, //
-      y0TopHealthPlayer1  : 0,//
-      widthHealthPlayer1  : 0, //
-      heightHealthPlayer1 : 0,//
-
-      //HealthPlayer2
-      x0LeftHealthPlayer2 : 0, //
-      y0TopHealthPlayer2  : 0,//
-      widthHealthPlayer2  : 0, //
-      heightHealthPlayer2 : 0//
+      heightLocation : 0//
   };
 
+  //FPS экран вывода служебной информации
+  ArenaScene_R.FPS_Frame = {
+    x0LeftFPS : 0, //
+    y0TopFPS  : 0,//
+
+    xRightFPS  : 0, //
+    yBottomFPS : 0,//
+
+    widthFPS  : 0, //
+    heightFPS : 0//
+  };
+
+  //HealthPlayer жизни бойцов
+  ArenaScene_R.HealthPlayer_Frame = {
+
+    //HealthPlayer1
+    x0LeftHealthPlayer1 : 0, //
+    y0TopHealthPlayer1  : 0,//
+    widthHealthPlayer1  : 0, //
+    heightHealthPlayer1 : 0,//
+
+    //HealthPlayer2
+    x0LeftHealthPlayer2 : 0, //
+    y0TopHealthPlayer2  : 0,//
+    widthHealthPlayer2  : 0, //
+    heightHealthPlayer2 : 0//
+  };
+
+  // задний фон арены
   ArenaScene_R.imageArena = {
       NAME  : "imageArena",
 
@@ -79,25 +91,28 @@ window.ArenaScene_R = {};
       fon3  : new Image()
   };
 
+  // когда фоновый рисунок загружен то 1
   //============================================================================
   ArenaScene_R.imageArena.fon1.onload = function() {
     Game_R.img_load_end = 1;
   };
   //============================================================================
 
+  // когда фоновый рисунок загружен то 1
   //============================================================================
   ArenaScene_R.imageArena.fon2.onload = function() {
     Game_R.img_load_end = 1;
   };
   //============================================================================
 
+  // когда фоновый рисунок загружен то 1
   //============================================================================
   ArenaScene_R.imageArena.fon3.onload = function() {
     Game_R.img_load_end = 1;
   };
   //============================================================================
 
-  // draw image
+  // рисуем рисунок как задний фон арены
   //============================================================================
   ArenaScene_R.drawSceneImage = function(type, left, top, kx, ky) {
 
@@ -116,13 +131,13 @@ window.ArenaScene_R = {};
   //============================================================================
 
   //============================================================================
-  ArenaScene_R.drawAll = function(_GameText_R1) {
+  ArenaScene_R.drawAll = function(_GameText_R) {
 
-    // это видимо весь фон
-		_GameText_R1.drawRect(ArenaScene_R.framesArena.x0Left,
-                              ArenaScene_R.framesArena.y0Top,
-                              ArenaScene_R.framesArena.width,
-                              ArenaScene_R.framesArena.height,
+    // рисуем рамку всего фона
+		_GameText_R.drawRect(ArenaScene_R.Display_Frame.x0Left,
+                              ArenaScene_R.Display_Frame.y0Top,
+                              ArenaScene_R.Display_Frame.width,
+                              ArenaScene_R.Display_Frame.height,
                               1, 'green', 0);
 
   };
@@ -135,17 +150,17 @@ window.ArenaScene_R = {};
         var dx0 = 10;
         var dy0 = 10;
 
-        ArenaScene_R.framesArena.displayWidth = displayWidth - dx0 - 5; //
-		    ArenaScene_R.framesArena.displayHeight = displayHeight - dy0 - 5;//
+        ArenaScene_R.Display_Frame.displayWidth = displayWidth - dx0 - 5; //
+		    ArenaScene_R.Display_Frame.displayHeight = displayHeight - dy0 - 5;//
 
-    		ArenaScene_R.framesArena.x0Left = dx0; //4
-		    ArenaScene_R.framesArena.y0Top = dy0;//33
+    		ArenaScene_R.Display_Frame.x0Left = dx0; //4
+		    ArenaScene_R.Display_Frame.y0Top = dy0;//33
 
-		    ArenaScene_R.framesArena.width = ArenaScene_R.framesArena.displayWidth; //
-		    ArenaScene_R.framesArena.height = ArenaScene_R.framesArena.displayHeight;//
+		    ArenaScene_R.Display_Frame.width = ArenaScene_R.Display_Frame.displayWidth; //
+		    ArenaScene_R.Display_Frame.height = ArenaScene_R.Display_Frame.displayHeight;//
 
-		    ArenaScene_R.framesArena.xRight =  ArenaScene_R.framesArena.x0Left + ArenaScene_R.framesArena.width; //
-		    ArenaScene_R.framesArena.yBottom = ArenaScene_R.framesArena.y0Top + ArenaScene_R.framesArena.height;//
+		    ArenaScene_R.Display_Frame.xRight =  ArenaScene_R.Display_Frame.x0Left + ArenaScene_R.Display_Frame.width; //
+		    ArenaScene_R.Display_Frame.yBottom = ArenaScene_R.Display_Frame.y0Top + ArenaScene_R.Display_Frame.height;//
 
 //		("x0Left = " + x0Left);
 //		("y0Top = " + y0Top);
@@ -156,14 +171,14 @@ window.ArenaScene_R = {};
 
 		//view Location
 
-		   ArenaScene_R.framesArena.x0LeftLocation = ArenaScene_R.framesArena.x0Left + 5; //
-		   ArenaScene_R.framesArena.y0TopLocation = ArenaScene_R.framesArena.y0Top + 5;//
+		   ArenaScene_R.Location_Frame.x0LeftLocation = ArenaScene_R.Display_Frame.x0Left + 5; //
+		   ArenaScene_R.Location_Frame.y0TopLocation = ArenaScene_R.Display_Frame.y0Top + 5;//
 
-		   ArenaScene_R.framesArena.widthLocation  = ArenaScene_R.framesArena.width - 10; //
-		   ArenaScene_R.framesArena.heightLocation = ArenaScene_R.framesArena.height - ArenaScene_R.framesArena.height/4;//
+		   ArenaScene_R.Location_Frame.widthLocation  = ArenaScene_R.Display_Frame.width - 10; //
+		   ArenaScene_R.Location_Frame.heightLocation = ArenaScene_R.Display_Frame.height - ArenaScene_R.Display_Frame.height/4;//
 
-		   ArenaScene_R.framesArena.xRightLocation = ArenaScene_R.framesArena.x0Left + ArenaScene_R.framesArena.widthLocation; //
-		   ArenaScene_R.framesArena.yBottomLocation = ArenaScene_R.framesArena.y0Top + ArenaScene_R.framesArena.heightLocation;//
+		   ArenaScene_R.Location_Frame.xRightLocation = ArenaScene_R.Display_Frame.x0Left + ArenaScene_R.Location_Frame.widthLocation; //
+		   ArenaScene_R.Location_Frame.yBottomLocation = ArenaScene_R.Display_Frame.y0Top + ArenaScene_R.Location_Frame.heightLocation;//
 
 //		("x0LeftLocation = " + x0LeftLocation);
 //		("y0TopLocation = " + y0TopLocation);
@@ -174,25 +189,25 @@ window.ArenaScene_R = {};
 
 
 		  //viewFPS
-		  ArenaScene_R.framesArena.x0LeftFPS = ArenaScene_R.framesArena.x0LeftLocation;
-		  ArenaScene_R.framesArena.y0TopFPS = ArenaScene_R.framesArena.yBottomLocation;//
+		  ArenaScene_R.FPS_Frame.x0LeftFPS = ArenaScene_R.Location_Frame.x0LeftLocation;
+		  ArenaScene_R.FPS_Frame.y0TopFPS = ArenaScene_R.Location_Frame.yBottomLocation;//
 
-		  ArenaScene_R.framesArena.widthFPS  = ArenaScene_R.framesArena.widthLocation;
-		  ArenaScene_R.framesArena.heightFPS = ArenaScene_R.framesArena.yBottom - ArenaScene_R.framesArena.yBottomLocation;//
+		  ArenaScene_R.FPS_Frame.widthFPS  = ArenaScene_R.Location_Frame.widthLocation;
+		  ArenaScene_R.FPS_Frame.heightFPS = ArenaScene_R.Display_Frame.yBottom - ArenaScene_R.Location_Frame.yBottomLocation;//
 
-		  ArenaScene_R.framesArena.xRightFPS = ArenaScene_R.framesArena.xRightLocation;
-		  ArenaScene_R.framesArena.yBottomFPS = ArenaScene_R.framesArena.yBottom -5; // низ привязали к фону
+		  ArenaScene_R.FPS_Frame.xRightFPS = ArenaScene_R.Location_Frame.xRightLocation;
+		  ArenaScene_R.FPS_Frame.yBottomFPS = ArenaScene_R.Display_Frame.yBottom -5; // низ привязали к фону
 
-	    ArenaScene_R.framesArena.x0LeftHealthPlayer1 = 10; //
-	    ArenaScene_R.framesArena.y0TopHealthPlayer1 = 10;//
-	    ArenaScene_R.framesArena.widthHealthPlayer1 = 500; //
-	    ArenaScene_R.framesArena.heightHealthPlayer1 = 40;//
+	    ArenaScene_R.HealthPlayer_Frame.x0LeftHealthPlayer1 = 10; //
+	    ArenaScene_R.HealthPlayer_Frame.y0TopHealthPlayer1 = 10;//
+	    ArenaScene_R.HealthPlayer_Frame.widthHealthPlayer1 = 500; //
+	    ArenaScene_R.HealthPlayer_Frame.heightHealthPlayer1 = 40;//
 
 
-	    ArenaScene_R.framesArena.x0LeftHealthPlayer2 = 600; //
-	    ArenaScene_R.framesArena.y0TopHealthPlayer2 = 10;//
-	    ArenaScene_R.framesArena.widthHealthPlayer2 = 500; //
-	    ArenaScene_R.framesArena.heightHealthPlayer2 = 40;//
+	    ArenaScene_R.HealthPlayer_Frame.x0LeftHealthPlayer2 = 600; //
+	    ArenaScene_R.HealthPlayer_Frame.y0TopHealthPlayer2 = 10;//
+	    ArenaScene_R.HealthPlayer_Frame.widthHealthPlayer2 = 500; //
+	    ArenaScene_R.HealthPlayer_Frame.heightHealthPlayer2 = 40;//
   };
   //============================================================================
 
@@ -222,17 +237,13 @@ window.ArenaScene_R = {};
        ArenaScene_R.iniFramesArena( displayWidth,  displayHeight);
        ArenaScene_R.loadSceneImage();
 
-       fighterSheeva_mk3_1.ini(ArenaScene_R.framesArena.x0LeftLocation+180,
-                               ArenaScene_R.framesArena.y0TopLocation+550,
-                               0, 0,
-                               0,
-                               'v1','fightingStance');
+       fighterSheeva_mk3_1.ini(ArenaScene_R.Location_Frame.x0LeftLocation+180,
+                               ArenaScene_R.Location_Frame.y0TopLocation+550,
+                               0,'v1','fightingStance');
 
-       fighterSheeva_mk3_2.ini(ArenaScene_R.framesArena.x0LeftLocation+480,
-                               ArenaScene_R.framesArena.y0TopLocation+550,
-                               0, 0,
-                               1,
-                              'v2','fightingStance');
+       fighterSheeva_mk3_2.ini(ArenaScene_R.Location_Frame.x0LeftLocation+480,
+                               ArenaScene_R.Location_Frame.y0TopLocation+550,
+                               1,'v2','fightingStance');
 
       //ArenaScene_R.iniSprite("fightingStance","image/Sheeva_mk3_image/1_FightingStance/fs");
 

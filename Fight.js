@@ -21,7 +21,7 @@ Fight_R.NAME = "Fight";//
 
 
 //==============================================================================
-Fight_R.tick = function() {
+Fight_R.tick = function(_Fighter_1, _Fighter_2) {
 
    //
 };

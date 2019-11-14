@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 07.07.2018 - 31.12.2018 - 28.07.2019
-// t
+//  - 12.11.2019 -
   /*
    НАЗНАЧЕНИЕ
 
@@ -31,13 +31,13 @@
    загружаем все необходимые картинки. это файлы
    с расширением .png
 
-    drawSprite(type,index,left, top)
+    drawSprite(type,index,middle, bottom)
     рисуем спрайт заданного типа и номера, в заданном месте
     например drawSprite(punchingUp,3,100, 150)
     тут выводится третий спрайт из ряда анимации удара рукой
     в точке с координатами слева 100 а сверху 150 пикселей
 
-    drawSpriteMirror(type,index,left, top)
+    drawSpriteMirror(type,index,middle, bottom)
     рисуем зеркальный спрайт заданного типа и номера, в заданном месте
 
     name - имя объекта. сейчас это spritesSheeva_mk3
@@ -80,18 +80,6 @@ window.SpritesFighter_R = {};
   SpritesFighter_R.BLOCKING_LOW     = 8;
   SpritesFighter_R.BEING_HIT        = 9;
 
-  SpritesFighter_R.TYPE_SPRITES_FIGHTER_SET = [
-    SpritesFighter_R.FIGHTING_STANCE,
-    SpritesFighter_R.WALKING,
-    SpritesFighter_R.RUNNING,
-    SpritesFighter_R.PUNCHING_UP,
-    SpritesFighter_R.PUNCHING_MIDLE,
-    SpritesFighter_R.KICKING_FRONT,
-    SpritesFighter_R.KICKING_BACK,
-    SpritesFighter_R.BLOCKING_HIGH,
-    SpritesFighter_R.BLOCKING_LOW,
-    SpritesFighter_R.BEING_HIT
-  ];
 
   // NAME_IMG_TXT
   SpritesFighter_R.TXT_SPRITES_FIGHTER_SET = ["fightingStance", "walking",
@@ -99,6 +87,7 @@ window.SpritesFighter_R = {};
     "blockingHigh", "blockingLow", "beingHit"
   ];
 
+  // объявляем двухмерный массив spritesSheeva_mk3_img [type = 10][index = от 4 до 10]
   SpritesFighter_R.spritesSheeva_mk3_img = new Array(10);
   SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.FIGHTING_STANCE] = new Array(7);
   SpritesFighter_R.spritesSheeva_mk3_img[SpritesFighter_R.WALKING] = new Array(10);
@@ -124,51 +113,92 @@ window.SpritesFighter_R = {};
   SpritesFighter_R.spritesSheeva_mk3_path[SpritesFighter_R.BEING_HIT] = new Array(4);
 
 
+
+  // get Height Sprite
+  //============================================================================
+  SpritesFighter_R.getHeightSprite = function(_type, _index) {
+
+      var height = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height;
+      return height;
+  };
+  //============================================================================
+
+  // get Width Sprite
+  //============================================================================
+  SpritesFighter_R.getWidthSprite = function(_type, _index) {
+
+      var width = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width;
+      return width;
+  };
+  //============================================================================
+
+  // get Left Sprite
+  //============================================================================
+  SpritesFighter_R.getLeftSprite = function(_type, _index, _middle) {
+
+      var width = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width;
+      var left = _middle - width/2;
+      return left;
+  };
+  //============================================================================
+
+
   // draw image
   //============================================================================
-  SpritesFighter_R.drawSprite = function(_type, _index, _left, _top, _GameText_R1) {
+  SpritesFighter_R.drawSprite = function(_type, _index, _middle, _bottom, _GameText_R) {
 
-         var top = _top - SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height;
+         var height = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height;
+         var width = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width;
 
-         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], _left, top);
+         var top = _bottom - height;
+         var left = _middle - width/2;
 
-         //GameText_R.drawRect(_left, top, SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width,
-         //                    SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height,1, 'blue', 0);
+         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], left, top);
 
-         _GameText_R1.drawText ("frame = " + _index, _left+5, _top-100, 'italic 20px sans-serif', 'blue', 1);
-         _GameText_R1.drawText (SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], _left+5, _top-20, 'italic 20px sans-serif', 'blue', 1);
+         GameText_R.drawRect(left, top, width,height,1, 'blue', 0);
+         GameText_R.drawRect(_middle, top, 2,height,1, 'red', 0);
+
+         _GameText_R.drawText ("i " + "frame = " + _index, left+5, _bottom-40, 'italic 20px sans-serif', 'white', 1);
+         _GameText_R.drawText ("i " + SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], left+5, _bottom-20, 'italic 20px sans-serif', 'white', 1);
+
+        // _GameText_R.drawText ("i " + "middle = " + _middle, left+5, _bottom-140, 'italic 20px sans-serif', 'white', 1);
+        // _GameText_R.drawText ("i " + "width = " + width, left+5, _bottom-120, 'italic 20px sans-serif', 'white', 1);
+        // _GameText_R.drawText ("i " + "left = " + left, left+5, _bottom-100, 'italic 20px sans-serif', 'white', 1);
   };
   //============================================================================
 
 
   // draw image mirror
   //============================================================================
-  SpritesFighter_R.drawSpriteMirror = function(_type, _index, _left, _top, _GameText_R1) {
+  SpritesFighter_R.drawSpriteMirror = function(_type, _index, _middle, _bottom, _GameText_R) {
 
          var height = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height;
-
-         var top = _top - height;
-
          var width = SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width;
-
-         var left = _left + width;
-
-         Game_R.context.scale(-1, 1);
-         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], -left, top);
-
-      //   GameText_R.drawRect(-left, top, SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].width,
-      //                      SpritesFighter_R.spritesSheeva_mk3_img[_type][_index].height, 1, 'blue', 0);
+         var top = _bottom - height;
+         var left = _middle - width/2;
+         var right = left + width;
 
          Game_R.context.scale(-1, 1);
-         _GameText_R1.drawText ("frame = " + _index, left + 5 - width, _top-100, 'italic 20px sans-serif', 'blue', 1);
-         _GameText_R1.drawText (SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], left + 5 - width, _top -20, 'italic 20px sans-serif', 'blue', 1);
+         Game_R.context.drawImage(SpritesFighter_R.spritesSheeva_mk3_img[_type][_index], -right, top);
+         GameText_R.drawRect(-right, top, width, height, 1, 'blue', 0);
+         Game_R.context.scale(-1, 1);
+
+         GameText_R.drawRect(_middle, top, 2,height,1, 'red', 0);
+
+         _GameText_R.drawText ("im " + "frame = " + _index, left + 5, _bottom-40, 'italic 20px sans-serif', 'white', 1);
+         _GameText_R.drawText ("im " + SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], left+5, _bottom -20, 'italic 20px sans-serif', 'white', 1);
+
+        // _GameText_R.drawText ("i " + "middle = " + _middle, left+5, _bottom-140, 'italic 20px sans-serif', 'white', 1);
+        // _GameText_R.drawText ("i " + "width = " + width, left+5, _bottom-120, 'italic 20px sans-serif', 'white', 1);
+        // _GameText_R.drawText ("i " + "left = " + left, left+5, _bottom-100, 'italic 20px sans-serif', 'white', 1);
+        // _GameText_R.drawText ("i " + "right = " + right, left+5, _bottom-80, 'italic 20px sans-serif', 'white', 1);
   };
   //============================================================================
 
   //============================================================================
-  SpritesFighter_R.drawSprites_TEST = function(_GameText_R1){
+  SpritesFighter_R.drawSprites_TEST = function(_GameText_R){
 
-     SpritesFighter_R.drawSprite(SpritesFighter_R.FIGHTING_STANCE, 1, 200, 200, _GameText_R1);
+     SpritesFighter_R.drawSprite(SpritesFighter_R.FIGHTING_STANCE, 1, 200, 200, _GameText_R);
      //SpritesFighter_R.drawSprite(SpritesFighter_R.KICKING_BACK, 1, 200, 200, _GameText_R1);
 
   };

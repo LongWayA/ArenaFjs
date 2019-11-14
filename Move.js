@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 19.08.2018 - 30.12.2018
+ // Last modified 19.08.2018 - 30.12.2018 - 11.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -20,7 +20,7 @@ window.Move_R = {};
 Move_R.NAME = "Move";//
 
 //==============================================================================
-Move_R.tick = function() {
+Move_R.tick = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
 
    //
 };

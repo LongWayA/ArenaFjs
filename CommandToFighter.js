@@ -37,7 +37,7 @@ CommandToFighter_R.TELEPORT   = 11;// перемещение в другой к�
                                    // применяется против зажима у края
 //
 //==============================================================================
-CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, command) {
+CommandToFighter_R.get_commandToNumState = function(_Fighter, command) {
 
    var numState = 0;
 
@@ -48,15 +48,15 @@ CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, comma
        break;
 
        case CommandToFighter_R.LEFT:  //
-           if (_FighterSheeva_mk3_R1.mirror == 1) {
-              numState = 1;
+           if (_Fighter.mirror == 1) {
+              numState = 1; // WALKING_FORWARD
            } else {
-              numState = 2;
+              numState = 2; // WALKING_BACK
            };
        break;
 
        case CommandToFighter_R.RIGHT:  //
-           if (_FighterSheeva_mk3_R1.mirror != 1) {
+           if (_Fighter.mirror != 1) {
               numState = 1;
            } else {
               numState = 2;
@@ -106,29 +106,33 @@ CommandToFighter_R.get_commandToNumState = function(_FighterSheeva_mk3_R1, comma
 };
 //==============================================================================
 
+CommandToFighter_R.UserToFighter = new CommandToFighter_CL();//
+CommandToFighter_R.AI_ToFighter = new CommandToFighter_CL();//
+
+
 
 function CommandToFighter_CL(){
 
    //saveCommandToFighter-------------------
-   this.NAME_CL = 'CommandToFighter_CL';//
+   this.NAME_CL = 'NAME_CL';//
    this.saveCommandToFighter_command = 'command';
    this.saveCommandToFighter_commandText = 'commandText';
    this.saveCommandToFighter_update = 0;
 
 
-   // тут передаем команды  от человека левому бойцу
+   // тут передаем команды  от человека бойцу
    //==============================================================================
-   this.GammerToFighterLeftTick = function(_FighterSheeva_mk3_R1) {
+   this.GammerToFighterLeftTick = function(_Fighter) {
 
      var stateF = CommandToFighter_R.get_commandToNumState(
-         _FighterSheeva_mk3_R1, this.saveCommandToFighter_command);
+         _Fighter, this.saveCommandToFighter_command);
 
-     var commandF = FighterSheeva_mk3_R.STATE_F[stateF];
+     var commandF = SpritesAnimators_R.STATE_ANI[stateF];
      //console.log('!!!  CommandToFighter_R.NAME = ' +  CommandToFighter_R.NAME);
      //console.log('!!!  this.NAME_CL = ' +  this.NAME_CL);
      //console.log('!!! CommandToFighter: stateF = ' + stateF + ' commandF = ' + commandF + ' this.saveCommandToFighter_command = ' + this.saveCommandToFighter_command);
 
-       _FighterSheeva_mk3_R1.setState( commandF );
+       _Fighter.setState(commandF);
    };
    //==============================================================================
 

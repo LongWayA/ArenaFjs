@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 10.07.2018 - 30.12.2018 - 28.07.2019 - 10.08.2019
-//t2
+// - 14.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -52,7 +52,7 @@
  SpritesAnimators_R.BLOCKING_LOW_ANI     = 9;
  SpritesAnimators_R.BEING_HIT_ANI        = 10;
 
- SpritesAnimators_R.TYPE_ANIMATORS_FIGHTER_SET = [
+ SpritesAnimators_R.STATE_ANI = [
    SpritesAnimators_R.FIGHTING_STANCE_ANI,
    SpritesAnimators_R.WALKING_FORWARD_ANI,
    SpritesAnimators_R.WALKING_BACK_ANI,
@@ -66,22 +66,24 @@
    SpritesAnimators_R.BEING_HIT_ANI
 ];
 
+
 // NAME_INIM_TXT
 SpritesAnimators_R.TXT_ANIMATORS_FIGHTER_SET = ["fightingStance",
   "walkingForward", "walkingBack", "running", "punchingUp", "punchingMidle",
   "kickingFront", "kickingBack", "blockingHigh", "blockingLow", "beingHit"
 ];
 
+// определяем массив который будет состоять из объектов
  SpritesAnimators_R.animatorsSheeva_mk3_mobj = new Array(11);
 
  SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.FIGHTING_STANCE_ANI] = {
-    typeSpritesFighterSet : SpritesFighter_R.FIGHTING_STANCE,
-    fr :  [1,2,3,4,5,6,5,4,3,2,1],
-    str : [0,0,0,0,0,0,0,0,0,0,0],
-    max : 11,
-    sound: "sound_IA",
-    mustToStance : 0,
-    canChange : 1
+    typeSpritesFighterSet : SpritesFighter_R.FIGHTING_STANCE,// вид кадровой последовательности. например набор кадров удара
+    fr :  [1,2,3,4,5,6,5,4,3,2,1],// массив из номеров кадров
+    str : [0,0,0,0,0,0,0,0,0,0,0],// есть ли урон в данном кадре
+    max : 11,// количество кадров
+    sound: "sound_IA",// звук ассоциираванный с данной анимацией
+    mustToStance : 0,// не помню что это
+    canChange : 1//     не помню что это
  };
 
 SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.WALKING_FORWARD_ANI] = {
@@ -188,10 +190,10 @@ SpritesAnimators_R.YES_MIRROR = 1;
 SpritesAnimators_R.NO_MIRROR = 0;
 
      //=========================================================================
-     SpritesAnimators_R.setTypeAnimation = function(_FighterSheeva_mk3_R1) {
+     SpritesAnimators_R.setTypeAnimation = function(_Fighter) {
 
-              var typeStateAnimators = _FighterSheeva_mk3_R1.stateFighter;
-              var type = _FighterSheeva_mk3_R1.SpritesAnimatorsTypeAnimation;
+              var typeStateAnimators = _Fighter.stateFighter;
+              var type = _Fighter.SpritesAnimatorsTypeAnimation;
            //alert("this.type = " + this.type + " toType = " + toType);
            //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
 
@@ -208,10 +210,10 @@ SpritesAnimators_R.NO_MIRROR = 0;
                  // console.log('k');
 
                    if (SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].canChange == 1 ) {
-                     _FighterSheeva_mk3_R1.SpritesAnimatorsOldTypeAnimation = _FighterSheeva_mk3_R1.SpritesAnimatorsTypeAnimation;
-                     _FighterSheeva_mk3_R1.SpritesAnimatorsTypeAnimation = typeStateAnimators;
-                     _FighterSheeva_mk3_R1.SpritesAnimatorsFrames = 0;
-                     _FighterSheeva_mk3_R1.SpritesAnimatorsBusy = 1;
+                     _Fighter.SpritesAnimatorsOldTypeAnimation = _Fighter.SpritesAnimatorsTypeAnimation;
+                     _Fighter.SpritesAnimatorsTypeAnimation = typeStateAnimators;
+                     _Fighter.SpritesAnimatorsFrames = 0;
+                     _Fighter.SpritesAnimatorsBusy = 1;
                    };
 
               }
@@ -220,30 +222,30 @@ SpritesAnimators_R.NO_MIRROR = 0;
 
 
      //=========================================================================
-     SpritesAnimators_R.animation = function(_GameText_R1,
-       _SpritesFighter_R1, _FighterSheeva_mk3_R1) {
+     SpritesAnimators_R.animation = function(_GameText_R,
+       _SpritesFighter_R, _Fighter) {
 
-         var num = _FighterSheeva_mk3_R1.SpritesAnimatorsFrames;
-         var type = _FighterSheeva_mk3_R1.SpritesAnimatorsTypeAnimation;
-         var left = _FighterSheeva_mk3_R1.left;
-         var top = _FighterSheeva_mk3_R1.top;
-         var mirror = _FighterSheeva_mk3_R1.mirror;
+         var num = _Fighter.SpritesAnimatorsFrames;
+         var type = _Fighter.SpritesAnimatorsTypeAnimation;
+         var middle = _Fighter.middle;
+         var bottom = _Fighter.bottom;
+         var mirror = _Fighter.mirror;
 
 
          if (mirror == SpritesAnimators_R.NO_MIRROR){
            //console.log('1_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].max);
            //console.log('1_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num]);
 
-              _SpritesFighter_R1.drawSprite(
+              _SpritesFighter_R.drawSprite(
                   SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].typeSpritesFighterSet,
-                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num], left, top, _GameText_R1);
+                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num], middle, bottom, _GameText_R);
          }else{
            //console.log('2_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].max);
            //console.log('2_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3[type].fr[num]);
 
-              _SpritesFighter_R1.drawSpriteMirror(
+              _SpritesFighter_R.drawSpriteMirror(
                   SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].typeSpritesFighterSet,
-                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num], left, top, _GameText_R1);
+                  SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num], middle, bottom, _GameText_R);
          };
 
          num = num + 1;
@@ -251,37 +253,37 @@ SpritesAnimators_R.NO_MIRROR = 0;
              num = 0;
 
               if (SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].mustToStance == 1 ) {
-                   _FighterSheeva_mk3_R1.SpritesAnimatorsOldTypeAnimation = _FighterSheeva_mk3_R1.SpritesAnimatorsTypeAnimation;
-                   _FighterSheeva_mk3_R1.SpritesAnimatorsTypeAnimation = SpritesAnimators_R.FIGHTING_STANCE_ANI;
-                   _FighterSheeva_mk3_R1.SpritesAnimatorsBusy = 0;
+                   _Fighter.SpritesAnimatorsOldTypeAnimation = _Fighter.SpritesAnimatorsTypeAnimation;
+                   _Fighter.SpritesAnimatorsTypeAnimation = SpritesAnimators_R.FIGHTING_STANCE_ANI;
+                   _Fighter.SpritesAnimatorsBusy = 0;
               };
          };
 
-         _FighterSheeva_mk3_R1.SpritesAnimatorsFrames = num;
+         _Fighter.SpritesAnimatorsFrames = num;
      };
      //=========================================================================
 
      //=========================================================================
-     SpritesAnimators_R.tickAnimation = function( _GameText_R1,
-       _SpritesFighter_R1, _FighterSheeva_mk3_R1){
+     SpritesAnimators_R.tickAnimation = function( _GameText_R,
+       _SpritesFighter_R, _Fighter){
 
-       var typeStateAnimators = _FighterSheeva_mk3_R1.stateFighter;
-       var width = _FighterSheeva_mk3_R1.width;
-       var height = _FighterSheeva_mk3_R1.height;
+       var typeStateAnimators = _Fighter.stateFighter;
+       var width = _Fighter.width;
+       var height = _Fighter.height;
 
        //alert("typeStateAnimators = " + typeStateAnimators);
 
-       this.setTypeAnimation(_FighterSheeva_mk3_R1);
-       var num = _FighterSheeva_mk3_R1.SpritesAnimatorsFrames;
+       this.setTypeAnimation(_Fighter);
+       var num = _Fighter.SpritesAnimatorsFrames;
 
          if( (typeStateAnimators == SpritesAnimators_R.BLOCKING_HIGH_ANI) ||(typeStateAnimators == SpritesAnimators_R.BLOCKING_LOW_ANI) ){
               if (num > 3 ){
-                 _FighterSheeva_mk3_R1.SpritesAnimatorsFrames = 3;
+                 _Fighter.SpritesAnimatorsFrames = 3;
                  //this.inProcess = 0;
               };
          };
 
-         this.animation(_GameText_R1, _SpritesFighter_R1, _FighterSheeva_mk3_R1);
+         this.animation(_GameText_R, _SpritesFighter_R, _Fighter);
      };
      //=========================================================================
 

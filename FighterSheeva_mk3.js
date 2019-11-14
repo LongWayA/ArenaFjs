@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 21.07.2018 - 30.12.2018 - 31.05.2019
-//t
+// - 14.11.2019 -
   /*
    НАЗНАЧЕНИЕ
 
@@ -28,35 +28,25 @@
                                   "punchMidle", "kickFront", "kickBack",
                                    "blockingHigh", "blockingLow", "beingHit"];
 
-
-     FighterSheeva_mk3_R.STATE_F = [
-       SpritesAnimators_R.FIGHTING_STANCE_ANI,
-       SpritesAnimators_R.WALKING_FORWARD_ANI,
-       SpritesAnimators_R.WALKING_BACK_ANI,
-       SpritesAnimators_R.RUNNING_ANI,
-       SpritesAnimators_R.PUNCHING_UP_ANI,
-       SpritesAnimators_R.PUNCHING_MIDLE_ANI,
-       SpritesAnimators_R.KICKING_FRONT_ANI,
-       SpritesAnimators_R.KICKING_BACK_ANI,
-       SpritesAnimators_R.BLOCKING_HIGH_ANI,
-       SpritesAnimators_R.BLOCKING_LOW_ANI,
-       SpritesAnimators_R.BEING_HIT_ANI
-    ];
-
     FighterSheeva_mk3_R.MAX_HEALTH = 1000; //
     FighterSheeva_mk3_R.MAX_STAMINA = 100; //
+
+    FighterSheeva_mk3_R.Fighter_1 = new FighterSheeva_mk3_CL;//
+    FighterSheeva_mk3_R.Fighter_2 = new FighterSheeva_mk3_CL;//
 
 
     function FighterSheeva_mk3_CL(){
 
        this.NAME_CL = "FighterSheeva_mk3_CL";
-       this.stateFighter = FighterSheeva_mk3_R.STATE_F[0] ; //"fightingStance"
-       this.busy = 0;
-       this.left = 0;
-       this.top = 0;
+       this.stateFighter = SpritesAnimators_R.STATE_ANI[0] ; //"fightingStance"
        this.mirror = 0; // Direction_RIGHT_LEFT
-       this.width = 0;
-       this.height = 0;
+
+       this.middle = 0;
+       this.bottom = 0;
+       //this.width = 0;
+       //this.height = 0;
+
+       //this.busy = 0;
 
        // жизни бойца
        this.health = 0;
@@ -87,15 +77,15 @@
 
 
        //==========================================================================
-       this.ini = function(_left, _top, _width, _height,
+       this.ini = function(_middle, _bottom,
             _mirror, _name_id, _stateFighter) {
             this.NAME_CL = "FighterSheeva_mk3_CL " + _name_id;
             this.stateFighter = _stateFighter;
-            this.left = _left;
-            this.top = _top;
+            this.middle = _middle;
+            this.bottom = _bottom;
             this.mirror = _mirror; // Direction_RIGHT_LEFT
-            this.width = _width;
-            this.height = _height;
+            //this.width = _width;
+            //this.height = _height;
 
             // жизни бойца
             this.health = FighterSheeva_mk3_R.MAX_HEALTH;
@@ -121,13 +111,13 @@
        //==========================================================================
 
       //==========================================================================
-      this.tickAnimation = function(_SpritesAnimators_R1,
-          _GameText_R1, _SpritesFighter_R1) {
+      this.tickAnimation = function(_SpritesAnimators_R,
+          _GameText_R, _SpritesFighter_R) {
           //alert("!");
           //alert("this.NAME =" + this.NAME + " this.stateFighter =" + this.stateFighter);
           //alert("Fimk3_R.NAME = " + FighterSheeva_mk3_R.NAME + " Fimk3_R.stateFighter = " + FighterSheeva_mk3_R.stateFighter);
 
-          _SpritesAnimators_R1.tickAnimation(_GameText_R1,_SpritesFighter_R1,
+          _SpritesAnimators_R.tickAnimation(_GameText_R,_SpritesFighter_R,
             this);
 
           if (this.SpritesAnimatorsBusy == 0) this.busy = 0;
@@ -141,42 +131,42 @@
 
         switch(toState){
 
-             case FighterSheeva_mk3_R.STATE_F[0] : //"fightingStance":
+             case SpritesAnimators_R.STATE_ANI[0] : //"fightingStance":
                  ret = 0;
              break;
 
-             case FighterSheeva_mk3_R.STATE_F[1] : //"walkingForward":
+             case SpritesAnimators_R.STATE_ANI[1] : //"walkingForward":
                 ret = 0;
              break;
-             case FighterSheeva_mk3_R.STATE_F[2] : //"walkingBack":
+             case SpritesAnimators_R.STATE_ANI[2] : //"walkingBack":
                ret = 0;
              break;
 
-             case FighterSheeva_mk3_R.STATE_F[3] : //"running":
+             case SpritesAnimators_R.STATE_ANI[3] : //"running":
                ret = 0;
              break;
 
-             case FighterSheeva_mk3_R.STATE_F[4] : //"punchUp":
+             case SpritesAnimators_R.STATE_ANI[4] : //"punchUp":
                ret = 1;
              break;
-             case FighterSheeva_mk3_R.STATE_F[5] : //"punchMidle":
+             case SpritesAnimators_R.STATE_ANI[5] : //"punchMidle":
                ret = 1;
              break;
-             case FighterSheeva_mk3_R.STATE_F[6] : //"kickFront":
+             case SpritesAnimators_R.STATE_ANI[6] : //"kickFront":
                ret = 1;
              break;
-             case FighterSheeva_mk3_R.STATE_F[7] : //"kickingBack":
-               ret = 1;
-             break;
-
-             case FighterSheeva_mk3_R.STATE_F[8] : //"beingHit":
+             case SpritesAnimators_R.STATE_ANI[7] : //"kickingBack":
                ret = 1;
              break;
 
-             case FighterSheeva_mk3_R.STATE_F[9] : //"blockingHigh":
+             case SpritesAnimators_R.STATE_ANI[8] : //"beingHit":
+               ret = 1;
+             break;
+
+             case SpritesAnimators_R.STATE_ANI[9] : //"blockingHigh":
                ret = 0;
              break;
-             case FighterSheeva_mk3_R.STATE_F[10] : //"blockingLow":
+             case SpritesAnimators_R.STATE_ANI[10] : //"blockingLow":
                ret = 0;
              break;
 
