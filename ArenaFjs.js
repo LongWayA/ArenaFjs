@@ -1,7 +1,7 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019 - 13.07.2019
- // - 11.11.2019 -
+ // - 15.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -73,28 +73,6 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 // 16
 // Render_R
 
-   ArenaFjs_R.countLoop = 1;
-   ArenaFjs_R.il = 0;
-   ArenaFjs_R.il_2 = 0;
-
-
- //=============================================================================
- ArenaFjs_R.oldDemonstr = function() {
-       if (ArenaFjs_R.countLoop == 24){
-          ArenaFjs_R.il_2 = ArenaFjs_R.il;
-          FighterSheeva_mk3_R.Fighter_1
-                    .setState(SpritesAnimators_R.STATE_ANI[ArenaFjs_R.il]);
-
-           FighterSheeva_mk3_R.Fighter_2
-                    .setState(SpritesAnimators_R.STATE_ANI[ArenaFjs_R.il]);
-
-          ArenaFjs_R.il = ArenaFjs_R.il + 1;
-          if (ArenaFjs_R.il > SpritesAnimators_R.STATE_ANI.length-1) ArenaFjs_R.il = 0;
-
-       };
-
- };
- //=============================================================================
  //alert("!");
  //=============================================================================
  ArenaFjs_R.tick = function() {
@@ -122,21 +100,12 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
     GameColculation_R.tick();
 
     // отрисовываем всю графику
-    Render_R.drawAll(
+    ArenaScene_R.drawAll(
        SpritesAnimators_R,
        FighterSheeva_mk3_R.Fighter_1, FighterSheeva_mk3_R.Fighter_2,
-       GameText_R, ArenaScene_R, Timer_R,
+       GameText_R, Timer_R,
        CommandToFighter_R.UserToFighter, CommandToFighter_R.AI_ToFighter,
        UserInput_R, SpritesFighter_R, ArenaFjs_R);
-
-    //alert("!");
-    // что это за текст? почему он пишется именно здесь?
-    GameText_R.drawText
-    (SpritesAnimators_R.STATE_ANI[ArenaFjs_R.il_2], 150, 385
-      , 'italic 20px sans-serif', 'red', 1);
-
-	     ArenaFjs_R.countLoop = ArenaFjs_R.countLoop + 1;
-       if (ArenaFjs_R.countLoop > 24 ) ArenaFjs_R.countLoop = 1;
  };
  //=============================================================================
 
@@ -175,17 +144,13 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 
  //=============================================================================
  ArenaFjs_R.tickTest = function(){
-
-  //<TEST ------------------------------------------------------
+      // 1500x800
+      Game_R.context.clearRect(0, 0, Game_R.canvas.width, Game_R.canvas.height);
 
       // ArenaFjs_R.SpritesFighter_R1.drawSprites_TEST();
       //ArenaFjs_R.SpritesAnimators_R1.animationAll_TEST();
-      // временная заглушка
-         //ArenaFjs_R.oldDemonstr();
 
-         SpritesFighter_R.drawSprites_TEST(GameText_R);
-
-  //TEST> ------------------------------------------------------
+      SpritesFighter_R.drawSprites_TEST(GameText_R);
 
  };
  //=============================================================================
@@ -211,7 +176,7 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 
   //============================================================================
   Game_R.yT = Game_R.yT + Game_R.dyT;//
-  Game_R.context.strokeText ('17 module "ArenaFjs" loaded', 1100, Game_R.yT);
+  Game_R.context.strokeText ('16 module "ArenaFjs" loaded', 1100, Game_R.yT);
 
  //=============================================================================
  //alert("module ArenaFjs done");

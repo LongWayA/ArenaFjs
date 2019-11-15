@@ -39,10 +39,11 @@
 
        this.NAME_CL = "FighterSheeva_mk3_CL";
        this.stateFighter = SpritesAnimators_R.STATE_ANI[0] ; //"fightingStance"
-       this.mirror = 0; // Direction_RIGHT_LEFT
 
        this.middle = 0;
        this.bottom = 0;
+       this.mirror = 0; // Direction_RIGHT_LEFT
+       this.teleport = 0;
        //this.width = 0;
        //this.height = 0;
 
@@ -84,6 +85,7 @@
             this.middle = _middle;
             this.bottom = _bottom;
             this.mirror = _mirror; // Direction_RIGHT_LEFT
+            this.teleport = 0;
             //this.width = _width;
             //this.height = _height;
 

@@ -40,6 +40,7 @@ CommandToFighter_R.TELEPORT   = 11;// перемещение в другой к�
 CommandToFighter_R.get_commandToNumState = function(_Fighter, command) {
 
    var numState = 0;
+   _Fighter.teleport = 0;
 
    switch(command){
 
@@ -96,7 +97,8 @@ CommandToFighter_R.get_commandToNumState = function(_Fighter, command) {
        break;
 
        case CommandToFighter_R.TELEPORT:  //
-            // numState = ;
+            numState = 0;
+            _Fighter.teleport = 1;
        break;
    };
 

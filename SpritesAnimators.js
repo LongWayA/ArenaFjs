@@ -40,6 +40,9 @@
 
  SpritesAnimators_R.NAME = "SpritesAnimators_R";//
 
+ SpritesAnimators_R.YES_MIRROR = 1;
+ SpritesAnimators_R.NO_MIRROR = 0;
+
  SpritesAnimators_R.FIGHTING_STANCE_ANI  = 0;
  SpritesAnimators_R.WALKING_FORWARD_ANI  = 1;
  SpritesAnimators_R.WALKING_BACK_ANI     = 2;
@@ -186,8 +189,6 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BEING_HIT_ANI] = 
     canChange : 0
 };
 
-SpritesAnimators_R.YES_MIRROR = 1;
-SpritesAnimators_R.NO_MIRROR = 0;
 
      //=========================================================================
      SpritesAnimators_R.setTypeAnimation = function(_Fighter) {
