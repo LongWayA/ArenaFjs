@@ -20,7 +20,7 @@ window.Move_R = {};
 Move_R.NAME = "Move";//
 Move_R.DR_STOP_AR_L = 40;//
 Move_R.DR_STOP_AR_R = 40;//
-Move_R.DR_STOP_F = 30;//
+Move_R.DR_STOP_F = 50;//
 Move_R.STOP = 1;//
 Move_R.NO_STOP = 0;//
 
@@ -135,7 +135,7 @@ Move_R.tick = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
 
   //
   Move_R.moveFighter_1or2(_Fighter_1, _Fighter_2, _ArenaScene_R);
-
+  Move_R.moveFighter_1or2(_Fighter_2, _Fighter_1, _ArenaScene_R);
    //
 };
 //==============================================================================

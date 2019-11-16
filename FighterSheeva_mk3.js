@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 21.07.2018 - 30.12.2018 - 31.05.2019
-// - 14.11.2019 -
+// - 16.11.2019 -
   /*
    НАЗНАЧЕНИЕ
 
@@ -28,8 +28,14 @@
                                   "punchMidle", "kickFront", "kickBack",
                                    "blockingHigh", "blockingLow", "beingHit"];
 
-    FighterSheeva_mk3_R.MAX_HEALTH = 1000; //
+    FighterSheeva_mk3_R.MAX_HEALTH = 100; //
     FighterSheeva_mk3_R.MAX_STAMINA = 100; //
+
+    FighterSheeva_mk3_R.DH_UP_PUNCH = 10;
+    FighterSheeva_mk3_R.DH_MIDLE_PUNCH = 15;
+    FighterSheeva_mk3_R.DH_FRONT_KICK = 20;
+    FighterSheeva_mk3_R.DH_BACK_KICK = 25;
+
 
     FighterSheeva_mk3_R.Fighter_1 = new FighterSheeva_mk3_CL;//
     FighterSheeva_mk3_R.Fighter_2 = new FighterSheeva_mk3_CL;//
@@ -53,7 +59,6 @@
        this.health = 0;
 
         // изменение жизней при попадании в хит
-       this.dhUpPunch = 0;    //2% = (1000/100)*2 = 20
        this.dhMidlePunch = 0; //3%
        this.dhFrontKick = 0;  //5%
        this.dhBackKick = 0;   //7%

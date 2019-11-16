@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 19.08.2018 - 31.12.2018
+ // Last modified 19.08.2018 - 31.12.2018 - 16.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -100,6 +100,10 @@ UserInput_R.eventUserLeft = function(_CommandToFighter_R) {
 AICommand_R.tick = function(_CommandToFighter_R) {
 
    //
+   _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.STANCE;
+   _CommandToFighter_R.saveCommandToFighter_commandText = 'fighting Stance';
+   _CommandToFighter_R.saveCommandToFighter_update = 1;
+
 };
 //==============================================================================
 

@@ -132,7 +132,7 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.PUNCHING_UP_ANI] 
 SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.PUNCHING_MIDLE_ANI] = {
     typeSpritesFighterSet : SpritesFighter_R.PUNCHING_MIDLE,
     fr :  [1,2,3,4,5,6,7],
-    str : [0,0,0,1,0,0,1],
+    str : [0,0,0,1,0,0,0],
     max : 7,
     sound: "sound_H",
     mustToStance : 1,

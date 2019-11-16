@@ -70,12 +70,12 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 // 15
 // ArenaScene
 
-// 16
-// Render_R
-
  //alert("!");
  //=============================================================================
  ArenaFjs_R.tick = function() {
+
+    var fighter_1 = FighterSheeva_mk3_R.Fighter_1;
+    var fighter_2 = FighterSheeva_mk3_R.Fighter_2;
 
     //alert("t");
     //alert("!");
@@ -86,15 +86,15 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
     AICommand_R.tick(CommandToFighter_R.AI_ToFighter);//
 
     // передаются команды бойцам
-    CommandToFighter_R.UserToFighter.tick(FighterSheeva_mk3_R.Fighter_1);
+    CommandToFighter_R.UserToFighter.tick(fighter_1);
 
-    CommandToFighter_R.AI_ToFighter.tick(FighterSheeva_mk3_R.Fighter_2);
+    CommandToFighter_R.AI_ToFighter.tick(fighter_2);
 
     // обрабатываем движение бойцов
-    Move_R.tick(FighterSheeva_mk3_R.Fighter_1, FighterSheeva_mk3_R.Fighter_2, ArenaScene_R);
+    Move_R.tick(fighter_1, fighter_2, ArenaScene_R);
 
     // обрабатываем бой
-    Fight_R.tick(FighterSheeva_mk3_R.Fighter_1, FighterSheeva_mk3_R.Fighter_2);
+    Fight_R.tick(fighter_1, fighter_2);
 
     // тоже что то можем обработать, но пока не знаю что.
     GameColculation_R.tick();
@@ -102,7 +102,7 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
     // отрисовываем всю графику
     ArenaScene_R.drawAll(
        SpritesAnimators_R,
-       FighterSheeva_mk3_R.Fighter_1, FighterSheeva_mk3_R.Fighter_2,
+       fighter_1, fighter_2,
        GameText_R, Timer_R,
        CommandToFighter_R.UserToFighter, CommandToFighter_R.AI_ToFighter,
        UserInput_R, SpritesFighter_R, ArenaFjs_R);
