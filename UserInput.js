@@ -1,7 +1,7 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.07.2018 - 18.03.2019 - 30.05.2019
- //  - 10.11.2019 -
+ //  - 18.11.2019 -
 
    /*
    НАЗНАЧЕНИЕ
@@ -29,6 +29,8 @@
 
  window.UserInput_R = {};
  UserInput_R.NAME = "UserInput_R";//
+
+ UserInput_R.KEY_STATE_FIGTING  = 77;// M переключение режима битвы
 
  // команды бойцам
  UserInput_R.LEFT_F_KEY_LEFT  = 65;//движение влево     A
@@ -189,6 +191,19 @@ UserInput_R.eventUserLeft = function(_CommandToFighter_R) {
 
 
 //==============================================================================
+UserInput_R.tickSt = function(_ArenaFjs_R) {
+
+    if (UserInput_R.event_key == 1 ){
+        if (UserInput_R.eventG  == UserInput_R.KEY_STATE_FIGTING ){
+             UserInput_R.event_key = 0; //
+             ArenaFjs_R.stateFigting = ArenaFjs_R.stateFigting + 1;
+             if (ArenaFjs_R.stateFigting > 2) ArenaFjs_R.stateFigting = 0;
+        };
+    };
+};
+//==============================================================================
+
+//==============================================================================
 UserInput_R.tick = function(_CommandToFighter_R) {
 
     //UserInput_R.eventG = 0;
@@ -197,6 +212,7 @@ UserInput_R.tick = function(_CommandToFighter_R) {
        UserInput_R.event_key = 0; //
 
        if (UserInput_R.eventG != 0 ){
+
            // заполняем левого игрока
            UserInput_R.eventUserLeft(_CommandToFighter_R);
            //console.log('1 command = ' + _CommandToFighter_R.saveCommandToFighter_command + ' commandText = ' + _CommandToFighter_R.saveCommandToFighter_commandText);

@@ -87,7 +87,7 @@ Fight_R.hit = function(_fighter_1, _fighter_2) {
 Fight_R.tick = function(_fighter_1, _fighter_2) {
 
    Fight_R.hit(_fighter_1, _fighter_2);
-
+   Fight_R.hit(_fighter_2, _fighter_1);
 
 if(_fighter_1.health <= 0) _fighter_1.health = FighterSheeva_mk3_R.MAX_HEALTH;
 if(_fighter_2.health <= 0) _fighter_2.health = FighterSheeva_mk3_R.MAX_HEALTH;

@@ -108,8 +108,8 @@ CommandToFighter_R.get_commandToNumState = function(_Fighter, command) {
 };
 //==============================================================================
 
-CommandToFighter_R.UserToFighter = new CommandToFighter_CL();//
-CommandToFighter_R.AI_ToFighter = new CommandToFighter_CL();//
+CommandToFighter_R.toFighterLeft = new CommandToFighter_CL();//
+CommandToFighter_R.toFighterRight = new CommandToFighter_CL();//
 
 
 

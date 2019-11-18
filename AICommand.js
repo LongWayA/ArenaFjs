@@ -1,6 +1,6 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 19.08.2018 - 31.12.2018 - 16.11.2019 -
+ // Last modified 19.08.2018 - 31.12.2018 - 18.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -97,12 +97,63 @@ UserInput_R.eventUserLeft = function(_CommandToFighter_R) {
 */
 
 //==============================================================================
-AICommand_R.tick = function(_CommandToFighter_R) {
+AICommand_R.tickM = function( _CommandToFighter_R) {
+  //
+  _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.STANCE;
+  _CommandToFighter_R.saveCommandToFighter_commandText = 'fighting Stance';
+  _CommandToFighter_R.saveCommandToFighter_update = 1;
 
-   //
-   _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.STANCE;
-   _CommandToFighter_R.saveCommandToFighter_commandText = 'fighting Stance';
-   _CommandToFighter_R.saveCommandToFighter_update = 1;
+};
+//==============================================================================
+
+//==============================================================================
+AICommand_R.tick = function(_fighter_1, _fighter_2, _CommandToFighter_R) {
+
+  // Move_R.DR_F_PUNCH = 75;//
+  // Move_R.DR_F_FRONT_KICK = 95;//
+  // Move_R.DR_F_BACK_KICK = 115;//
+
+  var num_1 = _fighter_1.SpritesAnimatorsFrames;
+  var type_1 = _fighter_1.SpritesAnimatorsTypeAnimation;
+  var type_2 = _fighter_2.SpritesAnimatorsTypeAnimation;
+
+  var mF_1 = _fighter_1.middle;
+  var mF_2 = _fighter_2.middle;
+  var dR_1_2 = (mF_1 - mF_2)*(mF_1 - mF_2);
+
+  //if (_Fighter_1.SpritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_FORWARD_ANI) {
+
+  //
+  _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.STANCE;
+  _CommandToFighter_R.saveCommandToFighter_commandText = 'fighting Stance';
+  _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+  if (dR_1_2 > (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK) + 40000) {
+
+    _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.RUN;
+    _CommandToFighter_R.saveCommandToFighter_commandText = 'run';
+    _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+  } else if (dR_1_2 > (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK)){
+    if (_fighter_2.mirror == 0) {
+        _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.RIGHT;
+        _CommandToFighter_R.saveCommandToFighter_commandText = 'walking left';
+        _CommandToFighter_R.saveCommandToFighter_update = 1;
+    } else{
+        _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.LEFT;
+        _CommandToFighter_R.saveCommandToFighter_commandText = 'walking right';
+        _CommandToFighter_R.saveCommandToFighter_update = 1;
+    };
+
+  } else if (dR_1_2 <= (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK)){
+
+    _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.BACKKICK;
+    _CommandToFighter_R.saveCommandToFighter_commandText = 'kick Back';
+    _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+  };
+
+
 
 };
 //==============================================================================

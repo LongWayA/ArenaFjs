@@ -70,6 +70,8 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 // 15
 // ArenaScene
 
+ArenaFjs_R.stateFigting = 0;
+
  //alert("!");
  //=============================================================================
  ArenaFjs_R.tick = function() {
@@ -80,15 +82,27 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
     //alert("t");
     //alert("!");
     // человек отдает приказы с клавиатуры и они обрабатываются событийно.
-	  UserInput_R.tick(CommandToFighter_R.UserToFighter);//
+    UserInput_R.tickSt(ArenaFjs_R);//
 
-    // компьютер отдает приказы каждый такт
-    AICommand_R.tick(CommandToFighter_R.AI_ToFighter);//
+    if (ArenaFjs_R.stateFigting == 0){
+      // компьютер отдает приказы каждый такт
+      AICommand_R.tick(fighter_1, fighter_2, CommandToFighter_R.toFighterRight);//
+      AICommand_R.tick(fighter_2, fighter_1, CommandToFighter_R.toFighterLeft);//
+
+    } else if (ArenaFjs_R.stateFigting == 1){
+      // человек отдает приказы с клавиатуры и они обрабатываются событийно.
+  	  UserInput_R.tick(CommandToFighter_R.toFighterLeft);//
+      AICommand_R.tick(fighter_1, fighter_2, CommandToFighter_R.toFighterRight);//
+    } else if (ArenaFjs_R.stateFigting == 2){
+      // человек отдает приказы с клавиатуры и они обрабатываются событийно.
+  	  UserInput_R.tick(CommandToFighter_R.toFighterLeft);//
+      AICommand_R.tickM(CommandToFighter_R.toFighterRight);//
+    };
 
     // передаются команды бойцам
-    CommandToFighter_R.UserToFighter.tick(fighter_1);
+    CommandToFighter_R.toFighterLeft.tick(fighter_1);
 
-    CommandToFighter_R.AI_ToFighter.tick(fighter_2);
+    CommandToFighter_R.toFighterRight.tick(fighter_2);
 
     // обрабатываем движение бойцов
     Move_R.tick(fighter_1, fighter_2, ArenaScene_R);
@@ -104,13 +118,15 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
        SpritesAnimators_R,
        fighter_1, fighter_2,
        GameText_R, Timer_R,
-       CommandToFighter_R.UserToFighter, CommandToFighter_R.AI_ToFighter,
+       CommandToFighter_R.toFighterLeft, CommandToFighter_R.toFighterRight,
        UserInput_R, SpritesFighter_R, ArenaFjs_R);
  };
  //=============================================================================
 
  //=============================================================================
  ArenaFjs_R.ini = function(){
+
+    ArenaFjs_R.stateFigting = 0;
 
     //alert("ini = " + ArenaFjs_R.SpritesAnimators_R1);
     Timer_R.ini(8);
@@ -125,8 +141,8 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 
     UserInput_R.ini();
 
-    CommandToFighter_R.UserToFighter.ini('1');
-    CommandToFighter_R.AI_ToFighter.ini('2');
+    CommandToFighter_R.toFighterLeft.ini('1');
+    CommandToFighter_R.toFighterRight.ini('2');
 
  };
  //=============================================================================
