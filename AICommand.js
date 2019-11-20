@@ -107,21 +107,21 @@ AICommand_R.tickM = function( _CommandToFighter_R) {
 //==============================================================================
 
 //==============================================================================
-AICommand_R.tick = function(_fighter_1, _fighter_2, _CommandToFighter_R) {
+AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
 
   // Move_R.DR_F_PUNCH = 75;//
   // Move_R.DR_F_FRONT_KICK = 95;//
   // Move_R.DR_F_BACK_KICK = 115;//
 
-  var num_1 = _fighter_1.SpritesAnimatorsFrames;
-  var type_1 = _fighter_1.SpritesAnimatorsTypeAnimation;
-  var type_2 = _fighter_2.SpritesAnimatorsTypeAnimation;
+  var num_1 = _Fighter_1.spritesAnimatorsFrames;
+  var type_1 = _Fighter_1.spritesAnimatorsTypeAnimation;
+  var type_2 = _Fighter_2.spritesAnimatorsTypeAnimation;
 
-  var mF_1 = _fighter_1.middle;
-  var mF_2 = _fighter_2.middle;
+  var mF_1 = _Fighter_1.middle;
+  var mF_2 = _Fighter_2.middle;
   var dR_1_2 = (mF_1 - mF_2)*(mF_1 - mF_2);
 
-  //if (_Fighter_1.SpritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_FORWARD_ANI) {
+  //if (_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_FORWARD_ANI) {
 
   //
   _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.STANCE;
@@ -135,7 +135,7 @@ AICommand_R.tick = function(_fighter_1, _fighter_2, _CommandToFighter_R) {
     _CommandToFighter_R.saveCommandToFighter_update = 1;
 
   } else if (dR_1_2 > (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK)){
-    if (_fighter_2.mirror == 0) {
+    if (_Fighter_2.mirror == 0) {
         _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.RIGHT;
         _CommandToFighter_R.saveCommandToFighter_commandText = 'walking left';
         _CommandToFighter_R.saveCommandToFighter_update = 1;

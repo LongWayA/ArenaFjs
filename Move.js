@@ -68,7 +68,7 @@ Move_R.stop_Fighter_1 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
 Move_R.moveFighter_1or2 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
 
       //
-      if (_Fighter_1.SpritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_FORWARD_ANI) {
+      if (_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_FORWARD_ANI) {
 
           if (_Fighter_1.mirror == SpritesAnimators_R.NO_MIRROR) {
              _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
@@ -81,7 +81,7 @@ Move_R.moveFighter_1or2 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
               _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
             };
           };
-     } else if(_Fighter_1.SpritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_BACK_ANI) {
+     } else if(_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_BACK_ANI) {
          if (_Fighter_1.mirror == SpritesAnimators_R.YES_MIRROR) {
             _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
             if (Move_R.stop_Fighter_1(_Fighter_1, _Fighter_2, _ArenaScene_R) == Move_R.STOP){
@@ -93,7 +93,7 @@ Move_R.moveFighter_1or2 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
              _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
            };
         };
-     } else if(_Fighter_1.SpritesAnimatorsTypeAnimation == SpritesAnimators_R.RUNNING_ANI) {
+     } else if(_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.RUNNING_ANI) {
         if (_Fighter_1.mirror == SpritesAnimators_R.NO_MIRROR) {
             _Fighter_1.middle = _Fighter_1.middle + Move_R.dxRunning;
             if (Move_R.stop_Fighter_1(_Fighter_1, _Fighter_2, _ArenaScene_R) == Move_R.STOP){
@@ -105,7 +105,7 @@ Move_R.moveFighter_1or2 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
               _Fighter_1.middle = _Fighter_1.middle + Move_R.dxRunning;
             };
         };
-     } else if(_Fighter_1.SpritesAnimatorsTypeAnimation == SpritesAnimators_R.FIGHTING_STANCE_ANI){
+     } else if(_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.FIGHTING_STANCE_ANI){
         if (_Fighter_1.teleport == 1) {
            if (_Fighter_1.mirror == SpritesAnimators_R.NO_MIRROR) {
                 _Fighter_1.middle = _ArenaScene_R.fightFrame.xRight - Move_R.DR_STOP_AR_R;

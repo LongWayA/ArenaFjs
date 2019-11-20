@@ -1,6 +1,6 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
- // Last modified 19.08.2018 - 30.12.2018 - 16.11.2019 -
+ // Last modified 19.08.2018 - 30.12.2018 - 20.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -24,14 +24,14 @@ Move_R.DR_F_FRONT_KICK = 95;//
 Move_R.DR_F_BACK_KICK = 115;//
 
 //==============================================================================
-Fight_R.hit = function(_fighter_1, _fighter_2) {
+Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
 
-   var num_1 = _fighter_1.SpritesAnimatorsFrames;
-   var type_1 = _fighter_1.SpritesAnimatorsTypeAnimation;
-   var type_2 = _fighter_2.SpritesAnimatorsTypeAnimation;
+   var num_1 = _Fighter_1.spritesAnimatorsFrames;
+   var type_1 = _Fighter_1.spritesAnimatorsTypeAnimation;
+   var type_2 = _Fighter_2.spritesAnimatorsTypeAnimation;
 
-   var mF_1 = _fighter_1.middle;
-   var mF_2 = _fighter_2.middle;
+   var mF_1 = _Fighter_1.middle;
+   var mF_2 = _Fighter_2.middle;
    var dR_1_2 = (mF_1 - mF_2)*(mF_1 - mF_2);
 
 
@@ -47,26 +47,26 @@ Fight_R.hit = function(_fighter_1, _fighter_2) {
 
           if (dR_1_2 < (Move_R.DR_F_PUNCH * Move_R.DR_F_PUNCH)) {
                 //console.log('Fight_R:dR_1_2 ='+ dR_1_2);
-                //console.log('Fight_R:_fighter_2.health ='+ _fighter_2.health);
+                //console.log('Fight_R:_Fighter_2.health ='+ _Fighter_2.health);
                 //console.log('Fight_R:FighterSheeva_mk3_R.DH_UP_PUNCH ='+ FighterSheeva_mk3_R.DH_UP_PUNCH);
-                if(_fighter_2.health > 0) _fighter_2.health = _fighter_2.health - FighterSheeva_mk3_R.DH_UP_PUNCH;
-                _fighter_2.stateFighter = SpritesAnimators_R.BEING_HIT_ANI;
+                if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_UP_PUNCH;
+                _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
           };
       };
 
       if (type_1 == SpritesAnimators_R.PUNCHING_MIDLE_ANI) {
 
           if (dR_1_2 < (Move_R.DR_F_PUNCH * Move_R.DR_F_PUNCH)) {
-                if(_fighter_2.health > 0) _fighter_2.health = _fighter_2.health - FighterSheeva_mk3_R.DH_MIDLE_PUNCH;
-                _fighter_2.stateFighter = SpritesAnimators_R.BEING_HIT_ANI;
+                if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_MIDLE_PUNCH;
+                _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
           };
       };
 
       if (type_1 == SpritesAnimators_R.KICKING_FRONT_ANI) {
 
           if (dR_1_2 < (Move_R.DR_F_FRONT_KICK * Move_R.DR_F_FRONT_KICK)) {
-                if(_fighter_2.health > 0) _fighter_2.health = _fighter_2.health - FighterSheeva_mk3_R.DH_FRONT_KICK;
-                _fighter_2.stateFighter = SpritesAnimators_R.BEING_HIT_ANI;
+                if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_FRONT_KICK;
+                _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
           };
       };
 
@@ -74,8 +74,8 @@ Fight_R.hit = function(_fighter_1, _fighter_2) {
       if (type_1 == SpritesAnimators_R.KICKING_BACK_ANI) {
 
           if (dR_1_2 < (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK)) {
-                if(_fighter_2.health > 0) _fighter_2.health = _fighter_2.health - FighterSheeva_mk3_R.DH_BACK_KICK;
-                _fighter_2.stateFighter = SpritesAnimators_R.BEING_HIT_ANI;
+                if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_BACK_KICK;
+                _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
           };
       };
    };//if (type_2 != SpritesAnimators_R.BLOCKING_LOW_ANI) {
@@ -84,13 +84,13 @@ Fight_R.hit = function(_fighter_1, _fighter_2) {
 //==============================================================================
 
 //==============================================================================
-Fight_R.tick = function(_fighter_1, _fighter_2) {
+Fight_R.tick = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
 
-   Fight_R.hit(_fighter_1, _fighter_2);
-   Fight_R.hit(_fighter_2, _fighter_1);
+   Fight_R.hit(_Fighter_1, _Fighter_2, _SpritesAnimators_R);
+   Fight_R.hit(_Fighter_2, _Fighter_1, _SpritesAnimators_R);
 
-if(_fighter_1.health <= 0) _fighter_1.health = FighterSheeva_mk3_R.MAX_HEALTH;
-if(_fighter_2.health <= 0) _fighter_2.health = FighterSheeva_mk3_R.MAX_HEALTH;
+if(_Fighter_1.health <= 0) _Fighter_1.health = FighterSheeva_mk3_R.MAX_HEALTH;
+if(_Fighter_2.health <= 0) _Fighter_2.health = FighterSheeva_mk3_R.MAX_HEALTH;
 
 };
 //==============================================================================

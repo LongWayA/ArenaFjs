@@ -1,7 +1,7 @@
 "use strict";
 // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
 // Last modified 10.07.2018 - 30.12.2018 - 28.07.2019 - 10.08.2019
-// - 14.11.2019 -
+//  - 20.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -85,8 +85,8 @@ SpritesAnimators_R.TXT_ANIMATORS_FIGHTER_SET = ["fightingStance",
     str : [0,0,0,0,0,0,0,0,0,0,0],// есть ли урон в данном кадре
     max : 11,// количество кадров
     sound: "sound_IA",// звук ассоциираванный с данной анимацией
-    mustToStance : 0,// не помню что это
-    canChange : 1//     не помню что это
+    mustToStance : 1,// после того как закончится анимация следует перейти к анимации стойки
+    canChange : 1//     может измениться
  };
 
 SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.WALKING_FORWARD_ANI] = {
@@ -95,7 +95,7 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.WALKING_FORWARD_A
     str : [0,0,0,0,0,0,0,0,0],
     max : 9,
     sound: "sound_IAA",
-    mustToStance : 0,
+    mustToStance : 1,
     canChange : 1
 };
 
@@ -105,7 +105,7 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.WALKING_BACK_ANI]
     str : [0,0,0,0,0,0,0,0,0],
     max : 9,
     sound: "sound_IAA",
-    mustToStance : 0,
+    mustToStance : 1,
     canChange : 1
 };
 
@@ -190,11 +190,22 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BEING_HIT_ANI] = 
 };
 
 
+//=========================================================================
+SpritesAnimators_R.setTypeAnimation_BEING_HIT = function(_Fighter) {
+
+      _Fighter.spritesAnimatorsOldTypeAnimation = _Fighter.spritesAnimatorsTypeAnimation;
+      _Fighter.spritesAnimatorsTypeAnimation = SpritesAnimators_R.BEING_HIT_ANI;
+      _Fighter.spritesAnimatorsFrames = 0;
+      _Fighter.spritesAnimatorsBusy = 1;
+
+};
+//=========================================================================
+
      //=========================================================================
      SpritesAnimators_R.setTypeAnimation = function(_Fighter) {
 
               var typeStateAnimators = _Fighter.stateFighter;
-              var type = _Fighter.SpritesAnimatorsTypeAnimation;
+              var type = _Fighter.spritesAnimatorsTypeAnimation;
            //alert("this.type = " + this.type + " toType = " + toType);
            //if (this.inProcess == 1) alert("this.inProcess = " + this.inProcess);
 
@@ -205,19 +216,22 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BEING_HIT_ANI] = 
 
                  // console.log('1================== ');
                  // console.log('!!!  _FighterSheeva_mk3_R1.NAME = ' +   _FighterSheeva_mk3_R1.NAME);
-                 // console.log('1_typeStateAnimators(stateFighter) = ' + typeStateAnimators + ' type(SpritesAnimatorsTypeAnimation) = ' + type);
-                 // console.log('1_canChange(SpritesAnimatorsTypeAnimation) = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].canChange);
+                 // console.log('1_typeStateAnimators(stateFighter) = ' + typeStateAnimators + ' type(spritesAnimatorsTypeAnimation) = ' + type);
+                 // console.log('1_canChange(spritesAnimatorsTypeAnimation) = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].canChange);
                  // console.log('1_canChange(stateFighter) = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[typeStateAnimators].canChange);
                  // console.log('k');
 
+                   // мы можем менять состояние только тех аннимаций которые разрешено менять т.е. canChange == 1
                    if (SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].canChange == 1 ) {
-                     _Fighter.SpritesAnimatorsOldTypeAnimation = _Fighter.SpritesAnimatorsTypeAnimation;
-                     _Fighter.SpritesAnimatorsTypeAnimation = typeStateAnimators;
-                     _Fighter.SpritesAnimatorsFrames = 0;
-                     _Fighter.SpritesAnimatorsBusy = 1;
+                     _Fighter.spritesAnimatorsOldTypeAnimation = _Fighter.spritesAnimatorsTypeAnimation;
+                     _Fighter.spritesAnimatorsTypeAnimation = typeStateAnimators;
+                     _Fighter.spritesAnimatorsFrames = 0;
+                     _Fighter.spritesAnimatorsBusy = 1;
                    };
 
-              }
+              };
+
+
       };
      //=========================================================================
 
@@ -226,13 +240,13 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BEING_HIT_ANI] = 
      SpritesAnimators_R.animation = function(_GameText_R,
        _SpritesFighter_R, _Fighter) {
 
-         var num = _Fighter.SpritesAnimatorsFrames;
-         var type = _Fighter.SpritesAnimatorsTypeAnimation;
+         var num = _Fighter.spritesAnimatorsFrames;
+         var type = _Fighter.spritesAnimatorsTypeAnimation;
          var middle = _Fighter.middle;
          var bottom = _Fighter.bottom;
          var mirror = _Fighter.mirror;
 
-
+         // отрисовываем графику без зеркала либо с зеркалом. зависит от флага _Fighter.mirror
          if (mirror == SpritesAnimators_R.NO_MIRROR){
            //console.log('1_name = ' + _FighterSheeva_mk3_R1.NAME + ' max = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].max);
            //console.log('1_type = ' + type + ' num = ' + num + ' index iz = ' + SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num]);
@@ -249,18 +263,21 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BEING_HIT_ANI] = 
                   SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].fr[num], middle, bottom, _GameText_R);
          };
 
+         // переходим к следующему кадру.
          num = num + 1;
+
+         // если кадровка кончилась то переходим на начало
          if (num > SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].max - 1 ) {
              num = 0;
 
               if (SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].mustToStance == 1 ) {
-                   _Fighter.SpritesAnimatorsOldTypeAnimation = _Fighter.SpritesAnimatorsTypeAnimation;
-                   _Fighter.SpritesAnimatorsTypeAnimation = SpritesAnimators_R.FIGHTING_STANCE_ANI;
-                   _Fighter.SpritesAnimatorsBusy = 0;
+                   _Fighter.spritesAnimatorsOldTypeAnimation = _Fighter.spritesAnimatorsTypeAnimation;
+                   _Fighter.spritesAnimatorsTypeAnimation = SpritesAnimators_R.FIGHTING_STANCE_ANI;
+                   _Fighter.spritesAnimatorsBusy = 0;
               };
          };
 
-         _Fighter.SpritesAnimatorsFrames = num;
+         _Fighter.spritesAnimatorsFrames = num;
      };
      //=========================================================================
 
@@ -275,11 +292,11 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BEING_HIT_ANI] = 
        //alert("typeStateAnimators = " + typeStateAnimators);
 
        this.setTypeAnimation(_Fighter);
-       var num = _Fighter.SpritesAnimatorsFrames;
+       var num = _Fighter.spritesAnimatorsFrames;
 
          if( (typeStateAnimators == SpritesAnimators_R.BLOCKING_HIGH_ANI) ||(typeStateAnimators == SpritesAnimators_R.BLOCKING_LOW_ANI) ){
               if (num > 3 ){
-                 _Fighter.SpritesAnimatorsFrames = 3;
+                 _Fighter.spritesAnimatorsFrames = 3;
                  //this.inProcess = 0;
               };
          };

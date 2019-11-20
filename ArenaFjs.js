@@ -108,7 +108,7 @@ ArenaFjs_R.stateFigting = 0;
     Move_R.tick(fighter_1, fighter_2, ArenaScene_R);
 
     // обрабатываем бой
-    Fight_R.tick(fighter_1, fighter_2);
+    Fight_R.tick(fighter_1, fighter_2, SpritesAnimators_R);
 
     // тоже что то можем обработать, но пока не знаю что.
     GameColculation_R.tick();

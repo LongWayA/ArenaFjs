@@ -175,7 +175,7 @@ window.ArenaScene_R = {};
 
   //============================================================================
   ArenaScene_R.drawFightFrame = function(_SpritesAnimators_R,
-  _FighterSheeva_mk3_R1, _FighterSheeva_mk3_R2,_GameText_R,
+  _FighterSheeva_mk3_R1, _FighterSheeva_mk3_R2, _GameText_R,
    _SpritesFighter_R, _ArenaFjs_R) {
 
     var x =      ArenaScene_R.fightFrame.x0Left;
@@ -194,18 +194,18 @@ window.ArenaScene_R = {};
     //ArenaScene_R.drawSceneImage("fon1",ArenaScene_R.framesArena.x0Left, ArenaScene_R.framesArena.y0Top, 2.5, 2.5);
     //ArenaScene_R.drawSceneImage("fon2",ArenaScene_R.framesArena.x0Left, ArenaScene_R.framesArena.y0Top, 2.5, 2.5);
 
-    ArenaScene_R.drawSceneImage("fon3",x, y, 2.3, 2.3);
+    ArenaScene_R.drawSceneImage("fon3", x, y, 2.3, 2.3);
 
     ArenaScene_R.drawIkonFrame(_GameText_R, _FighterSheeva_mk3_R1, _FighterSheeva_mk3_R2,_GameText_R);
 
     _FighterSheeva_mk3_R1.tickAnimation(_SpritesAnimators_R, _GameText_R, _SpritesFighter_R);
     _FighterSheeva_mk3_R2.tickAnimation(_SpritesAnimators_R, _GameText_R, _SpritesFighter_R);
-    //Location
+
     // поле боя
     _GameText_R.drawRect(x, y, width, height, 1, 'blue', 0);
 
     _GameText_R.drawText ("dX_1_2 = " + dX_1_2, x+100, y+370, 'italic 20px sans-serif', 'blue', 1);
-    _GameText_R.drawText ("AnimatorsBusy = " + _FighterSheeva_mk3_R1.SpritesAnimatorsBusy,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
+    _GameText_R.drawText ("AnimatorsBusy = " + _FighterSheeva_mk3_R1.spritesAnimatorsBusy,x+300, y+370, 'italic 20px sans-serif', 'blue', 1);
     _GameText_R.drawText ("FighterSheevaBusy = " + _FighterSheeva_mk3_R1.busy,x+550, y+370, 'italic 20px sans-serif', 'blue', 1);
 
     _GameText_R.drawText ("смена режима битвы - клавишей m(change the battle mode with the m key)", x+20, y+40, 'italic 20px sans-serif', 'white', 1);
@@ -357,18 +357,18 @@ window.ArenaScene_R = {};
   //============================================================================
   // передаю Game_R.canvas.width, Game_R.canvas.height
   ArenaScene_R.iniAll = function(_displayWidth,  _displayHeight,
-    _fighter_1, _fighter_2) {
+    _Fighter_1, _Fighter_2) {
 
        Game_R.img_load_end = 0 ;
 
        ArenaScene_R.iniFramesArena( _displayWidth,  _displayHeight);
        ArenaScene_R.loadSceneImage();
-
-       _fighter_1.ini(ArenaScene_R.fightFrame.x0Left + 180,
+// 920/2= 460/2=230, 460+230=690
+       _Fighter_1.ini(ArenaScene_R.fightFrame.x0Left + 230,
                                ArenaScene_R.fightFrame.y0Top + 550,
                                0,'v1','fightingStance');
 
-       _fighter_2.ini(ArenaScene_R.fightFrame.x0Left + 480,
+       _Fighter_2.ini(ArenaScene_R.fightFrame.x0Left + 690,
                                ArenaScene_R.fightFrame.y0Top + 550,
                                1,'v2','fightingStance');
 

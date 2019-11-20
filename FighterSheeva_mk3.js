@@ -76,10 +76,10 @@
        this.ds = 0;
 
        //"SpritesAnimators_state"--------------------------------
-       this.SpritesAnimatorsFrames = 0;
-       this.SpritesAnimatorsBusy = 0;
-       this.SpritesAnimatorsTypeAnimation = 0;
-       this.SpritesAnimatorsOldTypeAnimation = -1;
+       this.spritesAnimatorsFrames = 0;
+       this.spritesAnimatorsBusy = 0;
+       this.spritesAnimatorsTypeAnimation = 0;
+       this.spritesAnimatorsOldTypeAnimation = -1;
 
 
        //==========================================================================
@@ -127,7 +127,7 @@
           _SpritesAnimators_R.tickAnimation(_GameText_R,_SpritesFighter_R,
             this);
 
-          if (this.SpritesAnimatorsBusy == 0) this.busy = 0;
+          if (this.spritesAnimatorsBusy == 0) this.busy = 0;
       };
       //==========================================================================
 
@@ -218,7 +218,7 @@
         //     }
         //
         // } else {
-        //   if(this.SpritesAnimatorsBusy == 0) {
+        //   if(this.spritesAnimatorsBusy == 0) {
         //      if( this.switchToState(toState) == 1) this.busy = 1;
         //   };
         //

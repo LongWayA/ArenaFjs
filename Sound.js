@@ -48,15 +48,15 @@ Sound_R.sound_STR = document.getElementById('STR');
 Sound_R.sound_STR.volume = 1.0;
 
 //alert(Fighting);
-//  Sound_R.sound_IA.play();
- //  Sound_R.sound_IAA.play();
- //  Sound_R.sound_IAAAA.play();
-//   Sound_R.sound_STR_H.play();
-//   Sound_R.sound_STR_F.play();
-//   Sound_R.sound_STR_B.play();
-//   Sound_R.sound_F.play();
-//   Sound_R.sound_H.play();
-//   Sound_R.sound_STR.play();
+//  Sound_R.sound_IA.play();//короткий крик
+ //  Sound_R.sound_IAA.play();//средний крик
+ //  Sound_R.sound_IAAAA.play();//длинныий крик
+//   Sound_R.sound_STR_H.play();//попадание рукой
+//   Sound_R.sound_STR_F.play();//попадание ногой
+//   Sound_R.sound_STR_B.play();//попадание по блоку
+//   Sound_R.sound_F.play();//промах ногой
+//   Sound_R.sound_H.play();//промах рукой
+//   Sound_R.sound_STR.play();//
 
 //==============================================================================
 Game_R.yT = Game_R.yT + Game_R.dyT;//
