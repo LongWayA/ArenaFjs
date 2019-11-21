@@ -19,9 +19,9 @@
 window.Fight_R = {};
 Fight_R.NAME = "Fight";//
 
-Move_R.DR_F_PUNCH = 75;//
-Move_R.DR_F_FRONT_KICK = 95;//
-Move_R.DR_F_BACK_KICK = 115;//
+Fight_R.DR_F_PUNCH = 75;//
+Fight_R.DR_F_FRONT_KICK = 95;//
+Fight_R.DR_F_BACK_KICK = 115;//
 
 //==============================================================================
 Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
@@ -36,7 +36,7 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
 
 
    if (SpritesAnimators_R.animatorsSheeva_mk3_mobj[type_1].str[num_1] == 1) {
-    if (type_2 != SpritesAnimators_R.BLOCKING_LOW_ANI) {
+    if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
      //console.log('Fight_R:type_1 ='+ type_1);
      //console.log('Fight_R:num_1 ='+ num_1);
 
@@ -45,7 +45,7 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
               //console.log('Fight_R:mF_1 ='+ mF_2);
               //console.log('Fight_R:dR_1_2 ='+ dR_1_2);
 
-          if (dR_1_2 < (Move_R.DR_F_PUNCH * Move_R.DR_F_PUNCH)) {
+          if (dR_1_2 < (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)) {
                 //console.log('Fight_R:dR_1_2 ='+ dR_1_2);
                 //console.log('Fight_R:_Fighter_2.health ='+ _Fighter_2.health);
                 //console.log('Fight_R:FighterSheeva_mk3_R.DH_UP_PUNCH ='+ FighterSheeva_mk3_R.DH_UP_PUNCH);
@@ -56,7 +56,7 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
 
       if (type_1 == SpritesAnimators_R.PUNCHING_MIDLE_ANI) {
 
-          if (dR_1_2 < (Move_R.DR_F_PUNCH * Move_R.DR_F_PUNCH)) {
+          if (dR_1_2 < (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)) {
                 if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_MIDLE_PUNCH;
                 _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
           };
@@ -64,7 +64,7 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
 
       if (type_1 == SpritesAnimators_R.KICKING_FRONT_ANI) {
 
-          if (dR_1_2 < (Move_R.DR_F_FRONT_KICK * Move_R.DR_F_FRONT_KICK)) {
+          if (dR_1_2 < (Fight_R.DR_F_FRONT_KICK * Fight_R.DR_F_FRONT_KICK)) {
                 if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_FRONT_KICK;
                 _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
           };
@@ -73,7 +73,7 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R) {
 
       if (type_1 == SpritesAnimators_R.KICKING_BACK_ANI) {
 
-          if (dR_1_2 < (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK)) {
+          if (dR_1_2 < (Fight_R.DR_F_BACK_KICK * Fight_R.DR_F_BACK_KICK)) {
                 if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_BACK_KICK;
                 _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
           };

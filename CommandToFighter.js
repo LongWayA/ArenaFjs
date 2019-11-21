@@ -93,7 +93,7 @@ CommandToFighter_R.get_commandToNumState = function(_Fighter, command) {
        break;
 
        case CommandToFighter_R.BLOCK:  //
-             numState = 9;
+             numState = 8;
        break;
 
        case CommandToFighter_R.TELEPORT:  //

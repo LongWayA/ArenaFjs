@@ -18,84 +18,6 @@
 window.AICommand_R = {};
 AICommand_R.NAME = "AI Command_R";//
 
-
-/*
-// заполняем модуль commandToFighterGammerLeft
-UserInput_R.eventUserLeft = function(_CommandToFighter_R) {
-
-  switch(UserInput_R.eventG){
-
-      case UserInput_R.LEFT_F_KEY_LEFT:  // клавиша влево
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.LEFT;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'walking left';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_RIGHT:   // клавиша вправо
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.RIGHT;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'walking right';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_UP:   // клавиша вверх
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.UP;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = '-up-';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_DOWN:   // клавиша вниз
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.DOWN;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = '-down-';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_RUN:  // клавиша бег
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.RUN;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'run';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_FRONTPUNCH:   // клавиша пердняя рука
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.FRONTPUNCH;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'punch Up';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_BACKPUNCH:   // клавиша задняя рука
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.BACKPUNCH;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'punch Midle';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_FRONTKICK:   // клавиша передняя нога
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.FRONTKICK;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'kick Front';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_BACKKICK:   // клавиша задняя нога
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.BACKKICK;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'kick Back';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_BLOCK:   // клавиша блок
-           _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.BLOCK;
-           _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'block';
-
-      break;
-
-      case UserInput_R.LEFT_F_KEY_TELEPORT:   // клавиша телепорт
-      _CommandToFighter_R.commandToFighterGammerLeft.command = _CommandToFighter_R.TELEPORT;
-      _CommandToFighter_R.commandToFighterGammerLeft.commandText = 'teleport';
-
-      break;
-
-  };
-
-};
-*/
-
 //==============================================================================
 AICommand_R.tickM = function( _CommandToFighter_R) {
   //
@@ -105,6 +27,97 @@ AICommand_R.tickM = function( _CommandToFighter_R) {
 
 };
 //==============================================================================
+
+//
+//=============================================================================
+AICommand_R.CommandToFighter = function(_CommandToFighter_R, command) {
+
+  switch(command){
+
+      case CommandToFighter_R.LEFT:  // влево
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.LEFT;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'walking left';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.RIGHT:   // вправо
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.RIGHT;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'walking right';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.UP:   // вверх
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.UP;
+           _CommandToFighter_R.saveCommandToFighter_commandText = '-up-';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.DOWN:   // вниз
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.DOWN;
+           _CommandToFighter_R.saveCommandToFighter_commandText = '-down-';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.RUN:  // бег
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.RUN;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'run';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.FRONTPUNCH:   // пердняя рука
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.FRONTPUNCH;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'punch Up';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.BACKPUNCH:   // задняя рука
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.BACKPUNCH;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'punch Midle';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.FRONTKICK:   // передняя нога
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.FRONTKICK;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'kick Front';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.BACKKICK:   // задняя нога
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.BACKKICK;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'kick Back';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.BLOCK:   // блок
+           _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.BLOCK;
+           _CommandToFighter_R.saveCommandToFighter_commandText = 'block';
+           _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+      case CommandToFighter_R.TELEPORT:   // телепорт
+          _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.TELEPORT;
+          _CommandToFighter_R.saveCommandToFighter_commandText = 'teleport';
+          _CommandToFighter_R.saveCommandToFighter_update = 1;
+
+      break;
+
+  };
+
+};
+//==============================================================================
+
+
+
 
 //==============================================================================
 AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
@@ -120,41 +133,82 @@ AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
   var mF_1 = _Fighter_1.middle;
   var mF_2 = _Fighter_2.middle;
   var dR_1_2 = (mF_1 - mF_2)*(mF_1 - mF_2);
-
-  //if (_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_FORWARD_ANI) {
+// Math.random() возвращает псевдослучайное число в диапазоне от 0 (включительно) до 1 (но не включая 1)
+  var r1 = 1 + Math.floor( Math.random() * 6 ) ;
+  var r2 = 1 + Math.floor( Math.random() * 4 ) ;
+  //console.log('AICommand_R: r1 =' + r1);
 
   //
-  _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.STANCE;
-  _CommandToFighter_R.saveCommandToFighter_commandText = 'fighting Stance';
-  _CommandToFighter_R.saveCommandToFighter_update = 1;
+  AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.STANCE);
 
-  if (dR_1_2 > (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK) + 40000) {
-
-    _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.RUN;
-    _CommandToFighter_R.saveCommandToFighter_commandText = 'run';
-    _CommandToFighter_R.saveCommandToFighter_update = 1;
-
-  } else if (dR_1_2 > (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK)){
+  if (dR_1_2 > (Fight_R.DR_F_BACK_KICK * Fight_R.DR_F_BACK_KICK) + 40000) {
+     AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.RUN);
+  } else if (dR_1_2 > (Fight_R.DR_F_BACK_KICK * Fight_R.DR_F_BACK_KICK)){
+  //////////////////////////////////////////////////////////////////////////////
     if (_Fighter_2.mirror == 0) {
-        _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.RIGHT;
-        _CommandToFighter_R.saveCommandToFighter_commandText = 'walking left';
-        _CommandToFighter_R.saveCommandToFighter_update = 1;
+        AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.RIGHT);
     } else{
-        _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.LEFT;
-        _CommandToFighter_R.saveCommandToFighter_commandText = 'walking right';
-        _CommandToFighter_R.saveCommandToFighter_update = 1;
+        AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.LEFT);
     };
+  //////////////////////////////////////////////////////////////////////////////
+  } else if (dR_1_2 > (Fight_R.DR_F_FRONT_KICK * Fight_R.DR_F_FRONT_KICK)){
+  //////////////////////////////////////////////////////////////////////////////
+      if (type_2 == SpritesAnimators_R.KICKING_BACK_ANI) {
+          AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BLOCK);
+      } else {
+          if (_Fighter_2.mirror == 0) {
+            AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.RIGHT);
+          } else{
+            AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.LEFT);
+          };
+      };
+  //////////////////////////////////////////////////////////////////////////////
+  } else if (dR_1_2 > (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)){
+  //////////////////////////////////////////////////////////////////////////////
+      if ((type_2 == SpritesAnimators_R.KICKING_FRONT_ANI) ||
+          (type_2 == SpritesAnimators_R.KICKING_BACK_ANI)) {
+         AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BLOCK);
+      } else {
+        if (_Fighter_2.mirror == 0) {
+          AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.RIGHT);
+        } else{
+          AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.LEFT);
+        };
+      };
+  //////////////////////////////////////////////////////////////////////////////
+  } else {
+  //////////////////////////////////////////////////////////////////////////////
+            //spritesAnimatorsTypeAnimation
 
-  } else if (dR_1_2 <= (Move_R.DR_F_BACK_KICK * Move_R.DR_F_BACK_KICK)){
-
-    _CommandToFighter_R.saveCommandToFighter_command = CommandToFighter_R.BACKKICK;
-    _CommandToFighter_R.saveCommandToFighter_commandText = 'kick Back';
-    _CommandToFighter_R.saveCommandToFighter_update = 1;
-
+        if ((type_2 == SpritesAnimators_R.PUNCHING_UP_ANI) ||
+           (type_2 == SpritesAnimators_R.PUNCHING_MIDLE_ANI) ||
+           (type_2 == SpritesAnimators_R.KICKING_FRONT_ANI) ||
+           (type_2 == SpritesAnimators_R.KICKING_BACK_ANI)) {
+                //console.log('AICommand_R: type_1 =' + SpritesAnimators_R.TXT_ANIMATORS_FIGHTER_SET[type_1]);
+                //console.log('AICommand_R: type_2 =' + SpritesAnimators_R.TXT_ANIMATORS_FIGHTER_SET[type_2]);
+           AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BLOCK);
+        } else {
+          if(r1 == 1) AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.FRONTPUNCH);
+          if(r1 == 2) AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BACKPUNCH);
+          if(r1 == 3) AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.FRONTKICK);
+          if(r1 == 4) AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BACKKICK);
+          if(r1 == 5) {
+             if (r2 == 2) {
+                AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.TELEPORT);
+            } else{
+                AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.FRONTPUNCH);
+            };
+          };
+          if(r1 == 6) {
+            if (_Fighter_2.mirror == 0) {
+              AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.LEFT);
+            } else{
+              AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.RIGHT);
+            };
+          };
+        };
+  //////////////////////////////////////////////////////////////////////////////
   };
-
-
-
 };
 //==============================================================================
 

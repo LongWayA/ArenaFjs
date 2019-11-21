@@ -115,7 +115,7 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.RUNNING_ANI] = {
     str : [0,0,0,0,0,0,0,0,0,0, 0, 0],
     max : 12,
     sound: "sound_IAAAA",
-    mustToStance : 0,
+    mustToStance : 1,
     canChange : 1
 };
 
@@ -165,7 +165,7 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BLOCKING_HIGH_ANI
     str : [0,0,1,0,0],
     max : 5,
     sound: "sound_STR_B",
-    mustToStance : 0,
+    mustToStance : 1,
     canChange : 1
 };
 
@@ -175,7 +175,7 @@ SpritesAnimators_R.animatorsSheeva_mk3_mobj[SpritesAnimators_R.BLOCKING_LOW_ANI]
     str : [0,0,1,0,0],
     max : 5,
     sound: "sound_STR_B",
-    mustToStance : 0,
+    mustToStance : 1,
     canChange : 1
 };
 
@@ -285,7 +285,7 @@ SpritesAnimators_R.setTypeAnimation_BEING_HIT = function(_Fighter) {
      SpritesAnimators_R.tickAnimation = function( _GameText_R,
        _SpritesFighter_R, _Fighter){
 
-       var typeStateAnimators = _Fighter.stateFighter;
+       var typeStateAnimators = _Fighter.spritesAnimatorsTypeAnimation;
        var width = _Fighter.width;
        var height = _Fighter.height;
 

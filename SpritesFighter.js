@@ -185,8 +185,8 @@ window.SpritesFighter_R = {};
 
          GameText_R.drawRect(_middle, top, 2,height,1, 'red', 0);
 
-         _GameText_R.drawText ("im " + "frame = " + _index, left + 5, _bottom-40, 'italic 20px sans-serif', 'white', 1);
-         _GameText_R.drawText ("im " + SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], left+5, _bottom -20, 'italic 20px sans-serif', 'white', 1);
+         _GameText_R.drawText ("im " + "frame = " + _index, _middle + 5, _bottom-40, 'italic 20px sans-serif', 'white', 1);
+         _GameText_R.drawText ("im " + SpritesFighter_R.TXT_SPRITES_FIGHTER_SET[_type], _middle+5, _bottom -20, 'italic 20px sans-serif', 'white', 1);
 
         // _GameText_R.drawText ("i " + "middle = " + _middle, left+5, _bottom-140, 'italic 20px sans-serif', 'white', 1);
         // _GameText_R.drawText ("i " + "width = " + width, left+5, _bottom-120, 'italic 20px sans-serif', 'white', 1);
