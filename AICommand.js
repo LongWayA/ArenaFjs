@@ -120,6 +120,8 @@ AICommand_R.CommandToFighter = function(_CommandToFighter_R, command) {
 
 
 //==============================================================================
+//AICommand_R.tick(fighter_1, fighter_2, CommandToFighter_R.toFighterRight);//
+//AICommand_R.tick(fighter_2, fighter_1, CommandToFighter_R.toFighterLeft);//
 AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
 
   // Move_R.DR_F_PUNCH = 75;//
@@ -153,7 +155,7 @@ AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
   //////////////////////////////////////////////////////////////////////////////
   } else if (dR_1_2 > (Fight_R.DR_F_FRONT_KICK * Fight_R.DR_F_FRONT_KICK)){
   //////////////////////////////////////////////////////////////////////////////
-      if (type_2 == SpritesAnimators_R.KICKING_BACK_ANI) {
+      if (type_1 == SpritesAnimators_R.KICKING_BACK_ANI) {
           AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BLOCK);
       } else {
           if (_Fighter_2.mirror == 0) {
@@ -165,8 +167,8 @@ AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
   //////////////////////////////////////////////////////////////////////////////
   } else if (dR_1_2 > (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)){
   //////////////////////////////////////////////////////////////////////////////
-      if ((type_2 == SpritesAnimators_R.KICKING_FRONT_ANI) ||
-          (type_2 == SpritesAnimators_R.KICKING_BACK_ANI)) {
+      if ((type_1 == SpritesAnimators_R.KICKING_FRONT_ANI) ||
+          (type_1 == SpritesAnimators_R.KICKING_BACK_ANI)) {
          AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BLOCK);
       } else {
         if (_Fighter_2.mirror == 0) {
@@ -180,13 +182,14 @@ AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
   //////////////////////////////////////////////////////////////////////////////
             //spritesAnimatorsTypeAnimation
 
-        if ((type_2 == SpritesAnimators_R.PUNCHING_UP_ANI) ||
-           (type_2 == SpritesAnimators_R.PUNCHING_MIDLE_ANI) ||
-           (type_2 == SpritesAnimators_R.KICKING_FRONT_ANI) ||
-           (type_2 == SpritesAnimators_R.KICKING_BACK_ANI)) {
+        if ((type_1 == SpritesAnimators_R.PUNCHING_UP_ANI) ||
+           (type_1 == SpritesAnimators_R.PUNCHING_MIDLE_ANI) ||
+           (type_1 == SpritesAnimators_R.KICKING_FRONT_ANI) ||
+           (type_1 == SpritesAnimators_R.KICKING_BACK_ANI)) {
                 //console.log('AICommand_R: type_1 =' + SpritesAnimators_R.TXT_ANIMATORS_FIGHTER_SET[type_1]);
                 //console.log('AICommand_R: type_2 =' + SpritesAnimators_R.TXT_ANIMATORS_FIGHTER_SET[type_2]);
            AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BLOCK);
+           //AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.TELEPORT);
         } else {
           if(r1 == 1) AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.FRONTPUNCH);
           if(r1 == 2) AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BACKPUNCH);

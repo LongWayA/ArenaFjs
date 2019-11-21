@@ -108,7 +108,7 @@ ArenaFjs_R.stateFigting = 0;
     Move_R.tick(fighter_1, fighter_2, ArenaScene_R);
 
     // обрабатываем бой
-    Fight_R.tick(fighter_1, fighter_2, SpritesAnimators_R);
+    Fight_R.tick(fighter_1, fighter_2, SpritesAnimators_R, Sound_R);
 
     // тоже что то можем обработать, но пока не знаю что.
     GameColculation_R.tick();
@@ -149,9 +149,11 @@ ArenaFjs_R.stateFigting = 0;
  //alert("!");
  //=============================================================================
  ArenaFjs_R.start = function(){
-
+      //alert("!");
       console.log('Ah ah it is Console!');
-
+      //var audio = new Audio('image/Sheeva_mk3_sound/hitsounds_conv/mk3-00145k.wav');
+      //audio.play();
+      //Sound_R.sound_F.play();
      //alert("!");
      //alert( Menu_R.NAME );
 
