@@ -229,7 +229,7 @@ ArenaFjs_R.frameG = 0;
         if( (ArenaFjs_R.window_load_end == 1) && (ArenaFjs_R.startGame == 0) ){
            ArenaFjs_R.frameG = ArenaFjs_R.frameG + 1;
            if (ArenaFjs_R.frameG > 1000000) ArenaFjs_R.frameG = 0;
-           Game_R.context.clearRect(0, 0, Game_R.canvas.width, Game_R.canvas.height);
+           Game_R.context.clearRect(30, 40, 900, 90);
            Game_R.context.strokeText ('Game in pause(Игра на паузе)', 50, 60);
            Game_R.context.strokeText ('Click on the Game pause button(Нажмите кнопку пауза для начала или возобновления игры)', 50, 80);
            Game_R.context.strokeText ('frame(кадр) = ' + ArenaFjs_R.frameG, 50, 100);

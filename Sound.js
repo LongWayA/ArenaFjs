@@ -22,40 +22,40 @@
 Sound_R.sound_IA = document.getElementById('IA');
 //Sound_R.sound_IA.load();
 Sound_R.sound_IA.volume = 1.0;
-Sound_R.sound_IA.muted = true;
+Sound_R.sound_IA.muted = false;
 
 Sound_R.sound_IAA = document.getElementById('IAA');
 Sound_R.sound_IAA.volume = 1.0;
-Sound_R.sound_IAA.muted = true;
+Sound_R.sound_IAA.muted = false;
 
 Sound_R.sound_IAAAA = document.getElementById('IAAAA');
 Sound_R.sound_IAAAA.volume = 1.0;
-Sound_R.sound_IAAAA.muted = true;
+Sound_R.sound_IAAAA.muted = false;
 
 Sound_R.sound_STR_H = document.getElementById('STR_H');
 Sound_R.sound_STR_H.volume = 1.0;
-Sound_R.sound_STR_H.muted = true;
+Sound_R.sound_STR_H.muted = false;
 
 Sound_R.sound_STR_F = document.getElementById('STR_F');
 Sound_R.sound_STR_F.volume = 1.0;
-Sound_R.sound_STR_F.muted = true;
+Sound_R.sound_STR_F.muted = false;
 
 Sound_R.sound_STR_B = document.getElementById('STR_B');
 Sound_R.sound_STR_B.volume = 1.0;
-Sound_R.sound_STR_B.muted = true;
+Sound_R.sound_STR_B.muted = false;
 
 Sound_R.sound_F = document.getElementById('F');
 Sound_R.sound_F.volume = 1.0;
-Sound_R.sound_F.muted = true;
+Sound_R.sound_F.muted = false;
 //Sound_R.sound_F.muted = false;
 
 Sound_R.sound_H = document.getElementById('H');
 Sound_R.sound_H.volume = 1.0;
-Sound_R.sound_H.muted = true;
+Sound_R.sound_H.muted = false;
 
 Sound_R.sound_STR = document.getElementById('STR');
 Sound_R.sound_STR.volume = 1.0;
-Sound_R.sound_STR.muted = true;
+Sound_R.sound_STR.muted = false;
 
 //alert(Fighting);
 //  Sound_R.sound_IA.play();//короткий крик
