@@ -1,7 +1,7 @@
 "use strict";
  // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019 - 13.07.2019
- // - 15.11.2019 -
+ // - 22.11.2019 -
 
   /*
    НАЗНАЧЕНИЕ
@@ -71,6 +71,7 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 // ArenaScene
 
 ArenaFjs_R.stateFigting = 0;
+ArenaFjs_R.startGame = 0;
 
  //alert("!");
  //=============================================================================
@@ -126,7 +127,9 @@ ArenaFjs_R.stateFigting = 0;
  //=============================================================================
  ArenaFjs_R.ini = function(){
 
+    ArenaFjs_R.window_load_end = 0;
     ArenaFjs_R.stateFigting = 0;
+    ArenaFjs_R.startGame = 0;
 
     //alert("ini = " + ArenaFjs_R.SpritesAnimators_R1);
     Timer_R.ini(8);
@@ -146,16 +149,50 @@ ArenaFjs_R.stateFigting = 0;
 
  };
  //=============================================================================
+
+
+//=============================================================================
+ArenaFjs_R.buttonStartGame_click = function(){
+     //console.log('buttonStartGame_click');
+     ArenaFjs_R.startGame = 1 - ArenaFjs_R.startGame;
+};
+//=============================================================================
+
+ //=============================================================================
+ ArenaFjs_R.button_on_of_sound_click = function(){
+      //console.log('button_on_of_sound_click');
+
+      //Sound_R.sound_F.muted = false;
+      Sound_R.sound_IA.muted    = !Sound_R.sound_IA.muted;
+      Sound_R.sound_IAA.muted   = !Sound_R.sound_IAA.muted;
+      Sound_R.sound_IAAAA.muted = !Sound_R.sound_IAAAA.muted;
+      Sound_R.sound_STR_H.muted = !Sound_R.sound_STR_H.muted;
+      Sound_R.sound_STR_F.muted = !Sound_R.sound_STR_F.muted;
+      Sound_R.sound_STR_B.muted = !Sound_R.sound_STR_B.muted;
+      Sound_R.sound_F.muted     = !Sound_R.sound_F.muted;
+      Sound_R.sound_H.muted     = !Sound_R.sound_H.muted;
+      Sound_R.sound_STR.muted   = !Sound_R.sound_STR.muted;
+
+ };
+ //=============================================================================
+
  //alert("!");
  //=============================================================================
  ArenaFjs_R.start = function(){
       //alert("!");
       console.log('Ah ah it is Console!');
-      //var audio = new Audio('image/Sheeva_mk3_sound/hitsounds_conv/mk3-00145k.wav');
-      //audio.play();
-      //Sound_R.sound_F.play();
+      buttonStartGame.onclick = ArenaFjs_R.buttonStartGame_click;
+      button_on_of_sound.onclick = ArenaFjs_R.button_on_of_sound_click;
+
+      //ArenaFjs_R.sound_IAAAA2 = document.getElementById('IAAAA2');
+      //ArenaFjs_R.sound_IAAAA2.volume = 1.0;
+      //ArenaFjs_R.sound_IAAAA2.play();
+      //typeWriter.play();
+      //typeWriter.pause();
      //alert("!");
      //alert( Menu_R.NAME );
+
+
 
  };
  //=============================================================================
@@ -173,6 +210,14 @@ ArenaFjs_R.stateFigting = 0;
  };
  //=============================================================================
 
+ //=============================================================================
+ // загрузка всего документа(вместе с картинками, звуком и т.д.) закончена
+ window.onload = function() {
+     ArenaFjs_R.window_load_end = 1;
+     //console.log('ArenaFjs_R: window.onload');
+ };
+ //=============================================================================
+ArenaFjs_R.frameG = 0;
  //loop>------------------------------------------------------------------------
   ArenaFjs_R.ini();
   ArenaFjs_R.start();
@@ -180,7 +225,17 @@ ArenaFjs_R.stateFigting = 0;
   ArenaFjs_R.timerId = setTimeout( function tick(){
 
         Timer_R.updateTimeBeforeTick();
-        if( Game_R.img_load_end == 1 ){
+
+        if( (ArenaFjs_R.window_load_end == 1) && (ArenaFjs_R.startGame == 0) ){
+           ArenaFjs_R.frameG = ArenaFjs_R.frameG + 1;
+           if (ArenaFjs_R.frameG > 1000000) ArenaFjs_R.frameG = 0;
+           Game_R.context.clearRect(0, 0, Game_R.canvas.width, Game_R.canvas.height);
+           Game_R.context.strokeText ('Game in pause(Игра на паузе)', 50, 60);
+           Game_R.context.strokeText ('Click on the Game pause button(Нажмите кнопку пауза для начала или возобновления игры)', 50, 80);
+           Game_R.context.strokeText ('frame(кадр) = ' + ArenaFjs_R.frameG, 50, 100);
+        };
+
+        if( (ArenaFjs_R.window_load_end == 1) && (ArenaFjs_R.startGame == 1) ){
             // alert("!-");
              ArenaFjs_R.tick();
              //ArenaFjs_R.tickTest();

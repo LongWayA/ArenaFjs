@@ -178,6 +178,23 @@ AICommand_R.tick = function(_Fighter_1, _Fighter_2, _CommandToFighter_R) {
         };
       };
   //////////////////////////////////////////////////////////////////////////////
+  } else if (dR_1_2 < (Move_R.DR_STOP_F * Move_R.DR_STOP_F)){
+  //////////////////////////////////////////////////////////////////////////////
+      if ((type_1 == SpritesAnimators_R.PUNCHING_UP_ANI) ||
+         (type_1 == SpritesAnimators_R.PUNCHING_MIDLE_ANI) ||
+         (type_1 == SpritesAnimators_R.KICKING_FRONT_ANI) ||
+         (type_1 == SpritesAnimators_R.KICKING_BACK_ANI)) {
+
+         AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.BLOCK);
+      } else {
+         // идем в сторону уменьшения расстояния но все равно будет отбрасывать
+         if (_Fighter_2.mirror == 0) {
+           AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.RIGHT);
+         } else{
+           AICommand_R.CommandToFighter(_CommandToFighter_R, CommandToFighter_R.LEFT);
+         };
+      };
+  //////////////////////////////////////////////////////////////////////////////
   } else {
   //////////////////////////////////////////////////////////////////////////////
             //spritesAnimatorsTypeAnimation

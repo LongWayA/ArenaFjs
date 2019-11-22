@@ -223,6 +223,8 @@ SpritesAnimators_R.setTypeAnimation_BEING_HIT = function(_Fighter) {
 
                    // мы можем менять состояние только тех аннимаций которые разрешено менять т.е. canChange == 1
                    if (SpritesAnimators_R.animatorsSheeva_mk3_mobj[type].canChange == 1 ) {
+                      if(typeStateAnimators == SpritesAnimators_R.RUNNING_ANI) Sound_R.sound_IAAAA.play();
+
                      _Fighter.spritesAnimatorsOldTypeAnimation = _Fighter.spritesAnimatorsTypeAnimation;
                      _Fighter.spritesAnimatorsTypeAnimation = typeStateAnimators;
                      _Fighter.spritesAnimatorsFrames = 0;

@@ -38,8 +38,8 @@ Move_R.dX_Fighter_1__Fighter_2 = function(_middle_1, _middle_2) {
 //==============================================================================
 Move_R.stop_Fighter_1 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
 
-   var xL_S = _ArenaScene_R.fightFrame.x0Left;
-   var xR_S = _ArenaScene_R.fightFrame.xRight;
+   var xL_S = _ArenaScene_R.FightFrame.x0Left;
+   var xR_S = _ArenaScene_R.FightFrame.xRight;
    var mF_1 = _Fighter_1.middle;
    var dR_L_S = mF_1 - xL_S;
    var dR_R_S = xR_S - mF_1;
@@ -67,30 +67,31 @@ Move_R.stop_Fighter_1 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
 //==============================================================================
 Move_R.moveFighter_1or2 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
 
+      var mult_dx = 2;
       //
       if (_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_FORWARD_ANI) {
 
           if (_Fighter_1.mirror == SpritesAnimators_R.NO_MIRROR) {
              _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
              if (Move_R.stop_Fighter_1(_Fighter_1, _Fighter_2, _ArenaScene_R) == Move_R.STOP){
-               _Fighter_1.middle = _Fighter_1.middle - Move_R.dx;
+               _Fighter_1.middle = _Fighter_1.middle - mult_dx * Move_R.dx;
              };
           } else {
             _Fighter_1.middle = _Fighter_1.middle - Move_R.dx;
             if (Move_R.stop_Fighter_1(_Fighter_1, _Fighter_2, _ArenaScene_R) == Move_R.STOP){
-              _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
+              _Fighter_1.middle = _Fighter_1.middle + mult_dx * Move_R.dx;
             };
           };
      } else if(_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.WALKING_BACK_ANI) {
          if (_Fighter_1.mirror == SpritesAnimators_R.YES_MIRROR) {
             _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
             if (Move_R.stop_Fighter_1(_Fighter_1, _Fighter_2, _ArenaScene_R) == Move_R.STOP){
-              _Fighter_1.middle = _Fighter_1.middle - Move_R.dx;
+              _Fighter_1.middle = _Fighter_1.middle - mult_dx * Move_R.dx;
             };
          } else {
            _Fighter_1.middle = _Fighter_1.middle - Move_R.dx;
            if (Move_R.stop_Fighter_1(_Fighter_1, _Fighter_2, _ArenaScene_R) == Move_R.STOP){
-             _Fighter_1.middle = _Fighter_1.middle + Move_R.dx;
+             _Fighter_1.middle = _Fighter_1.middle + mult_dx * Move_R.dx;
            };
         };
      } else if(_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.RUNNING_ANI) {
@@ -108,9 +109,13 @@ Move_R.moveFighter_1or2 = function(_Fighter_1, _Fighter_2, _ArenaScene_R) {
      } else if(_Fighter_1.spritesAnimatorsTypeAnimation == SpritesAnimators_R.FIGHTING_STANCE_ANI){
         if (_Fighter_1.teleport == 1) {
            if (_Fighter_1.mirror == SpritesAnimators_R.NO_MIRROR) {
-                _Fighter_1.middle = _ArenaScene_R.fightFrame.xRight - Move_R.DR_STOP_AR_R;
+                if (_Fighter_2.middle < _ArenaScene_R.FightFrame.xRight - Move_R.DR_STOP_AR_R - Move_R.DR_STOP_F) {
+                         _Fighter_1.middle = _ArenaScene_R.FightFrame.xRight - Move_R.DR_STOP_AR_R;
+                };
            } else{
-               _Fighter_1.middle = _ArenaScene_R.fightFrame.x0Left + Move_R.DR_STOP_AR_L;
+                if (_Fighter_2.middle > Move_R.DR_STOP_F + _ArenaScene_R.FightFrame.x0Left + Move_R.DR_STOP_AR_L) {
+                       _Fighter_1.middle = _ArenaScene_R.FightFrame.x0Left + Move_R.DR_STOP_AR_L;
+                };
            };
            _Fighter_1.teleport = 0;
        };

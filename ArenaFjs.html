@@ -6,7 +6,7 @@
 		 <link rel='stylesheet' href='ArenaFjs.css'/>
 		 <script>
 		   // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-			// Last modified 07.07.2018 - 15.07.2018 - 15.11.2019 -
+			// Last modified 07.07.2018 - 15.07.2018 - 22.11.2019 -
 		 </script>
   </head>
 
@@ -18,14 +18,13 @@
       <a class="button" href="http://alphagameset.xyz/"> На главную
 			</a>
 
-		  <p class="st2" > Last modified 21.11.2019 * Mail : ArenaFightingMail@yandex.ru *
+		  <p class="st2" > Last modified 22.11.2019 * Mail : ArenaFightingMail@yandex.ru *
 		    <a class="st7" href="https://github.com/LongWayA/ArenaFjs"> Game source code on github.com
 			  </a>
 		  </p>
 
 			<p class="st2">
-				Управление левым бойцом. Пока что в процессе наладки.
-        Передняя и задняя конечность относительно боковой стойки.
+				Управление левым бойцом.
 			 </p>
 
 			<p class="st3"> A-LEFT(движение влево),
@@ -38,6 +37,10 @@
 				I-BACK PUNCH(удар нижней рукой), O-FRONT KICK(удар передней ногой),
 				P-BACK KICK(удар задней ногой), SPASE-BLOCK(блок)
 			</p>
+
+      <!-- buttons -->
+			<input type="button" id="buttonStartGame" value="Game pause(пауза)" />
+			<input type="button" id="button_on_of_sound" value="Sound on/of(Включить-выключить звук)" />
 
         <!--The game canvas-1600-800 -->
         <canvas id='game-canvas' width='1500' height='800'>
@@ -78,6 +81,7 @@
 		  <!-- промах ногой -->
         <audio id='F'>
           <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00145k.wav' type='audio/wav'>
+
         </audio>
 
 		  <!-- промах рукой -->

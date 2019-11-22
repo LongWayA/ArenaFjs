@@ -51,12 +51,12 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R, _Sound_R) {
                 if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
                      if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_UP_PUNCH;
                      _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
-                     //_Sound_R.sound_STR_H.play();
+                     _Sound_R.sound_STR_H.play();
                 } else{//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
-                    //_Sound_R.sound_STR_B.play();
+                    _Sound_R.sound_STR_B.play();
                 };//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
           } else{//if (dR_1_2 <= (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)) {
-               //_Sound_R.sound_H.play();
+               _Sound_R.sound_H.play();
           };//if (dR_1_2 <= (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)) {
       };//if (type_1 == SpritesAnimators_R.PUNCHING_UP_ANI) {
       //////////////////////////////////////////////////////////////////////////
@@ -67,12 +67,12 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R, _Sound_R) {
                 if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
                    if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_MIDLE_PUNCH;
                    _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
-                   //_Sound_R.sound_STR_H.play();
+                   _Sound_R.sound_STR_H.play();
                  } else{//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
-                    //_Sound_R.sound_STR_B.play();
+                    _Sound_R.sound_STR_B.play();
                  };//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
            } else{//if (dR_1_2 < (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)) {
-                 //_Sound_R.sound_H.play();
+                 _Sound_R.sound_H.play();
            };//if (dR_1_2 < (Fight_R.DR_F_PUNCH * Fight_R.DR_F_PUNCH)) {
       };//if (type_1 == SpritesAnimators_R.PUNCHING_MIDLE_ANI) {
       //////////////////////////////////////////////////////////////////////////
@@ -83,12 +83,12 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R, _Sound_R) {
               if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
                    if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_FRONT_KICK;
                    _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
-                   //_Sound_R.sound_STR_F.play();
+                   _Sound_R.sound_STR_F.play();
               } else{//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
-                   //_Sound_R.sound_STR_B.play();
+                   _Sound_R.sound_STR_B.play();
               };//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
           } else{//if (dR_1_2 < (Fight_R.DR_F_FRONT_KICK * Fight_R.DR_F_FRONT_KICK)) {
-           //_Sound_R.sound_F.play();
+           _Sound_R.sound_F.play();
           };//if (dR_1_2 < (Fight_R.DR_F_FRONT_KICK * Fight_R.DR_F_FRONT_KICK)) {
       };//if (type_1 == SpritesAnimators_R.KICKING_FRONT_ANI) {
       //////////////////////////////////////////////////////////////////////////
@@ -99,12 +99,12 @@ Fight_R.hit = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R, _Sound_R) {
             if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
                 if(_Fighter_2.health > 0) _Fighter_2.health = _Fighter_2.health - FighterSheeva_mk3_R.DH_BACK_KICK;
                 _SpritesAnimators_R.setTypeAnimation_BEING_HIT(_Fighter_2);
-                //_Sound_R.sound_STR_F.play();
+                _Sound_R.sound_STR_F.play();
             } else{//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
-                //_Sound_R.sound_STR_B.play();
+                _Sound_R.sound_STR_B.play();
             };//if (type_2 != SpritesAnimators_R.BLOCKING_HIGH_ANI) {
           } else{//if (dR_1_2 < (Fight_R.DR_F_BACK_KICK * Fight_R.DR_F_BACK_KICK)) {
-            //_Sound_R.sound_F.play();
+            _Sound_R.sound_F.play();
           };//if (dR_1_2 < (Fight_R.DR_F_BACK_KICK * Fight_R.DR_F_BACK_KICK)) {
       };//if (SpritesAnimators_R.animatorsSheeva_mk3_mobj[type_1].str[num_1] == 1) {
       //////////////////////////////////////////////////////////////////////////
@@ -119,8 +119,14 @@ Fight_R.tick = function(_Fighter_1, _Fighter_2, _SpritesAnimators_R, _Sound_R) {
    Fight_R.hit(_Fighter_1, _Fighter_2, _SpritesAnimators_R, _Sound_R);
    Fight_R.hit(_Fighter_2, _Fighter_1, _SpritesAnimators_R, _Sound_R);
 
-if(_Fighter_1.health <= 0) _Fighter_1.health = FighterSheeva_mk3_R.MAX_HEALTH;
-if(_Fighter_2.health <= 0) _Fighter_2.health = FighterSheeva_mk3_R.MAX_HEALTH;
+if(_Fighter_1.health <= 0) {
+  _Fighter_1.health = FighterSheeva_mk3_R.MAX_HEALTH;
+   Sound_R.sound_IAA.play();
+}
+if(_Fighter_2.health <= 0){
+  _Fighter_2.health = FighterSheeva_mk3_R.MAX_HEALTH;
+  Sound_R.sound_IAA.play();
+}
 
 };
 //==============================================================================
