@@ -173,6 +173,7 @@ ArenaFjs_R.buttonStartGame_click = function(){
       Sound_R.sound_H.muted     = !Sound_R.sound_H.muted;
       Sound_R.sound_STR.muted   = !Sound_R.sound_STR.muted;
 
+      //checkbox_on_of_sound.checked = !checkbox_on_of_sound.checked;
  };
  //=============================================================================
 
@@ -183,7 +184,15 @@ ArenaFjs_R.buttonStartGame_click = function(){
       console.log('Ah ah it is Console!');
       buttonStartGame.onclick = ArenaFjs_R.buttonStartGame_click;
       button_on_of_sound.onclick = ArenaFjs_R.button_on_of_sound_click;
+      //ArenaFjs_R.get_buttonStartGame = document.getElementById("buttonStartGame");
+      //console.log('ArenaFjs_R: get_buttonStartGame = ' + ArenaFjs_R.get_buttonStartGame);
 
+      //ArenaFjs_R.get_checkboxStartGame = document.getElementById("checkboxStartGame");
+      //console.log('ArenaFjs_R: get_checkboxStartGame = ' + ArenaFjs_R.get_checkboxStartGame);
+      //document.f1.ch1.checked = true;
+      //ArenaFjs_R.get_checkboxStartGame.checked = true;
+      checkboxStartGame.checked = false;
+      checkbox_on_of_sound.checked = false;
       //ArenaFjs_R.sound_IAAAA2 = document.getElementById('IAAAA2');
       //ArenaFjs_R.sound_IAAAA2.volume = 1.0;
       //ArenaFjs_R.sound_IAAAA2.play();
@@ -226,6 +235,8 @@ ArenaFjs_R.frameG = 0;
 
         Timer_R.updateTimeBeforeTick();
 
+        checkbox_on_of_sound.checked = !Sound_R.sound_STR.muted;
+
         if( (ArenaFjs_R.window_load_end == 1) && (ArenaFjs_R.startGame == 0) ){
            ArenaFjs_R.frameG = ArenaFjs_R.frameG + 1;
            if (ArenaFjs_R.frameG > 1000000) ArenaFjs_R.frameG = 0;
@@ -233,10 +244,13 @@ ArenaFjs_R.frameG = 0;
            Game_R.context.strokeText ('Game in pause(Игра на паузе)', 50, 60);
            Game_R.context.strokeText ('Click on the Game pause button(Нажмите кнопку пауза для начала или возобновления игры)', 50, 80);
            Game_R.context.strokeText ('frame(кадр) = ' + ArenaFjs_R.frameG, 50, 100);
+           if(checkboxStartGame.checked == true) checkboxStartGame.checked = false;
+          // if(checkboxStartGame.checked == true) checkboxStartGame.checked = false;
         };
 
         if( (ArenaFjs_R.window_load_end == 1) && (ArenaFjs_R.startGame == 1) ){
             // alert("!-");
+             if(checkboxStartGame.checked == false) checkboxStartGame.checked = true;
              ArenaFjs_R.tick();
              //ArenaFjs_R.tickTest();
         };

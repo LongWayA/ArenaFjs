@@ -37,9 +37,12 @@
 
 
       <!-- buttons -->
-			<input type="button" class="styled" id="buttonStartGame" value="Game pause(пауза)" />
-			<input type="button" class="styled" id="button_on_of_sound" value="Sound on/of(Включить-выключить звук)" />
-
+			<form name = "f1">
+			    <input type = "button" class = "styled" id = "buttonStartGame" value = "Game pause(пауза)" />
+			    <input type = "checkbox" name ="ch1" id = "checkboxStartGame" />Playing game(в игре)
+			    <input type = "button" class = "styled" id = "button_on_of_sound" value = "Sound on/of(Включить-выключить звук)" />
+			    <input type = "checkbox" name ="ch2" id = "checkbox_on_of_sound" />Sound on (звук включен)
+		  </form>
         <!--The game canvas-1600-800 -->
         <canvas id='game-canvas' width='1500' height='800'>
             Your browser does not support HTML5 Canvas
