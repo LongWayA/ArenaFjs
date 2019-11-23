@@ -82,6 +82,7 @@ p.st4 {
    transition: opacity 2.5s;
 }
 
+/*https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button */
 input.styled {
     border: 0;
     line-height: 2.5;
