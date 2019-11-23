@@ -1,20 +1,20 @@
 
 /* Copyright (c) 2019, 2091, Brenkman Andrey and/or its affiliates. All rights reserved. */
-/* Last modified 07.07.2018 - 15.06.2019 */
+/* Last modified 07.07.2018 - 15.06.2019 - 23.11.2019 - */
 
 h1.st1 {
   background-color: white;
   color: red;
-  margin: 20px;
-  padding: 20px;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
 }
 
 p.st2 {
   background-color: blue;
   color: white;
-  margin: 20px;
-  padding: 20px;
+  margin: 1px;
+  padding: 10px;
   text-align: justify;
   font-size: large;
   /* font-size: medium; */
@@ -23,8 +23,8 @@ p.st2 {
 p.st3 {
   background-color: green;
   color: white;
-  margin: 20px;
-  padding: 20px;
+  margin: 1px;
+  padding: 10px;
   text-align: justify;
   font-size: large;
 }
@@ -32,8 +32,8 @@ p.st3 {
 p.st4 {
   background-color: black;
   color: white;
-  margin: 20px;
-  padding: 20px;
+  margin: 1px;
+  padding: 10px;
   text-align: justify;
   font-size: large;
 }
@@ -42,14 +42,14 @@ p.st4 {
  p.st5 {
   background-color: orange;
   color: white;
-  margin: 20px;
+  margin: 1px;
   padding: 20px;
  }
 
  p.st6 {
  background-color: yellow;
  color: white;
- margin: 20px;
+ margin: 1px;
  padding: 20px;
  }
  a.st7 {
@@ -76,9 +76,37 @@ p.st4 {
 #game-canvas {
    position: relative;
    border: 1px inset rgba(0,0,80,0.62);
-
    -webkit-transition: opacity 2.5s;
    -moz-transition: opacity 2.5s;
    -o-transition: opacity 2.5s;
    transition: opacity 2.5s;
+}
+
+input.styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    /*background-color: rgba(220, 0, 0, 1);*/
+    background-color: rgba(0, 0, 220, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+    /*background-color: rgba(255, 0, 0, 1);*/
+    background-color: rgba(0, 255, 220, 1);
+}
+
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
