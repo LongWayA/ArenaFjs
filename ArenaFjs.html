@@ -2,12 +2,10 @@
 <html lang="">
 	<head>
 		 <meta charset="utf-8">
+		 <!-- Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved. -->
+		 <!-- Last modified 07.07.2018 - 15.07.2018 - 23.11.2019 - 14.12.2019 -->
 	   <title>Arena fighting </title>
 		 <link rel='stylesheet' href='ArenaFjs.css'/>
-		 <script>
-		   // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
-			// Last modified 07.07.2018 - 15.07.2018 - 23.11.2019 -
-		 </script>
   </head>
 
   <body>
@@ -18,7 +16,7 @@
       <a class="button" href="http://alphagameset.xyz/"> На главную
 			</a>
 
-		  <p class="st2" > Last modified 23.11.2019 * Mail : ArenaFightingMail@yandex.ru *
+		  <p class="st2" > Last modified 14.12.2019 * Mail : ArenaFightingMail@yandex.ru *
 		    <a class="st7" href="https://github.com/LongWayA/ArenaFjs"> Game source code on github.com
 			  </a>
 		  </p>
@@ -35,66 +33,18 @@
 				P-BACK KICK(удар задней ногой), SPASE-BLOCK(блок)
 			</p>
 
-
       <!-- buttons -->
-			<form name = "f1">
-			    <input type = "button" class = "styled" id = "buttonStartGame" value = "Game pause(пауза)" />
-			    <input type = "checkbox" name ="ch1" id = "checkboxStartGame" />Playing game(в игре)
-			    <input type = "button" class = "styled" id = "button_on_of_sound" value = "Sound on/of(Включить-выключить звук)" />
-			    <input type = "checkbox" name ="ch2" id = "checkbox_on_of_sound" />Sound on (звук включен)
-		  </form>
-        <!--The game canvas-1600-800 -->
-        <canvas id='game-canvas' width='1500' height='800'>
-            Your browser does not support HTML5 Canvas
-        </canvas>
+			<input type = "button" class = "styled" id = "buttonStartGame" value = "Game pause(пауза)" />
+			<input type = "checkbox" name ="ch1" id = "checkboxStartGame" />Playing game(в игре)
+			<input type = "button" class = "styled" id = "button_on_of_sound" value = "Sound on/of(Включить-выключить звук)" />
+			<input type = "checkbox" name ="ch2" id = "checkbox_on_of_sound" />Sound on (звук включен)
+      <input type="text" name="user" id = "text_number_users" value="number of users"><br>
 
-	     <!-- Sounds -->
-
-		  <!-- female_conv -->
-        <audio id='IA'>
-          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01500ruk.wav' type='audio/wav'>
-        </audio>
-
-        <audio id='IAA'>
-          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01505nog.wav' type='audio/wav'>
-        </audio>
-
-        <audio id='IAAAA'>
-          <source src='image/Sheeva_mk3_sound/female_conv/mk3-01525beg.wav' type='audio/wav'>
-        </audio>
-
-      <!-- hitsounds_conv -->
-		  <!-- попадание рукой -->
-        <audio id='STR_H'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00100pu.wav' type='audio/wav'>
-        </audio>
-
-		  <!-- попадание ногой -->
-        <audio id='STR_F'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00105pm.wav' type='audio/wav'>
-        </audio>
-
-		  <!-- попадание по блоку -->
-        <audio id='STR_B'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00110b.wav' type='audio/wav'>
-        </audio>
-
-		  <!-- промах ногой -->
-        <audio id='F'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00145k.wav' type='audio/wav'>
-
-        </audio>
-
-		  <!-- промах рукой -->
-        <audio id='H'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00150h.wav' type='audio/wav'>
-        </audio>
-
-		  <!-- удары -->
-        <audio id='STR'>
-          <source src='image/Sheeva_mk3_sound/hitsounds_conv/mk3-00275sh.wav' type='audio/wav'>
-        </audio>
-
+      <!--The game canvas-1600-800 -->
+      <canvas id='game-canvas' width='1500' height='800'>
+        Your browser does not support HTML5 Canvas<br>
+				Ваш браузер не поддерживает HTML5 графику<br>
+      </canvas>
 
 		  <!-- Scripts -->
 	    <script src = 'Game.js'> </script>                  <!-- 1  -->

@@ -72,6 +72,7 @@ ArenaFjs_R.NAME = "ArenaFjs_R";//
 
 ArenaFjs_R.stateFigting = 0;
 ArenaFjs_R.startGame = 0;
+ArenaFjs_R.number_users = "OK";
 
  //alert("!");
  //=============================================================================
@@ -147,6 +148,10 @@ ArenaFjs_R.startGame = 0;
     CommandToFighter_R.toFighterLeft.ini('1');
     CommandToFighter_R.toFighterRight.ini('2');
 
+    ArenaFjs_R.get_text_number_users = document.getElementById("text_number_users");
+    //console.log('ArenaFjs_R: get_text_number_users = ' + ArenaFjs_R.get_text_number_users);
+    ArenaFjs_R.get_text_number_users.addEventListener('change', ArenaFjs_R.update_text_number_users);
+
  };
  //=============================================================================
 
@@ -177,11 +182,33 @@ ArenaFjs_R.buttonStartGame_click = function(){
  };
  //=============================================================================
 
+ //=============================================================================
+ async function f_response() {
+         let response = await fetch('http://alphagameset.xyz/0_php/1_SQLBase/2_get_arena_f_js_SQL_base.php/?name=requests_arena_f_js');
+         if (response.ok) { // если HTTP-статус в диапазоне 200-299
+           ArenaFjs_R.number_users = await response.text();
+           ArenaFjs_R.get_text_number_users.value = "Requests = " + ArenaFjs_R.number_users;
+         } else {
+           alert("Ошибка HTTP: " + response.status);
+         };
+  };
+ //=============================================================================
+
+ //=============================================================================
+ ArenaFjs_R.update_text_number_users = function(e) {
+   // e.target.value;
+   //console.log('ArenaFjs_R: e=' + e.target.value);
+   ArenaFjs_R.get_text_number_users.value = "Requests_up = " + ArenaFjs_R.number_users;
+ };
+ //=============================================================================
+
  //alert("!");
  //=============================================================================
  ArenaFjs_R.start = function(){
       //alert("!");
-      console.log('Ah ah it is Console!');
+      console.log('ArenaFjs_R - console.log: Ah ah it is Console!');
+      //window.dump('ArenaFjs_R - window.dump: Ah ah it is Console!');
+
       buttonStartGame.onclick = ArenaFjs_R.buttonStartGame_click;
       button_on_of_sound.onclick = ArenaFjs_R.button_on_of_sound_click;
       //ArenaFjs_R.get_buttonStartGame = document.getElementById("buttonStartGame");
@@ -201,8 +228,7 @@ ArenaFjs_R.buttonStartGame_click = function(){
       //typeWriter.pause();
      //alert("!");
      //alert( Menu_R.NAME );
-
-
+     f_response();
 
  };
  //=============================================================================
