@@ -1,5 +1,5 @@
 "use strict";
- // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
+ // Copyright (c) 2018-2019, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 15.08.2018 - 1.01.2019 - 13.07.2019
 
   /*

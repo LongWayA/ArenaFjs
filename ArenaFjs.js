@@ -1,5 +1,5 @@
 "use strict";
- // Copyright (c) 2018, 2081, Brenkman Andrey and/or its affiliates. All rights reserved.
+ // Copyright (c) 2018-2019, Brenkman Andrey and/or its affiliates. All rights reserved.
  // Last modified 07.07.2018 - 30.12.2018 - 30.05.2019 - 13.07.2019
  // - 22.11.2019 -
 
@@ -184,13 +184,26 @@ ArenaFjs_R.buttonStartGame_click = function(){
 
  //=============================================================================
  async function f_response() {
+   try {
+
          let response = await fetch('http://alphagameset.xyz/0_php/1_SQLBase/2_get_arena_f_js_SQL_base.php/?name=requests_arena_f_js');
          if (response.ok) { // если HTTP-статус в диапазоне 200-299
            ArenaFjs_R.number_users = await response.text();
            ArenaFjs_R.get_text_number_users.value = "Requests = " + ArenaFjs_R.number_users;
          } else {
-           alert("Ошибка HTTP: " + response.status);
-         };
+           //alert("Ошибка HTTP: " + response.status);
+           ArenaFjs_R.number_users = "Ошибка HTTP: " + response.status();
+           ArenaFjs_R.get_text_number_users.value = ArenaFjs_R.number_users;
+         };// if (response.ok)
+
+        // return 1;
+
+    } catch (error) {
+        //console.error(error);
+        console.log('error = ' + error);
+        ArenaFjs_R.get_text_number_users.value = error;
+    };// try {
+
   };
  //=============================================================================
 
@@ -294,3 +307,19 @@ ArenaFjs_R.frameG = 0;
 
  //=============================================================================
  //alert("module ArenaFjs done");
+
+/*
+
+https://www.developphp.com/lib/JavaScript/Development-Output
+
+<h2 id="status">0</h2>
+<script>
+var pos = 0;
+setInterval( function(){
+    pos++;
+    document.getElementById("status").innerHTML = pos;
+}, 1000 );
+</script>
+
+
+*/
